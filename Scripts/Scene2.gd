@@ -3,6 +3,7 @@ extends Node2D
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 # DOCUMENTACIÓN MANEJO DE "NODOS" EN CAPAS CON YSORT: https://docs.google.com/document/d/1LEKG9qijIEIauFaB1zmUWPgTShxkI0whVbC3ngZrJ4E
 # DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
+# DOCUMENTACIÓN (creación de escena): https://docs.google.com/document/d/1Tvp7PKcC4kSUtQO9wKEksT_cbA4rBEMZQ-artBsu5N4/edit?usp=drive_link
 
 #Definición del nodo de inventario
 @onready var inventory:= $Inventory
@@ -30,6 +31,7 @@ func _ready():
 	if level_data:
 		#Seteamos datos iniciales
 		set_level_data(level_data)
+	# DOCUMENTACIÓN (guardado de progreso): https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs/edit?usp=drive_link
 	#Desbloqueamos la siguiente escena
 	SaveProgress.save_active_scene("Antigua")
 
@@ -65,7 +67,8 @@ func _process(delta):
 func _on_area_2d_area_entered(area):
 	#Redireccionamos a la escena 3
 	SceneTransition.change_scene("res://Scene3.tscn")
-	
+
+# DOCUMENTACIÓN (transición de escena): https://docs.google.com/document/d/1FciThS6B4qQEBely2iCMDfkRZIzwSrZLCo2Fu8nE5LQ/edit?usp=drive_link
 func _on_area_to_scena_1_body_entered(body):
 	#Redireccionamos a la escena 1
 	SceneTransition.change_scene("res://Scene1.tscn")

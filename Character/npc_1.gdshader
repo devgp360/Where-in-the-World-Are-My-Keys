@@ -2,6 +2,7 @@
 * Shadow 2D.
 * License: CC0
 * https://creativecommons.org/publicdomain/zero/1.0/
+* DOCUMENTACIÓN (sombras): https://docs.google.com/document/d/1IAQRxm-IrOKRFd6XK9IlnbYYaLb_Bt0VDyqVeKR42j0/edit?usp=drive_link
 */
 shader_type canvas_item;
 render_mode blend_mix;

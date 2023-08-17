@@ -3,6 +3,8 @@ extends CharacterBody2D
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 # DOCUMENTACIÓN TOOLTIPS PARA DIÁLOGOS CON NPCS: https://docs.google.com/document/d/15bKBdC0nMawhdyuVRRfcZbFD7D59Lb8HhKiGBY70FL0
 
+# DOCUMENTACIÓN (creación de personaje): https://docs.google.com/document/d/1mwEdhKQrObfhGChXO0R31xknLabwwrc8yRvXdaWJBwE/edit?usp=drive_link
+
 @onready var anim := $Sprite2D/AnimationSprite # Animaciones
 @onready var sprite := $Sprite2D # Sprite principal del personaje
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
@@ -105,6 +107,7 @@ func _ready():
 	
 	# Para un manejo más fácil de sombras con "shaders", se separó las animaciones del personaje
 	# en varias imágenes separadas, que se cargarán al cargar el personaje
+	# DOCUMENTACIÓN (sprites): https://docs.google.com/document/d/1b1I-xoUz6QkS5G6VtHhR9MZn40IGy3ZWObMCeorJjGg/edit?usp=drive_link
 	animations = [
 		load("res://Character/AnimationSprite/idle.png"),
 		load("res://Character/AnimationSprite/back.png"),
@@ -116,10 +119,6 @@ func _ready():
 		load("res://Character/AnimationSprite/down_left.png"),
 		load("res://Character/AnimationSprite/down_right.png"),
 	]
-	
-	# Prueba de añadir item a inventario, cuando se cargue el personaje principal
-	#InventoryCanvas.add_item_by_name("item_artefacto_magico")
-	#InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio1")
 
 # Captura eventos del teclado o ratón
 func _unhandled_input(event):
@@ -137,6 +136,7 @@ func _unhandled_input(event):
 # Agrega diferentes tipos de animaciones al personaje, dependiendo de la acción que esté ejecutando:
 # Saltar, correr, deslizarse por una pared, etc.
 # DOCUMENTACIÓN SOBRE MOVIMIENTOS DE UN PERSONAJE: https://docs.google.com/document/d/1V__ENMBZUavTCnd7BxHF1oI3gDAOhPtwU5DRxlDGb4g
+# DOCUMENTACIÓN (animaciones): https://docs.google.com/document/d/13ZWMjST6pT7EIjfe6JRyLGqJAG-NdahEWABhnN1VzuY/edit?usp=drive_link
 func set_animation():
 	# Sentencia de control, para definir la animación que se está ejecutando según a la dirección
 	# que se mueve el personaje. También se setea el "índice" del sprite a usar según la dirección
@@ -171,37 +171,10 @@ func set_animation():
 	anim.play("main") # Siempre es main, ya que lo que cambia es la imagen de "sprite"
 	sprite.texture = animations[sprite_image_index] # Se cambia la textura según la animación
 
-# Actualiza los ejes "X" y "Y" del personaje, para dar movimiento, ya sea de correr o saltar
-func set_velocity_xy():
-	if main_direction == DIRECTION_UP_LEFT:
-		velocity.x = -1 * speed
-		velocity.y = -1 * speed
-	elif main_direction == DIRECTION_UP_RIGHT:
-		velocity.x = 1 * speed
-		velocity.y = -1 * speed
-	elif main_direction == DIRECTION_DOWN_LEFT:
-		velocity.x = -1 * speed
-		velocity.y = 1 * speed
-	elif main_direction == DIRECTION_DOWN_RIGHT:
-		velocity.x = 1 * speed
-		velocity.y = 1 * speed
-		
-	elif main_direction == DIRECTION_LEFT:
-		velocity.x = -1 * speed
-	elif main_direction == DIRECTION_RIGHT:
-		velocity.x = 1 * speed
-		
-	elif main_direction == DIRECTION_DOWN:
-		velocity.y = 1 * speed
-	elif main_direction == DIRECTION_UP:
-		velocity.y = -1 * speed
-	else:
-		velocity.y = 0 * speed
-		velocity.x = 0 * speed
-	
+# DOCUMENTACIÓN (rutas): https://docs.google.com/document/d/1lUoLrdHBMhXsEhSxhWwA41vWLvbzNZGaQJ0h23s5rT8/edit?usp=drive_link
 # Busca una ruta en el área de navegación para el personaje, y lo mueve en la escena
 # DOCUMENTACIÓN SOBRE MOVIMIENTOS DE UN PERSONAJE: https://docs.google.com/document/d/1V__ENMBZUavTCnd7BxHF1oI3gDAOhPtwU5DRxlDGb4g
-func path_finding():	
+func path_finding():
 	# Si no está activado el "flag" de mover al personaje, solo terminamos la función
 	if !path_finding_moving:
 		return
@@ -247,6 +220,7 @@ func path_finding():
 	if (main_direction == DIRECTION_IDLE):
 		soundStep.stop()
 
+# DOCUMENTACIÓN (profundidad): https://docs.google.com/document/d/1oRxN0jtTm6Db7bcehrl5PncpSlRVaTcg9GB-0gDdwC4/edit?usp=drive_link
 # Calcula una escala (tamaño) del personaje, cuando se mueve hacia "arriba", se hace más pequeño
 # y cuando se mueve hacia "abajo" se hace más grande.
 # DOCUMENTACIÓN SOBRE PROFUNDIDAD EN ESCENAS:https://docs.google.com/document/d/1oRxN0jtTm6Db7bcehrl5PncpSlRVaTcg9GB-0gDdwC4
@@ -279,6 +253,8 @@ func _physics_process(delta):
 	# Procesa un shader para generar una sombra del personaje
 	dynamic_shader()
 
+# DOCUMENTACIÓN (inventario): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
+# DOCUMENTACIÓN (recolectar objetos): https://docs.google.com/document/d/1d78cYa4cTpxfz22lGvctv6T83TSj5DMwq3VMWiGAbI8/edit?usp=drive_link
 # Añada objetos al inventario del usuario
 func add_object_to_inventory(name: String):
 	inventory.emit_signal("add_object", name)
@@ -317,6 +293,8 @@ func process_dress_item():
 	else:
 		glasses.visible = false
 
+# Para definir si el personaje está activo o no
+# Si no está activo, no se podrá mover ni interactuar con el
 func set_character_active(active: bool):
 	character_active = active
 	if !active:
@@ -346,6 +324,8 @@ func use_item(name, params):
 			text = text + "mejor." # Si el color no está mapeado, usamos texto por defecto
 	dialog_label.text = text
 
+# DOCUMENTACIÓN (sombras): https://docs.google.com/document/d/1IAQRxm-IrOKRFd6XK9IlnbYYaLb_Bt0VDyqVeKR42j0/edit?usp=drive_link
+# DOCUMENTACIÓN (sombras por escena): https://docs.google.com/document/d/1CdHJbnfx3h9YIoKqds2iq8BqDV3CVRmkpoKb_0FNAN4/edit?usp=drive_link
 # Genera una sombra para el personaje principal. Se calcula
 # - La intensidad (dependiendo de la distancia a un punto de referencia)
 # - La deformación de sombra (en base al angulo "dirección" del personaje con respecto al punto de referencia)

@@ -1,5 +1,7 @@
 extends Button
 
+# DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
+
 @onready var brebaje = $back/brebaje
 @onready var buttons = $Buttons
 @onready var timer = $Timer
@@ -23,6 +25,7 @@ func add_params(name: String, params):
 func get_params():
 	return params
 
+# DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 # Se ejecuta cuando el cursor entra en el objeto
 func _on_mouse_entered():
 	if is_item_selected:

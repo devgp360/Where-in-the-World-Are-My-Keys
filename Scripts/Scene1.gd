@@ -3,6 +3,7 @@ extends Node2D
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 # DOCUMENTACIÓN MANEJO DE "NODOS" EN CAPAS CON YSORT: https://docs.google.com/document/d/1LEKG9qijIEIauFaB1zmUWPgTShxkI0whVbC3ngZrJ4E
 # DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
+# DOCUMENTACIÓN (creación de escena): https://docs.google.com/document/d/1Tvp7PKcC4kSUtQO9wKEksT_cbA4rBEMZQ-artBsu5N4/edit?usp=drive_link
 
 #Definición del nodo de menu
 @export var PauseMenu: PackedScene
@@ -22,6 +23,7 @@ func _ready():
 		#Seteamos datos iniciales
 		set_level_data(level_data)
 	#Desbloqueamos la siguiente escena
+	# DOCUMENTACIÓN (guardado de progreso): https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs/edit?usp=drive_link
 	SaveProgress.save_active_scene("Tikal")
 	
 	# Buscar el nodo que contiene los objetos a recolectar, y se valida si ya está en el inventario
@@ -52,6 +54,7 @@ func _process(delta):
 		#mostramos el menú
 		get_tree().current_scene.add_child(pause)
 
+# DOCUMENTACIÓN (transición de escena): https://docs.google.com/document/d/1FciThS6B4qQEBely2iCMDfkRZIzwSrZLCo2Fu8nE5LQ/edit?usp=drive_link
 #Cuando entramos a una area predeterminada
 func _on_area_2d_area_entered(area):
 	#Cambio de escena
