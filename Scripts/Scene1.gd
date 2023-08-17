@@ -1,4 +1,7 @@
 extends Node2D
+
+# DOCUMENTACIÓN (creación de escena): https://docs.google.com/document/d/1Tvp7PKcC4kSUtQO9wKEksT_cbA4rBEMZQ-artBsu5N4/edit?usp=drive_link
+
 #Definición del nodo de menu
 @export var PauseMenu: PackedScene
 #Definición del nodo main character
