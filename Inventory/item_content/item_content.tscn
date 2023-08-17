@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvyjp32e18uen"]
+
+[ext_resource type="Texture2D" uid="uid://jj543d65v3mo" path="res://Inventory/assets/marco_item.png" id="1_tlcpj"]
+
+[node name="MarginContainer" type="MarginContainer"]
+custom_minimum_size = Vector2(150, 150)
+offset_right = 120.0
+offset_bottom = 120.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="."]
+clip_contents = true
+layout_mode = 2
+texture = ExtResource("1_tlcpj")
+expand_mode = 5
+stretch_mode = 4

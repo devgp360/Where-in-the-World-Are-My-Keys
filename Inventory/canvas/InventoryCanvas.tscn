@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkliu52u5ew2l"]
+
+[ext_resource type="Script" path="res://Inventory/canvas/InventoryCanvas.gd" id="1_s6c0b"]
+[ext_resource type="Texture2D" uid="uid://c00pcm6uuccct" path="res://Inventory/assets/Bg.jpg" id="2_svqm0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pc5lt"]
+font_size = 32
+
+[sub_resource type="Animation" id="Animation_7aeqw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(64, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1f2e8"]
+resource_name = "down"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(64, -578), Vector2(64, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_44tqe"]
+_data = {
+"RESET": SubResource("Animation_7aeqw"),
+"down": SubResource("Animation_1f2e8")
+}
+
+[node name="InventoryCanvas" type="Node2D"]
+script = ExtResource("1_s6c0b")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.741176, 0.592157, 0.2, 0)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 64.0
+offset_right = 1088.0
+offset_bottom = 768.0
+grow_horizontal = 2
+scale = Vector2(1, 0.75)
+texture = ExtResource("2_svqm0")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -414.0
+offset_top = 80.0
+offset_right = 414.0
+offset_bottom = 180.0
+grow_horizontal = 2
+columns = 6
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect"]
+layout_mode = 0
+offset_top = 24.0
+offset_right = 1022.0
+offset_bottom = 97.0
+text = "Mi inventario"
+label_settings = SubResource("LabelSettings_pc5lt")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_44tqe")
+}

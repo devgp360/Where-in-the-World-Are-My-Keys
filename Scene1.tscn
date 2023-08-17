@@ -1,0 +1,137 @@
+[gd_scene load_steps=21 format=3 uid="uid://upllmqlhdam1"]
+
+[ext_resource type="Texture2D" uid="uid://bag6tqwmlaakq" path="res://assets/bg1.jpg" id="1_dbimm"]
+[ext_resource type="Script" path="res://Scripts/Scene1.gd" id="1_wyjy5"]
+[ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://Character/main_character.tscn" id="2_5iij1"]
+[ext_resource type="PackedScene" uid="uid://d4f7fxjs2wh7n" path="res://MainMenu.tscn" id="2_be106"]
+[ext_resource type="PackedScene" uid="uid://yq2t8fnnvfnk" path="res://Objects/table.tscn" id="4_wu6kq"]
+[ext_resource type="PackedScene" uid="uid://djectoi1kxudv" path="res://Objects/leaves.tscn" id="5_4dufo"]
+[ext_resource type="PackedScene" uid="uid://dmta172vvldus" path="res://Objects/bottom.tscn" id="6_kgw1f"]
+[ext_resource type="PackedScene" uid="uid://d2as70dpmvym7" path="res://Objects/top.tscn" id="7_js1el"]
+[ext_resource type="PackedScene" uid="uid://cj1s30j354pt0" path="res://Character/npc_1.tscn" id="8_wj8yp"]
+[ext_resource type="PackedScene" uid="uid://dobibts8hysig" path="res://Inventory/items/puzzle_vidriera/item_vidrio3.tscn" id="11_bond4"]
+[ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://Camera/Camera.tscn" id="11_ifjqy"]
+[ext_resource type="AudioStream" uid="uid://dpavsjbuqixw5" path="res://assets/sounds/Scene1.mp3" id="12_do1m1"]
+[ext_resource type="PackedScene" uid="uid://b763ty05xjuo2" path="res://Inventory/items/puzzle_vidriera/item_lentes.tscn" id="12_sqpca"]
+[ext_resource type="PackedScene" uid="uid://ck5lebkhby0h2" path="res://Puzzles/Vidriera/Nodos/PuzzleVidriera.tscn" id="14_elguw"]
+[ext_resource type="PackedScene" uid="uid://x3mpmfaijdid" path="res://Puzzles/Vidriera/Nodos/PuzzleVidrieraEnter.tscn" id="15_ebymt"]
+[ext_resource type="PackedScene" uid="uid://cn7ty6d8n37s8" path="res://Puzzles/Jardin/Nodos/puzzle_garden.tscn" id="16_epc8q"]
+[ext_resource type="PackedScene" uid="uid://chke83x5iabr2" path="res://Puzzles/Jardin/Nodos/puzzle_garden_enter.tscn" id="17_w1ooa"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_sxo74"]
+vertices = PackedVector2Array(1018, 319, 901, 359, 826, 303, 830, 257, 916, 252, 978, 259, 1035, 295, 23, 371, 9, 439, 11, 239, 1315, 332, 1381, 363, 1319, 359, 1272, 321, 125, 299, 150, 265, 152, 293, 1164, 282, 1116, 276, 1148, 316, 1104, 295, 61, 263, 223, 455, 841, 220, 871, 215, 904, 223, 789, 230, 1045, 258, 798, 185, 823, 205, 689, 234, 662, 581, 741, 594, 757, 644, 676, 646, 505, 641, 586, 592, 397, 10, 394, 0, 674, -2, 432, 38, 591, 287, 491, 137, 693, 12, 748, 90, 776, 140, 525, 566, 251, 537, 242, 253, 215, 228, 259, 196, 290, 215, 175, 320, 233, 320, 479, 470, 508, 534, 474, 506, 1318, 437, 1382, 483, 1102, 609, 1274, 462, 1163, 472, 1096, 440, 986, 565, 1018, 470, 889, 406, 952, 579, 694, 483, 819, 185, 1017, 341, 666, 262, 669, 315, 548, 441, 575, 302, 231, 503, 252, 296, 343, 262, 398, 284, 413, 301, 750, 347, 661, 506, 543, 281, 438, 303, 485, 286, 333, 235, 509, 262, 530, 268, 455, 284)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6), PackedInt32Array(7, 8, 9), PackedInt32Array(10, 11, 12, 13), PackedInt32Array(14, 15, 16), PackedInt32Array(17, 10, 13), PackedInt32Array(18, 17, 13, 19, 20), PackedInt32Array(7, 9, 21, 14, 22), PackedInt32Array(23, 24, 25, 4, 3, 26), PackedInt32Array(27, 18, 20, 6, 5), PackedInt32Array(28, 29, 23, 26, 30), PackedInt32Array(31, 32, 33, 34, 35, 36), PackedInt32Array(37, 38, 39, 40), PackedInt32Array(41, 42, 40, 39, 43, 44, 45, 30), PackedInt32Array(46, 36, 35, 47), PackedInt32Array(48, 49, 50, 51), PackedInt32Array(22, 14, 16, 52), PackedInt32Array(22, 52, 53, 54), PackedInt32Array(55, 46, 47, 56), PackedInt32Array(57, 12, 11, 58), PackedInt32Array(57, 58, 59, 60), PackedInt32Array(61, 60, 59), PackedInt32Array(62, 61, 59, 63, 64), PackedInt32Array(65, 64, 63, 66, 67), PackedInt32Array(28, 68, 29), PackedInt32Array(0, 69, 1), PackedInt32Array(45, 28, 30), PackedInt32Array(41, 30, 70), PackedInt32Array(41, 70, 71, 72, 73), PackedInt32Array(54, 56, 47, 74, 22), PackedInt32Array(54, 53, 75, 76, 77, 78), PackedInt32Array(2, 1, 65, 67, 79), PackedInt32Array(72, 71, 79, 67, 80), PackedInt32Array(81, 73, 72, 54, 82, 83), PackedInt32Array(75, 48, 51, 84, 76), PackedInt32Array(54, 78, 82), PackedInt32Array(83, 85, 86, 81), PackedInt32Array(83, 82, 87)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(397, 10, 432, 38, 491, 137, 591, 287, 575, 302, 543, 281, 530, 268, 509, 262, 485, 286, 455, 284, 438, 303, 413, 301, 398, 284, 343, 262, 333, 235, 290, 215, 259, 196, 215, 228, 242, 253, 252, 296, 233, 320, 175, 320, 152, 293, 150, 265, 125, 299, 61, 263, 11, 239, 9, 439, 23, 371, 223, 455, 231, 503, 251, 537, 505, 641, 676, 646, 757, 644, 741, 594, 662, 581, 586, 592, 525, 566, 508, 534, 474, 506, 479, 470, 548, 441, 661, 506, 694, 483, 952, 579, 986, 565, 1102, 609, 1382, 483, 1381, 363, 1315, 332, 1164, 282, 1116, 276, 1045, 258, 978, 259, 916, 252, 904, 223, 871, 215, 841, 220, 823, 205, 819, 185, 798, 185, 776, 140, 748, 90, 693, 12, 674, -2, 394, 0), PackedVector2Array(689, 234, 666, 262, 669, 315, 750, 347, 826, 303, 830, 257, 789, 230), PackedVector2Array(901, 359, 889, 406, 1018, 470, 1096, 440, 1163, 472, 1274, 462, 1318, 437, 1319, 359, 1272, 321, 1148, 316, 1104, 295, 1035, 295, 1018, 319, 1017, 341)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2j5c"]
+size = Vector2(299, 27.5359)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsd2w"]
+size = Vector2(112, 59.3562)
+
+[node name="Main2" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_wyjy5")
+PauseMenu = ExtResource("2_be106")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(1.26953, 1.26953)
+texture = ExtResource("1_dbimm")
+
+[node name="Collect" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ItemVidrio3" parent="Collect" instance=ExtResource("11_bond4")]
+y_sort_enabled = true
+offset_left = -412.0
+offset_top = 161.0
+offset_right = -332.0
+offset_bottom = 241.0
+scale = Vector2(0.5, 0.5)
+
+[node name="ItemLentes" parent="Collect" instance=ExtResource("12_sqpca")]
+y_sort_enabled = true
+offset_left = 146.0
+offset_top = -216.0
+offset_right = 226.0
+offset_bottom = -136.0
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-699, -321)
+navigation_polygon = SubResource("NavigationPolygon_sxo74")
+
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-691, -322)
+
+[node name="Table" parent="Node2D" instance=ExtResource("4_wu6kq")]
+position = Vector2(747, 320)
+scale = Vector2(1.65, 1.65)
+
+[node name="Leaves" parent="Node2D" instance=ExtResource("5_4dufo")]
+position = Vector2(144, 467)
+scale = Vector2(1.65, 1.65)
+
+[node name="Bottom" parent="Node2D" instance=ExtResource("6_kgw1f")]
+position = Vector2(936, 568)
+scale = Vector2(1.7, 1.65)
+
+[node name="Top" parent="Node2D" instance=ExtResource("7_js1el")]
+position = Vector2(1109, 427)
+scale = Vector2(1.7, 1.65)
+
+[node name="MainCharacter" parent="." instance=ExtResource("2_5iij1")]
+position = Vector2(-368, 4)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-145, -311)
+rotation = -0.0523599
+shape = SubResource("RectangleShape2D_c2j5c")
+
+[node name="NPC1" parent="." node_paths=PackedStringArray("mainchar") instance=ExtResource("8_wj8yp")]
+z_index = 1
+z_as_relative = false
+position = Vector2(416, 158)
+mainchar = NodePath("../MainCharacter")
+
+[node name="Camera" parent="." node_paths=PackedStringArray("character") instance=ExtResource("11_ifjqy")]
+position = Vector2(-1, 0)
+limit_left = -690
+limit_top = -400
+limit_right = 690
+limit_bottom = 400
+editor_draw_limits = true
+character = NodePath("../MainCharacter")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 1
+stream = ExtResource("12_do1m1")
+autoplay = true
+bus = &"music"
+
+[node name="PuzzleVidriera" parent="." instance=ExtResource("14_elguw")]
+visible = false
+
+[node name="PuzzleVidrieraEnter" parent="." node_paths=PackedStringArray("puzzle") instance=ExtResource("15_ebymt")]
+puzzle = NodePath("../PuzzleVidriera")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleVidrieraEnter"]
+position = Vector2(-343, -194)
+rotation = 0.293215
+shape = SubResource("RectangleShape2D_nsd2w")
+
+[node name="Puzzle__Jardin" type="Node2D" parent="."]
+
+[node name="Puzzle_garden" parent="Puzzle__Jardin" instance=ExtResource("16_epc8q")]
+
+[node name="puzzle_garden_enter" parent="Puzzle__Jardin" node_paths=PackedStringArray("puzzle") instance=ExtResource("17_w1ooa")]
+puzzle = NodePath("../Puzzle_garden")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Puzzle__Jardin/puzzle_garden_enter"]
+polygon = PackedVector2Array(-657, -116, -584, -62, -473, -126, -496, -212, -598, -250, -654, -192)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7fpo3dw235pu"]
+
+[ext_resource type="Script" path="res://Puzzles/Maximon/Nodos/altar_maximon.gd" id="1_7xw4y"]
+[ext_resource type="Texture2D" uid="uid://b4oah06wllhxo" path="res://Puzzles/Maximon/Assets/altar.png" id="1_612nn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p5lgs"]
+light_mode = 1
+
+[sub_resource type="Animation" id="Animation_442w8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_va5qh"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hpqn8"]
+_data = {
+"RESET": SubResource("Animation_442w8"),
+"show": SubResource("Animation_va5qh")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4c3h6"]
+radius = 143.0
+height = 296.0
+
+[node name="AltarMaximon" type="Node2D"]
+script = ExtResource("1_7xw4y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_p5lgs")
+texture = ExtResource("1_612nn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hpqn8")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, 5)
+shape = SubResource("CapsuleShape2D_4c3h6")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

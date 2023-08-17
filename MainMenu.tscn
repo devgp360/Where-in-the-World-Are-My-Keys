@@ -1,0 +1,444 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4f7fxjs2wh7n"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_rqj16"]
+[ext_resource type="Texture2D" uid="uid://dmrl3o21palns" path="res://assets/bg_menu.jpg" id="2_vir48"]
+[ext_resource type="Theme" uid="uid://chf0rsmn01x7m" path="res://theme/menu_theme.tres" id="3_80vr3"]
+[ext_resource type="PackedScene" uid="uid://b3pt36v6bwxau" path="res://SavedGame/canvas/SavedGameCanvas.tscn" id="4_y8t38"]
+[ext_resource type="Script" path="res://Scripts/HSlider.gd" id="5_b1vbx"]
+[ext_resource type="AudioStream" uid="uid://n7xjmb7ofy5j" path="res://assets/sounds/MainMenu.mp3" id="6_ga4pb"]
+
+[node name="Main2" type="Node2D"]
+process_mode = 3
+top_level = true
+script = ExtResource("1_rqj16")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -48.0
+offset_right = 19.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vir48")
+stretch_mode = 6
+
+[node name="Main" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_80vr3")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Main/CenterContainer"]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Main/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Menú"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Continuar"
+
+[node name="Map" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Ver mapa"
+
+[node name="Load" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Cargar / Guardar avance"
+
+[node name="About" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Sobre el juego"
+
+[node name="Sounds" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Sonidos
+"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Salir"
+
+[node name="Load" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_80vr3")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Load"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Load/CenterContainer"]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Cargar / Guardar avance
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="InventoryCanvas" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer" node_paths=PackedStringArray("actions", "saveButton", "loadButton", "removeButton") instance=ExtResource("4_y8t38")]
+actions = NodePath("../../MarginContainer/Actions")
+saveButton = NodePath("../../MarginContainer/Actions/SaveGame")
+loadButton = NodePath("../../MarginContainer/Actions/LoadGame")
+removeButton = NodePath("../../MarginContainer/Actions/RemoveGame")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+
+[node name="Actions" type="VBoxContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="LoadGame" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Actions"]
+visible = false
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Cargar"
+
+[node name="SaveGame" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Actions"]
+visible = false
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Guardar"
+
+[node name="RemoveGame" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Actions"]
+visible = false
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+text = "Borrar"
+
+[node name="RemoveConfirmation" type="VBoxContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RemoveConfirmation"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "¿Borrar?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RemoveConfirmation"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="YesRemove" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RemoveConfirmation/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Si"
+
+[node name="NoRemove" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RemoveConfirmation/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "No"
+
+[node name="OverwriteConfirmation" type="VBoxContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "¿Sobreescribir?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="YesOverwrite" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Si"
+
+[node name="NoOverwrite" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "No"
+
+[node name="Back" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Atras"
+
+[node name="About" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_80vr3")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/About"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/About/CenterContainer"]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/About/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/About/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/About/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Sobre el juego
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/About/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/About/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 16
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat lacus sit amet viverra interdum. Sed a neque augue. Vivamus diam orci, suscipit vitae elit non, hendrerit dapibus enim. Donec id sem congue, efficitur magna quis, condimentum odio. In accumsan in lacus nec fermentum. Phasellus vel massa vel elit feugiat ultricies quis nec arcu. In consequat mattis magna sed eleifend. In nulla nisi, laoreet et aliquet non, iaculis ac ex. Etiam scelerisque luctus tortor sed mattis. Vivamus commodo mauris vitae mi laoreet, non fringilla sem elementum. Praesent venenatis, elit at posuere scelerisque, justo risus congue tortor, eget congue tortor elit ac enim. Mauris aliquam nunc orci, quis consequat purus iaculis id. Etiam varius eros vel bibendum semper. Fusce semper leo id dui tempor consectetur.
+
+Quisque mollis bibendum gravida. Suspendisse vehicula ipsum ante, vel ultrices dui lacinia volutpat. Morbi nisi lectus, bibendum a diam quis, faucibus egestas lectus. Nunc eu enim ac lectus eleifend tristique. Aenean vitae turpis a diam aliquet egestas. Etiam lobortis pulvinar urna quis accumsan. Sed commodo erat non massa blandit posuere. Nulla facilisi. Sed lacinia vestibulum risus quis rhoncus. Etiam et dui eget metus gravida rhoncus et quis lacus.
+
+Ut sit amet vulputate diam, ut fermentum magna. Nam tristique, tellus non pharetra lobortis, ipsum velit lobortis sapien, in placerat erat mi ac diam. Nullam quis vehicula diam. Suspendisse potenti. Integer ullamcorper arcu id sollicitudin bibendum. Phasellus in erat ipsum. Morbi neque orci, commodo sit amet neque a, molestie ultricies elit."
+autowrap_mode = 2
+justification_flags = 171
+
+[node name="Back" type="Button" parent="CanvasLayer/About/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+text = "Atras"
+
+[node name="Sounds" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_80vr3")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Sounds"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Sounds/CenterContainer"]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Sonidos
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainerMusic" type="MarginContainer" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerMusic"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Música
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="music" type="HSlider" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerMusic"]
+layout_mode = 2
+size_flags_vertical = 8
+max_value = 1.0
+step = 0.01
+script = ExtResource("5_b1vbx")
+bus_name = "music"
+
+[node name="MarginContainerMainChar" type="MarginContainer" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="CharacterLabel" type="Label" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerMainChar"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Sonido de Personaje principal
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="mainCharacter" type="HSlider" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerMainChar"]
+layout_mode = 2
+size_flags_vertical = 8
+max_value = 1.0
+step = 0.01
+script = ExtResource("5_b1vbx")
+bus_name = "mainCharacter"
+
+[node name="MarginContainerNPC" type="MarginContainer" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="NPCLabel" type="Label" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerNPC"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 36
+text = "Sonido de NPC
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="npc" type="HSlider" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerNPC"]
+layout_mode = 2
+size_flags_vertical = 8
+max_value = 1.0
+step = 0.01
+script = ExtResource("5_b1vbx")
+bus_name = "npc"
+
+[node name="MarginContainerButton" type="MarginContainer" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Back" type="Button" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerButton"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Atras"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ga4pb")
+autoplay = true
+bus = &"music"
+
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Map" to="." method="_on_map_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/About" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Sounds" to="." method="_on_sounds_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Actions/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Actions/SaveGame" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Actions/RemoveGame" to="." method="_on_remove_pressed"]
+[connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RemoveConfirmation/HBoxContainer/YesRemove" to="." method="_on_yes_remove_pressed"]
+[connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RemoveConfirmation/HBoxContainer/NoRemove" to="." method="_on_no_remove_pressed"]
+[connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation/HBoxContainer/YesOverwrite" to="." method="_on_yes_overwrite_pressed"]
+[connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation/HBoxContainer/NoOverwrite" to="." method="_on_no_overwrite_pressed"]
+[connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/About/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerButton/Back" to="." method="_on_back_pressed"]

@@ -1,0 +1,130 @@
+[gd_scene load_steps=20 format=3 uid="uid://brw1fyiayu81e"]
+
+[ext_resource type="PackedScene" uid="uid://d4f7fxjs2wh7n" path="res://MainMenu.tscn" id="2_duttm"]
+[ext_resource type="Script" path="res://Scripts/Map.gd" id="2_eoloc"]
+[ext_resource type="Script" path="res://Scripts/MapLevel.gd" id="2_nvyu5"]
+[ext_resource type="AudioStream" uid="uid://n7xjmb7ofy5j" path="res://assets/sounds/MainMenu.mp3" id="3_muhmh"]
+[ext_resource type="Texture2D" uid="uid://c6weclkyxwnla" path="res://assets/map/main_map.jpg" id="3_y3gy7"]
+[ext_resource type="Shader" path="res://Shaders/Element_active.gdshader" id="4_lkde2"]
+[ext_resource type="Texture2D" uid="uid://ba1abpivjjs74" path="res://assets/map/panajachel.png" id="5_0qd31"]
+[ext_resource type="Texture2D" uid="uid://po3prjmgo1ay" path="res://assets/map/antigua.png" id="6_c17vg"]
+[ext_resource type="Shader" path="res://Shaders/Element.gdshader" id="7_u1ydw"]
+[ext_resource type="Texture2D" uid="uid://n33fcmgby2ai" path="res://assets/map/tikal.png" id="8_l1med"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bn4u7"]
+shader = ExtResource("4_lkde2")
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_caq8q"]
+shader = ExtResource("7_u1ydw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ebteo"]
+shader = ExtResource("7_u1ydw")
+
+[sub_resource type="Gradient" id="Gradient_peooi"]
+offsets = PackedFloat32Array(0, 0.8)
+colors = PackedColorArray(0.07859, 0.07859, 0.07859, 1, 0.954545, 0.954545, 0.954545, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_htdhu"]
+gradient = SubResource("Gradient_peooi")
+fill_from = Vector2(0.457265, 0.487179)
+fill_to = Vector2(0.0982906, 0.807692)
+metadata/_snap_count = 17
+
+[sub_resource type="Gradient" id="Gradient_0116u"]
+offsets = PackedFloat32Array(0.0844444, 0.395556, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.164444, 0.164444, 0.164444, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ewah"]
+gradient = SubResource("Gradient_0116u")
+fill_from = Vector2(0.470085, 0.452991)
+fill_to = Vector2(0.594017, 0.320513)
+
+[sub_resource type="Gradient" id="Gradient_3doxo"]
+offsets = PackedFloat32Array(0.253333, 0.542222, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w6jqh"]
+gradient = SubResource("Gradient_3doxo")
+fill_from = Vector2(0.303419, 0.452991)
+fill_to = Vector2(0.209402, 0.324786)
+
+[node name="Map" type="Node2D"]
+script = ExtResource("2_eoloc")
+PauseMenu = ExtResource("2_duttm")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 659.0
+
+[node name="Background" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -389.5
+offset_bottom = 488.976
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_y3gy7")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="Panajachel" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_bn4u7")
+layout_mode = 0
+offset_left = 19.0
+offset_top = 406.0
+offset_right = 249.0
+offset_bottom = 586.0
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("5_0qd31")
+script = ExtResource("2_nvyu5")
+
+[node name="Antigua" type="TextureRect" parent="Control"]
+modulate = Color(1, 1, 1.50196, 1)
+material = SubResource("ShaderMaterial_caq8q")
+layout_mode = 0
+offset_left = 571.0
+offset_top = -29.0
+offset_right = 955.0
+offset_bottom = 247.0
+scale = Vector2(0.855, 0.855)
+texture = ExtResource("6_c17vg")
+script = ExtResource("2_nvyu5")
+
+[node name="Tikal" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_ebteo")
+layout_mode = 0
+offset_left = 147.0
+offset_top = 5.0
+offset_right = 359.0
+offset_bottom = 170.0
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("8_l1med")
+script = ExtResource("2_nvyu5")
+
+[node name="PanajachelLight2D" type="PointLight2D" parent="."]
+position = Vector2(597.3, 383.8)
+scale = Vector2(19.2719, 14.3812)
+texture = SubResource("GradientTexture2D_htdhu")
+
+[node name="AntiguaLight2D2" type="PointLight2D" parent="."]
+position = Vector2(553.375, 388.687)
+scale = Vector2(18.793, 13.8535)
+texture = SubResource("GradientTexture2D_1ewah")
+height = 9.0
+
+[node name="TikalLight2D" type="PointLight2D" parent="."]
+position = Vector2(573.65, 389.6)
+scale = Vector2(18.5516, 15.0125)
+texture = SubResource("GradientTexture2D_w6jqh")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_muhmh")
+autoplay = true
+bus = &"music"

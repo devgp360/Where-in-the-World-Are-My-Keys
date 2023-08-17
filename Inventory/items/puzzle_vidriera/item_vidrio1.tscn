@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://v1vc4mhxkmf2"]
+
+[ext_resource type="Texture2D" uid="uid://ch0deodv1y7fi" path="res://Puzzles/Vidriera/Assets/vidrio1.png" id="1_argji"]
+[ext_resource type="Script" path="res://Inventory/items/InventoryItemButton.gd" id="2_ou6li"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ra2y"]
+radius = 47.1699
+
+[node name="ItemVidrio1" type="TextureButton" node_paths=PackedStringArray("area", "button")]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 80.0
+offset_bottom = 80.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "Estatua maya"
+texture_normal = ExtResource("1_argji")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("2_ou6li")
+area = NodePath("Area2D")
+button = NodePath(".")
+is_inventory_item = false
+item_title = "Fragmento 1"
+item_path_name = "puzzle_vidriera/item_vidrio1"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(44, 39)
+shape = SubResource("CircleShape2D_7ra2y")

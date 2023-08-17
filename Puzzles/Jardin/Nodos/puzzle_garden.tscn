@@ -1,0 +1,266 @@
+[gd_scene load_steps=24 format=3 uid="uid://cn7ty6d8n37s8"]
+
+[ext_resource type="Texture2D" uid="uid://c0dwdxka8e8j0" path="res://Puzzles/Jardin/Assets/fondo_jardin.jpg" id="1_0o0bd"]
+[ext_resource type="Script" path="res://Puzzles/Jardin/Nodos/puzzle_garden.gd" id="1_gbah5"]
+[ext_resource type="Shader" path="res://Shaders/Element_active.gdshader" id="2_yiolv"]
+[ext_resource type="Texture2D" uid="uid://dhvyg260gl7ad" path="res://Puzzles/Jardin/Assets/planta1.png" id="3_321do"]
+[ext_resource type="Texture2D" uid="uid://gtda4dkvs3q0" path="res://Puzzles/Jardin/Assets/planta_6.png" id="5_f1nik"]
+[ext_resource type="Texture2D" uid="uid://csr8kwsfqq6i7" path="res://Puzzles/Jardin/Assets/planta_2.png" id="5_x3hhq"]
+[ext_resource type="Texture2D" uid="uid://cw5sm10f44knj" path="res://Puzzles/Jardin/Assets/planta_1.png" id="6_t65gv"]
+[ext_resource type="Texture2D" uid="uid://b3ah268oo3w7v" path="res://Puzzles/Jardin/Assets/planta_3.png" id="7_xy31f"]
+[ext_resource type="Texture2D" uid="uid://chkt21uf0ddtm" path="res://Puzzles/Jardin/Assets/planta_4.png" id="8_swx0q"]
+[ext_resource type="Texture2D" uid="uid://7f2trdbisgus" path="res://Puzzles/Jardin/Assets/planta_5.png" id="9_d7rqu"]
+[ext_resource type="PackedScene" uid="uid://jp1g7r5dlb1n" path="res://Puzzles/Jardin/Nodos/cup.tscn" id="11_m65is"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tc7bp"]
+shader = ExtResource("2_yiolv")
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="Gradient" id="Gradient_22pth"]
+offsets = PackedFloat32Array(0.320574, 0.421053)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rruxt"]
+gradient = SubResource("Gradient_22pth")
+fill = 1
+fill_from = Vector2(0.388889, 0.799145)
+fill_to = Vector2(0.141026, 0.880342)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6a2ws"]
+shader = ExtResource("2_yiolv")
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nysu6"]
+shader = ExtResource("2_yiolv")
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ehx4i"]
+shader = ExtResource("2_yiolv")
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxclj"]
+shader = ExtResource("2_yiolv")
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_scppy"]
+shader = ExtResource("2_yiolv")
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2r45f"]
+shader = ExtResource("2_yiolv")
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/line_thickness = 1.0
+
+[sub_resource type="Animation" id="Animation_y62cy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.258824, 0.556863, 0.262745, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u6xh6"]
+resource_name = "disolve"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.258824, 0.556863, 0.262745, 0), Color(0.258824, 0.556863, 0.262745, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jxqcc"]
+_data = {
+"RESET": SubResource("Animation_y62cy"),
+"disolve": SubResource("Animation_u6xh6")
+}
+
+[node name="Puzzle_garden" type="Node2D"]
+script = ExtResource("1_gbah5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(0.784314, 0.784314, 0.784314, 1)
+position = Vector2(583, 313)
+scale = Vector2(1.32, 1.32)
+texture = ExtResource("1_0o0bd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer/Sprite2D"]
+visible = false
+material = SubResource("ShaderMaterial_tc7bp")
+position = Vector2(-114.394, 174.242)
+texture = ExtResource("3_321do")
+
+[node name="PointLight2D" type="PointLight2D" parent="CanvasLayer/Sprite2D/Sprite2D2"]
+position = Vector2(117.424, -163.258)
+scale = Vector2(15.6723, 8.72396)
+energy = 1.37
+texture = SubResource("GradientTexture2D_rruxt")
+
+[node name="Plantas" type="Node2D" parent="CanvasLayer"]
+
+[node name="Planta6" type="Sprite2D" parent="CanvasLayer/Plantas"]
+visible = false
+material = SubResource("ShaderMaterial_6a2ws")
+position = Vector2(118, 316)
+scale = Vector2(1.32, 1.32)
+texture = ExtResource("5_f1nik")
+
+[node name="Planta1" type="Sprite2D" parent="CanvasLayer/Plantas"]
+visible = false
+material = SubResource("ShaderMaterial_nysu6")
+position = Vector2(432, 537)
+scale = Vector2(1.32, 1.32)
+texture = ExtResource("6_t65gv")
+
+[node name="Planta2" type="Sprite2D" parent="CanvasLayer/Plantas"]
+visible = false
+material = SubResource("ShaderMaterial_ehx4i")
+position = Vector2(284, 337)
+scale = Vector2(1.32, 1.32)
+texture = ExtResource("5_x3hhq")
+
+[node name="Planta3" type="Sprite2D" parent="CanvasLayer/Plantas"]
+visible = false
+material = SubResource("ShaderMaterial_lxclj")
+position = Vector2(1057, 358)
+scale = Vector2(1.32, 1.32)
+texture = ExtResource("7_xy31f")
+
+[node name="Planta4" type="Sprite2D" parent="CanvasLayer/Plantas"]
+visible = false
+material = SubResource("ShaderMaterial_scppy")
+position = Vector2(777, 72)
+scale = Vector2(1.32, 1.32)
+texture = ExtResource("8_swx0q")
+
+[node name="Planta5" type="Sprite2D" parent="CanvasLayer/Plantas"]
+visible = false
+material = SubResource("ShaderMaterial_2r45f")
+position = Vector2(499, 341)
+scale = Vector2(1.32, 1.32)
+texture = ExtResource("9_d7rqu")
+
+[node name="Areas" type="Node2D" parent="CanvasLayer"]
+
+[node name="AreaPlanta6" type="Area2D" parent="CanvasLayer/Areas"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CanvasLayer/Areas/AreaPlanta6"]
+polygon = PackedVector2Array(0, 266, 9, 255, 52, 242, 68, 223, 87, 218, 112, 219, 141, 214, 160, 218, 168, 229, 183, 283, 186, 291, 181, 298, 194, 314, 200, 312, 210, 317, 210, 330, 229, 340, 238, 353, 236, 364, 229, 368, 217, 371, 206, 371, 198, 378, 201, 388, 195, 394, 177, 393, 164, 403, 166, 411, 160, 417, 145, 417, 118, 403, 107, 401, 90, 387, 73, 378, 60, 377, 49, 368, 36, 375, 21, 382, -1, 380)
+
+[node name="AreaPlanta1" type="Area2D" parent="CanvasLayer/Areas"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CanvasLayer/Areas/AreaPlanta1"]
+polygon = PackedVector2Array(312, 543, 314, 520, 336, 499, 374, 486, 423, 477, 472, 481, 501, 488, 533, 504, 554, 518, 557, 544, 548, 568, 526, 585, 501, 596, 455, 608, 416, 605, 397, 600, 372, 595, 336, 579, 319, 567)
+
+[node name="AreaPlanta2" type="Area2D" parent="CanvasLayer/Areas"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CanvasLayer/Areas/AreaPlanta2"]
+polygon = PackedVector2Array(279, 371, 273, 365, 277, 353, 261, 342, 261, 332, 269, 328, 270, 313, 273, 306, 285, 304, 294, 307, 304, 315, 312, 326, 308, 338, 305, 348, 306, 356, 301, 364, 299, 370, 292, 374)
+
+[node name="AreaPlanta3" type="Area2D" parent="CanvasLayer/Areas"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CanvasLayer/Areas/AreaPlanta3"]
+polygon = PackedVector2Array(1040, 398, 1046, 389, 1053, 389, 1060, 387, 1065, 384, 1072, 389, 1079, 396, 1085, 388, 1090, 379, 1089, 371, 1081, 368, 1075, 355, 1083, 356, 1089, 364, 1103, 363, 1100, 354, 1092, 344, 1078, 339, 1078, 331, 1061, 325, 1059, 320, 1051, 318, 1039, 324, 1030, 328, 1018, 332, 1010, 341, 1009, 345, 1032, 346, 1039, 350, 1023, 353, 1017, 366, 1012, 375, 1018, 383, 1033, 378, 1037, 382, 1035, 396)
+
+[node name="AreaPlanta4" type="Area2D" parent="CanvasLayer/Areas"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CanvasLayer/Areas/AreaPlanta4"]
+polygon = PackedVector2Array(732, 101, 746, 90, 747, 72, 751, 66, 754, 57, 749, 52, 754, 34, 767, 27, 767, 14, 784, 5, 799, 18, 808, 66, 815, 82, 819, 122, 814, 134, 798, 135, 784, 138, 774, 135, 769, 126, 758, 125, 748, 127, 739, 120)
+
+[node name="AreaPlanta5" type="Area2D" parent="CanvasLayer/Areas"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CanvasLayer/Areas/AreaPlanta5"]
+polygon = PackedVector2Array(433, 328, 442, 338, 451, 346, 473, 345, 479, 349, 477, 361, 483, 376, 490, 383, 508, 383, 518, 374, 521, 366, 519, 356, 524, 353, 540, 354, 548, 356, 559, 343, 564, 328, 558, 318, 547, 314, 537, 315, 518, 306, 504, 300, 486, 297, 465, 297, 448, 300, 439, 306, 433, 316)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 448.0
+offset_bottom = 67.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color(0.721569, 0.45098, 0.392157, 0.431373)
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 444.0
+offset_bottom = 65.0
+autowrap_mode = 2
+
+[node name="Disolve" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.258824, 0.556863, 0.262745, 0)
+
+[node name="Centro" type="Control" parent="CanvasLayer/Disolve"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+root_node = NodePath("../Disolve")
+libraries = {
+"": SubResource("AnimationLibrary_jxqcc")
+}
+
+[node name="cup" parent="CanvasLayer" instance=ExtResource("11_m65is")]
+z_index = 10
+position = Vector2(1078, 521)
+scale = Vector2(0.4, 0.4)
+
+[node name="Cerrar" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -69.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "CERRAR"
+
+[connection signal="mouse_entered" from="CanvasLayer/Areas/AreaPlanta6" to="." method="_on_area_planta_6_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Areas/AreaPlanta6" to="." method="_on_area_planta_6_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Areas/AreaPlanta1" to="." method="_on_area_planta_1_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Areas/AreaPlanta1" to="." method="_on_area_planta_1_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Areas/AreaPlanta2" to="." method="_on_area_planta_2_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Areas/AreaPlanta2" to="." method="_on_area_planta_2_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Areas/AreaPlanta3" to="." method="_on_area_planta_3_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Areas/AreaPlanta3" to="." method="_on_area_planta_3_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Areas/AreaPlanta4" to="." method="_on_area_planta_4_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Areas/AreaPlanta4" to="." method="_on_area_planta_4_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Areas/AreaPlanta5" to="." method="_on_area_planta_5_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Areas/AreaPlanta5" to="." method="_on_area_planta_5_mouse_exited"]

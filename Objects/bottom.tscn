@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmta172vvldus"]
+
+[ext_resource type="Texture2D" uid="uid://dklh880dnfp2l" path="res://assets/bottom.png" id="1_oaumu"]
+
+[node name="Bottom" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -35)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_oaumu")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-158, -182)
+polygon = PackedVector2Array(-108, 170, -109, 120, -52, 109, -23, 143, 38, 156, 177, 169, 261, 195, 335, 182, 423, 139, 421, 227, -27, 227, -37, 207, -53, 203, -73, 189)

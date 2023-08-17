@@ -1,0 +1,34 @@
+~ dialogue_1
+
+Isabella: ¡Ah, otra aventurera en busca de tesoros perdidos! ¿Qué te trae a esta vieja iglesia?
+Aventurera: Perdí mis llaves y escuché que podría haber pistas aquí. ¿Puedes ayudarme?
+Isabella: De hecho, esta iglesia guarda secretos del pasado. Mira de cerca las vidrieras; pueden revelar más de lo que parece". 
+Isabella: ¿Alguna vez has oído hablar de la legendaria llave solar? Se dice que abre pasajes ocultos y revela artefactos antiguos
+
+- No he escuchado. Eso suena a magia.
+	Isabella: Sí, puede ser que sí
+	=> dialogue_2
+- Umm... no, cuentame más.
+	Isabella: La leyenda dice que la llave del sol estaba escondida dentro de las reliquias sagradas de la iglesia. Debes buscar pistas y descifrar el rompecabezas que contienen.
+	=> dialogue_3
+- ¿Dónde puedo encontrar esta llave solar?
+	Isabella: Todo está en las reliquias antiguas.
+	=> dialogue_4
+- Esos son cuentos para niños, nos vemos luego!. => END
+
+~ dialogue_2
+Aventurera: Bueno nos vemos!.
+=> END
+
+~ dialogue_3
+Aventurera: ¡Exploraré más y resolveré este rompecabezas!
+Isabella: ¡Buena suerte, aventurera! Recuerda, la historia está llena de misterios que esperan ser desentrañados
+Aventurera: ¡Gracias por tu guía!
+
+=> END
+
+~ dialogue_4
+Aventurera: No sería más fácil si me das la llave?
+Isabella: Sí, pero no puedo. No me programaron para ese objetivo. Ja Ja.
+Aventurera: Ahhgg...
+=> dialogue_3

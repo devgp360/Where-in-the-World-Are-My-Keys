@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwd6fpyol13"]
+
+[ext_resource type="Texture2D" uid="uid://cyq0v3185noic" path="res://Inventory/assets/item_god.png" id="1_60s8l"]
+
+[node name="ItemGod" type="TextureButton"]
+custom_minimum_size = Vector2(80, 80)
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tooltip_text = "Estatua maya"
+texture_normal = ExtResource("1_60s8l")
+ignore_texture_size = true
+stretch_mode = 5

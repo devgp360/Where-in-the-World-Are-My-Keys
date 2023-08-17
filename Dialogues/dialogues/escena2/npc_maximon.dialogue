@@ -1,0 +1,21 @@
+~ dialogue_1
+
+Doña Rosa: ¡Hola aventurera!. ¿Que te trea por estos rumbos?
+Aventurera: Perdí mis llaves y escuché que podría haber pistas aquí. ¿Puedes ayudarme?
+Doña Rosa: No sé si te pueda ayudar, pero talvez Maximón sí.
+Aventurera: ¿Maximón?. ¿Quién es Maximón?
+Doña rosa: Es una deidad que se transfigura a favor de quienes acuden a él.
+Aventurera: ¿Y cómo me podría ayudar?.
+Doña rosa: Ordena los elementos correctamente en su altar para que él te responda tus preguntas.
+- Gracias nos vemos luego.
+	Doña rosa: Sí, puede ser que sí
+	=> END
+- ¿Cómo podría ordenar correctamente las piezas?.
+	Doña rosa: Dicen que Maximón quería mucho a 3 niñas, pero no se sabe mucho más. Tendrás que resolverlo por tu cuenta.
+	=> dialogue_2
+
+~ dialogue_2
+Aventurera: Bueno espero pueda organizar correctamente el altar de Maximón!. Muchas gracias.
+Doña rosa: De nada aventurera.
+
+=> END
