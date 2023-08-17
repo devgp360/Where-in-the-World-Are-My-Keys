@@ -1,58 +1,74 @@
 extends CanvasLayer
-
+#Exportamos plantilla de respuestas
 @export var response_template: Node
+#Variable para setear el sufijo de archivos
 @export var file_suffix: String = ""
 
-#@onready var talk_sound: AudioStreamPlayer = $TalkSound
+#Definici[on del dialogo
 @onready var balloon: ColorRect = $Balloon
+#Definición del nodo de margin
 @onready var margin: MarginContainer = $Balloon/Margin
+#Definición del nodo del avatar
 @onready var character_portrait: Sprite2D = $Balloon/Margin/HBox/Portrate/Sprite2D
+#Definición del nodo del nombre del personaje
 @onready var character_label: RichTextLabel = $Balloon/Margin/HBox/VBox/CharacterLabel
+#Definición del nodo del diálogo
 @onready var dialogue_label := $Balloon/Margin/HBox/VBox/DialogueLabel
+#Definición del nodo de respuestas
 @onready var responses_menu: VBoxContainer = $Balloon/Margin/HBox/VBox/Responses
 
-## The dialogue resource
+## Recurso del diálogo
 var resource: DialogueResource
 
-## Temporary game states
+## Estados del juego temporal
 var temporary_game_states: Array = []
 
-## See if we are waiting for the player
+## Variable que valida si estamos esperando la respuesta del jugador
 var is_waiting_for_input: bool = false
 
+#Señal de finalizacion de diálogo
 signal dialogue_ended()
 
-## The current line
+## Hilo del dialogo
 var dialogue_line: DialogueLine:
+	#Creamos la linea del dialogo
 	set(next_dialogue_line):
+		#Si no existen textos
 		if not next_dialogue_line:
-			queue_free()
 			# Terminamos el diálogo
+			queue_free()
+			#emitimos la señal de finalización de dialogo
 			self.emit_signal("dialogue_ended")
+			#retornamos
 			return
 		
+		#No esperamos la respuesta del jugador
 		is_waiting_for_input = false
 		
-		# Remove any previous responses
+		# Eliminamos respuestas enteriores
 		for child in responses_menu.get_children():
 			responses_menu.remove_child(child)
 			child.queue_free()
 		
+		#Asignamos el ptimer diálogo
 		dialogue_line = next_dialogue_line
-		
+		#Mostramos el diálogo
 		character_label.visible = not dialogue_line.character.is_empty()
+		#Mostramos el titulo
 		character_label.text = tr(dialogue_line.character, "dialogue")
+		#Mostramos el avatar
 		character_portrait.texture = load("res://assets/%s%s.png" % [dialogue_line.character.to_lower(), file_suffix])
 		
+		#Ajustamos las propiedades del diálogo
 		dialogue_label.modulate.a = 0
 		dialogue_label.custom_minimum_size.x = dialogue_label.get_parent().size.x - 1
 		dialogue_label.dialogue_line = dialogue_line
 		
-		# Show any responses we have
+		# Mostramos respuestas si existen
 		responses_menu.modulate.a = 0
 		if dialogue_line.responses.size() > 0:
 			for response in dialogue_line.responses:
-				# Duplicate the template so we can grab the fonts, sizing, etc
+				#Duplicamos la plantilla para poder usar los estilos
 				var item: RichTextLabel = response_template.duplicate(0)
 				item.name = "Response%d" % responses_menu.get_child_count()
 				if not response.is_allowed:
@@ -62,18 +78,19 @@ var dialogue_line: DialogueLine:
 				item.show()
 				responses_menu.add_child(item)
 		
-		# Show our balloon if it was previously hidden
+		# Mostramos el dialogo
 		balloon.show()
 		
 		dialogue_label.modulate.a = 1
 		dialogue_label.type_out()
 		await dialogue_label.finished_typing
 		
-		# Wait for input
+		# Esperamos la respuesta del jugador
 		if dialogue_line.responses.size() > 0:
 			responses_menu.modulate.a = 1
 			configure_menu()
 		elif dialogue_line.time != null:
+			#Pasamos al siguiente diálogo
 			var time = dialogue_line.dialogue.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
 			await get_tree().create_timer(time).timeout
 			next(dialogue_line.next_id)
@@ -82,24 +99,26 @@ var dialogue_line: DialogueLine:
 			balloon.focus_mode = Control.FOCUS_ALL
 			balloon.grab_focus()
 	get:
+		#Retornamos la linea del diálogo
 		return dialogue_line
-		
 
-
+# Función que se llama cuando la escena esta cargada
 func _ready() -> void:
+	#Escondemos el giálogo
 	response_template.hide()
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
 func _unhandled_input(_event: InputEvent) -> void:
-	# Only the balloon is allowed to handle input while it's showing
+	#Seteamos que el diálogo reciba las respuestas del jugador
 	get_viewport().set_input_as_handled()
 
-## Start some dialogue
+## Iniciamos el diálogo
 func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
 	temporary_game_states = extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
+	#Seteamos los textos del diálogo
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
 
 
@@ -107,10 +126,7 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 func next(next_id: String) -> void:
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
 
-### Helpers
-
-
-# Set up keyboard movement and signals for the response menu
+#Escuchamos los botones y señales de respuestas
 func configure_menu() -> void:
 	balloon.focus_mode = Control.FOCUS_NONE
 	
@@ -142,8 +158,7 @@ func configure_menu() -> void:
 	
 	items[0].grab_focus()
 
-
-# Get a list of enabled items
+#Obtenemos la lista de respuestas disponibles
 func get_responses() -> Array:
 	var items: Array = []
 	for child in responses_menu.get_children():
@@ -152,7 +167,7 @@ func get_responses() -> Array:
 		
 	return items
 
-
+#Ajustamos el tamaño del dialogo
 func handle_resize() -> void:
 	if not is_instance_valid(margin):
 		call_deferred("handle_resize")
@@ -163,44 +178,47 @@ func handle_resize() -> void:
 	var viewport_size = balloon.get_viewport_rect().size
 	balloon.global_position = Vector2((viewport_size.x - balloon.size.x) * 0.5, viewport_size.y - balloon.size.y)
 
-### Signals
-
-
+#Escondemos el diálogo
 func _on_mutated(_mutation: Dictionary) -> void:
 	is_waiting_for_input = false
 	balloon.hide()
 
+#Escuchamos cuando el raton entra al area de respuestas
 func _on_response_mouse_entered(item: Control) -> void:
 	if "Disallowed" in item.name: return
 	
 	item.grab_focus()
 
-
+#Seteamos las respuestas elegidas
 func _on_response_gui_input(event: InputEvent, item: Control) -> void:
 	if "Disallowed" in item.name: return
-	
+	#Pasamos a la siguiente linea de diálogo
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
 		next(dialogue_line.responses[item.get_index()].next_id)
 	elif event.is_action_pressed("ui_accept") and item in get_responses():
 		next(dialogue_line.responses[item.get_index()].next_id)
 
-
+#Seteamos las siguientes lineas de dialogos
 func _on_balloon_gui_input(event: InputEvent) -> void:
 	if not is_waiting_for_input: return
+	#Salimos si no hay mas texto
 	if dialogue_line.responses.size() > 0: return
 
-	# When there are no response options the balloon itself is the clickable thing	
+	# When there are no response options the balloon itself is the clickable thing
+	#Cuando no hay respuestas damos la opción de hacer clicks en el diálogo
 	get_viewport().set_input_as_handled()
 	
+	#Con el click cambiamos las lineas de diálogo
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
 		next(dialogue_line.next_id)
 	elif event.is_action_pressed("ui_accept") and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
 
-
+#Si cambia la reslución recalculamos el tamaño del dialogo
 func _on_margin_resized() -> void:
 	handle_resize()
 
+#Conectamos la finalización del dialogo
 func _add_dialogue_ended(fn):
 	dialogue_ended.connect(fn)
 	_add_dialogue_ended
