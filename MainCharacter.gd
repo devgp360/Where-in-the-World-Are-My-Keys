@@ -166,34 +166,6 @@ func set_animation():
 	anim.play("main") # Siempre es main, ya que lo que cambia es la imagen de "sprite"
 	sprite.texture = animations[sprite_image_index] # Se cambia la textura según la animación
 
-# Actualiza los ejes "X" y "Y" del personaje, para dar movimiento, ya sea de correr o saltar
-func set_velocity_xy():
-	if main_direction == DIRECTION_UP_LEFT:
-		velocity.x = -1 * speed
-		velocity.y = -1 * speed
-	elif main_direction == DIRECTION_UP_RIGHT:
-		velocity.x = 1 * speed
-		velocity.y = -1 * speed
-	elif main_direction == DIRECTION_DOWN_LEFT:
-		velocity.x = -1 * speed
-		velocity.y = 1 * speed
-	elif main_direction == DIRECTION_DOWN_RIGHT:
-		velocity.x = 1 * speed
-		velocity.y = 1 * speed
-		
-	elif main_direction == DIRECTION_LEFT:
-		velocity.x = -1 * speed
-	elif main_direction == DIRECTION_RIGHT:
-		velocity.x = 1 * speed
-		
-	elif main_direction == DIRECTION_DOWN:
-		velocity.y = 1 * speed
-	elif main_direction == DIRECTION_UP:
-		velocity.y = -1 * speed
-	else:
-		velocity.y = 0 * speed
-		velocity.x = 0 * speed
-
 # DOCUMENTACIÓN (rutas): https://docs.google.com/document/d/1lUoLrdHBMhXsEhSxhWwA41vWLvbzNZGaQJ0h23s5rT8/edit?usp=drive_link
 # Busca una ruta en el área de navegación para el personaje, y lo mueve en la escena
 func path_finding():
