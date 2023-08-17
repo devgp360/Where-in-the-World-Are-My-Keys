@@ -113,7 +113,7 @@ func set_inventory_data(level_data: Dictionary):
 				#Escondemos el objeto
 				item.visible = false
 	
-
+# DOCUMENTACIÓN (transición de escena): https://docs.google.com/document/d/1FciThS6B4qQEBely2iCMDfkRZIzwSrZLCo2Fu8nE5LQ/edit?usp=drive_link
 #Cuando entramos a una area predeterminada
 func _on_area_to_scena_2_area_entered(area):
 	#Pasamos a la escena 2

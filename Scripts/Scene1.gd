@@ -18,6 +18,7 @@ func _ready():
 		#Seteamos datos iniciales
 		set_level_data(level_data)
 	#Desbloqueamos la siguiente escena
+	# DOCUMENTACIÓN (guardado de progreso): https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs/edit?usp=drive_link
 	SaveProgress.save_active_scene("Tikal")
 	
 	# Buscar el nodo que contiene los objetos a recolectar, y se valida si ya está en el inventario
@@ -48,6 +49,7 @@ func _process(delta):
 		#mostramos el menú
 		get_tree().current_scene.add_child(pause)
 
+# DOCUMENTACIÓN (transición de escena): https://docs.google.com/document/d/1FciThS6B4qQEBely2iCMDfkRZIzwSrZLCo2Fu8nE5LQ/edit?usp=drive_link
 #Cuando entramos a una area predeterminada
 func _on_area_2d_area_entered(area):
 	#Cambio de escena
