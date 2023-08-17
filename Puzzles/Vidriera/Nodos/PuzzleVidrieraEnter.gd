@@ -1,5 +1,7 @@
 extends Area2D
 
+# DOCUMENTACIÓN: https://docs.google.com/document/d/1wEfx7wOw5FJ0GpRLCWUPQObmkE-fCed8TOZk5ZRGOyU/edit#heading=h.e2j6ax5ma83s
+
 @export var puzzle: CanvasLayer # Canvas principal del puzzle
 
 var is_character_entered = false # Indica si el personaje entró en contacto con el área
@@ -7,6 +9,7 @@ var is_character_entered = false # Indica si el personaje entró en contacto con
 # Función de inicialización
 func _ready():
 	# Agregamos los eventos: entrar/salir del área de colisión
+	# DOCUMENTACIÓN (señales): https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo/edit?usp=drive_link
 	self.area_entered.connect(_area_entered)
 	self.area_exited.connect(_area_exited)
 	self.input_event.connect(_input_event)
@@ -16,6 +19,7 @@ func _area_entered(area: Area2D):
 	if area.name == 'mainchar_area':
 		is_character_entered = true
 
+# DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 # Al salir al objeto que muestra un el puzzle
 func _area_exited(area: Area2D):
 	if area.name == 'mainchar_area':

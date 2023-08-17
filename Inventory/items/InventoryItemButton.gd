@@ -1,5 +1,7 @@
 extends Node
 
+# DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
+
 @export var area: Area2D # Area de colisión del item
 @export var button: TextureButton # Nodo tipo botón que representa el item
 @export var is_inventory_item = true # Para diferenciar item de inventario y escena
@@ -14,6 +16,7 @@ func _ready():
 	button.tooltip_text = item_title # Se inicializa el nombre del objeto
 	if !is_inventory_item:
 		# Conectamos los eventos para "tomar" un objeto (en caso sea un objeto de escena)
+		# DOCUMENTACIÓN (señales): https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo/edit?usp=drive_link
 		button.pressed.connect(click_in_escene)
 		area.area_entered.connect(area_entered)
 		area.area_exited.connect(area_exited)
@@ -23,7 +26,8 @@ func click_in_escene():
 	# Si el personaje principal está "cerca" del ítem, se podrá "tomar".
 	if is_character_entered:
 		pick_up() # Función que "toma" el item
-	
+
+# DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 # Se ejecuta cuando el personaje principal se acerca al item
 func area_entered(area: Area2D):
 	if (area.name == 'mainchar_area'):

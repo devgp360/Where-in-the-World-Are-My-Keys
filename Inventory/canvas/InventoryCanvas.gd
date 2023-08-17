@@ -1,5 +1,7 @@
 extends Node2D
 
+# DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
+
 @onready var canvas = $CanvasLayer # Canvas principal
 @onready var animation_player = $CanvasLayer/AnimationPlayer # Player
 @onready var grid = $CanvasLayer/TextureRect/GridContainer # Grid al cual se añaden elementos

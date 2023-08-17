@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+# DOCUMENTACIÓN (npc's): https://docs.google.com/document/d/1afPyT9PEDT_jkJKqAoq8BPkS0DMzl3DTtptRQDk_ME8/edit?usp=drive_link
+
 @onready var anim := $NPCAnimationPlayer
 @onready var area2d := $Area2D
 @onready var sprite := $npc1_sprite
@@ -21,16 +23,11 @@ func _physics_process(delta):
 	#Iniciamos la animacion del NPC
 	anim.play("idle1")
 
+# DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 func _on_npc_1_area_area_exited(area):
 	#Seteamos variable del dialogo a false al abandonar el area
 	dialog_active = false
 	#Emitimos señal de finalización de dialogo al abandonar el area
-	mainchar.emit_signal("end_conversation")
-
-func _on_dialog_timer_timeout():
-	#Seteamos variable del dialogo a false
-	dialog_active = false
-	#Emitimos señal de finalización de dialogo
 	mainchar.emit_signal("end_conversation")
 
 func _on_npc_1_area_area_entered(name):
@@ -39,6 +36,7 @@ func _on_npc_1_area_area_entered(name):
 		#Reproducimos el audio
 		sound.play()
 
+# DOCUMENTACIÓN (señales): https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo/edit?usp=drive_link
 # Se usa para poder "escuchar" cuando el diálgo finaliza
 func add_dialogue_ended(fn):
 	if npc_dialogue_area:

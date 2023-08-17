@@ -1,7 +1,6 @@
 extends Node2D
 
-# DOCUMENTACIÓN: https://docs.google.com/document/d/1szQIv2aEz_EdoMq34ml8DG-lRju3irkkjRO4QXsDRWc/edit#heading=h.e2j6ax5ma83s
-# DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
+# DOCUMENTACIÓN (maximón): https://docs.google.com/document/d/1szQIv2aEz_EdoMq34ml8DG-lRju3irkkjRO4QXsDRWc/edit#heading=h.e2j6ax5ma83s
 
 @onready var anim := $AnimationPlayer
 @onready var label := $Label
@@ -42,6 +41,7 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("click"):
 		toggle_door()
 
+# DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 # Detecta cuando el personaje se acerca a la puerta
 func _on_door_area_area_entered(area):
 	if area.name == "mainchar_area":

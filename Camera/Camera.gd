@@ -1,5 +1,7 @@
 extends Camera2D
 
+# DOCUMANTACIÓN (cámaras): https://docs.google.com/document/d/1d4RoDe9aK4ortBhJ1grTUOdpXnICxBa7fl_vty2OF-w/edit?usp=drive_link
+
 # Variable para tener referencia del personaje principal
 @export var character: CharacterBody2D
 
