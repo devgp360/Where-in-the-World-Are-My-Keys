@@ -164,13 +164,13 @@ texture = ExtResource("8_7j6fc")
 light_mask = 2
 position = Vector2(673, 47)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Objects/MainCharacter"]
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Objects/MainCharacter"]
 light_mask = 3
 rotation = -0.975639
 occluder = SubResource("OccluderPolygon2D_4nndj")
 occluder_light_mask = 3
 
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="Objects/MainCharacter"]
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="Objects/MainCharacter"]
 visible = false
 occluder = SubResource("OccluderPolygon2D_7uppo")
 

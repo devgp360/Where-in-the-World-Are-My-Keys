@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cnqdsj1751ca0" path="res://Puzzles/Maximon/Nodos/altar_maximon.tscn" id="12_e4h1v"]
 [ext_resource type="PackedScene" uid="uid://di3seule2il8t" path="res://Puzzles/Maximon/Nodos/puzzle_maximon.tscn" id="12_lsjrf"]
 [ext_resource type="PackedScene" uid="uid://qthrn4s7717a" path="res://Puzzles/Maximon/Nodos/door.tscn" id="14_8727e"]
-[ext_resource type="PackedScene" path="res://Puzzles/Jardin/Nodos/puzzle_stone.tscn" id="14_wdsdp"]
+[ext_resource type="PackedScene" uid="uid://bhohlaadrlnsi" path="res://Puzzles/Jardin/Nodos/puzzle_stone.tscn" id="14_wdsdp"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sxo74"]
 vertices = PackedVector2Array(856, 261, 895, 287, 882, 313, 789, 275, 750, 230, 187, 375, 121, 339, 157, 327, 878, 71, 962, 99, 906, 158, 799, 178, 861, 228, 568, 231, 454, 97, 521, 67, 673, 214, 658, 232, 274, 366, 191, 309, 254, 332, 335, 155, 281, 139, 250, 98, 276, 79, 374, 110, 391, 128, 351, 181, 404, 160, 428, 255, 460, 181, 514, 243, 490, 368, 438, 303, 540, 243, 539, 278, 525, 316, 984, 405, 1060, 480, 961, 516, 925, 416, 901, 325, 1332, 452, 1367, 455, 1367, 479, 1313, 516, 1287, 469, 1156, 509, 1255, 447, 328, 333, 371, 302, 398, 284, 413, 301, 415, 363, 341, 378, 237, 295, 580, 338, 665, 331, 664, 364, 754, 333, 822, 366, 1046, 436, 1103, 400, 1142, 389, 1256, 431)

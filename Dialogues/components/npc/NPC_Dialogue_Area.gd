@@ -1,4 +1,5 @@
 extends Node2D
+# DOCUMENTACIÓN ¿QUÉ SON LAS SEÑALES EN GDSCRIPT?: https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo
 
 # El NPC, es el que tendrá un diálogo cargado, para comunicarse con el personaje principal
 @export var dialogue_resource: DialogueResource
@@ -6,6 +7,7 @@ extends Node2D
 @export var dialogue_start: String = "start"
 #Definición del template del diálogo
 @export var Balloon: PackedScene
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 #Definición de la señal del diálogo
 signal talk()

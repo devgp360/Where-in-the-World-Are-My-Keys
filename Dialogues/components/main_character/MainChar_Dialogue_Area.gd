@@ -1,7 +1,9 @@
 extends Node2D
+# DOCUMENTACIÓN ¿QUÉ SON LAS SEÑALES EN GDSCRIPT?: https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo
 
 #Conexión del nodo Area2D
 @export var external_area2d: Area2D
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Definición del nodo del NPC
 var npc_dialogue_node: Node2D

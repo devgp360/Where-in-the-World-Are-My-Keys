@@ -1,7 +1,9 @@
 extends Camera2D
+# DOCUMENTACIÓN SOBRE CREACIÓN DE CÁMARAS Y CONFIGURACIÓN DE SU MOVIMIENTO: https://docs.google.com/document/d/1d4RoDe9aK4ortBhJ1grTUOdpXnICxBa7fl_vty2OF-w
 
 # Variable para tener referencia del personaje principal
 @export var character: CharacterBody2D
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Función de inicialización
 func _ready():

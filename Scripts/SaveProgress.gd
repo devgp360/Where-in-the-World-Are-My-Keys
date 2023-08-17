@@ -1,4 +1,6 @@
 extends Node
+# DOCUMENTACIÓN GUARDAR Y CARGAR EL AVANCE EN EL JUEGO: https://docs.google.com/document/d/1-mXoGmFTUdLby_V4wx4xU_idy6a0RdYuHLagJxLGakw
+
 #Ruta para guardar los avances
 const SAVE_GAME_PATH := "user://save.dat"
 #Ruta para guardar los screens de escenas
@@ -10,7 +12,6 @@ const SAVE_SCREENS_PATH := "user://" + SAVE_SCREENS_FOLDER
 # Función que se llama cuando la escena esta cargada
 func _ready():
 	pass # Replace with function body.
-
 
 # Función que siempre se llama
 func _process(delta):

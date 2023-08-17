@@ -1,6 +1,8 @@
 extends Area2D
+# DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 
 @export var puzzle: Node2D # Canvas principal del puzzle
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 var is_character_entered = false # Indica si el personaje entró en contacto con el área
 

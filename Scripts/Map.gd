@@ -1,6 +1,12 @@
 extends Node2D
+# DOCUMENTACIÓN CREAR UN MAPA GENERAL: https://docs.google.com/document/d/1q-aOyPNZ2Ldn6hH9H43Ym6u_fmWvujVgbkHfayPDN-E
+# DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
+# DOCUMENTACIÓN CREACIÓN DE UN AMBIENTE ISOMÉTRICO CON IA GENERATIVA: https://docs.google.com/document/d/17CxEvaKcvUjWci0zHjMCGg8CYKW0BQiz7PwMXvJrdnA
+
 #Declaración de la escena de Menú principal
 @export var PauseMenu: PackedScene
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+
 #Declaración del canal de audio activo
 var bus_index: int
 

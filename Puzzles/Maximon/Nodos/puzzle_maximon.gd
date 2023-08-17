@@ -7,6 +7,7 @@ extends Node2D
 @onready var canvas = $CanvasLayer
 # Referencia al personaje principal
 @export var character: CharacterBody2D
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Textos a mostrar en el puzzle y nodo que mostrará el texto
 @export var TextoInstrucciones = "Coloca los objetos en el orden correcto. Un objeto se mueve haciendo clic sobre él. Solo se puede mover hacia un espacio vacío."

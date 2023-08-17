@@ -1,4 +1,6 @@
 extends CharacterBody2D
+# DOCUMENTACIÓN SOBRE CREACIÓN DE CÁMARAS Y CONFIGURACIÓN DE SU MOVIMIENTO: https://docs.google.com/document/d/1d4RoDe9aK4ortBhJ1grTUOdpXnICxBa7fl_vty2OF-w
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation = $AnimationPlayer
 @export var light_node: Node2D

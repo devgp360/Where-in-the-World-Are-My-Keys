@@ -1,5 +1,5 @@
 extends MarginContainer
-
+# DOCUMENTACIÓN SISTEMA AVANZADO DE GUARDADO DE PROGRESO EN EL JUEGO: https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs
 
 #Declaramos el estado del elemento del grid
 var selected = false
@@ -13,11 +13,9 @@ var selected = false
 func _ready():
 	pass
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
 
 func _on_mouse_entered():
 	#Validamos si no esta sseleccionado el elemento
