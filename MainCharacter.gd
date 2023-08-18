@@ -129,9 +129,9 @@ func _unhandled_input(event):
 		# Activamos una "bandera" para iniciar a mover el personaje
 		path_finding_moving = true
 
+# DOCUMENTACIÓN (animaciones): https://docs.google.com/document/d/13ZWMjST6pT7EIjfe6JRyLGqJAG-NdahEWABhnN1VzuY/edit?usp=drive_link
 # Agrega diferentes tipos de animaciones al personaje, dependiendo de la acción que esté ejecutando:
 # Saltar, correr, deslizarse por una pared, etc.
-# DOCUMENTACIÓN (animaciones): https://docs.google.com/document/d/13ZWMjST6pT7EIjfe6JRyLGqJAG-NdahEWABhnN1VzuY/edit?usp=drive_link
 func set_animation():
 	# Sentencia de control, para definir la animación que se está ejecutando según a la dirección
 	# que se mueve el personaje. También se setea el "índice" del sprite a usar según la dirección
@@ -179,7 +179,7 @@ func path_finding():
 	var local = position.direction_to(next)
 	# Retorna un vector normalizado
 	var dir = local.normalized()
-	# Calculmos la siguiente 
+	# Calculmos la velocidad de movimiento
 	velocity = dir * speed
 	move_and_slide() # Mover el personaje
 	
