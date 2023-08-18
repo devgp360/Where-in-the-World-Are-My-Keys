@@ -5,6 +5,7 @@ extends CanvasLayer
 
 #Definición del AnimationPlayer
 @onready var animation_player = $AnimationPlayer
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 #Cambio de la escena
 func change_scene(target: String):

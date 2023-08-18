@@ -1,4 +1,5 @@
 extends Node2D
+# DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 
 # Variables de nodos principales
 @onready var canvas = $CanvasLayer
@@ -14,6 +15,8 @@ extends Node2D
 @onready var disolve = $CanvasLayer/Disolve
 @onready var center = $CanvasLayer/Disolve/Centro
 @onready var btn_cerrar = $CanvasLayer/Cerrar
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+
 # Textos a mostrar en el puzzle
 @export var TextoAgregado = "¡Planta agregada!"
 @export var TextoYaAgregado = "La planta ya está agregada."

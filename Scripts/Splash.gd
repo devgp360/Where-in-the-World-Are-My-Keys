@@ -1,12 +1,11 @@
 extends Node2D
-
+# DOCUMENTACIÓN (¿Como hacer Splash?): https://docs.google.com/document/d/11u22RhuGheb0z2ZpwwRgEygSr7kwTPtBme_17SZQwtw
+# DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
 
 # Función que se llama cuando la escena esta cargada
 func _ready():
 	#Setamos los niveles de sonidos
 	setSoundsVolume()
-	pass # Replace with function body.
-
 	
 func setSoundsVolume():
 	#Cargamos los datos guardados

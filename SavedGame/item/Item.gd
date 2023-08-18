@@ -1,4 +1,6 @@
 extends TextureButton
+# DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
+# DOCUMENTACIÓN SISTEMA AVANZADO DE GUARDADO DE PROGRESO EN EL JUEGO: https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs
 
 #Declaramos el estado del elemento del grid
 var selected = false
@@ -13,9 +15,10 @@ var path = ''
 @export var scenePath : String
 #Declaramos el nodo del padre
 @export var parent : Node2D
-
 #Declaramos el nodo del padre
 @export var colorRect : ColorRect
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+
 #Se permiten todas acciones
 var onlyLoad = false
 

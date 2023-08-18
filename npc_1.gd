@@ -1,4 +1,6 @@
 extends CharacterBody2D
+# DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
+# DOCUMENTACIÓN TOOLTIPS PARA DIÁLOGOS CON NPCS: https://docs.google.com/document/d/15bKBdC0nMawhdyuVRRfcZbFD7D59Lb8HhKiGBY70FL0
 
 # DOCUMENTACIÓN (npc's): https://docs.google.com/document/d/1afPyT9PEDT_jkJKqAoq8BPkS0DMzl3DTtptRQDk_ME8/edit?usp=drive_link
 
@@ -6,6 +8,8 @@ extends CharacterBody2D
 @onready var area2d := $Area2D
 @onready var sprite := $npc1_sprite
 @onready var sound := $AudioStreamPlayer2D
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+
 # Referencia al personaje principal
 @export var mainchar: CharacterBody2D
 # Area de contacto, para mostrar el diálogo

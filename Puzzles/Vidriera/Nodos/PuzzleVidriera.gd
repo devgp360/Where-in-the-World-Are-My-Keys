@@ -1,6 +1,6 @@
 extends CanvasLayer
-
 # DOCUMENTACIÓN: https://docs.google.com/document/d/1wEfx7wOw5FJ0GpRLCWUPQObmkE-fCed8TOZk5ZRGOyU/edit#heading=h.e2j6ax5ma83s
+# DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 
 # Referencias de nodos del puzzle
 @onready var close = $Panel/Button
@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var grid = $Panel/GridContainer
 @onready var label = $Panel/Label
 @onready var sprites = $Panel/Node2D
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 var left_items_names = [] # Guarda los nombres de los items
 var left_items = [] # Guarda los items (fragmentos)

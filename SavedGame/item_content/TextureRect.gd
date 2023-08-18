@@ -1,5 +1,5 @@
 extends TextureRect
-
+# DOCUMENTACIÓN SISTEMA AVANZADO DE GUARDADO DE PROGRESO EN EL JUEGO: https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs
 
 #Declaramos el estado del elemento del grid
 var selected = false
@@ -8,6 +8,7 @@ var selected = false
 @export var scenePath : String
 #Declaramos el nodo del padre
 @export var parent : Node2D
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

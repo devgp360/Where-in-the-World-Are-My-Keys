@@ -1,4 +1,7 @@
 extends Node2D
+# DOCUMENTACIÓN GUARDAR Y CARGAR EL AVANCE EN EL JUEGO: https://docs.google.com/document/d/1-mXoGmFTUdLby_V4wx4xU_idy6a0RdYuHLagJxLGakw
+# DOCUMENTACIÓN SISTEMA AVANZADO DE GUARDADO DE PROGRESO EN EL JUEGO: https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs
+
 #Ruta de Screens guardados
 const SAVE_SCREENS_PATH := "user://screens/"
 #Enlazamos grid container
@@ -11,6 +14,7 @@ const SAVE_SCREENS_PATH := "user://screens/"
 @export var loadButton : Button
 #Declaramos el boton Guardar
 @export var removeButton : Button
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Referencia a todas las "cajas", que contienen objetos
 var item_contents = []

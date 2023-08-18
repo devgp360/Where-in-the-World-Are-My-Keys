@@ -1,4 +1,7 @@
 extends CharacterBody2D
+# DOCUMENTACIÓN SOBRE MOVIMIENTOS DE UN PERSONAJE: https://docs.google.com/document/d/1V__ENMBZUavTCnd7BxHF1oI3gDAOhPtwU5DRxlDGb4g
+# DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
+# DOCUMENTACIÓN TOOLTIPS PARA DIÁLOGOS CON NPCS: https://docs.google.com/document/d/15bKBdC0nMawhdyuVRRfcZbFD7D59Lb8HhKiGBY70FL0
 
 # DOCUMENTACIÓN (creación de personaje): https://docs.google.com/document/d/1mwEdhKQrObfhGChXO0R31xknLabwwrc8yRvXdaWJBwE/edit?usp=drive_link
 
@@ -8,6 +11,7 @@ extends CharacterBody2D
 @onready var clothes:= $Sprite2D/Clothes # Nodo principal que contiene nodos de vestimenta del personaje
 @onready var soundStep:= $AudioStreamPlayer2D # Sonido de pasos
 @onready var dialog_label = $dialog_label # Etiqueta para mostrar textos
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Referencias de personajes/objetos en la escena
 @export var npc1: CharacterBody2D
@@ -130,6 +134,7 @@ func _unhandled_input(event):
 		path_finding_moving = true
 
 # DOCUMENTACIÓN (animaciones): https://docs.google.com/document/d/13ZWMjST6pT7EIjfe6JRyLGqJAG-NdahEWABhnN1VzuY/edit?usp=drive_link
+# DOCUMENTACIÓN SOBRE MOVIMIENTOS DE UN PERSONAJE: https://docs.google.com/document/d/1V__ENMBZUavTCnd7BxHF1oI3gDAOhPtwU5DRxlDGb4g
 # Agrega diferentes tipos de animaciones al personaje, dependiendo de la acción que esté ejecutando:
 # Saltar, correr, deslizarse por una pared, etc.
 func set_animation():
@@ -168,6 +173,7 @@ func set_animation():
 
 # DOCUMENTACIÓN (rutas): https://docs.google.com/document/d/1lUoLrdHBMhXsEhSxhWwA41vWLvbzNZGaQJ0h23s5rT8/edit?usp=drive_link
 # Busca una ruta en el área de navegación para el personaje, y lo mueve en la escena
+# DOCUMENTACIÓN SOBRE MOVIMIENTOS DE UN PERSONAJE: https://docs.google.com/document/d/1V__ENMBZUavTCnd7BxHF1oI3gDAOhPtwU5DRxlDGb4g
 func path_finding():
 	# Si no está activado el "flag" de mover al personaje, solo terminamos la función
 	if !path_finding_moving:
@@ -217,6 +223,7 @@ func path_finding():
 # DOCUMENTACIÓN (profundidad): https://docs.google.com/document/d/1oRxN0jtTm6Db7bcehrl5PncpSlRVaTcg9GB-0gDdwC4/edit?usp=drive_link
 # Calcula una escala (tamaño) del personaje, cuando se mueve hacia "arriba", se hace más pequeño
 # y cuando se mueve hacia "abajo" se hace más grande.
+# DOCUMENTACIÓN SOBRE PROFUNDIDAD EN ESCENAS:https://docs.google.com/document/d/1oRxN0jtTm6Db7bcehrl5PncpSlRVaTcg9GB-0gDdwC4
 func calc_scale():
 	if !active_fake_z_axis:
 		return # Si no está activido el "fake z-axis" solo terminamos la función

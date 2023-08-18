@@ -5,6 +5,7 @@ extends Node2D
 @onready var btn_limpiar = $SpriteBack/Control/Limpiar
 @onready var btn_mezclar = $SpriteBack/Control/Mezclar
 @onready var btn_inventario = $SpriteBack/Control/Inventario
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 var pos = Vector2(0, 0)
 var showing_potion = false

@@ -1,9 +1,12 @@
 extends Node
+# DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 
 # DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 
 @export var area: Area2D # Area de colisión del item
 @export var button: TextureButton # Nodo tipo botón que representa el item
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+
 @export var is_inventory_item = true # Para diferenciar item de inventario y escena
 @export var item_title = "Item" # Título/Nombre del item
 @export var item_text_pickup = "Tomar" # Texto para mostrar que se puede "tomar" el item

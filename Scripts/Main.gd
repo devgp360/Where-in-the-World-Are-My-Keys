@@ -1,4 +1,8 @@
 extends Node2D
+# DOCUMENTACIÓN SOBRE MENÚ PRINCIPAL: https://docs.google.com/document/d/1Y9rdN-w_cVtgCGX_8UTuPlDmlG2pUDOx_qZjrRhr2P4
+# DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
+# DOCUMENTACIÓN GUARDAR Y CARGAR EL AVANCE EN EL JUEGO: https://docs.google.com/document/d/1-mXoGmFTUdLby_V4wx4xU_idy6a0RdYuHLagJxLGakw
+# DOCUMENTACIÓN SISTEMA AVANZADO DE GUARDADO DE PROGRESO EN EL JUEGO: https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs
 
 #Definición del nodo Canvas
 @onready var canvas_layer = $CanvasLayer
@@ -26,6 +30,7 @@ extends Node2D
 @onready var overwriteConfirmation = $CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation
 #Definición del grid para guardar/cargar avances
 @onready var inventoryCanvas = $CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/InventoryCanvas
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 #Variable para guardar el screenshot
 var img: Image

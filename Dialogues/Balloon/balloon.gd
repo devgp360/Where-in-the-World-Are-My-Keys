@@ -1,4 +1,7 @@
 extends CanvasLayer
+# DOCUMENTACIÓN TOOLTIPS PARA DIÁLOGOS CON NPCS: https://docs.google.com/document/d/15bKBdC0nMawhdyuVRRfcZbFD7D59Lb8HhKiGBY70FL0
+# DOCUMENTACIÓN ¿QUÉ SON LAS SEÑALES EN GDSCRIPT?: https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo
+
 #Exportamos plantilla de respuestas
 @export var response_template: Node
 #Variable para setear el sufijo de archivos
@@ -16,6 +19,7 @@ extends CanvasLayer
 @onready var dialogue_label := $Balloon/Margin/HBox/VBox/DialogueLabel
 #Definición del nodo de respuestas
 @onready var responses_menu: VBoxContainer = $Balloon/Margin/HBox/VBox/Responses
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 ## Recurso del diálogo
 var resource: DialogueResource

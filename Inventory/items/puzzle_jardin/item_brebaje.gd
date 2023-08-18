@@ -5,6 +5,7 @@ extends Button
 @onready var brebaje = $back/brebaje
 @onready var buttons = $Buttons
 @onready var timer = $Timer
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc/edit#heading=h.ebe9jjxfmain
 
 var params = null
 var is_item_selected = false

@@ -1,4 +1,5 @@
 extends TextureRect
+# DOCUMENTACIÓN CREAR UN MAPA GENERAL: https://docs.google.com/document/d/1q-aOyPNZ2Ldn6hH9H43Ym6u_fmWvujVgbkHfayPDN-E
 
 var active = "" #estado del elemento clicqueado
 var blocked = true #estado del elemento del mapa (activado /descativado)
