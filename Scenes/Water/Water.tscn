@@ -1,3 +1,62 @@
-[gd_scene format=3 uid="uid://1m8tmnqyc0ge"]
+[gd_scene load_steps=10 format=3 uid="uid://1m8tmnqyc0ge"]
+
+[ext_resource type="Texture2D" uid="uid://cc1xo53s2nkh1" path="res://Scenes/Water/Assets/agua2.png" id="1_w638m"]
+[ext_resource type="Shader" path="res://Scenes/Water/AguaCirculos.gdshader" id="2_e227t"]
+[ext_resource type="Shader" path="res://Scenes/Water/Shader/WaterMove.gdshader" id="2_j2kt0"]
+[ext_resource type="Texture2D" uid="uid://eb87v2xlnfw8" path="res://Scenes/Water/Assets/ruido_agua.jpg" id="3_hebcn"]
+[ext_resource type="Texture2D" uid="uid://dmp8uid04vf1m" path="res://Scenes/Water/Assets/iglesia_sin_agua_bg.png" id="4_2l1hg"]
+[ext_resource type="Texture2D" uid="uid://dxewhkd3p8n0r" path="res://Scenes/Water/Assets/columna1.png" id="4_fkx2x"]
+[ext_resource type="Texture2D" uid="uid://chdyn5yq0xm1l" path="res://Scenes/Water/Assets/columna2.png" id="5_6dkwd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pamgp"]
+shader = ExtResource("2_e227t")
+shader_parameter/amplitud = 1.4
+shader_parameter/frecuencia = 7.43
+shader_parameter/tasaRizado = 3.7
+shader_parameter/amplitudOndas = 0.2
+shader_parameter/frecuenciaOndas = 2.0
+shader_parameter/cantidadMezcla = 0.6
+shader_parameter/ruido = ExtResource("3_hebcn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogej6"]
+shader = ExtResource("2_j2kt0")
+shader_parameter/time = 0.0
+shader_parameter/scroll1 = Vector2(0.03, 0.03)
+shader_parameter/scroll2 = Vector2(-0.01, -0.01)
+shader_parameter/distortion_strength = 0.047
+shader_parameter/tone_color = Color(0.552941, 0.560784, 0.54902, 1)
+shader_parameter/noise1 = ExtResource("3_hebcn")
+shader_parameter/noise2 = ExtResource("3_hebcn")
 
 [node name="Water" type="Node2D"]
+
+[node name="AguaRecortada" type="Sprite2D" parent="."]
+position = Vector2(11, 206)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("1_w638m")
+
+[node name="AguaConMovimiento" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_pamgp")
+position = Vector2(0, 190)
+texture = ExtResource("1_w638m")
+
+[node name="BG" type="Sprite2D" parent="."]
+texture = ExtResource("4_2l1hg")
+
+[node name="Columna1" type="Sprite2D" parent="BG"]
+position = Vector2(-44, 210)
+texture = ExtResource("4_fkx2x")
+
+[node name="Columna2" type="Sprite2D" parent="BG"]
+position = Vector2(50, 208)
+texture = ExtResource("5_6dkwd")
+
+[node name="Nodos" type="Node2D" parent="."]
+visible = false
+
+[node name="AguaShaderMove" type="Sprite2D" parent="Nodos"]
+visible = false
+material = SubResource("ShaderMaterial_ogej6")
+position = Vector2(-1, 192)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("3_hebcn")

@@ -46,7 +46,7 @@ func _set_visible(visible: bool):
 		# Agregamos un filtro de escala de grises
 		sprite.modulate = Color(0.1, 0.1, 0.1)
 		# Todavía tenemos que conseguir los lentes
-		text = "La imagen no se ve bien. Talvez falta algo..."
+		text = "La imagen no se ve bien. Tal vez falta algo..."
 		is_active = false
 	
 	label.text = text # Agregamos el mensaje
