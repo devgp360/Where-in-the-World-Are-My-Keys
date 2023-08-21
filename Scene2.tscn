@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cx0jnns63mbi6" path="res://assets/sounds/Scene2.mp3" id="9_cus1p"]
 [ext_resource type="PackedScene" uid="uid://v1vc4mhxkmf2" path="res://Inventory/items/puzzle_vidriera/item_vidrio1.tscn" id="9_qtg1b"]
 [ext_resource type="PackedScene" uid="uid://br2xxid8seypw" path="res://Character/npc_2.tscn" id="11_sqnlr"]
-[ext_resource type="PackedScene" uid="uid://b7fpo3dw235pu" path="res://Puzzles/Maximon/Nodos/altar_maximon.tscn" id="12_e4h1v"]
+[ext_resource type="PackedScene" uid="uid://cnqdsj1751ca0" path="res://Puzzles/Maximon/Nodos/altar_maximon.tscn" id="12_e4h1v"]
 [ext_resource type="PackedScene" uid="uid://di3seule2il8t" path="res://Puzzles/Maximon/Nodos/puzzle_maximon.tscn" id="12_lsjrf"]
 [ext_resource type="PackedScene" uid="uid://owqicaalyww0" path="res://Puzzles/Maximon/Nodos/door.tscn" id="14_8727e"]
 [ext_resource type="PackedScene" uid="uid://bhohlaadrlnsi" path="res://Puzzles/Jardin/Nodos/puzzle_stone.tscn" id="14_wdsdp"]
