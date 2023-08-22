@@ -139,9 +139,6 @@ func is_wearing(name: String):
 
 # Función "clic" para cada elemento del inventario
 func _pressed(name: String):
-	self.remove_item_by_name(name)
-	return;
-	
 	check_press_item_puzzle_jardin(name) # Validar clic en items de puzzle "Jardín"
 	# Cargamos el nodo principal de la escena. Si no existe, se termina la función
 	var escena1 = get_tree().get_root().get_node("Main")

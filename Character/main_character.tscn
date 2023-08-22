@@ -290,7 +290,6 @@ autostart = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_max_distance = 1000.0
-debug_enabled = true
 debug_path_custom_color = Color(0.592157, 0.694118, 0.635294, 1)
 
 [node name="mainchar_area" type="Area2D" parent="."]

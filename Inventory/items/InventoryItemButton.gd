@@ -60,7 +60,8 @@ func set_tooltip():
 func pick_up():
 	button.visible = false
 	InventoryCanvas.add_item_by_name(item_path_name)
-	anim_player.play()
+	if anim_player:
+		anim_player.play()
 
 # Retorna la "ruta" del item
 func get_path_name():

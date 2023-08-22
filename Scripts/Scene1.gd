@@ -96,6 +96,7 @@ func get_save_data():
 			"dressed": character.dress_item_list
 		}
 	}
+
 #Seteamos datos del personaje principal
 func set_character_data(characterData: Dictionary):
 	#Ponemos al personaje en su posición guardada
