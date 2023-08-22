@@ -24,6 +24,7 @@ func _ready():
 		var parent = node.get_parent()
 		parents.append(parent)
 
+	# Asociamos eventos, para "escuchar" cuando la camara entra o sale del área del notificador
 	screenNotifier.screen_entered.connect(_screen_entered)
 	screenNotifier.screen_exited.connect(_screen_exited)
 
@@ -38,7 +39,6 @@ func _screen_entered():
 		var parent = _get_parent(node)
 		parent.add_child(node)
 	nodes_added = true # Indicamos que agregamos nodos
-	print("entramos al cuadro")
 
 # Se efecuta cuando se sale del área del notificador
 # Se deben eliminar todos los nodos del árbol principal de la escena
@@ -51,8 +51,8 @@ func _screen_exited():
 		var parent = node.get_parent()
 		parent.remove_child(node)
 	nodes_added = false # Indicamos que eliminamos nodos
-	print("salimos del cuadro")
 
+# Sirve para buscar el padre de un nodo
 func _get_parent(node: Node2D):
 	var index = nodes.find(node)
 	return parents[index]
