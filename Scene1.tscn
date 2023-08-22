@@ -58,6 +58,7 @@ offset_right = 226.0
 offset_bottom = -136.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 y_sort_enabled = true
 position = Vector2(-699, -321)
 navigation_polygon = SubResource("NavigationPolygon_sxo74")

@@ -11,6 +11,8 @@ extends Node
 @export var item_title = "Item" # Título/Nombre del item
 @export var item_text_pickup = "Tomar" # Texto para mostrar que se puede "tomar" el item
 @export var item_path_name = "" # Ruta + nombre del nodo para cargarlo en el inventario
+#Definición del reproductor del sonido
+@onready var anim_player := $ObjectSound
 
 var is_character_entered = false # Indica si el personaje entró en contacto con el item
 
@@ -58,6 +60,7 @@ func set_tooltip():
 func pick_up():
 	button.visible = false
 	InventoryCanvas.add_item_by_name(item_path_name)
+	anim_player.play()
 
 # Retorna la "ruta" del item
 func get_path_name():
