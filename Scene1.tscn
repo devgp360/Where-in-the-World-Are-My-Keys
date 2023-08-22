@@ -111,7 +111,6 @@ character = NodePath("../MainCharacter")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 process_mode = 1
 stream = ExtResource("12_do1m1")
-autoplay = true
 bus = &"music"
 
 [node name="PuzzleVidriera" parent="." instance=ExtResource("14_elguw")]
