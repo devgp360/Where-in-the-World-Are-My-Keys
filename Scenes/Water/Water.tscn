@@ -1,12 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://1m8tmnqyc0ge"]
+[gd_scene load_steps=14 format=3 uid="uid://1m8tmnqyc0ge"]
 
 [ext_resource type="Texture2D" uid="uid://cc1xo53s2nkh1" path="res://Scenes/Water/Assets/agua2.png" id="1_w638m"]
 [ext_resource type="Shader" path="res://Scenes/Water/AguaCirculos.gdshader" id="2_e227t"]
 [ext_resource type="Shader" path="res://Scenes/Water/Shader/WaterMove.gdshader" id="2_j2kt0"]
 [ext_resource type="Texture2D" uid="uid://eb87v2xlnfw8" path="res://Scenes/Water/Assets/ruido_agua.jpg" id="3_hebcn"]
+[ext_resource type="Texture2D" uid="uid://ef32x3yf6shd" path="res://Scenes/Water/Assets/agua.png" id="3_s7w1e"]
 [ext_resource type="Texture2D" uid="uid://dmp8uid04vf1m" path="res://Scenes/Water/Assets/iglesia_sin_agua_bg.png" id="4_2l1hg"]
 [ext_resource type="Texture2D" uid="uid://dxewhkd3p8n0r" path="res://Scenes/Water/Assets/columna1.png" id="4_fkx2x"]
+[ext_resource type="Shader" path="res://Scenes/Water/Nebula.gdshader" id="4_tbgvj"]
 [ext_resource type="Texture2D" uid="uid://chdyn5yq0xm1l" path="res://Scenes/Water/Assets/columna2.png" id="5_6dkwd"]
+[ext_resource type="Script" path="res://Scenes/Water/NodeSobrecarga.gd" id="10_t4sml"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tjf3k"]
+shader = ExtResource("4_tbgvj")
+shader_parameter/OCTAVE = 4
+shader_parameter/timescale = 0.1
+shader_parameter/CLOUD1_COL = Vector4(0.41, 0.64, 0.78, 0.4)
+shader_parameter/CLOUD2_COL = Vector4(0.99, 0.79, 0.46, 0.2)
+shader_parameter/CLOUD3_COL = Vector4(0.81, 0.31, 0.59, 1)
+shader_parameter/CLOUD4_COL = Vector4(0.27, 0.15, 0.33, 1)
+shader_parameter/SPACE = Vector4(0.09, 0.06, 0.28, 0.3)
+shader_parameter/zoomScale = 6.0
+shader_parameter/size = 10.0
+shader_parameter/starscale = 20.0
+shader_parameter/prob = 0.545
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pamgp"]
 shader = ExtResource("2_e227t")
@@ -29,6 +46,12 @@ shader_parameter/noise1 = ExtResource("3_hebcn")
 shader_parameter/noise2 = ExtResource("3_hebcn")
 
 [node name="Water" type="Node2D"]
+
+[node name="Nebula" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tjf3k")
+position = Vector2(-18, 37.4999)
+scale = Vector2(4.98932, 9.65649)
+texture = ExtResource("3_s7w1e")
 
 [node name="AguaRecortada" type="Sprite2D" parent="."]
 position = Vector2(11, 206)
@@ -60,3 +83,6 @@ material = SubResource("ShaderMaterial_ogej6")
 position = Vector2(-1, 192)
 scale = Vector2(1.2, 1.2)
 texture = ExtResource("3_hebcn")
+
+[node name="NodeSobrecarga" type="Node2D" parent="."]
+script = ExtResource("10_t4sml")
