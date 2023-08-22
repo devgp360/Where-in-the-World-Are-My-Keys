@@ -5,10 +5,12 @@ extends CharacterBody2D
 # DOCUMENTACIÓN (npc's): https://docs.google.com/document/d/1afPyT9PEDT_jkJKqAoq8BPkS0DMzl3DTtptRQDk_ME8/edit?usp=drive_link
 
 @onready var anim := $NPCAnimationPlayer
-@onready var area2d := $Area2D
+@onready var area2d := $npc1_area
 @onready var sprite := $npc1_sprite
 @onready var sound := $AudioStreamPlayer2D
 #Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+
+@export var vared: Node2D;
 
 # Referencia al personaje principal
 @export var mainchar: CharacterBody2D
@@ -19,6 +21,8 @@ signal end_conversation()
 # Determina el estado del diálogo (activo o inactivo)
 var dialog_active = false
 
+var count_test = 1
+
 # Función de inicialización
 func _ready():
 	npc_dialogue_area = find_child("NPC_Dialogue_Area") # Buscamos el area de diálogo
@@ -26,6 +30,8 @@ func _ready():
 func _physics_process(delta):
 	#Iniciamos la animacion del NPC
 	anim.play("idle1")
+	#print("procesando físicas NPC: ", count_test)
+	count_test += 1
 
 # DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 func _on_npc_1_area_area_exited(area):
@@ -45,3 +51,4 @@ func _on_npc_1_area_area_entered(name):
 func add_dialogue_ended(fn):
 	if npc_dialogue_area:
 		npc_dialogue_area.add_dialogue_ended(fn)
+
