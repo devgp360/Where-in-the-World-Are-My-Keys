@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://upllmqlhdam1"]
+[gd_scene load_steps=22 format=3 uid="uid://upllmqlhdam1"]
 
 [ext_resource type="Texture2D" uid="uid://bag6tqwmlaakq" path="res://assets/bg1.jpg" id="1_dbimm"]
 [ext_resource type="Script" path="res://Scripts/Scene1.gd" id="1_wyjy5"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://x3mpmfaijdid" path="res://Puzzles/Vidriera/Nodos/PuzzleVidrieraEnter.tscn" id="15_ebymt"]
 [ext_resource type="PackedScene" uid="uid://cn7ty6d8n37s8" path="res://Puzzles/Jardin/Nodos/puzzle_garden.tscn" id="16_epc8q"]
 [ext_resource type="PackedScene" uid="uid://chke83x5iabr2" path="res://Puzzles/Jardin/Nodos/puzzle_garden_enter.tscn" id="17_w1ooa"]
+[ext_resource type="Script" path="res://FrustumCulling.gd" id="18_rrer2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sxo74"]
 vertices = PackedVector2Array(1018, 319, 901, 359, 826, 303, 830, 257, 916, 252, 978, 259, 1035, 295, 23, 371, 9, 439, 11, 239, 1315, 332, 1381, 363, 1319, 359, 1272, 321, 125, 299, 150, 265, 152, 293, 1164, 282, 1116, 276, 1148, 316, 1104, 295, 61, 263, 223, 455, 841, 220, 871, 215, 904, 223, 789, 230, 1045, 258, 798, 185, 823, 205, 689, 234, 662, 581, 741, 594, 757, 644, 676, 646, 505, 641, 586, 592, 397, 10, 394, 0, 674, -2, 432, 38, 591, 287, 491, 137, 693, 12, 748, 90, 776, 140, 525, 566, 251, 537, 242, 253, 215, 228, 259, 196, 290, 215, 175, 320, 233, 320, 479, 470, 508, 534, 474, 506, 1318, 437, 1382, 483, 1102, 609, 1274, 462, 1163, 472, 1096, 440, 986, 565, 1018, 470, 889, 406, 952, 579, 694, 483, 819, 185, 1017, 341, 666, 262, 669, 315, 548, 441, 575, 302, 231, 503, 252, 296, 343, 262, 398, 284, 413, 301, 750, 347, 661, 506, 543, 281, 438, 303, 485, 286, 333, 235, 509, 262, 530, 268, 455, 284)
@@ -29,7 +30,7 @@ size = Vector2(299, 27.5359)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsd2w"]
 size = Vector2(112, 59.3562)
 
-[node name="Main2" type="Node2D"]
+[node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_wyjy5")
 PauseMenu = ExtResource("2_be106")
@@ -96,11 +97,12 @@ shape = SubResource("RectangleShape2D_c2j5c")
 [node name="NPC1" parent="." node_paths=PackedStringArray("mainchar") instance=ExtResource("8_wj8yp")]
 z_index = 1
 z_as_relative = false
-position = Vector2(416, 158)
+position = Vector2(468, 143)
 mainchar = NodePath("../MainCharacter")
 
 [node name="Camera" parent="." node_paths=PackedStringArray("character") instance=ExtResource("11_ifjqy")]
 position = Vector2(-1, 0)
+zoom = Vector2(1.5, 1.5)
 limit_left = -690
 limit_top = -400
 limit_right = 690
@@ -133,5 +135,14 @@ puzzle = NodePath("../Puzzle_garden")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Puzzle__Jardin/puzzle_garden_enter"]
 polygon = PackedVector2Array(-657, -116, -584, -62, -473, -126, -496, -212, -598, -250, -654, -192)
+
+[node name="FrustumCulling" type="Node2D" parent="." node_paths=PackedStringArray("screenNotifier", "nodes")]
+script = ExtResource("18_rrer2")
+screenNotifier = NodePath("VisibleOnScreenNotifier2D")
+nodes = [NodePath("../NPC1")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="FrustumCulling"]
+position = Vector2(465, 152)
+scale = Vector2(10.75, 9.7)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

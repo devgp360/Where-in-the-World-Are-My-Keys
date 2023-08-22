@@ -22,7 +22,7 @@ size = Vector2(112.592, 27.5359)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rf26f"]
 size = Vector2(90, 20)
 
-[node name="Main2" type="Node2D"]
+[node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_kubc3")
 PauseMenu = ExtResource("2_oyi3f")
