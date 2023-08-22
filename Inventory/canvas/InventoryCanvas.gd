@@ -20,12 +20,19 @@ var current_item_selected = null
 # Nombre del objeto seleccionado
 var current_item_name_selected = ""
 
+# Función de inicialización
 func _ready():
+	# Cada "item" recolectado, se agregará dentro de un "contendor"
+	# Este contenedor es un "sprite" que tiene una imagen con un "borde" simulando un marco
+	# Dentro de este "marco" es donde se agregarán los "items"
+	# Para evitar agregar todos los nodos manualmente (24 nodos en este caso), se hizo un ciclo
+	#  que los agregará dinámicamente.
 	for n in 24:
 		var item = load("res://Inventory/item_content/item_content.tscn").instantiate()
-		grid.add_child(item)
-		item_contents.append(item)
-	
+		grid.add_child(item) # Agregamos el nodo "marco" a un grid
+		item_contents.append(item) # Guardamos la referencia del nodo "marco" en un array
+
+# Función que se ejecuta en cada frame
 func _process(delta):
 	process_item_selected()
 
@@ -51,6 +58,7 @@ func _unhandled_input(event):
 		animation_player.play("down")
 		await animation_player.animation_finished
 
+# DOCUMENTACIÓN (gestión de memoria): https://docs.google.com/document/d/1diS6YOpBhLUTI9tk7YTZcH5Ha64bXg9u-PVhBXfOEz4/edit#heading=h.e2j6ax5ma83s
 # Función que añade un item al inventario
 # Añadir significa, cargar un elemento (escena) y agregarlo al grid
 # El nombre del item, tiene que existir como una escena
@@ -79,6 +87,7 @@ func add_item_by_name(name: String, params = null):
 	if item.has_method("add_params") and params:
 		item.add_params(name, params) # Pasamos parámetros cuando creamos el objeto
 
+# DOCUMENTACIÓN (gestión de memoria): https://docs.google.com/document/d/1diS6YOpBhLUTI9tk7YTZcH5Ha64bXg9u-PVhBXfOEz4/edit#heading=h.e2j6ax5ma83s
 # Se elimina un elemento del iventario
 # Eliminar significa, buscar el "nodo" y eliminarlo del grid principal
 # Al eliminar el nodo, todos los demás nodos posteriores, se moverán "hacia atrás"
@@ -86,11 +95,12 @@ func add_item_by_name(name: String, params = null):
 func remove_item_by_name(name: String):
 	var index = item_object_names.find(name)
 	if index >= 0:
-		var item_content = item_contents[index]
-		var item = item_objects[index]
+		var item_content = item_contents[index] # Nodo que es un "cuadro" contenedor del item recolectado
+		var item = item_objects[index] # Nodo que tiene el item recolectado
 		
 		# Removemos el nodo del item
 		item_content.remove_child(item)
+		item.queue_free(); # Liberamos memoria (porque no lo vamos a volver a usar)
 		
 		# Movemos todos los items "hacia atrás" para que ocupen el espacio vacío
 		var size = item_objects.size()
@@ -98,7 +108,9 @@ func remove_item_by_name(name: String):
 			var current_content = item_contents[n]
 			var next_content = item_contents[n + 1]
 			var next_item = item_objects[n + 1];
+			# Removemos el item "next_item" (pero no liberamos memoria)
 			next_content.remove_child(next_item);
+			# El item removido anteriormente, se reutiliza (agrega) en otro nodo
 			current_content.add_child(next_item);
 		
 		# Quitamos el nombre del listado de "nombres de items"
@@ -127,6 +139,9 @@ func is_wearing(name: String):
 
 # Función "clic" para cada elemento del inventario
 func _pressed(name: String):
+	self.remove_item_by_name(name)
+	return;
+	
 	check_press_item_puzzle_jardin(name) # Validar clic en items de puzzle "Jardín"
 	# Cargamos el nodo principal de la escena. Si no existe, se termina la función
 	var escena1 = get_tree().get_root().get_node("Main")
@@ -209,7 +224,7 @@ func remove_selected_item():
 		var escena = get_tree().get_root().get_node("Main")
 		if escena:
 			escena.remove_child(current_item_selected)
-		current_item_selected.queue_free()
+		current_item_selected.queue_free() # Liberamos la memoria
 		current_item_selected = null
 		current_item_name_selected = ""
 
