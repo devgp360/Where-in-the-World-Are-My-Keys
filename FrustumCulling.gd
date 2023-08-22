@@ -1,5 +1,7 @@
 extends Node2D
 
+# DOCUMENTACIÓN (culling): https://docs.google.com/document/d/1oX77HHdm_DiiigEn7OBe9BDAFh071atPlhszFDj2_bI/edit
+
 @export var screenNotifier: VisibleOnScreenNotifier2D
 # Nodos que queremos ocultar
 @export var nodes: Array[Node2D] = []
