@@ -55,7 +55,7 @@ offset_bottom = -92.0
 scale = Vector2(0.5, 0.5)
 
 [node name="MainCharacter" parent="." instance=ExtResource("3_cxomv")]
-position = Vector2(-450, 109)
+position = Vector2(-459, 78)
 scale = Vector2(0.9, 0.9)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -102,7 +102,7 @@ rotation = 0.502655
 shape = SubResource("RectangleShape2D_7m4k7")
 
 [node name="NPC2" parent="." node_paths=PackedStringArray("mainchar") instance=ExtResource("11_sqnlr")]
-position = Vector2(89, -165)
+position = Vector2(107, -179)
 scale = Vector2(0.8, 0.8)
 mainchar = NodePath("../MainCharacter")
 
@@ -113,6 +113,7 @@ y_sort_enabled = true
 character = NodePath("../../MainCharacter")
 
 [node name="AltarMaximon" parent="PuzzleMaximon" node_paths=PackedStringArray("puzzle", "npc") instance=ExtResource("12_e4h1v")]
+visible = false
 y_sort_enabled = true
 position = Vector2(-148, -7)
 scale = Vector2(0.5, 0.5)
