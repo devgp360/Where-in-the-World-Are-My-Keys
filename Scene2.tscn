@@ -69,6 +69,7 @@ y_sort_enabled = true
 position = Vector2(-693, -321)
 
 [node name="Fire" parent="Node2D" instance=ExtResource("4_ut5jx")]
+visible = false
 position = Vector2(537, 407)
 scale = Vector2(1.65, 1.65)
 

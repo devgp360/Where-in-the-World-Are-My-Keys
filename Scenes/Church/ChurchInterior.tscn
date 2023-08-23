@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://y5ewa2bdex6r"]
+[gd_scene load_steps=17 format=3 uid="uid://y5ewa2bdex6r"]
 
 [ext_resource type="Texture2D" uid="uid://8jyneusvwyfb" path="res://Scenes/Church/assets/bg.png" id="1_y3l5a"]
 [ext_resource type="Texture2D" uid="uid://bb1dsvigpcmbg" path="res://assets/punto_de_luz.png" id="2_6pl5b"]
 [ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://Character/main_character.tscn" id="2_apxtj"]
-[ext_resource type="Texture2D" uid="uid://dfmukkpl68rhg" path="res://assets/light.png" id="2_gf1he"]
 [ext_resource type="Texture2D" uid="uid://i6qnx1jlmf1r" path="res://Scenes/Church/assets/sillon1.png" id="2_htesh"]
 [ext_resource type="Texture2D" uid="uid://cleg71cwik0cy" path="res://Scenes/Church/assets/sillon2.png" id="3_ndhbe"]
 [ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://Camera/Camera.tscn" id="3_njxj8"]
@@ -49,54 +48,6 @@ range_item_cull_mask = 2
 shadow_enabled = true
 texture = ExtResource("2_6pl5b")
 texture_scale = 0.4
-
-[node name="Luz2" type="PointLight2D" parent="Luces/Sala"]
-visible = false
-position = Vector2(43, -131)
-scale = Vector2(2.39687, 2.66719)
-color = Color(0.909804, 0.929412, 0.968627, 1)
-energy = 1.56
-range_item_cull_mask = 2
-shadow_enabled = true
-texture = ExtResource("2_gf1he")
-
-[node name="Pasillo" type="Node2D" parent="Luces"]
-visible = false
-
-[node name="Luz1" type="PointLight2D" parent="Luces/Pasillo"]
-position = Vector2(-696, -205)
-scale = Vector2(3.03359, 2.88037)
-energy = 1.59
-range_item_cull_mask = 2
-shadow_enabled = true
-texture = ExtResource("2_gf1he")
-
-[node name="Luz2" type="PointLight2D" parent="Luces/Pasillo"]
-position = Vector2(-1064, -169)
-scale = Vector2(2.38242, 2.11831)
-energy = 1.23
-range_item_cull_mask = 2
-shadow_enabled = true
-texture = ExtResource("2_gf1he")
-
-[node name="Cuarto" type="Node2D" parent="Luces"]
-visible = false
-
-[node name="Luz1" type="PointLight2D" parent="Luces/Cuarto"]
-position = Vector2(725, -96)
-scale = Vector2(2.11875, 2.06719)
-energy = 1.47
-range_item_cull_mask = 2
-shadow_enabled = true
-texture = ExtResource("2_gf1he")
-
-[node name="Luz2" type="PointLight2D" parent="Luces/Cuarto"]
-position = Vector2(957, -120)
-scale = Vector2(2.11875, 2.06719)
-energy = 1.11
-range_item_cull_mask = 2
-shadow_enabled = true
-texture = ExtResource("2_gf1he")
 
 [node name="ObjetosYPersonaje" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -162,7 +113,6 @@ max_scale = 3.0
 max_y = 1000.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_c2d6i")
 
 [node name="Camera" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_njxj8")]

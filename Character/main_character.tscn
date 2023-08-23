@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cw4xeegs5b2fq"]
+[gd_scene load_steps=23 format=3 uid="uid://cw4xeegs5b2fq"]
 
 [ext_resource type="Script" path="res://MainCharacter.gd" id="1_ut5va"]
 [ext_resource type="Shader" path="res://Character/npc_1.gdshader" id="2_mkt56"]
@@ -6,8 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dske0vk3rkgiu" path="res://Dialogues/components/main_character/MainChar_Dialogue_Area.tscn" id="3_rp52k"]
 [ext_resource type="AudioStream" uid="uid://ckjhtxcgqrub" path="res://assets/sounds/Pasos.mp3" id="4_8k3nx"]
 [ext_resource type="PackedScene" uid="uid://bbatycklhnhqo" path="res://Character/Clothes/Glasses/Glasses.tscn" id="4_m16xi"]
-[ext_resource type="Shader" path="res://Shaders/Element_active.gdshader" id="6_srk07"]
-[ext_resource type="Texture2D" uid="uid://dan1h0xsyry1q" path="res://Assets_PixelAdventure/Main Characters/Mask.png" id="8_i35dp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lefbk"]
 shader = ExtResource("2_mkt56")
@@ -240,14 +238,6 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_b1n6f"]
 radius = 58.0345
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hddt6"]
-polygon = PackedVector2Array(-25, 5, 0, 13, 26, 5, 18, -6, -19, -3)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mfgk5"]
-shader = ExtResource("6_srk07")
-shader_parameter/line_color = Vector4(1, 1, 1, 1)
-shader_parameter/line_thickness = 1.0
-
 [node name="MainCharacter" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(386, 305)
@@ -282,11 +272,6 @@ y_sort_enabled = true
 position = Vector2(-3, -16)
 polygon = PackedVector2Array(-12, 42, 18, 41, 29, 56, 0, 65, -22, 56)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.753
-one_shot = true
-autostart = true
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_max_distance = 1000.0
 debug_path_custom_color = Color(0.592157, 0.694118, 0.635294, 1)
@@ -316,20 +301,6 @@ external_area2d = NodePath("../mainchar_area")
 stream = ExtResource("4_8k3nx")
 bus = &"mainCharacter"
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
-occluder = SubResource("OccluderPolygon2D_hddt6")
-
-[node name="OccluderShader" type="LightOccluder2D" parent="."]
-material = SubResource("ShaderMaterial_mfgk5")
-
-[node name="SpriteTest" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-3, 8)
-scale = Vector2(2.3125, 3.09375)
-texture = ExtResource("8_i35dp")
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="path_changed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_path_changed"]
 [connection signal="area_entered" from="mainchar_area" to="." method="_on_mainchar_area_area_entered"]
 [connection signal="area_exited" from="mainchar_area" to="." method="_on_mainchar_area_area_exited"]

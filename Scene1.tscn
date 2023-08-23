@@ -28,7 +28,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(397, 10, 432, 38, 491, 
 size = Vector2(299, 27.5359)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsd2w"]
-size = Vector2(112, 59.3562)
+size = Vector2(112, 90.6758)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -123,8 +123,9 @@ visible = false
 puzzle = NodePath("../PuzzleVidriera")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleVidrieraEnter"]
-position = Vector2(-343, -194)
+position = Vector2(-348.526, -176.008)
 rotation = 0.293215
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nsd2w")
 
 [node name="Puzzle__Jardin" type="Node2D" parent="."]
