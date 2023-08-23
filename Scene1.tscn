@@ -113,6 +113,7 @@ character = NodePath("../MainCharacter")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 process_mode = 1
 stream = ExtResource("12_do1m1")
+autoplay = true
 bus = &"music"
 
 [node name="PuzzleVidriera" parent="." instance=ExtResource("14_elguw")]
@@ -124,7 +125,6 @@ puzzle = NodePath("../PuzzleVidriera")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleVidrieraEnter"]
 position = Vector2(-348.526, -176.008)
 rotation = 0.293215
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nsd2w")
 
 [node name="Puzzle__Jardin" type="Node2D" parent="."]

@@ -92,7 +92,6 @@ character = NodePath("../MainCharacter")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 process_mode = 1
 stream = ExtResource("9_cus1p")
-autoplay = true
 bus = &"music"
 
 [node name="AreaToScena1" type="Area2D" parent="."]
