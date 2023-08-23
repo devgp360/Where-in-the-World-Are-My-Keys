@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=3 uid="uid://uml5cughx4v7"]
+[gd_scene load_steps=18 format=3 uid="uid://uml5cughx4v7"]
 
-[ext_resource type="Script" path="res://Scenes/Fire/Fire.gd" id="1_crkbp"]
 [ext_resource type="Texture2D" uid="uid://dotjr8wdaqrti" path="res://Scenes/Fire/Assets/cocina.png" id="1_tk8xb"]
 [ext_resource type="Texture2D" uid="uid://c4tt3hsybb32k" path="res://Scenes/Fire/Assets/Flame.png" id="3_y3ryq"]
 [ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://Character/main_character.tscn" id="4_1mcu5"]
@@ -132,7 +131,6 @@ _data = {
 }
 
 [node name="Fire" type="Node2D"]
-script = ExtResource("1_crkbp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(695, 390)

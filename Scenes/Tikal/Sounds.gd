@@ -14,22 +14,25 @@ func _process(delta):
 	pass
 
 #Transiciones entre audios
-func crossfade_to(audio_stream: AudioStream):
+func crossfade_to(audio_stream: AudioStream, soundNum: int):
 	#Si los dos audios estan sonando retornamos
 	if sound1.playing and sound2.playing:
+		print("salimos")
 		return
 
 	# The `playing` property of the stream players tells us which track is active. 
 	# If it's track two, we fade to track one, and vice-versa.
 	#Validamos si el segundo sonido esta sonando
-	if sound2.playing:
+	if soundNum == 1 && !sound1.playing:
 		#Creamos el stream para el reproductor 1
 		sound1.stream = audio_stream
 		#Reproducimos el sonido 1
 		sound1.play()
+		print("Scene1")
 		#Iniciamos la animacion de Fade
 		anim_player.play("FadeToTrack1")
-	else:
+	elif soundNum == 2 && !sound2.playing:
+		print("Scene2")
 		#Creamos el stream para el reproductor 2
 		sound2.stream = audio_stream
 		#Reproducimos el sonido 2
@@ -45,13 +48,13 @@ func _on_area_left_area_entered(area):
 	#Cargamos el audio 1
 	var vstream = load("res://assets/sounds/Scene1.mp3")
 	#Llamamos la funcion de transiciones entre audios
-	crossfade_to(vstream)
+	crossfade_to(vstream, 1)
 
 func _on_area_right_area_entered(area):
 	#Cargamos el audio 2
 	var vstream = load("res://assets/sounds/Scene2.mp3")
 	#Llamamos la funcion de transiciones entre audios
-	crossfade_to(vstream)
+	crossfade_to(vstream, 2)
 
 func _on_animation_player_animation_finished(anim_name):
 	#Validamos que animación terminó
