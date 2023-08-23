@@ -144,8 +144,9 @@ func _pressed(_name: String):
 	var escena1 = get_tree().get_root().get_node("Main")
 	if !escena1:
 		return
+		
 	# Funcionalidad para "quitarse/ponerse" los lentes al dar clic en el item desde el inventario
-	if name == 'puzzle_vidriera/item_lentes':
+	if _name == 'puzzle_vidriera/item_lentes':
 		var character = escena1.find_child("MainCharacter")
 		var index = dressed_item_list.find("glasses")
 		if index >= 0:

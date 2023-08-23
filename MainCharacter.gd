@@ -332,7 +332,7 @@ func use_item(_name, params):
 func dynamic_shader():
 	# Si no está seteado un punto de luz, solo retornamos sin sombra
 	if !light_node:
-		#sprite.material.set("shader_param/opacity", 0.0)
+		sprite.material.set("shader_parameter/opacity", 0.0)
 		return
 
 	# Dirección de movimiento (desde -180 grados a 180 grados (los 360 grados del círculo)
@@ -371,7 +371,7 @@ func dynamic_shader():
 	var opacity = 1 - lerp(shadow_min_value, shadow_max_value, d);
 
 	# Pasamos parámetros al "shader"
-	sprite.material.set("shader_param/deform", deform)
-	sprite.material.set("shader_param/opacity", opacity)
-	sprite.material.set("shader_param/offset", offset)
-	sprite.material.set("shader_param/flipY", !character_is_over_light)
+	sprite.material.set("shader_parameter/deform", deform)
+	sprite.material.set("shader_parameter/opacity", opacity)
+	sprite.material.set("shader_parameter/offset", offset)
+	sprite.material.set("shader_parameter/flipY", !character_is_over_light)
