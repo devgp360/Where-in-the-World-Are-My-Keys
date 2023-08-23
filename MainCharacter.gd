@@ -371,7 +371,7 @@ func dynamic_shader():
 	var opacity = 1 - lerp(shadow_min_value, shadow_max_value, d);
 
 	# Pasamos parámetros al "shader"
-	#sprite.material.set("shader_param/deform", deform)
-	#sprite.material.set("shader_param/opacity", opacity)
-	#sprite.material.set("shader_param/offset", offset)
-	#sprite.material.set("shader_param/flipY", !character_is_over_light)
+	sprite.material.set("shader_param/deform", deform)
+	sprite.material.set("shader_param/opacity", opacity)
+	sprite.material.set("shader_param/offset", offset)
+	sprite.material.set("shader_param/flipY", !character_is_over_light)
