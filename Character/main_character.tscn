@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cw4xeegs5b2fq"]
+[gd_scene load_steps=23 format=3 uid="uid://cw4xeegs5b2fq"]
 
 [ext_resource type="Script" path="res://MainCharacter.gd" id="1_ut5va"]
 [ext_resource type="Shader" path="res://Character/npc_1.gdshader" id="2_mkt56"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dske0vk3rkgiu" path="res://Dialogues/components/main_character/MainChar_Dialogue_Area.tscn" id="3_rp52k"]
 [ext_resource type="AudioStream" uid="uid://ckjhtxcgqrub" path="res://assets/sounds/Pasos.mp3" id="4_8k3nx"]
 [ext_resource type="PackedScene" uid="uid://bbatycklhnhqo" path="res://Character/Clothes/Glasses/Glasses.tscn" id="4_m16xi"]
-[ext_resource type="Texture2D" uid="uid://dan1h0xsyry1q" path="res://Assets_PixelAdventure/Main Characters/Mask.png" id="7_baaov"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lefbk"]
 shader = ExtResource("2_mkt56")
@@ -237,17 +236,17 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b1n6f"]
-radius = 61.0328
+radius = 58.0345
 
 [node name="MainCharacter" type="CharacterBody2D"]
 y_sort_enabled = true
+position = Vector2(386, 305)
 script = ExtResource("1_ut5va")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_lefbk")
 texture = ExtResource("3_bstcu")
-offset = Vector2(0, -25)
 hframes = 3
 frame = 1
 
@@ -255,7 +254,7 @@ frame = 1
 
 [node name="glasses" parent="Sprite2D/Clothes" instance=ExtResource("4_m16xi")]
 z_index = 10
-position = Vector2(0, -32)
+position = Vector2(-0.667, -9)
 scale = Vector2(0.0533333, 0.0533333)
 
 [node name="AnimationSprite" type="AnimationPlayer" parent="Sprite2D"]
@@ -270,18 +269,17 @@ libraries = {
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 y_sort_enabled = true
-position = Vector2(1, -38)
+position = Vector2(-3, -16)
 polygon = PackedVector2Array(-12, 42, 18, 41, 29, 56, 0, 65, -22, 56)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_max_distance = 1000.0
-debug_enabled = true
 debug_path_custom_color = Color(0.592157, 0.694118, 0.635294, 1)
 
 [node name="mainchar_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mainchar_area"]
-position = Vector2(0, -18)
+position = Vector2(1, -5)
 shape = SubResource("CircleShape2D_b1n6f")
 
 [node name="dialog_label" type="Label" parent="."]
@@ -302,12 +300,3 @@ external_area2d = NodePath("../mainchar_area")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_8k3nx")
 bus = &"mainCharacter"
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("7_baaov")
-
-[connection signal="path_changed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_path_changed"]
-[connection signal="area_entered" from="mainchar_area" to="." method="_on_mainchar_area_area_entered"]
-[connection signal="area_exited" from="mainchar_area" to="." method="_on_mainchar_area_area_exited"]
