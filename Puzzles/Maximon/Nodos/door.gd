@@ -22,10 +22,6 @@ func _ready():
 	puzzle.add_ended_game(ended_game)
 	visible = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 # Mostrar/Ocultar la puerta al "ganar" el puzzle
 func toggle_door():
 	if !is_active:
@@ -38,7 +34,7 @@ func toggle_door():
 		anim.play("open")
 	
 # Al dar clic en la puerta
-func _on_area_2d_input_event(viewport, event, shape_idx):
+func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event.is_action_pressed("click"):
 		toggle_door()
 

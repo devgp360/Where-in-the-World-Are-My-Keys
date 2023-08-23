@@ -75,8 +75,8 @@ func close():
 	canvas.visible = false
 
 # Mostrar el puzzle
-func _set_visible(visible: bool):
-	canvas.visible = visible
+func _set_visible(_visible: bool):
+	canvas.visible = _visible
 
 # Funciones para detectar cuando el puntero entra o sale de una planta
 func _on_area_planta_1_mouse_entered():

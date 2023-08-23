@@ -13,7 +13,7 @@ func _ready():
 	position = global_transform.origin
 
 # Llamado a cada 'frame'. 'delta' es el tiempo transcurrido desde el 'frame' anterior.
-func _process(delta):
+func _process(_delta):
 	var charpos = character.position # Posición del personaje
 	var viewport_size = get_viewport_rect().size # Tamaño de la pantalla
 	var viewport_half = viewport_size * 0.5 # Mitad del tamaño de la pantalla

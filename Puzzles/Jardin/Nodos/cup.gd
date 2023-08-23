@@ -39,20 +39,20 @@ func reset():
 
 # Pone visible la imagen de la planta a agregar. Máximo 3. 
 # Si se pudo agregar se retorna true, de lo contrario false.
-func add_plant(name: String):
+func add_plant(_name: String):
 	if plants.size() == 3: # Solo se podrán agregar 3 plantas como máximo
 		return false
-	var child = main_sprite.find_child("Plant_" + name)
+	var child = main_sprite.find_child("Plant_" + _name)
 	if child:
 		child.visible = true
-		plants.append(name)
+		plants.append(_name)
 		check_btn_blend()
 		return true
 	return false
 
 # Valida y retorna true, si la planta ya está visible "agregada"
-func exists_plant(name: String):
-	return plants.find(name) >= 0
+func exists_plant(_name: String):
+	return plants.find(_name) >= 0
 
 # Oculta todas las plantas del vaso.
 func remove_all_plants():
@@ -101,7 +101,7 @@ func check_btn_blend():
 		btn_mezclar.visible = false
 
 # Muestra una vevida de un color, dependiendo de las plantas y el orden recolectado
-func show_potion(pos: Vector2):
+func show_potion(_pos: Vector2):
 	if !plants.size() == 3:
 		return
 	var r = plant_color_map[plants[0]]
@@ -110,7 +110,7 @@ func show_potion(pos: Vector2):
 	remove_all_plants() # Quitamos todas las plantas del vaso
 	brebaje.visible = true
 	brebaje.modulate = Color(r, g, b) # Seteamos color
-	self.position = pos # Seteamos posición (al centro)
+	self.position = _pos # Seteamos posición (al centro)
 	check_btn_blend() # Mostrar/Ocultar botón "mezclar"
 	btn_inventario.visible = true
 	showing_potion = true

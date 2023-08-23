@@ -9,7 +9,7 @@ extends Node2D
 #Definición del nodo Principal
 @onready var main = $CanvasLayer/Main
 #Definición del nodo Guardar/Cargar
-@onready var load = $CanvasLayer/Load
+@onready var loader = $CanvasLayer/Load
 #Definición del nodo Sobre el juego
 @onready var about = $CanvasLayer/About
 #Definición del nodo Sonidos
@@ -42,11 +42,7 @@ func _ready():
 	#Validamos si esta en pausa
 	if (!paused):
 		#Si el juego no esta en pausa escondemos el boton continuar
-		_continue.visible = false 
-
-# Función que siempre se llama
-func _process(delta):
-	pass
+		_continue.visible = false
 	
 #Redirección al mapa principal	
 func _on_map_pressed():
@@ -64,7 +60,7 @@ func _on_load_pressed():
 	about.visible = false
 	sounds.visible = false	
 	#Habilitar la opcion seleccionada
-	load.visible = true
+	loader.visible = true
 	#seteamos los estatuses de botones
 	set_buttons()
 
@@ -73,7 +69,7 @@ func _on_about_pressed():
 	#No mostrar las opciones que no se eligieron
 	main.visible = false
 	sounds.visible = false
-	load.visible = false
+	loader.visible = false
 	#Habilitar la opcion seleccionada
 	about.visible = true
 
@@ -82,7 +78,7 @@ func _on_sounds_pressed():
 	#No mostrar las opciones que no se eligieron
 	main.visible = false
 	about.visible = false
-	load.visible = false
+	loader.visible = false
 	#Habilitar la opcion seleccionada
 	sounds.visible = true
 
@@ -95,7 +91,7 @@ func _on_quit_pressed():
 func _on_back_pressed():
 	#No mostrar las opciones que no se eligieron
 	about.visible = false
-	load.visible = false
+	loader.visible = false
 	sounds.visible = false
 	#Habilitar la opcion seleccionada
 	main.visible = true
@@ -104,7 +100,7 @@ func _on_back_pressed():
 func _on_continue_pressed():
 	#No mostrar las opciones que no se eligieron
 	about.visible = false
-	load.visible = false
+	loader.visible = false
 	sounds.visible = false
 	main.visible = false
 	#Pausamos audios

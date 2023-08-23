@@ -27,7 +27,7 @@ func close_click():
 	set_visible(false)
 
 # Función que muestra/oculta el puzzle
-func _set_visible(visible: bool):
+func _set_visible(_visible: bool):
 	# Agregamos items al puzzle, según los que tengamos recolectados
 	_add_fragments_from_inventory()
 	# Texto a mostrar por defecto
@@ -50,19 +50,19 @@ func _set_visible(visible: bool):
 		is_active = false
 	
 	label.text = text # Agregamos el mensaje
-	self.visible = visible # Mostramos/Ocultamos el puzzle
+	self.visible = _visible # Mostramos/Ocultamos el puzzle
 
 # Añadimos los fragmentos recolectados desde el inventario al puzzle
 func _add_fragments_from_inventory():
-	for name in InventoryCanvas.get_item_list_names():
+	for _name in InventoryCanvas.get_item_list_names():
 		# Agregamos los items para el puzzle "vidriera", excepto los lentes
-		if name.begins_with("puzzle_vidriera/") and !name.contains("item_lentes"):
+		if _name.begins_with("puzzle_vidriera/") and !_name.contains("item_lentes"):
 			# Cargamos el recurso
-			var item = load("res://Inventory/items/" + name + ".tscn")
+			var item = load("res://Inventory/items/" + _name + ".tscn")
 			if not item:
 				return # Si no existe el recurso, se termina la función
 			# Se agrega el item si no está agregado todavía
-			if left_items_names.find(name) == -1:
+			if left_items_names.find(_name) == -1:
 				var i = item.instantiate()
 				var p = ColorRect.new()
 				p.color = Color(0, 0, 0, 0)
@@ -70,11 +70,11 @@ func _add_fragments_from_inventory():
 				p.add_child(i)
 				grid.add_child(p)
 				# Guardamos las referencias de los nodos
-				left_items_names.append(name)
+				left_items_names.append(_name)
 				left_items.append(i)
 				left_items_panes.append(p)
 				# Conectamos el evento clic a los fragmentos
-				i.pressed.connect(_click.bind(name))
+				i.pressed.connect(_click.bind(_name))
 				total_items = total_items + 1 # Sumamos en 1 los elementos recolectados
 				
 				# Agregamos un punto de referencia al centro, para rotar el item desde el centro
@@ -83,15 +83,15 @@ func _add_fragments_from_inventory():
 				i.set_rotation_degrees(270) # Agregamos rotación por defecto
 
 # Clic en un item, que está del lado izquierdo (fragmento recolectado)
-func _click(name: String):
+func _click(_name: String):
 	if !is_active:
 		return # Si no se tienen los lentes, no se podrán seleccionar objetos
 	
-	var index = left_items_names.find(name)
+	var index = left_items_names.find(_name)
 	if index >= 0:
 		# En el primer clic, colocamos como activo el item
-		if current_item_left_selected != name:
-			current_item_left_selected = name
+		if current_item_left_selected != _name:
+			current_item_left_selected = _name
 			for cr in left_items_panes:
 				cr.color = Color(0, 0, 0, 0) # Quitamos el color de "selección" de otros items
 			var p = left_items_panes[index]
@@ -105,7 +105,7 @@ func _click(name: String):
 		item.set_rotation_degrees(deg)
 
 # Clic en un área donde se mostrarán los items ya "colocados" en su sitio correcto
-func _click_event(name: String):
+func _click_event(_name: String):
 	if !is_active:
 		return # Si no se tienen los lentes, no se podrán mover objetos
 	# Si no tenemos un fragmento seleccionado, mostramos un mensajes y terminamos la función
@@ -115,14 +115,14 @@ func _click_event(name: String):
 	else:
 		# Buscamos que item tenemos selecionado
 		var index = left_items_names.find(current_item_left_selected)
-		if index >= 0 and current_item_left_selected.contains(name):
+		if index >= 0 and current_item_left_selected.contains(_name):
 			# Validamos que esté en el ángulo correcto
 			var item = left_items[index]
 			var deg = item.get_rotation_degrees()
 			if deg == 0: # El ángulo correcto debe ser 0
 				label.text = "Correcto, hemos agregado un fragmento!"
 				# Dependiendo a que area se dio clic, buscamos y hacemos visible el fragmento correcto
-				set_correct_fragment(name)
+				set_correct_fragment(_name)
 				# Luego quitamos el fragmento, del listado que está al lado izquierdo
 				var p = left_items_panes[index]
 				grid.remove_child(p)
@@ -138,14 +138,14 @@ func _click_event(name: String):
 		label.text = "No es el lugar correcto o la rotación no es correcta"
 
 # Función que pone como visible un fragmento "colocado" correctamente
-func set_correct_fragment(name: String):
-	if name == "vidrio1":
+func set_correct_fragment(_name: String):
+	if _name == "vidrio1":
 		sprites.find_child("Sprite1").visible = true
-	elif name == "vidrio2":
+	elif _name == "vidrio2":
 		sprites.find_child("Sprite2").visible = true
-	elif name == "vidrio3":
+	elif _name == "vidrio3":
 		sprites.find_child("Sprite3").visible = true
-	elif name == "vidrio4":
+	elif _name == "vidrio4":
 		sprites.find_child("Sprite4").visible = true
-	elif name == "vidrio5":
+	elif _name == "vidrio5":
 		sprites.find_child("Sprite5").visible = true

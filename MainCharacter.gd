@@ -239,7 +239,7 @@ func calc_scale():
 	sprite.set_scale(v)
 	
 # Función que se procesa con cada frame que renderiza el juego
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !character_active:
 		return # Si el personaje no está activo, no se podrá interactuar con él
 	# Cambia de animación el personaje, dependiendo de hacia donde se está moviendo
@@ -256,25 +256,25 @@ func _physics_process(delta):
 # DOCUMENTACIÓN (inventario): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 # DOCUMENTACIÓN (recolectar objetos): https://docs.google.com/document/d/1d78cYa4cTpxfz22lGvctv6T83TSj5DMwq3VMWiGAbI8/edit?usp=drive_link
 # Añada objetos al inventario del usuario
-func add_object_to_inventory(name: String):
-	inventory.emit_signal("add_object", name)
+func add_object_to_inventory(_name: String):
+	inventory.emit_signal("add_object", _name)
 
 # Función que activa items que el personaje puede vestir (como lentes, sombrero, etc)
 # Se añaden los items a un "listado de items activos", que luego por la función "process_dress_item"
 #  se mostrarán en el personaje principal
-func dress_item(name: String, active: bool):
-	var child = clothes.find_child(name)
+func dress_item(_name: String, active: bool):
+	var child = clothes.find_child(_name)
 	if !child:
 		return # Si no existe el nodo, solo terminamos la función
 
 	# Buscamos si ya existe el item en el listado de items activos
-	var index = dress_item_list.find(name) 
+	var index = dress_item_list.find(_name) 
 	var exists = index >= 0
 	
 	if active:
 		if !exists:
 			# Agregamos el item a "activo", si todavía no existe, y la variable "active" es verdadera
-			dress_item_list.append(name)
+			dress_item_list.append(_name)
 	else:
 		if exists:
 			# Quitamos el item de "activo", si existe como activo y la variable "active" es falsa
@@ -303,7 +303,7 @@ func set_character_active(active: bool):
 
 # Función para usar un "item" para el puzzle de "Jardín"
 # En este puzzle se usan bebidas, que el personaje, al "consumirlas", mostrará un texto imformativo
-func use_item(name, params):
+func use_item(_name, params):
 	var text = "Ohh, ya me siento " # Texto base
 	# Mapa de textos finales (en base a los valores del color de la bebida)
 	var mapping = {
@@ -332,7 +332,7 @@ func use_item(name, params):
 func dynamic_shader():
 	# Si no está seteado un punto de luz, solo retornamos sin sombra
 	if !light_node:
-		sprite.material.set("shader_param/opacity", 0.0)
+		#sprite.material.set("shader_param/opacity", 0.0)
 		return
 
 	# Dirección de movimiento (desde -180 grados a 180 grados (los 360 grados del círculo)
@@ -371,7 +371,7 @@ func dynamic_shader():
 	var opacity = 1 - lerp(shadow_min_value, shadow_max_value, d);
 
 	# Pasamos parámetros al "shader"
-	sprite.material.set("shader_param/deform", deform)
-	sprite.material.set("shader_param/opacity", opacity)
-	sprite.material.set("shader_param/offset", offset)
-	sprite.material.set("shader_param/flipY", !character_is_over_light)
+	#sprite.material.set("shader_param/deform", deform)
+	#sprite.material.set("shader_param/opacity", opacity)
+	#sprite.material.set("shader_param/offset", offset)
+	#sprite.material.set("shader_param/flipY", !character_is_over_light)

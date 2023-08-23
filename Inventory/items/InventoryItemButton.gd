@@ -1,6 +1,5 @@
 extends Node
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
-
 # DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 
 @export var area: Area2D # Area de colisión del item
@@ -12,7 +11,7 @@ extends Node
 @export var item_text_pickup = "Tomar" # Texto para mostrar que se puede "tomar" el item
 @export var item_path_name = "" # Ruta + nombre del nodo para cargarlo en el inventario
 #Definición del reproductor del sonido
-@onready var anim_player := $ObjectSound
+@export var anim_player: AudioStreamPlayer2D
 
 var is_character_entered = false # Indica si el personaje entró en contacto con el item
 
@@ -34,15 +33,15 @@ func click_in_escene():
 
 # DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 # Se ejecuta cuando el personaje principal se acerca al item
-func area_entered(area: Area2D):
-	if (area.name == 'mainchar_area'):
+func area_entered(_area: Area2D):
+	if (_area.name == 'mainchar_area'):
 		# Validamos que sea el personaje principal, el que entró en contacto con el item
 		is_character_entered = true # Guardamos que estamos en el área del item
 		set_tooltip() # Modificamos el tooltip del botón
 
 # Se ejecuta cuando el personaje principal se aleja del item
-func area_exited(area: Area2D):
-	if (area.name == 'mainchar_area'):
+func area_exited(_area: Area2D):
+	if (_area.name == 'mainchar_area'):
 		# Validamos que sea el personaje principal, el que salió del área de contacto con el item
 		is_character_entered = false # Guardamos que ya no estamos en el área del item
 		set_tooltip() # Modificamos el tooltip del botón
