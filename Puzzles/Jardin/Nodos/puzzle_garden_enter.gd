@@ -24,6 +24,6 @@ func _area_exited(area: Area2D):
 		is_character_entered = false
 
 # Cuando se da clic en el objeto que "muestra el puzzle"
-func _input_event(v, e: InputEvent, i):
+func _input_event(_v, e: InputEvent, _i):
 	if e.is_action_pressed("click") and is_character_entered:
 		puzzle._set_visible(true)

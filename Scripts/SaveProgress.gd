@@ -8,15 +8,6 @@ const SAVE_SCREENS_FOLDER := "screens/"
 #Ruta de carpeta para guardar los screens de escenas
 const SAVE_SCREENS_PATH := "user://" + SAVE_SCREENS_FOLDER
 
-
-# Función que se llama cuando la escena esta cargada
-func _ready():
-	pass # Replace with function body.
-
-# Función que siempre se llama
-func _process(delta):
-	pass
-
 #Inicialización de objeto inicial a guardar
 func init_object():
 	#Inisializamos objeto bacio
@@ -47,18 +38,18 @@ func add_scene(dataToSave:Dictionary, data: FileAccess):
 	return _data
 
 #Agregamos datos de sonidos
-func add_sounds(name: String, vol: float, data: FileAccess):
+func add_sounds(_name: String, vol: float, data: FileAccess):
 	#Inisializamos objeto bacio
 	var _data = init_object()
 	#Validamos si data no viene vacia
 	if (data):
 		_data = data.get_var(true)
 		#Agregamos la configuración de sonidos
-		_data.sound[name] = vol
+		_data.sound[_name] = vol
 		#Retornamos datos a guardar
 	else:
 		#Agregamos la configuración de sonidos
-		_data.sound[name] = vol
+		_data.sound[_name] = vol
 	#Retornamos datos a guardar
 	return _data
 
@@ -153,20 +144,20 @@ func save_game(dataToSave: Dictionary, img: Image) -> void:
 	_saveData(data)
 
 #Guardamos el el nivel de sonidos
-func save_sounds(name: String, vol: float) -> void:
+func save_sounds(_name: String, vol: float) -> void:
 	#Leemos el archivo donde se guardan los datos
 	var data = FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
 	#Agregamos datos de la escena al objeto de datos
-	data = add_sounds(name,vol,data)
+	data = add_sounds(_name,vol,data)
 	#Guardamos
 	_saveData(data)
 
 #Guardamos los datos de la escena activa
-func save_active_scene(name: String) -> void:
+func save_active_scene(_name: String) -> void:
 	#Leemos el archivo donde se guardan los datos
 	var data = FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
 	#Agregamos datos de la escena al objeto de datos
-	data = add_active_scene(name,data)
+	data = add_active_scene(_name,data)
 	#Guardamos
 	_saveData(data)
 

@@ -18,6 +18,6 @@ func _on_dialog_ended():
 	player.play("show")
 
 # Para mostrar el puzzle
-func _on_area_2d_input_event(viewport, event: InputEvent, shape_idx):
+func _on_area_2d_input_event(_viewport, event: InputEvent, _shape_idx):
 	if event.is_action_pressed("click"):
 		puzzle._set_visible(true)

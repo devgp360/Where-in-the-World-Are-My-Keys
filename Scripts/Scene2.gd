@@ -5,8 +5,6 @@ extends Node2D
 # DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
 # DOCUMENTACIÓN (creación de escena): https://docs.google.com/document/d/1Tvp7PKcC4kSUtQO9wKEksT_cbA4rBEMZQ-artBsu5N4/edit?usp=drive_link
 
-#Definición del nodo de inventario
-@onready var inventory:= $Inventory
 #Definición del nodo de menu
 @export var PauseMenu: PackedScene
 
@@ -45,14 +43,14 @@ func _ready():
 		#recorremos cada objeto
 		for c in collect.get_children():
 			#Obtenemos el nombre del objeto
-			var name = c.get_path_name()
+			var _name = c.get_path_name()
 			#Validamos si el nombre existe en la lista de objetos de la escena
-			if item_list.find(name) >= 0:
+			if item_list.find(_name) >= 0:
 				#ocultamos el objeto
 				c.visible = false
 
 # Función que siempre se llama
-func _process(delta):
+func _process(_delta):
 	#Levantamos el menú principal
 	if(Input.is_action_pressed("ui_cancel")):
 		#Pausamos el juego
@@ -64,23 +62,23 @@ func _process(delta):
 		get_tree().current_scene.add_child(pause)
 
 #Cuando entramos a una area predeterminada
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	#Redireccionamos a la escena 3
 	SceneTransition.change_scene("res://Scene3.tscn")
 
 # DOCUMENTACIÓN (transición de escena): https://docs.google.com/document/d/1FciThS6B4qQEBely2iCMDfkRZIzwSrZLCo2Fu8nE5LQ/edit?usp=drive_link
-func _on_area_to_scena_1_body_entered(body):
+func _on_area_to_scena_1_body_entered(_body):
 	#Redireccionamos a la escena 1
 	SceneTransition.change_scene("res://Scene1.tscn")
 
 #Seteamos los datos de la escena
-func set_level_data(level_data: Dictionary):
+func set_level_data(_level_data: Dictionary):
 	#Limpiamos el inventario
 	InventoryCanvas.remove_all_items()
 	#Seteamos datos del personaje principal
-	set_character_data(level_data.character)
+	set_character_data(_level_data.character)
 	#Seteamos datos del inventario
-	set_inventory_data(level_data)	
+	set_inventory_data(_level_data)	
 
 #Obtenemos datos de la escena
 func get_save_data():
@@ -133,11 +131,11 @@ func set_character_data(characterData: Dictionary):
 		character.dress_item(item, true)
 		
 #Seteamos datos de inventario
-func set_inventory_data(level_data: Dictionary):
+func set_inventory_data(_level_data: Dictionary):
 	#obtenemos los objetos colleccionables
 	var children = self.get_node("Collect").get_children()		
 	#Recorremos datos guardados
-	for item_saved in level_data.inventory.items:
+	for item_saved in _level_data.inventory.items:
 		#Agregamos objeto al inventario
 		InventoryCanvas.add_item_by_name(item_saved.item)
 		#Recorremos objetos colleccionables
@@ -147,9 +145,9 @@ func set_inventory_data(level_data: Dictionary):
 				item.visible = false
 				
 	#Recorremos Puzzles
-	if (level_data.has('riddles')):
+	if (_level_data.has('riddles')):
 		#Recorremos los objetos de puzzles
-		for riddle in level_data.riddles:
+		for riddle in _level_data.riddles:
 			#Validamos si el puzzle es de Maximon
 			if riddle.item == "AltarMaximon":
 				#Mostramos el Altar

@@ -13,4 +13,5 @@ func _agregar_aceite():
 
 # Cuando el puntero entra en la piedra
 func _on_piedra_grande_mouse_entered():
-	var current = InventoryCanvas.get_current_item_name_selected()
+	pass
+	#var current = InventoryCanvas.get_current_item_name_selected()

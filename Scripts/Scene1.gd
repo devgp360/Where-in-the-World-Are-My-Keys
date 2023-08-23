@@ -36,14 +36,14 @@ func _ready():
 		#recorremos cada objeto
 		for c in collect.get_children():
 			#Obtenemos el nombre del objeto
-			var name = c.get_path_name()
+			var _name = c.get_path_name()
 			#Validamos si el nombre existe en la lista de objetos de la escena
-			if item_list.find(name) >= 0:
+			if item_list.find(_name) >= 0:
 				#ocultamos el objeto
 				c.visible = false
 
 # Función que siempre se llama
-func _process(delta):
+func _process(_delta):
 	#Levantamos el menú principal
 	if(Input.is_action_pressed("ui_cancel")):
 		#Pausamos el juego
@@ -56,18 +56,18 @@ func _process(delta):
 
 # DOCUMENTACIÓN (transición de escena): https://docs.google.com/document/d/1FciThS6B4qQEBely2iCMDfkRZIzwSrZLCo2Fu8nE5LQ/edit?usp=drive_link
 #Cuando entramos a una area predeterminada
-func _on_area_2d_area_entered(area):
+func _on_area_2d_area_entered(_area):
 	#Cambio de escena
 	SceneTransition.change_scene("res://Scene2.tscn")
 
 #Seteamos los datos de la escena
-func set_level_data(level_data: Dictionary):
+func set_level_data(_level_data: Dictionary):
 	#Limpiamos el inventario
 	InventoryCanvas.remove_all_items()
 	#Seteamos datos del personaje principal
-	set_character_data(level_data.character)
+	set_character_data(_level_data.character)
 	#Seteamos datos del inventario
-	set_inventory_data(level_data)
+	set_inventory_data(_level_data)
 
 #Obtenemos datos de la escena
 func get_save_data():
@@ -107,11 +107,11 @@ func set_character_data(characterData: Dictionary):
 		character.dress_item(item, true)
 
 #Seteamos datos de inventario
-func set_inventory_data(level_data: Dictionary):
+func set_inventory_data(_level_data: Dictionary):
 	#obtenemos los objetos coleccionables
 	var children = self.get_node("Collect").get_children()		
 	#Recorremos datos guardados
-	for item_saved in level_data.inventory.items:
+	for item_saved in _level_data.inventory.items:
 		#Agregamos objeto al inventario
 		InventoryCanvas.add_item_by_name(item_saved.item)
 		#Recorremos objetos coleccionables

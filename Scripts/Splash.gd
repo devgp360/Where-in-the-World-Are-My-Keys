@@ -40,6 +40,6 @@ func _input(event):
 		go_title_screen()
 
 #Cuando termina la animación
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(_anim_name):
 	#Llamamos el la funcion de cambio de escena
 	go_title_screen()

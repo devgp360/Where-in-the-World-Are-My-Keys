@@ -33,7 +33,7 @@ func _ready():
 		item_contents.append(item) # Guardamos la referencia del nodo "marco" en un array
 
 # Función que se ejecuta en cada frame
-func _process(delta):
+func _process(_delta):
 	process_item_selected()
 
 # Función para detectar eventos del teclado o ratón
@@ -62,14 +62,14 @@ func _unhandled_input(event):
 # Función que añade un item al inventario
 # Añadir significa, cargar un elemento (escena) y agregarlo al grid
 # El nombre del item, tiene que existir como una escena
-func add_item_by_name(name: String, params = null):
+func add_item_by_name(_name: String, params = null):
 	# Si el item ya existe (ya está agregado), se termina la función
-	var index = item_object_names.find(name)
+	var index = item_object_names.find(_name)
 	if index >= 0:
 		return
 	
 	# Cargamos el recurso
-	var item_to_load = load("res://Inventory/items/" + name + ".tscn")
+	var item_to_load = load("res://Inventory/items/" + _name + ".tscn")
 	
 	# Si no existe el recurso, se termina la función
 	if not item_to_load:
@@ -80,20 +80,20 @@ func add_item_by_name(name: String, params = null):
 	var item = item_to_load.instantiate()
 	var item_content = item_contents[index]
 	item_content.add_child(item)
-	item_object_names.append(name);
+	item_object_names.append(_name);
 	item_objects.append(item)
-	item.pressed.connect(_pressed.bind(name))
+	item.pressed.connect(_pressed.bind(_name))
 	# Algunos objetos, pueden tener un método para agregarle parámetros
 	if item.has_method("add_params") and params:
-		item.add_params(name, params) # Pasamos parámetros cuando creamos el objeto
+		item.add_params(_name, params) # Pasamos parámetros cuando creamos el objeto
 
 # DOCUMENTACIÓN (gestión de memoria): https://docs.google.com/document/d/1diS6YOpBhLUTI9tk7YTZcH5Ha64bXg9u-PVhBXfOEz4/edit#heading=h.e2j6ax5ma83s
 # Se elimina un elemento del iventario
 # Eliminar significa, buscar el "nodo" y eliminarlo del grid principal
 # Al eliminar el nodo, todos los demás nodos posteriores, se moverán "hacia atrás"
 #  para evitar dejar "espacios vacíos"
-func remove_item_by_name(name: String):
-	var index = item_object_names.find(name)
+func remove_item_by_name(_name: String):
+	var index = item_object_names.find(_name)
 	if index >= 0:
 		var item_content = item_contents[index] # Nodo que es un "cuadro" contenedor del item recolectado
 		var item = item_objects[index] # Nodo que tiene el item recolectado
@@ -134,12 +134,12 @@ func get_dressed_item_list():
 	return dressed_item_list
 
 # Devuelve "true", si un item está siendo "vestido" por el personaje principal
-func is_wearing(name: String):
-	return dressed_item_list.find(name) >= 0
+func is_wearing(_name: String):
+	return dressed_item_list.find(_name) >= 0
 
 # Función "clic" para cada elemento del inventario
-func _pressed(name: String):
-	check_press_item_puzzle_jardin(name) # Validar clic en items de puzzle "Jardín"
+func _pressed(_name: String):
+	check_press_item_puzzle_jardin(_name) # Validar clic en items de puzzle "Jardín"
 	# Cargamos el nodo principal de la escena. Si no existe, se termina la función
 	var escena1 = get_tree().get_root().get_node("Main")
 	if !escena1:
@@ -156,11 +156,11 @@ func _pressed(name: String):
 			dressed_item_list.append("glasses")
 
 # Función especial para validar si se da clic en un item del puzzle de "Jardín"
-func check_press_item_puzzle_jardin(name: String):
-	if !name.begins_with("puzzle_jardin/"): # Si no es item de "jardín" terminamos la función
+func check_press_item_puzzle_jardin(_name: String):
+	if !_name.begins_with("puzzle_jardin/"): # Si no es item de "jardín" terminamos la función
 		return
 	# Validamos que sea el iten de "brebaje"
-	if name.ends_with("/item_brebaje_1"):
+	if _name.ends_with("/item_brebaje_1"):
 		# Cargamos nodo principal (o se retorna de no existir)
 		var escena1 = get_tree().get_root().get_node("Main")
 		if !escena1:
@@ -170,7 +170,7 @@ func check_press_item_puzzle_jardin(name: String):
 		if !character:
 			return
 		var params = null
-		var index = item_object_names.find(name)
+		var index = item_object_names.find(_name)
 		var item = item_objects[index]
 		# Buscamos parámetros del item (si existen)
 		if item.has_method("get_params"):
@@ -180,27 +180,27 @@ func check_press_item_puzzle_jardin(name: String):
 		await animation_player.animation_finished
 		canvas.visible = false
 		# Al usar el "brebaje", lo eliminamos del inventario
-		remove_item_by_name(name)
+		remove_item_by_name(_name)
 		# Le "comunicamos" al personaje que use el item "clicado"
-		character.use_item(name, params)
+		character.use_item(_name, params)
 
 # Función que servirá para seleccionar un item a usar (sobre otro item)
-func select_item_to_use(name: String, select: bool):
+func select_item_to_use(_name: String, select: bool):
 	# Quitar el item seleccionado
 	if !select && current_item_selected:
 		remove_selected_item()
 	# Si ya está seleccionado el item, solo terminamos la función
-	if current_item_name_selected == name:
+	if current_item_name_selected == _name:
 		return
 	# Cargamos el nuevo item
-	var item_to_load = load("res://Inventory/items/" + name + ".tscn")
+	var item_to_load = load("res://Inventory/items/" + _name + ".tscn")
 	if not item_to_load: # Si no existe el recurso, se termina la función
 		return
 	var escena = get_tree().get_root().get_node("Main")
 	if escena:
 		remove_selected_item() # Removemos cualquier item que pueda existir previamente
 		var item = item_to_load.instantiate()
-		var index = item_object_names.find(name)
+		var index = item_object_names.find(_name)
 		var params = null
 		if item_objects[index].has_method("get_params"):
 			params = item_objects[index].get_params()
@@ -208,10 +208,10 @@ func select_item_to_use(name: String, select: bool):
 		# - Falta implementación
 		escena.add_child(item)
 		current_item_selected = item
-		current_item_name_selected = name
+		current_item_name_selected = _name
 		# Agregamos los parámetros del item (si tiene)
 		if item.has_method("add_params") and params:
-			item.add_params(name, params)
+			item.add_params(_name, params)
 		if item.has_method("set_item_selected"):
 			item.set_item_selected()
 

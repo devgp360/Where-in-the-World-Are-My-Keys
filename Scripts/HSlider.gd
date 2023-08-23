@@ -16,14 +16,10 @@ func _ready():
 	value_changed.connect(_on_value_changed)
 
 # Función que se llama cuando se hace el cambio del valor de volumen del sonido
-func _on_value_changed(value:float) -> void:
+func _on_value_changed(_value:float) -> void:
 	#Seteamos el nivel del sonido
-	AudioServer.set_bus_volume_db(bus_index,linear_to_db(value))
+	AudioServer.set_bus_volume_db(bus_index,linear_to_db(_value))
 	#guardamos el nivel del sonido
-	SaveProgress.save_sounds(bus_name, value)
+	SaveProgress.save_sounds(bus_name, _value)
 	#Seteamos la variable global del sonido
-	Global[bus_name + "Vol"] = value
-	
-# Función que siempre se llama
-func _process(delta):
-	pass
+	Global[bus_name + "Vol"] = _value

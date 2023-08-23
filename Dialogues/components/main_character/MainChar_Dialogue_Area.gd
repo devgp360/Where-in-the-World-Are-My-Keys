@@ -32,7 +32,7 @@ func show_dialogue():
 
 # DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 # Cuando puntero sale del área de diálogo
-func area_exited(area):
+func area_exited(_area):
 	#Resetar el dialogo
 	npc_dialogue_node = null
 

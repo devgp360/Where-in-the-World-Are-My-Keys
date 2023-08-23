@@ -91,14 +91,14 @@ func add_area_events():
 	for sprite in [ SpriteVelaRoja, SpriteVelaCeleste, SpriteVelaAzul, SpriteCigarro, SpriteSombrero ]:
 		# Recorremos cada objeto y buscamos su área de colisión
 		var area = sprite.find_child("Area2D")
-		var name = "Area" + sprite.name
+		var _name = "Area" + sprite.name
 		# Luego añadimos los eventos de entrar/salir para el cursor
-		area.mouse_entered.connect(mouse_entered.bind(name))
+		area.mouse_entered.connect(mouse_entered.bind(_name))
 		area.mouse_exited.connect(mouse_exited)
 
 # Función que asigna un área activa (para saber a que objeto dimos clic)
-func mouse_entered(name: String):
-	area_active = name
+func mouse_entered(_name: String):
+	area_active = _name
 
 # Función que desasigna un área activa
 func mouse_exited():
@@ -176,9 +176,9 @@ func mess_objects():
 
 # Busca en qué area se encuentra un objeto. Por ejemplo el objeto "Sombrero" se puede encontrar
 # en el área llamada "AreaAuxiliar"
-func get_content_area_object(name: String):
+func get_content_area_object(_name: String):
 	for area_name in position_objects_map:
-		if position_objects_map[area_name] == name:
+		if position_objects_map[area_name] == _name:
 			return area_name
 	return ""
 
@@ -199,9 +199,9 @@ func get_correct_count():
 	return all_correct
 
 # Muestra/oculta el puzzle
-func _set_visible(visible: bool):
-	canvas.visible = visible
-	character.set_character_active(!visible)
+func _set_visible(_visible: bool):
+	canvas.visible = _visible
+	character.set_character_active(!_visible)
 
 # Acción de ocultar el puzzle, al presionar el botón de cerrar
 func _on_close_button_pressed():

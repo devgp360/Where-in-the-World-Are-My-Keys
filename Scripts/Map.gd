@@ -16,7 +16,7 @@ func _ready():
 	set_audio()
 
 # Función que siempre se llama
-func _process(delta):
+func _process(_delta):
 	#Validamos si presionamos el boton Escape
 	if(Input.is_action_pressed("ui_cancel")):
 		#Pausamos el juego

@@ -27,22 +27,22 @@ var count_test = 1
 func _ready():
 	npc_dialogue_area = find_child("NPC_Dialogue_Area") # Buscamos el area de diálogo
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	#Iniciamos la animacion del NPC
 	anim.play("idle1")
 	#print("procesando físicas NPC: ", count_test)
 	count_test += 1
 
 # DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
-func _on_npc_1_area_area_exited(area):
+func _on_npc_1_area_area_exited(_area):
 	#Seteamos variable del dialogo a false al abandonar el area
 	dialog_active = false
 	#Emitimos señal de finalización de dialogo al abandonar el area
 	mainchar.emit_signal("end_conversation")
 
-func _on_npc_1_area_area_entered(name):
+func _on_npc_1_area_area_entered(_area):
 	#validamos si NPC interactua con la ventana del inventario
-	if name.name != "Area2D":
+	if _area.name != "Area2D":
 		#Reproducimos el audio
 		sound.play()
 
