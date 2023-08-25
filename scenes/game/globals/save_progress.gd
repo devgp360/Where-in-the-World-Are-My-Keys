@@ -8,6 +8,7 @@ const SAVE_SCREENS_FOLDER := "screens/"
 #Ruta de carpeta para guardar los screens de escenas
 const SAVE_SCREENS_PATH := "user://" + SAVE_SCREENS_FOLDER
 
+
 #Inicialización de objeto inicial a guardar
 func init_object():
 	#Inisializamos objeto bacio
@@ -21,6 +22,8 @@ func init_object():
 		'activeScene': ["Panajachel"],
 		"items": []
 	}
+
+
 #Agregamos datos de escenas
 func add_scene(dataToSave:Dictionary, data: FileAccess):
 	#Inisializamos objeto bacio
@@ -37,6 +40,7 @@ func add_scene(dataToSave:Dictionary, data: FileAccess):
 	#Retornamos datos a guardar
 	return _data
 
+
 #Agregamos datos de sonidos
 func add_sounds(_name: String, vol: float, data: FileAccess):
 	#Inisializamos objeto bacio
@@ -52,6 +56,7 @@ func add_sounds(_name: String, vol: float, data: FileAccess):
 		_data.sound[_name] = vol
 	#Retornamos datos a guardar
 	return _data
+
 
 #Agregamos datos de la escena activa
 func add_active_scene(scene:String, data: FileAccess):
@@ -84,6 +89,7 @@ func add_active_scene(scene:String, data: FileAccess):
 	#Retornamos datos a guardar
 	return _data
 
+
 #Eliminamos la escena guardada
 func remove_saved(id:String, data: FileAccess):
 	#Validamos si data no viene vacia
@@ -107,6 +113,7 @@ func remove_saved(id:String, data: FileAccess):
 	else:
 		#Retornamos 
 		return data
+
 
 #Sobreescribimos escenas guardadas
 func overwrite_saved(id:String, dataToSave:Dictionary, data: FileAccess, img: Image):
@@ -132,6 +139,7 @@ func overwrite_saved(id:String, dataToSave:Dictionary, data: FileAccess, img: Im
 		#Retornamos 
 		save_game(dataToSave, img)
 
+
 #Guardamos el avance
 func save_game(dataToSave: Dictionary, img: Image) -> void:
 	#Preparamos datos a guardar
@@ -143,6 +151,7 @@ func save_game(dataToSave: Dictionary, img: Image) -> void:
 	#Guardamos
 	_saveData(data)
 
+
 #Guardamos el el nivel de sonidos
 func save_sounds(_name: String, vol: float) -> void:
 	#Leemos el archivo donde se guardan los datos
@@ -152,6 +161,7 @@ func save_sounds(_name: String, vol: float) -> void:
 	#Guardamos
 	_saveData(data)
 
+
 #Guardamos los datos de la escena activa
 func save_active_scene(_name: String) -> void:
 	#Leemos el archivo donde se guardan los datos
@@ -160,6 +170,7 @@ func save_active_scene(_name: String) -> void:
 	data = add_active_scene(_name,data)
 	#Guardamos
 	_saveData(data)
+
 
 #Cargamos el avance guardado
 func load_game():
@@ -181,6 +192,7 @@ func load_game():
 	#Retornamos
 	return null
 
+
 #Eliminamos el avance
 func remove(id: String) -> void:
 	#Eliminamos el archivo de screenshot
@@ -191,6 +203,7 @@ func remove(id: String) -> void:
 	data = remove_saved(id, data)
 	#Guardamos
 	_saveData(data)
+
 
 #Sobreescribimos el avance
 func overwrite(id: String, dataToSave: Dictionary, img: Image) -> void:
@@ -205,6 +218,7 @@ func overwrite(id: String, dataToSave: Dictionary, img: Image) -> void:
 	#Guardamos
 	_saveData(data)
 
+
 #Guardamos el avance del juego
 func _saveData(data: Dictionary) -> void:
 	#Inicializamos el archivo para guardar datos
@@ -213,6 +227,7 @@ func _saveData(data: Dictionary) -> void:
 	file.store_var(data,true)
 	# Cerramos el acrivo
 	file.close()
+
 
 #Obtenemos el avance de luz
 func get_saved_data(sceneId: String):
@@ -234,6 +249,7 @@ func get_saved_data(sceneId: String):
 	#Retornamos
 	return null
 
+
 #Buscamos los datos de la escena
 func find_scene_data(sceneId: String, data: Dictionary):
 	#Validamos si datos existen
@@ -247,7 +263,8 @@ func find_scene_data(sceneId: String, data: Dictionary):
 		return data_to_return
 	# Cerramos el acrivo
 	return null
-	
+
+
 #Validamos si no esxiste la carpeta, creamos la carpeta
 func validate_dir():
 	#Tratamos de acceder a la carpeta
@@ -257,6 +274,7 @@ func validate_dir():
 		#Creamos la carpeta si no existe
 		dir.make_dir(SAVE_SCREENS_FOLDER)
 
+
 #Guardamos el screenshot
 func save_screen(id: String, img: Image):
 	#Validamos si existe carpeta para screens
@@ -265,7 +283,8 @@ func save_screen(id: String, img: Image):
 	var path = SAVE_SCREENS_PATH + (id + ".jpg").replace(" ", "_").replace(":", "_")
 	#Guardamos el scrreenshot
 	img.save_jpg(path)
-	
+
+
 #Eliminamos el screenshot 
 func remove_screenshort(id:String):
 	#Creamos la ruta de la imagen
