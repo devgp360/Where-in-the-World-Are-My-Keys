@@ -7,38 +7,21 @@ extends CanvasLayer
 # DOCUMENTACIÓN TOOLTIPS PARA DIÁLOGOS CON NPCS: https://docs.google.com/document/d/15bKBdC0nMawhdyuVRRfcZbFD7D59Lb8HhKiGBY70FL0
 # DOCUMENTACIÓN ¿QUÉ SON LAS SEÑALES EN GDSCRIPT?: https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo
 
+# Señal de finalizacion de diálogo
+signal dialogue_ended()
+
 #Exportamos plantilla de respuestas
 @export var response_template: Node
 #Variable para setear el sufijo de archivos
 @export var file_suffix: String = ""
 
-#Definici[on del dialogo
-@onready var balloon: ColorRect = $Balloon
-#Definición del nodo de margin
-@onready var margin: MarginContainer = $Balloon/Margin
-#Definición del nodo del avatar
-@onready var character_portrait: Sprite2D = $Balloon/Margin/HBox/Portrate/Sprite2D
-#Definición del nodo del nombre del personaje
-@onready var character_label: RichTextLabel = $Balloon/Margin/HBox/VBox/CharacterLabel
-#Definición del nodo del diálogo
-@onready var dialogue_label := $Balloon/Margin/HBox/VBox/DialogueLabel
-#Definición del nodo de respuestas
-@onready var responses_menu: VBoxContainer = $Balloon/Margin/HBox/VBox/Responses
-#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
-
-## Recurso del diálogo
+# Recurso del diálogo
 var resource: DialogueResource
-
-## Estados del juego temporal
+# Estados del juego temporal
 var temporary_game_states: Array = []
-
-## Variable que valida si estamos esperando la respuesta del jugador
+# Variable que valida si estamos esperando la respuesta del jugador
 var is_waiting_for_input: bool = false
-
-#Señal de finalizacion de diálogo
-signal dialogue_ended()
-
-## Hilo del dialogo
+# Hilo del dialogo
 var dialogue_line: DialogueLine:
 	#Creamos la linea del dialogo
 	set(next_dialogue_line):
@@ -111,6 +94,21 @@ var dialogue_line: DialogueLine:
 		#Retornamos la linea del diálogo
 		return dialogue_line
 
+#Definici[on del dialogo
+@onready var balloon: ColorRect = $Balloon
+#Definición del nodo de margin
+@onready var margin: MarginContainer = $Balloon/Margin
+#Definición del nodo del avatar
+@onready var character_portrait: Sprite2D = $Balloon/Margin/HBox/Portrate/Sprite2D
+#Definición del nodo del nombre del personaje
+@onready var character_label: RichTextLabel = $Balloon/Margin/HBox/VBox/CharacterLabel
+#Definición del nodo del diálogo
+@onready var dialogue_label := $Balloon/Margin/HBox/VBox/DialogueLabel
+#Definición del nodo de respuestas
+@onready var responses_menu: VBoxContainer = $Balloon/Margin/HBox/VBox/Responses
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+
+
 # Función que se llama cuando la escena esta cargada
 func _ready() -> void:
 	#Escondemos el giálogo
@@ -118,11 +116,13 @@ func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
+
 func _unhandled_input(_event: InputEvent) -> void:
 	#Seteamos que el diálogo reciba las respuestas del jugador
 	get_viewport().set_input_as_handled()
 
-## Iniciamos el diálogo
+
+# Iniciamos el diálogo
 func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
 	temporary_game_states = extra_game_states
 	is_waiting_for_input = false
@@ -131,11 +131,12 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
 
 
-## Go to the next line
+# Go to the next line
 func next(next_id: String) -> void:
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
 
-#Escuchamos los botones y señales de respuestas
+
+# Escuchamos los botones y señales de respuestas
 func configure_menu() -> void:
 	balloon.focus_mode = Control.FOCUS_NONE
 	
@@ -167,7 +168,8 @@ func configure_menu() -> void:
 	
 	items[0].grab_focus()
 
-#Obtenemos la lista de respuestas disponibles
+
+# Obtenemos la lista de respuestas disponibles
 func get_responses() -> Array:
 	var items: Array = []
 	for child in responses_menu.get_children():
@@ -176,7 +178,8 @@ func get_responses() -> Array:
 		
 	return items
 
-#Ajustamos el tamaño del dialogo
+
+# Ajustamos el tamaño del dialogo
 func handle_resize() -> void:
 	if not is_instance_valid(margin):
 		call_deferred("handle_resize")
@@ -187,18 +190,21 @@ func handle_resize() -> void:
 	var viewport_size = balloon.get_viewport_rect().size
 	balloon.global_position = Vector2((viewport_size.x - balloon.size.x) * 0.5, viewport_size.y - balloon.size.y)
 
-#Escondemos el diálogo
+
+# Escondemos el diálogo
 func _on_mutated(_mutation: Dictionary) -> void:
 	is_waiting_for_input = false
 	balloon.hide()
 
-#Escuchamos cuando el raton entra al area de respuestas
+
+# Escuchamos cuando el raton entra al area de respuestas
 func _on_response_mouse_entered(item: Control) -> void:
 	if "Disallowed" in item.name: return
 	
 	item.grab_focus()
 
-#Seteamos las respuestas elegidas
+
+# Seteamos las respuestas elegidas
 func _on_response_gui_input(event: InputEvent, item: Control) -> void:
 	if "Disallowed" in item.name: return
 	#Pasamos a la siguiente linea de diálogo
@@ -207,7 +213,8 @@ func _on_response_gui_input(event: InputEvent, item: Control) -> void:
 	elif event.is_action_pressed("ui_accept") and item in get_responses():
 		next(dialogue_line.responses[item.get_index()].next_id)
 
-#Seteamos las siguientes lineas de dialogos
+
+# Seteamos las siguientes lineas de dialogos
 func _on_balloon_gui_input(event: InputEvent) -> void:
 	if not is_waiting_for_input: return
 	#Salimos si no hay mas texto
@@ -223,9 +230,11 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("ui_accept") and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
 
-#Si cambia la reslución recalculamos el tamaño del dialogo
+
+# Si cambia la reslución recalculamos el tamaño del dialogo
 func _on_margin_resized() -> void:
 	handle_resize()
+
 
 #Conectamos la finalización del dialogo
 func _add_dialogue_ended(fn):
