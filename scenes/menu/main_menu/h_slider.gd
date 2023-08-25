@@ -1,8 +1,10 @@
 extends HSlider
+
 #Exportamos el nombre tipo de sonido
 @export var bus_name: String
 
 var bus_index: int
+
 
 # Función que se llama cuando la escena esta cargada
 func _ready():
@@ -14,6 +16,7 @@ func _ready():
 	value = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
 	#Conectamos el evento change del slider
 	value_changed.connect(_on_value_changed)
+
 
 # Función que se llama cuando se hace el cambio del valor de volumen del sonido
 func _on_value_changed(_value:float) -> void:
