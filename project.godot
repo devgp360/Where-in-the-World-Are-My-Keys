@@ -11,21 +11,21 @@ config_version=5
 [application]
 
 config/name="Where in the world are my keys?"
-run/main_scene="res://Splash.tscn"
+run/main_scene="res://scenes/menu/splash/splash.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.png"
+config/icon="res://assets/sprites/icon.png"
 
 [audio]
 
-buses/default_bus_layout="res://Config/Sounds.tres"
+buses/default_bus_layout="res://scenes/config/sounds.tres"
 
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-InventoryCanvas="*res://Inventory/canvas/InventoryCanvas.tscn"
-SceneTransition="*res://Transitions/scene_transition.tscn"
-SaveProgress="*res://Scripts/SaveProgress.gd"
-Global="*res://Scripts/Global.gd"
+InventoryCanvas="*res://scenes/game/inventory/canvas/inventory_canvas.tscn"
+SceneTransition="*res://scenes/menu/scene_transition/scene_transition.tscn"
+SaveProgress="*res://scenes/game/globals/save_progress.gd"
+Global="*res://scenes/game/globals/global.gd"
 
 [display]
 
@@ -60,7 +60,7 @@ pause={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogues/main.dialogue", "res://Dialogues/main.dialogue", "res://Dialogues/dialogues/escene1/npc1.dialogue", "res://Dialogues/dialogues/escena2/npc_maximon.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogues/main.dialogue", "res://Dialogues/main.dialogue")
 
 [layer_names]
 

@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7rj8l1bm547p"]
-
-[ext_resource type="Script" path="res://Dialogues/components/npc/NPC_Dialogue_Area.gd" id="1_knr07"]
-[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://Dialogues/Balloon/balloon.tscn" id="2_5vw3w"]
-
-[node name="NPC_Dialogue_Area" type="Node2D"]
-script = ExtResource("1_knr07")
-Balloon = ExtResource("2_5vw3w")

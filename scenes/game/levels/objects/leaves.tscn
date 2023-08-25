@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://djectoi1kxudv"]
+
+[ext_resource type="Texture2D" uid="uid://cngeqoa5iqxd0" path="res://assets/sprites/misc/leaves.png" id="1_le0is"]
+
+[node name="Table" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -35)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_le0is")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-158, -182)
+polygon = PackedVector2Array(70, 180, 244, 253, 244, 233, 221, 223, 227, 209, 176, 184, 71, 144)

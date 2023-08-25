@@ -1,0 +1,148 @@
+[gd_scene load_steps=22 format=3 uid="uid://upllmqlhdam1"]
+
+[ext_resource type="Texture2D" uid="uid://bag6tqwmlaakq" path="res://assets/sprites/scenes/scene_1/bg1.jpg" id="1_dbimm"]
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/scene_1.gd" id="1_wyjy5"]
+[ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character/main_character.tscn" id="2_5iij1"]
+[ext_resource type="PackedScene" uid="uid://d4f7fxjs2wh7n" path="res://scenes/menu/main_menu/main_menu.tscn" id="2_be106"]
+[ext_resource type="PackedScene" uid="uid://yq2t8fnnvfnk" path="res://scenes/game/levels/objects/table.tscn" id="4_wu6kq"]
+[ext_resource type="PackedScene" uid="uid://djectoi1kxudv" path="res://scenes/game/levels/objects/leaves.tscn" id="5_4dufo"]
+[ext_resource type="PackedScene" uid="uid://dmta172vvldus" path="res://scenes/game/levels/objects/bottom.tscn" id="6_kgw1f"]
+[ext_resource type="PackedScene" uid="uid://d2as70dpmvym7" path="res://scenes/game/levels/objects/top.tscn" id="7_js1el"]
+[ext_resource type="PackedScene" uid="uid://cj1s30j354pt0" path="res://scenes/game/character/npc_1/npc_1.tscn" id="8_wj8yp"]
+[ext_resource type="PackedScene" uid="uid://dobibts8hysig" path="res://scenes/game/inventory/items/puzzle_vidriera/item_vidrio3.tscn" id="11_bond4"]
+[ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://scenes/game/levels/camera/camera.tscn" id="11_ifjqy"]
+[ext_resource type="AudioStream" uid="uid://dpavsjbuqixw5" path="res://assets/sounds/scene_1.mp3" id="12_do1m1"]
+[ext_resource type="PackedScene" uid="uid://b763ty05xjuo2" path="res://scenes/game/inventory/items/puzzle_vidriera/item_lentes.tscn" id="12_sqpca"]
+[ext_resource type="PackedScene" uid="uid://ck5lebkhby0h2" path="res://scenes/game/puzzles/vidriera/nodos/puzzle_vidriera.tscn" id="14_elguw"]
+[ext_resource type="PackedScene" uid="uid://x3mpmfaijdid" path="res://scenes/game/puzzles/vidriera/nodos/puzzle_vidriera_enter.tscn" id="15_ebymt"]
+[ext_resource type="PackedScene" uid="uid://cn7ty6d8n37s8" path="res://scenes/game/puzzles/Jardin/Nodos/puzzle_garden.tscn" id="16_epc8q"]
+[ext_resource type="PackedScene" uid="uid://chke83x5iabr2" path="res://scenes/game/puzzles/Jardin/Nodos/puzzle_garden_enter.tscn" id="17_w1ooa"]
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/frustum_culling.gd" id="18_rrer2"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_sxo74"]
+vertices = PackedVector2Array(826, 303, 830, 257, 916, 252, 978, 259, 1032, 288, 1015, 316, 1003, 332, 891, 351, 40, 372, 28, 392, 20, 248, 58, 273, 1381, 363, 1382, 483, 1344, 428, 1327, 354, 1315, 332, 1272, 321, 1164, 282, 1116, 276, 1151, 303, 1109, 281, 114, 300, 140, 275, 145, 306, 116, 364, 260, 240, 224, 223, 256, 202, 286, 218, 1045, 258, 871, 215, 904, 223, 841, 220, 823, 205, 798, 226, 798, 185, 397, 10, 394, 0, 674, -2, 432, 38, 591, 287, 491, 137, 693, 12, 748, 90, 776, 140, 673, 228, 1288, 475, 1102, 609, 1165, 483, 1012, 495, 1093, 461, 986, 565, 954, 545, 895, 441, 841, 494, 545, 596, 573, 605, 581, 615, 568, 624, 545, 633, 505, 641, 179, 326, 272, 435, 243, 329, 463, 455, 668, 318, 750, 347, 869, 416, 712, 474, 651, 462, 545, 421, 438, 303, 455, 284, 575, 302, 819, 185, 751, 210, 512, 567, 317, 562, 471, 555, 462, 502, 309, 542, 282, 472, 276, 529, 343, 262, 271, 293, 326, 236, 398, 284, 413, 301, 485, 286, 509, 262, 530, 268, 543, 281, 659, 259)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 12, 15, 17), PackedInt32Array(18, 16, 17), PackedInt32Array(19, 18, 17, 20, 21), PackedInt32Array(22, 23, 24, 25), PackedInt32Array(26, 27, 28, 29), PackedInt32Array(30, 19, 21, 4, 3), PackedInt32Array(31, 32, 2, 1, 33), PackedInt32Array(34, 33, 1, 35, 36), PackedInt32Array(25, 8, 11, 22), PackedInt32Array(37, 38, 39, 40), PackedInt32Array(41, 42, 40, 39, 43, 44, 45, 46), PackedInt32Array(47, 14, 13), PackedInt32Array(47, 13, 48, 49), PackedInt32Array(50, 51, 49, 48, 52, 53), PackedInt32Array(54, 50, 53, 55), PackedInt32Array(56, 57, 58, 59, 60, 61), PackedInt32Array(25, 24, 62, 63), PackedInt32Array(63, 62, 64, 65), PackedInt32Array(66, 67, 68, 54, 55, 69, 70, 71, 72, 73, 74), PackedInt32Array(36, 75, 34), PackedInt32Array(36, 35, 76, 45), PackedInt32Array(77, 56, 61, 78, 79), PackedInt32Array(80, 79, 78, 81, 82), PackedInt32Array(81, 83, 82), PackedInt32Array(65, 80, 82, 63), PackedInt32Array(0, 7, 68, 67), PackedInt32Array(84, 65, 64, 85, 86), PackedInt32Array(26, 29, 86, 85), PackedInt32Array(65, 84, 87, 88), PackedInt32Array(65, 88, 72, 71), PackedInt32Array(89, 90, 91, 92), PackedInt32Array(45, 76, 46), PackedInt32Array(41, 46, 93), PackedInt32Array(41, 93, 66, 74), PackedInt32Array(74, 73, 89), PackedInt32Array(74, 89, 92)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(397, 10, 432, 38, 491, 137, 591, 287, 575, 302, 543, 281, 530, 268, 509, 262, 485, 286, 455, 284, 438, 303, 413, 301, 398, 284, 343, 262, 326, 236, 286, 218, 256, 202, 224, 223, 260, 240, 271, 293, 243, 329, 179, 326, 145, 306, 140, 275, 114, 300, 58, 273, 20, 248, 28, 392, 40, 372, 116, 364, 272, 435, 282, 472, 276, 529, 309, 542, 317, 562, 505, 641, 545, 633, 568, 624, 581, 615, 573, 605, 545, 596, 512, 567, 471, 555, 462, 502, 463, 455, 545, 421, 651, 462, 712, 474, 841, 494, 954, 545, 986, 565, 1102, 609, 1382, 483, 1381, 363, 1315, 332, 1164, 282, 1116, 276, 1045, 258, 978, 259, 916, 252, 904, 223, 871, 215, 841, 220, 823, 205, 819, 185, 798, 185, 776, 140, 748, 90, 693, 12, 674, -2, 394, 0), PackedVector2Array(673, 228, 659, 259, 668, 318, 750, 347, 826, 303, 830, 257, 798, 226, 751, 210), PackedVector2Array(891, 351, 869, 416, 895, 441, 1012, 495, 1093, 461, 1165, 483, 1288, 475, 1344, 428, 1327, 354, 1272, 321, 1151, 303, 1109, 281, 1032, 288, 1015, 316, 1003, 332)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2j5c"]
+size = Vector2(299, 27.5359)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsd2w"]
+size = Vector2(112, 90.6758)
+
+[node name="Main" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_wyjy5")
+PauseMenu = ExtResource("2_be106")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(1.26953, 1.26953)
+texture = ExtResource("1_dbimm")
+
+[node name="Collect" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ItemVidrio3" parent="Collect" instance=ExtResource("11_bond4")]
+y_sort_enabled = true
+offset_left = -412.0
+offset_top = 161.0
+offset_right = -332.0
+offset_bottom = 241.0
+scale = Vector2(0.5, 0.5)
+
+[node name="ItemLentes" parent="Collect" instance=ExtResource("12_sqpca")]
+y_sort_enabled = true
+offset_left = 146.0
+offset_top = -216.0
+offset_right = 226.0
+offset_bottom = -136.0
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-699, -321)
+navigation_polygon = SubResource("NavigationPolygon_sxo74")
+
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-691, -322)
+
+[node name="Table" parent="Node2D" instance=ExtResource("4_wu6kq")]
+position = Vector2(747, 320)
+scale = Vector2(1.65, 1.65)
+
+[node name="Leaves" parent="Node2D" instance=ExtResource("5_4dufo")]
+position = Vector2(144, 467)
+scale = Vector2(1.65, 1.65)
+
+[node name="Bottom" parent="Node2D" instance=ExtResource("6_kgw1f")]
+position = Vector2(936, 568)
+scale = Vector2(1.7, 1.65)
+
+[node name="Top" parent="Node2D" instance=ExtResource("7_js1el")]
+position = Vector2(1109, 427)
+scale = Vector2(1.7, 1.65)
+
+[node name="MainCharacter" parent="." instance=ExtResource("2_5iij1")]
+position = Vector2(-368, 4)
+active_fake_z_axis = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-145, -311)
+rotation = -0.0523599
+shape = SubResource("RectangleShape2D_c2j5c")
+
+[node name="NPC1" parent="." node_paths=PackedStringArray("mainchar") instance=ExtResource("8_wj8yp")]
+y_sort_enabled = true
+position = Vector2(468, 143)
+mainchar = NodePath("../MainCharacter")
+
+[node name="Camera" parent="." node_paths=PackedStringArray("character") instance=ExtResource("11_ifjqy")]
+position = Vector2(-1, 0)
+zoom = Vector2(1.5, 1.5)
+limit_left = -690
+limit_top = -400
+limit_right = 690
+limit_bottom = 400
+editor_draw_limits = true
+character = NodePath("../MainCharacter")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 1
+stream = ExtResource("12_do1m1")
+autoplay = true
+bus = &"music"
+
+[node name="PuzzleVidriera" parent="." instance=ExtResource("14_elguw")]
+visible = false
+
+[node name="PuzzleVidrieraEnter" parent="." node_paths=PackedStringArray("puzzle") instance=ExtResource("15_ebymt")]
+puzzle = NodePath("../PuzzleVidriera")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleVidrieraEnter"]
+position = Vector2(-348.526, -176.008)
+rotation = 0.293215
+shape = SubResource("RectangleShape2D_nsd2w")
+
+[node name="Puzzle__Jardin" type="Node2D" parent="."]
+
+[node name="Puzzle_garden" parent="Puzzle__Jardin" instance=ExtResource("16_epc8q")]
+
+[node name="puzzle_garden_enter" parent="Puzzle__Jardin" node_paths=PackedStringArray("puzzle") instance=ExtResource("17_w1ooa")]
+puzzle = NodePath("../Puzzle_garden")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Puzzle__Jardin/puzzle_garden_enter"]
+polygon = PackedVector2Array(-657, -116, -584, -62, -473, -126, -496, -212, -598, -250, -654, -192)
+
+[node name="FrustumCulling" type="Node2D" parent="." node_paths=PackedStringArray("screenNotifier", "nodes")]
+script = ExtResource("18_rrer2")
+screenNotifier = NodePath("VisibleOnScreenNotifier2D")
+nodes = [NodePath("../NPC1")]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="FrustumCulling"]
+position = Vector2(465, 152)
+scale = Vector2(10.75, 9.7)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

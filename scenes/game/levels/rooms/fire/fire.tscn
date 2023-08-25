@@ -1,0 +1,226 @@
+[gd_scene load_steps=18 format=3 uid="uid://uml5cughx4v7"]
+
+[ext_resource type="Texture2D" uid="uid://dotjr8wdaqrti" path="res://assets/sprites/scenes/fire/cocina.png" id="1_tk8xb"]
+[ext_resource type="Texture2D" uid="uid://c4tt3hsybb32k" path="res://assets/sprites/scenes/fire/Flame.png" id="3_y3ryq"]
+[ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character.tscn" id="4_1mcu5"]
+[ext_resource type="AudioStream" uid="uid://dpavsjbuqixw5" path="res://assets/sounds/Scene1.mp3" id="5_i7u7y"]
+[ext_resource type="AudioStream" uid="uid://cx0jnns63mbi6" path="res://assets/sounds/Scene2.mp3" id="6_3gam7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bk3ox"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_umw8p"]
+offsets = PackedFloat32Array(0, 0.0880282, 0.859155, 0.919014, 0.992958)
+colors = PackedColorArray(1, 0.854902, 0, 0, 0.976471, 0.0823529, 0.0666667, 0.384314, 1, 0.284507, 0, 1, 1, 0.207843, 0, 0.203922, 1, 0.152941, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u8mye"]
+gradient = SubResource("Gradient_umw8p")
+width = 100
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d8284"]
+lifetime_randomness = 0.6
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 200.0
+angular_velocity_min = 30.0
+angular_velocity_max = 100.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = 30.0
+angle_max = 120.0
+scale_min = 0.2
+scale_max = 0.2
+color_ramp = SubResource("GradientTexture1D_u8mye")
+hue_variation_min = 1.0
+hue_variation_max = 1.0
+
+[sub_resource type="Gradient" id="Gradient_whkah"]
+offsets = PackedFloat32Array(0, 0.084507, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.278431, 1, 1, 1, 0.231373)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4cnlf"]
+gradient = SubResource("Gradient_whkah")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_384ip"]
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 3.0
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 30.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 200.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(0.909804, 0.909804, 0.909804, 1)
+color_ramp = SubResource("GradientTexture1D_4cnlf")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hajb5"]
+size = Vector2(172, 346.5)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_a08gw"]
+vertices = PackedVector2Array(-474, 64, 77, -121, 202, -108, 540, 42, 768, 185, 750, 299, -491, 291, -547, 203)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-547, 203, -491, 291, 750, 299, 768, 185, 540, 42, 202, -108, 77, -121, -474, 64)])
+
+[sub_resource type="Animation" id="Animation_xpqym"]
+resource_name = "FadeToTrack1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sounds/Track1:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sounds/Track2:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 80),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -80.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_d13gp"]
+resource_name = "FadeToTrack2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sounds/Track1:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sounds/Track2:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sd801"]
+_data = {
+"FadeToTrack1": SubResource("Animation_xpqym"),
+"FadeToTrack2": SubResource("Animation_d13gp")
+}
+
+[node name="Fire" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(695, 390)
+texture = ExtResource("1_tk8xb")
+
+[node name="Fire 2" type="Node" parent="."]
+
+[node name="Fire 1" type="GPUParticles2D" parent="Fire 2"]
+material = SubResource("CanvasItemMaterial_bk3ox")
+position = Vector2(468, 335)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_d8284")
+texture = ExtResource("3_y3ryq")
+lifetime = 0.6
+explosiveness = 0.1
+
+[node name="Fire 2" type="GPUParticles2D" parent="Fire 2"]
+material = SubResource("CanvasItemMaterial_bk3ox")
+position = Vector2(553, 318)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_d8284")
+texture = ExtResource("3_y3ryq")
+lifetime = 0.5
+explosiveness = 0.1
+
+[node name="Fire 3" type="GPUParticles2D" parent="Fire 2"]
+material = SubResource("CanvasItemMaterial_bk3ox")
+position = Vector2(511, 319)
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_d8284")
+texture = ExtResource("3_y3ryq")
+lifetime = 0.5
+explosiveness = 0.1
+
+[node name="Smoke" type="GPUParticles2D" parent="Fire 2"]
+position = Vector2(474, 158)
+process_material = SubResource("ParticleProcessMaterial_384ip")
+texture = ExtResource("3_y3ryq")
+lifetime = 3.0
+speed_scale = 0.5
+
+[node name="Smoke2" type="GPUParticles2D" parent="Fire 2"]
+position = Vector2(434, 199)
+process_material = SubResource("ParticleProcessMaterial_384ip")
+texture = ExtResource("3_y3ryq")
+
+[node name="Smoke3" type="GPUParticles2D" parent="Fire 2"]
+position = Vector2(546, 199)
+process_material = SubResource("ParticleProcessMaterial_384ip")
+texture = ExtResource("3_y3ryq")
+lifetime = 0.5
+
+[node name="MainCharacter" parent="." instance=ExtResource("4_1mcu5")]
+position = Vector2(506, 532)
+scale = Vector2(2, 2)
+
+[node name="AreaLeft" type="Area2D" parent="."]
+position = Vector2(179, 484)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaLeft"]
+position = Vector2(77, -8.25)
+shape = SubResource("RectangleShape2D_hajb5")
+
+[node name="AreaRight" type="Area2D" parent="."]
+position = Vector2(948, 481)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaRight"]
+position = Vector2(77, -8.25)
+shape = SubResource("RectangleShape2D_hajb5")
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Track1" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("5_i7u7y")
+volume_db = -80.0
+
+[node name="Track2" type="AudioStreamPlayer2D" parent="Sounds"]
+position = Vector2(275, -322)
+stream = ExtResource("6_3gam7")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+position = Vector2(579, 481)
+navigation_polygon = SubResource("NavigationPolygon_a08gw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sd801")
+}
+
+[connection signal="area_entered" from="AreaLeft" to="." method="_on_area_left_area_entered"]
+[connection signal="area_entered" from="AreaRight" to="." method="_on_area_right_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

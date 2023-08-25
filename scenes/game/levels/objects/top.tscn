@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2as70dpmvym7"]
+
+[ext_resource type="Texture2D" uid="uid://eanm7glelry5" path="res://assets/sprites/misc/top.png" id="1_tumu5"]
+
+[node name="Top" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -35)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_tumu5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-158, -182)
+polygon = PackedVector2Array(71, 141, 39, 145, 30, 171, 107, 206, 147, 188, 200, 207, 255, 201, 278, 186, 281, 142, 247, 120, 182, 117, 164, 105, 132, 105, 107, 115, 107, 132)

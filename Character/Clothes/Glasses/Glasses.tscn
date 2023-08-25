@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbatycklhnhqo"]
-
-[ext_resource type="Texture2D" uid="uid://cp67a2mydyec0" path="res://Puzzles/Vidriera/Assets/lentes.png" id="1_utq58"]
-
-[node name="Glasses" type="Sprite2D"]
-texture = ExtResource("1_utq58")

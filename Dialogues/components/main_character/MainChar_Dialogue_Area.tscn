@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dske0vk3rkgiu"]
-
-[ext_resource type="Script" path="res://Dialogues/components/main_character/MainChar_Dialogue_Area.gd" id="1_06f3p"]
-
-[node name="MainChar_Dialogue_Area" type="Node2D"]
-script = ExtResource("1_06f3p")
