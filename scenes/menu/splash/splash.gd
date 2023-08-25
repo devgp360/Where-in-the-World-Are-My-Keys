@@ -30,7 +30,7 @@ func setSoundsVolume():
 #Redirect a la escena de Mapa
 func go_title_screen():
 	#Pasamos a la escena de Menú principal
-	get_tree().change_scene_to_file("res://Map.tscn")
+	get_tree().change_scene_to_file("res://scenes/game/levels/rooms/map/map.tscn")
 
 #Escuchamos el teclado
 func _input(event):
