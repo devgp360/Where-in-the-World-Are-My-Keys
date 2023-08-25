@@ -1,4 +1,8 @@
 extends Node
+## Clase que controla guardado de avance de juego
+##
+## Guarda / Carga / Sobreescribe / Elimina avances de juego, revisa la existencia de carpeta de avances
+
 # DOCUMENTACIÓN GUARDAR Y CARGAR EL AVANCE EN EL JUEGO: https://docs.google.com/document/d/1-mXoGmFTUdLby_V4wx4xU_idy6a0RdYuHLagJxLGakw
 
 #Ruta para guardar los avances

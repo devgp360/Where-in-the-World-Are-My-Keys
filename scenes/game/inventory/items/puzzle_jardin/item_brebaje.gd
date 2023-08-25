@@ -1,4 +1,7 @@
 extends Button
+## Clase que controla la poción del rompecabezas de jardin 
+## 
+## Se controlan las colisiones y eventos del ratón, y se agregan o se consultan los parámetros de objetos
 
 # DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 

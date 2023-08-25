@@ -1,4 +1,8 @@
 extends Node2D
+## Clase que genera múltiples Mallas (Meshes)
+## 
+## Genera múltiples mallas en el nodo Multimesh
+
 @export var distribute_on_ready = false
 
 #Declaramos nodos

@@ -1,4 +1,8 @@
 extends Node2D
+## Clase que controla los eventos de diálogos de parte de personaje principal 
+## 
+## Se controlan los eventos de colisión de personaje principal, funciones que levantan diálogos 
+
 # DOCUMENTACIÓN ¿QUÉ SON LAS SEÑALES EN GDSCRIPT?: https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo
 # DOCUMENTACIÓN (diálogos entre personajes): https://docs.google.com/document/d/1LO1XeDq58IKrXyzbgeStl16No89CeKeArLRQyjY8oVk/edit?usp=drive_link
 
