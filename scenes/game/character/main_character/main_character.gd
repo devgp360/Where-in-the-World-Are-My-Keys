@@ -1,4 +1,9 @@
 extends CharacterBody2D
+## Clase que controla el comportamiento de personaje principal 
+## 
+## Crea la sombra, animaciones, del personaje, busca el camino más corto, calcula el tamaño del personaje en base de posición en la escena 
+## Maneja los objetos puestos (como lentes etc.), agrega objetos al inventario
+
 # DOCUMENTACIÓN SOBRE MOVIMIENTOS DE UN PERSONAJE: https://docs.google.com/document/d/1V__ENMBZUavTCnd7BxHF1oI3gDAOhPtwU5DRxlDGb4g
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 # DOCUMENTACIÓN TOOLTIPS PARA DIÁLOGOS CON NPCS: https://docs.google.com/document/d/15bKBdC0nMawhdyuVRRfcZbFD7D59Lb8HhKiGBY70FL0

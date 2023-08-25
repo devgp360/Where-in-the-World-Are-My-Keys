@@ -1,4 +1,8 @@
 extends Node2D
+## Clase que controla el mapa global de juego
+##
+## Controla pausa del juego, setea los niveles guardados de sonidos, 
+
 # DOCUMENTACIÓN CREAR UN MAPA GENERAL: https://docs.google.com/document/d/1q-aOyPNZ2Ldn6hH9H43Ym6u_fmWvujVgbkHfayPDN-E
 # DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
 # DOCUMENTACIÓN CREACIÓN DE UN AMBIENTE ISOMÉTRICO CON IA GENERATIVA: https://docs.google.com/document/d/17CxEvaKcvUjWci0zHjMCGg8CYKW0BQiz7PwMXvJrdnA

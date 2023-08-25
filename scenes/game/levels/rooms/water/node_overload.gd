@@ -1,4 +1,7 @@
 extends Node2D
+## Clase que maneja el efecto de agua
+## 
+## Precarga la imagen de agua sin efectos, genera múltiples llamadas que generan el efecto de agua
 
 var count = 0;
 

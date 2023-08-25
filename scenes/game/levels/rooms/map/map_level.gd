@@ -1,4 +1,8 @@
 extends TextureRect
+## Clase que controla cada elemento del mapa principal 
+## 
+## Escucha eventos de ratón, valida que elemento fue presionado, hace redirect a otra escena, activa diferente estatuses de elementos del mapa 
+
 # DOCUMENTACIÓN CREAR UN MAPA GENERAL: https://docs.google.com/document/d/1q-aOyPNZ2Ldn6hH9H43Ym6u_fmWvujVgbkHfayPDN-E
 
 var active = "" #estado del elemento clicqueado

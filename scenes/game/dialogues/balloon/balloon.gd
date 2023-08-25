@@ -1,4 +1,9 @@
 extends CanvasLayer
+## Clase que controla Dialogos
+##
+## Se realizan las preparaciones de textos para dialogos, se controla la orden en que aparecen los textos
+## La logica de recibir las respuestas del jugador, calculos de tamaños de dialogo cuando se cambia el tamaño de la ventana de juego 
+
 # DOCUMENTACIÓN TOOLTIPS PARA DIÁLOGOS CON NPCS: https://docs.google.com/document/d/15bKBdC0nMawhdyuVRRfcZbFD7D59Lb8HhKiGBY70FL0
 # DOCUMENTACIÓN ¿QUÉ SON LAS SEÑALES EN GDSCRIPT?: https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo
 

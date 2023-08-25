@@ -1,4 +1,8 @@
 extends Node
+## Clase que controla el rompecabezas de vidriera 
+## 
+## Se controlan los eventos de recoger objetos, colisiones entre objetos y personaje principal, muestra de tooltips de ayuda
+
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 # DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 

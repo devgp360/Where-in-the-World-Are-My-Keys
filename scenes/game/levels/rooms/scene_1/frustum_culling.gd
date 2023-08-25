@@ -1,4 +1,7 @@
 extends Node2D
+## Clase que controla visibilidad de Nodos
+##
+## Escucha eventos de screenNotifier, muestra o quita nodos de la escena
 
 # DOCUMENTACIÓN (culling): https://docs.google.com/document/d/1oX77HHdm_DiiigEn7OBe9BDAFh071atPlhszFDj2_bI/edit
 

@@ -1,4 +1,7 @@
 extends Node2D
+## Clase que controla sonidos 
+##
+## Hace efecto de cambio de sonido suave, apaga sonidos, escucha colisiones con áreas
 
 #Definición del nodo Sonidos
 @onready var sound1 = $Sounds/Track1
