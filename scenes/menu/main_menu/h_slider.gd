@@ -1,4 +1,8 @@
 extends HSlider
+## Clase que controla el nodo HSlider
+##
+## Lee el nivel de sonido de cada canal de audios, escucha el cambio de valor del slider, guarda nuevo valor de nivel de sonido
+
 #Exportamos el nombre tipo de sonido
 @export var bus_name: String
 

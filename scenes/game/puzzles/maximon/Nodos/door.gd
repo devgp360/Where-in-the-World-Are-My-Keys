@@ -1,4 +1,7 @@
 extends Node2D
+## Clase que controla la puerta 
+## 
+## Muestra la puerta cuando el rompecabezas de Maximón está resuelto, abre y cierra la puerta, escucha eventos de colisión de la puerta con el ratón, muestra etiquetas en la puerta
 
 # DOCUMENTACIÓN (maximón): https://docs.google.com/document/d/1szQIv2aEz_EdoMq34ml8DG-lRju3irkkjRO4QXsDRWc/edit#heading=h.e2j6ax5ma83s
 

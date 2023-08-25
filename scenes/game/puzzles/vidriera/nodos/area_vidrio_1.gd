@@ -1,4 +1,7 @@
 extends Area2D
+## Clase que controla los elementos de vidrio
+##
+## Controla los eventos de clicks, setea el nombre activo del elemento de vidrio
 
 # DOCUMENTACIÓN: https://docs.google.com/document/d/1wEfx7wOw5FJ0GpRLCWUPQObmkE-fCed8TOZk5ZRGOyU/edit#heading=h.e2j6ax5ma83s
 

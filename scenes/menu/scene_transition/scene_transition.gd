@@ -1,4 +1,7 @@
 extends CanvasLayer
+## Clase que maneja tranciciones entre escenas
+##
+## Cambia la escena actual por la siguiente
 
 # DOCUMENTACIÓN (cambio de escenas): https://docs.google.com/document/d/1FciThS6B4qQEBely2iCMDfkRZIzwSrZLCo2Fu8nE5LQ/edit?usp=drive_link
 # DOCUMENTACIÓN (cambio de escenas: efectos): https://docs.google.com/document/d/1p8XxiMuEjBamnHwIY4R1jz_qHIWRW_iEULqOyBvCORA/edit?usp=drive_link

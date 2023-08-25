@@ -1,4 +1,8 @@
 extends Node2D
+## Clase que controla el menú principal
+##
+## Cambia las ventanas del menú, controla los botones del menú, guarda y carga el avance del juego
+
 # DOCUMENTACIÓN SOBRE MENÚ PRINCIPAL: https://docs.google.com/document/d/1Y9rdN-w_cVtgCGX_8UTuPlDmlG2pUDOx_qZjrRhr2P4
 # DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
 # DOCUMENTACIÓN GUARDAR Y CARGAR EL AVANCE EN EL JUEGO: https://docs.google.com/document/d/1-mXoGmFTUdLby_V4wx4xU_idy6a0RdYuHLagJxLGakw

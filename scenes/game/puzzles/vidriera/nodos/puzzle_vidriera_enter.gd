@@ -1,4 +1,7 @@
 extends Area2D
+## Clase que valida si el personaje principal entra en colisión con el rompecabezas de vidriera 
+## 
+## Controla colisiones y eventos click
 
 # DOCUMENTACIÓN: https://docs.google.com/document/d/1wEfx7wOw5FJ0GpRLCWUPQObmkE-fCed8TOZk5ZRGOyU/edit#heading=h.e2j6ax5ma83s
 
