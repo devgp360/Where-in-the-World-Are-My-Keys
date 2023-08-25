@@ -184,7 +184,6 @@ position = Vector2(179, 484)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaLeft"]
 position = Vector2(-47.2196, -471.424)
 rotation = -0.261799
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_r37i2")
 
 [node name="AreaRight" type="Area2D" parent="."]

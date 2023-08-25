@@ -10,7 +10,7 @@ func _ready():
 	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 #Transiciones entre audios
@@ -44,13 +44,13 @@ func stopSound(audio: AudioStreamPlayer2D):
 	#Paramos la reprodución
 	audio.stop()
 	
-func _on_area_left_area_entered(area):
+func _on_area_left_area_entered(_area):
 	#Cargamos el audio 1
 	var vstream = load("res://assets/sounds/Scene1.mp3")
 	#Llamamos la funcion de transiciones entre audios
 	crossfade_to(vstream, 1)
 
-func _on_area_right_area_entered(area):
+func _on_area_right_area_entered(_area):
 	#Cargamos el audio 2
 	var vstream = load("res://assets/sounds/Scene2.mp3")
 	#Llamamos la funcion de transiciones entre audios
