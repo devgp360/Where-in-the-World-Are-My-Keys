@@ -3,12 +3,12 @@
 importer="dialogue_manager_compiler_8"
 type="Resource"
 uid="uid://b20is28hrxv6f"
-path="res://.godot/imported/main.dialogue-b0d64d19e807139d12415853ad45b478.tres"
+path="res://.godot/imported/main.dialogue-4631200885e70cf02b66127535bfd2fc.tres"
 
 [deps]
 
-source_file="res://Dialogues/main.dialogue"
-dest_files=["res://.godot/imported/main.dialogue-b0d64d19e807139d12415853ad45b478.tres"]
+source_file="res://scenes/game/dialogues/main.dialogue"
+dest_files=["res://.godot/imported/main.dialogue-4631200885e70cf02b66127535bfd2fc.tres"]
 
 [params]
 

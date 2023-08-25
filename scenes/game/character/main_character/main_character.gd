@@ -5,60 +5,8 @@ extends CharacterBody2D
 
 # DOCUMENTACIÓN (creación de personaje): https://docs.google.com/document/d/1mwEdhKQrObfhGChXO0R31xknLabwwrc8yRvXdaWJBwE/edit?usp=drive_link
 
-@onready var anim := $Sprite2D/AnimationSprite # Animaciones
-@onready var sprite := $Sprite2D # Sprite principal del personaje
-@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var clothes:= $Sprite2D/Clothes # Nodo principal que contiene nodos de vestimenta del personaje
-@onready var soundStep:= $AudioStreamPlayer2D # Sonido de pasos
-@onready var dialog_label = $dialog_label # Etiqueta para mostrar textos
-#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
-
-# Referencias de personajes/objetos en la escena
-@export var npc1: CharacterBody2D
-@export var door: Node2D
-@export var inventory: CanvasLayer
-
-# Variables para generar sombra con shader en el personaje
-@export var light_node: Node2D # Un punto de referencia (desde donde se genera luz)
-# Cambiando estos valores se pueden tener sombras más suaves o fuertes
-#  se pueden variar por escena para el personaje
-@export var shadow_min_value = 0.1 # Valor de sombra mínimo (0.0 a 1.0)
-@export var shadow_max_value = 0.9 # Valor de sombra máximo (0.0 a 1.0)
-
-# Constantes de sombra
-# BOTTON: Personaje "debajo" del punto de luz
-# TOP: Personaje "arriba" del punto de luz
-var SHADER_OFFSET_Y_BOTTOM = 2.0 # Posición de sombra en Y (en BOTTOM)
-var SHADER_OFFSET_Y_TOP = -80.0 # Posición de sombra en Y (en TOP)
-var SHADER_DEFORM_Y = 1.0 # La sombra es la mitad del tamaño de personaje (en el punto 0 en X)
-var SHADER_OFFEXT_X_FACTOR_BOTTOM = 250.0 # Posición de sombra en X (en BOTTOM)
-var SHADER_OFFSET_X_FACTOR_TOP = 150.0 # Posición de sombra en X (en TOP)
-
-signal end_conversation()
-signal pickup_object(name: String)
-
-# Si esta variable es falsa, el personaje no se podrá mover ni animar.
-var character_active = true
-
-# Variables que modifican el comportamiento del personaje principal (se pueden modificar)
-@export var speed := 220 # Velocidad de movimiento de izquierda a derecha
-
-# Variables para "fake z-axis". Se usan para hacer el personaje más pequeño o más grande
-# dependiendo de su posición en el eje Y
-# Escalas: las escalas mínima y máxima, aseguran que el personaje no se salga de esas escalas
-# También sirve para poder alejar o acercar el personaje en mayor o menor proporción (agrandar o reducir más rápido o lento)
-# Mínimo/Máximo en eje "Y": sirve para definir el rango de movimiento en el eje Y. No debe ser exacto, si no aproximado
-# para poder ver que tanto efecto de acercamiento o alejamiento se necesita.
-@export var active_fake_z_axis = false
-@export var min_scale = 0.5 # Escala mínima que podrá tener el personaje
-@export var max_scale = 2.5 # Escala máxima que podrá tener el personaje
-@export var min_y = -500.0 # El eje "Y" mínimo hasta donde debería llegar el personaje
-@export var max_y = 800.0 # El eje "Y" máximo hasta donde debería llegar el personaje
-
-# Vector de destino, para path-finding
-var destination = Vector2(456, 66);
-
-var dialog_active = false;
+signal end_conversation() # Señal para escuchar cuando el diálogo termina
+signal pickup_object(name: String) # Señal para que saber cuando se recogió un objeto en una escena
 
 # Las diferentes animaciones que tiene el personaje (el nombre es igual al nombre creado en cada animación)
 const anim_idle := "idle"
@@ -86,16 +34,61 @@ const DIRECTION_DOWN_LEFT = "down-left"
 const DIRECTION_DOWN_RIGHT = "down-right"
 const DIRECTION_IDLE = "idle"
 
+# Referencias de personajes/objetos en la escena
+@export var npc1: CharacterBody2D
+@export var door: Node2D
+@export var inventory: CanvasLayer
+# Variables para generar sombra con shader en el personaje
+@export var light_node: Node2D # Un punto de referencia (desde donde se genera luz)
+# Cambiando estos valores se pueden tener sombras más suaves o fuertes
+#  se pueden variar por escena para el personaje
+@export var shadow_min_value = 0.1 # Valor de sombra mínimo (0.0 a 1.0)
+@export var shadow_max_value = 0.9 # Valor de sombra máximo (0.0 a 1.0)
+
+# Variables que modifican el comportamiento del personaje principal (se pueden modificar)
+@export var speed := 220 # Velocidad de movimiento de izquierda a derecha
+
+# Variables para "fake z-axis". Se usan para hacer el personaje más pequeño o más grande
+# dependiendo de su posición en el eje Y
+# Escalas: las escalas mínima y máxima, aseguran que el personaje no se salga de esas escalas
+# También sirve para poder alejar o acercar el personaje en mayor o menor proporción (agrandar o reducir más rápido o lento)
+# Mínimo/Máximo en eje "Y": sirve para definir el rango de movimiento en el eje Y. No debe ser exacto, si no aproximado
+# para poder ver que tanto efecto de acercamiento o alejamiento se necesita.
+@export var active_fake_z_axis = false
+@export var min_scale = 0.5 # Escala mínima que podrá tener el personaje
+@export var max_scale = 2.5 # Escala máxima que podrá tener el personaje
+@export var min_y = -500.0 # El eje "Y" mínimo hasta donde debería llegar el personaje
+@export var max_y = 800.0 # El eje "Y" máximo hasta donde debería llegar el personaje
+
+# Constantes de sombra
+# BOTTON: Personaje "debajo" del punto de luz
+# TOP: Personaje "arriba" del punto de luz
+var SHADER_OFFSET_Y_BOTTOM = 2.0 # Posición de sombra en Y (en BOTTOM)
+var SHADER_OFFSET_Y_TOP = -80.0 # Posición de sombra en Y (en TOP)
+var SHADER_DEFORM_Y = 1.0 # La sombra es la mitad del tamaño de personaje (en el punto 0 en X)
+var SHADER_OFFEXT_X_FACTOR_BOTTOM = 250.0 # Posición de sombra en X (en BOTTOM)
+var SHADER_OFFSET_X_FACTOR_TOP = 150.0 # Posición de sombra en X (en TOP)
+# Si esta variable es falsa, el personaje no se podrá mover ni animar.
+var character_active = true
+# Vector de destino, para path-finding
+var destination = Vector2(0, 0);
+var dialog_active = false; # Variable que indica si el diálogo está activo
 var main_direction = DIRECTION_IDLE # Variable que guarda la dirección hacia donde se mueve el personaje
 var main_animation = anim_idle # Variable que guarda la animación que se está mostrando del personaje
-
 var path_finding_moving = false;
-
 # Listado de items "activos" que el personaje principal debe usar
 var dress_item_list = []
-
 # Guarda los sprites para animación del personaje
 var animations = []
+
+@onready var anim := $Sprite2D/AnimationSprite # Animaciones
+@onready var sprite := $Sprite2D # Sprite principal del personaje
+@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var clothes:= $Sprite2D/Clothes # Nodo principal que contiene nodos de vestimenta del personaje
+@onready var soundStep:= $AudioStreamPlayer2D # Sonido de pasos
+@onready var dialog_label = $dialog_label # Etiqueta para mostrar textos
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+
 
 # Función de inicialización
 func _ready():
@@ -120,6 +113,7 @@ func _ready():
 		load("res://assets/sprites/character/main/down_right.png"),
 	]
 
+
 # Captura eventos del teclado o ratón
 func _unhandled_input(event):
 	# Si hacemos un clic en alguna parte de la escena
@@ -132,6 +126,23 @@ func _unhandled_input(event):
 		nav_agent.target_position = destination
 		# Activamos una "bandera" para iniciar a mover el personaje
 		path_finding_moving = true
+
+
+# Función que se procesa con cada frame que renderiza el juego
+func _physics_process(_delta):
+	if !character_active:
+		return # Si el personaje no está activo, no se podrá interactuar con él
+	# Cambia de animación el personaje, dependiendo de hacia donde se está moviendo
+	set_animation()
+	# Busca una ruta de navegación, cuando se da clic en un punto de la escena
+	path_finding()
+	# Se calcula la escala del personaje (fake z-axis)
+	calc_scale()
+	# Validamos que items tiene activos el personaje para "vestir"
+	process_dress_item()
+	# Procesa un shader para generar una sombra del personaje
+	dynamic_shader()
+
 
 # DOCUMENTACIÓN (animaciones): https://docs.google.com/document/d/13ZWMjST6pT7EIjfe6JRyLGqJAG-NdahEWABhnN1VzuY/edit?usp=drive_link
 # DOCUMENTACIÓN SOBRE MOVIMIENTOS DE UN PERSONAJE: https://docs.google.com/document/d/1V__ENMBZUavTCnd7BxHF1oI3gDAOhPtwU5DRxlDGb4g
@@ -170,6 +181,7 @@ func set_animation():
 		main_animation = anim_idle
 	anim.play("main") # Siempre es main, ya que lo que cambia es la imagen de "sprite"
 	sprite.texture = animations[sprite_image_index] # Se cambia la textura según la animación
+
 
 # DOCUMENTACIÓN (rutas): https://docs.google.com/document/d/1lUoLrdHBMhXsEhSxhWwA41vWLvbzNZGaQJ0h23s5rT8/edit?usp=drive_link
 # Busca una ruta en el área de navegación para el personaje, y lo mueve en la escena
@@ -220,6 +232,7 @@ func path_finding():
 	if (main_direction == DIRECTION_IDLE):
 		soundStep.stop()
 
+
 # DOCUMENTACIÓN (profundidad): https://docs.google.com/document/d/1oRxN0jtTm6Db7bcehrl5PncpSlRVaTcg9GB-0gDdwC4/edit?usp=drive_link
 # Calcula una escala (tamaño) del personaje, cuando se mueve hacia "arriba", se hace más pequeño
 # y cuando se mueve hacia "abajo" se hace más grande.
@@ -237,27 +250,14 @@ func calc_scale():
 	v.y = new_scale;
 	# Escalamos el "sprite"
 	sprite.set_scale(v)
-	
-# Función que se procesa con cada frame que renderiza el juego
-func _physics_process(_delta):
-	if !character_active:
-		return # Si el personaje no está activo, no se podrá interactuar con él
-	# Cambia de animación el personaje, dependiendo de hacia donde se está moviendo
-	set_animation()
-	# Busca una ruta de navegación, cuando se da clic en un punto de la escena
-	path_finding()
-	# Se calcula la escala del personaje (fake z-axis)
-	calc_scale()
-	# Validamos que items tiene activos el personaje para "vestir"
-	process_dress_item()
-	# Procesa un shader para generar una sombra del personaje
-	dynamic_shader()
+
 
 # DOCUMENTACIÓN (inventario): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 # DOCUMENTACIÓN (recolectar objetos): https://docs.google.com/document/d/1d78cYa4cTpxfz22lGvctv6T83TSj5DMwq3VMWiGAbI8/edit?usp=drive_link
 # Añada objetos al inventario del usuario
 func add_object_to_inventory(_name: String):
 	inventory.emit_signal("add_object", _name)
+
 
 # Función que activa items que el personaje puede vestir (como lentes, sombrero, etc)
 # Se añaden los items a un "listado de items activos", que luego por la función "process_dress_item"
@@ -280,6 +280,7 @@ func dress_item(_name: String, active: bool):
 			# Quitamos el item de "activo", si existe como activo y la variable "active" es falsa
 			dress_item_list.remove_at(index)
 
+
 # Función que valida el listado de items activos para vestir, por cada item, define cuando mostrarlo
 # Esta función se llama directamente desde "_physics_process" que se ejecuta en cada "frame"
 func process_dress_item():
@@ -293,6 +294,7 @@ func process_dress_item():
 	else:
 		glasses.visible = false
 
+
 # Para definir si el personaje está activo o no
 # Si no está activo, no se podrá mover ni interactuar con el
 func set_character_active(active: bool):
@@ -300,6 +302,7 @@ func set_character_active(active: bool):
 	if !active:
 		# Si desactivamos el personaje, también desactivamos el "pathfinding"
 		path_finding_moving = false
+
 
 # Función para usar un "item" para el puzzle de "Jardín"
 # En este puzzle se usan bebidas, que el personaje, al "consumirlas", mostrará un texto imformativo
@@ -323,6 +326,7 @@ func use_item(_name, params):
 		else:
 			text = text + "mejor." # Si el color no está mapeado, usamos texto por defecto
 	dialog_label.text = text
+
 
 # DOCUMENTACIÓN (sombras): https://docs.google.com/document/d/1IAQRxm-IrOKRFd6XK9IlnbYYaLb_Bt0VDyqVeKR42j0/edit?usp=drive_link
 # DOCUMENTACIÓN (sombras por escena): https://docs.google.com/document/d/1CdHJbnfx3h9YIoKqds2iq8BqDV3CVRmkpoKb_0FNAN4/edit?usp=drive_link
