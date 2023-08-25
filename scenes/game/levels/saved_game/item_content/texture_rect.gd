@@ -1,4 +1,8 @@
 extends TextureRect
+## Clase que controla la celda de la tabla de avance guardado
+##
+## Cambia el efecto hover de la celda, activa los botones eliminar y cargar, resetea la celda a su estado inicial
+
 # DOCUMENTACIÓN SISTEMA AVANZADO DE GUARDADO DE PROGRESO EN EL JUEGO: https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs
 
 #Declaramos el estado del elemento del grid

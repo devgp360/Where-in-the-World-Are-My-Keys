@@ -1,4 +1,8 @@
 extends Node2D
+## Clase que guarda y lee el avance en el juego
+##
+## Crea las celdas para guardar el avance, prellena los puntos guardados, carga la escena guardada, limpia las celdas del listado de guardado
+
 # DOCUMENTACIÓN GUARDAR Y CARGAR EL AVANCE EN EL JUEGO: https://docs.google.com/document/d/1-mXoGmFTUdLby_V4wx4xU_idy6a0RdYuHLagJxLGakw
 # DOCUMENTACIÓN SISTEMA AVANZADO DE GUARDADO DE PROGRESO EN EL JUEGO: https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs
 
