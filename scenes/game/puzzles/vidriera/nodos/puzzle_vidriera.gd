@@ -2,14 +2,6 @@ extends CanvasLayer
 # DOCUMENTACIÓN: https://docs.google.com/document/d/1wEfx7wOw5FJ0GpRLCWUPQObmkE-fCed8TOZk5ZRGOyU/edit#heading=h.e2j6ax5ma83s
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 
-# Referencias de nodos del puzzle
-@onready var close = $Panel/Button
-@onready var sprite = $Panel/Sprite2D
-@onready var grid = $Panel/GridContainer
-@onready var label = $Panel/Label
-@onready var sprites = $Panel/Node2D
-#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
-
 var left_items_names = [] # Guarda los nombres de los items
 var left_items = [] # Guarda los items (fragmentos)
 var left_items_panes = [] # Guarda el contendor de items
@@ -18,13 +10,24 @@ var total_items = 0 # Total de items recolectados
 var total_items_correct = 0 # Total de items colocados correctamente
 var is_active = false # Indica si el puzzle se pude "jugar"
 
+# Referencias de nodos del puzzle
+@onready var close = $Panel/Button
+@onready var sprite = $Panel/Sprite2D
+@onready var grid = $Panel/GridContainer
+@onready var label = $Panel/Label
+@onready var sprites = $Panel/Node2D
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+
+
 # Función de inicialización
 func _ready():
 	close.pressed.connect(close_click) # Agregamos evento de clic en el botón de cerrar
 
+
 # Función de cerrar el puzzle.
 func close_click():
 	set_visible(false)
+
 
 # Función que muestra/oculta el puzzle
 func _set_visible(_visible: bool):
@@ -51,6 +54,7 @@ func _set_visible(_visible: bool):
 	
 	label.text = text # Agregamos el mensaje
 	self.visible = _visible # Mostramos/Ocultamos el puzzle
+
 
 # Añadimos los fragmentos recolectados desde el inventario al puzzle
 func _add_fragments_from_inventory():
@@ -82,6 +86,7 @@ func _add_fragments_from_inventory():
 				i.set_pivot_offset(Vector2(40, 40))
 				i.set_rotation_degrees(270) # Agregamos rotación por defecto
 
+
 # Clic en un item, que está del lado izquierdo (fragmento recolectado)
 func _click(_name: String):
 	if !is_active:
@@ -103,6 +108,7 @@ func _click(_name: String):
 		if deg >= 360:
 			deg = 0 # Si ya llegamos a los 360 grados, volvemos a iniciar en 0
 		item.set_rotation_degrees(deg)
+
 
 # Clic en un área donde se mostrarán los items ya "colocados" en su sitio correcto
 func _click_event(_name: String):
@@ -136,6 +142,7 @@ func _click_event(_name: String):
 
 				return
 		label.text = "No es el lugar correcto o la rotación no es correcta"
+
 
 # Función que pone como visible un fragmento "colocado" correctamente
 func set_correct_fragment(_name: String):

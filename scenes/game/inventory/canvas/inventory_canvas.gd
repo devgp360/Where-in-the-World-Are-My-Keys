@@ -2,11 +2,6 @@ extends Node2D
 
 # DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 
-@onready var canvas = $CanvasLayer # Canvas principal
-@onready var animation_player = $CanvasLayer/AnimationPlayer # Player
-@onready var grid = $CanvasLayer/TextureRect/GridContainer # Grid al cual se añaden elementos
-#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
-
 # Referencia a todas las "cajas", que contienen objetos
 var item_contents = []
 # Referencia de todos los nombres de objetos que hay en el inventario
@@ -20,6 +15,12 @@ var current_item_selected = null
 # Nombre del objeto seleccionado
 var current_item_name_selected = ""
 
+@onready var canvas = $CanvasLayer # Canvas principal
+@onready var animation_player = $CanvasLayer/AnimationPlayer # Player
+@onready var grid = $CanvasLayer/TextureRect/GridContainer # Grid al cual se añaden elementos
+#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+
+
 # Función de inicialización
 func _ready():
 	# Cada "item" recolectado, se agregará dentro de un "contendor"
@@ -32,9 +33,11 @@ func _ready():
 		grid.add_child(item) # Agregamos el nodo "marco" a un grid
 		item_contents.append(item) # Guardamos la referencia del nodo "marco" en un array
 
+
 # Función que se ejecuta en cada frame
 func _process(_delta):
 	process_item_selected()
+
 
 # Función para detectar eventos del teclado o ratón
 func _unhandled_input(event):
@@ -57,6 +60,27 @@ func _unhandled_input(event):
 		canvas.visible = true
 		animation_player.play("down")
 		await animation_player.animation_finished
+
+
+# Función "clic" para cada elemento del inventario
+func _pressed(_name: String):
+	check_press_item_puzzle_jardin(_name) # Validar clic en items de puzzle "Jardín"
+	# Cargamos el nodo principal de la escena. Si no existe, se termina la función
+	var escena1 = get_tree().get_root().get_node("Main")
+	if !escena1:
+		return
+		
+	# Funcionalidad para "quitarse/ponerse" los lentes al dar clic en el item desde el inventario
+	if _name == 'puzzle_vidriera/item_lentes':
+		var character = escena1.find_child("MainCharacter")
+		var index = dressed_item_list.find("glasses")
+		if index >= 0:
+			character.dress_item("glasses", false)
+			dressed_item_list.remove_at(index)
+		else:
+			character.dress_item("glasses", true)
+			dressed_item_list.append("glasses")
+
 
 # DOCUMENTACIÓN (gestión de memoria): https://docs.google.com/document/d/1diS6YOpBhLUTI9tk7YTZcH5Ha64bXg9u-PVhBXfOEz4/edit#heading=h.e2j6ax5ma83s
 # Función que añade un item al inventario
@@ -86,6 +110,7 @@ func add_item_by_name(_name: String, params = null):
 	# Algunos objetos, pueden tener un método para agregarle parámetros
 	if item.has_method("add_params") and params:
 		item.add_params(_name, params) # Pasamos parámetros cuando creamos el objeto
+
 
 # DOCUMENTACIÓN (gestión de memoria): https://docs.google.com/document/d/1diS6YOpBhLUTI9tk7YTZcH5Ha64bXg9u-PVhBXfOEz4/edit#heading=h.e2j6ax5ma83s
 # Se elimina un elemento del iventario
@@ -119,42 +144,28 @@ func remove_item_by_name(_name: String):
 		# Quitamos el nodo, del listado de nodos tipo item
 		item_objects.remove_at(index)
 
+
 # Elimina todos los elementos del inventario
 func remove_all_items():
 	var size = item_object_names.size()
 	for i in size:
 		remove_item_by_name(item_object_names[size - i - 1])
 
+
 # Retorna un listado de "nombres" de items que están en inventario
 func get_item_list_names():
 	return item_object_names
+
 
 # Retorna un listado de "nombres" de items que el personaje debe "vestir"
 func get_dressed_item_list():
 	return dressed_item_list
 
+
 # Devuelve "true", si un item está siendo "vestido" por el personaje principal
 func is_wearing(_name: String):
 	return dressed_item_list.find(_name) >= 0
 
-# Función "clic" para cada elemento del inventario
-func _pressed(_name: String):
-	check_press_item_puzzle_jardin(_name) # Validar clic en items de puzzle "Jardín"
-	# Cargamos el nodo principal de la escena. Si no existe, se termina la función
-	var escena1 = get_tree().get_root().get_node("Main")
-	if !escena1:
-		return
-		
-	# Funcionalidad para "quitarse/ponerse" los lentes al dar clic en el item desde el inventario
-	if _name == 'puzzle_vidriera/item_lentes':
-		var character = escena1.find_child("MainCharacter")
-		var index = dressed_item_list.find("glasses")
-		if index >= 0:
-			character.dress_item("glasses", false)
-			dressed_item_list.remove_at(index)
-		else:
-			character.dress_item("glasses", true)
-			dressed_item_list.append("glasses")
 
 # Función especial para validar si se da clic en un item del puzzle de "Jardín"
 func check_press_item_puzzle_jardin(_name: String):
@@ -184,6 +195,7 @@ func check_press_item_puzzle_jardin(_name: String):
 		remove_item_by_name(_name)
 		# Le "comunicamos" al personaje que use el item "clicado"
 		character.use_item(_name, params)
+
 
 # Función que servirá para seleccionar un item a usar (sobre otro item)
 func select_item_to_use(_name: String, select: bool):
@@ -216,6 +228,7 @@ func select_item_to_use(_name: String, select: bool):
 		if item.has_method("set_item_selected"):
 			item.set_item_selected()
 
+
 # Se remueve "la selección" de un item de inventario
 func remove_selected_item():
 	if current_item_selected:
@@ -226,6 +239,7 @@ func remove_selected_item():
 		current_item_selected = null
 		current_item_name_selected = ""
 
+
 # Procesamos un item seleccionado
 # Consiste en mostrar el objeto (junto al puntero del ratón) y moverlo en las mismas coordenadas
 func process_item_selected():
@@ -233,6 +247,7 @@ func process_item_selected():
 		return
 	# Falta implementar la funcionalidad de mover objeto junto al puntero
 	current_item_selected.position = get_global_mouse_position()
+
 
 # Retorna el nombre del objeto actualmente seleccionado
 func get_current_item_name_selected():
