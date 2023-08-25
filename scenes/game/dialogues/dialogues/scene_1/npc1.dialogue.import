@@ -3,12 +3,12 @@
 importer="dialogue_manager_compiler_8"
 type="Resource"
 uid="uid://1jpjeabujp5s"
-path="res://.godot/imported/npc1.dialogue-96a7c648cb97213f3c8a5c0386dab031.tres"
+path="res://.godot/imported/npc1.dialogue-25e1e65398b782bc97bbecfb9a2f105c.tres"
 
 [deps]
 
-source_file="res://Dialogues/dialogues/escene1/npc1.dialogue"
-dest_files=["res://.godot/imported/npc1.dialogue-96a7c648cb97213f3c8a5c0386dab031.tres"]
+source_file="res://scenes/game/dialogues/dialogues/scene_1/npc1.dialogue"
+dest_files=["res://.godot/imported/npc1.dialogue-25e1e65398b782bc97bbecfb9a2f105c.tres"]
 
 [params]
 
