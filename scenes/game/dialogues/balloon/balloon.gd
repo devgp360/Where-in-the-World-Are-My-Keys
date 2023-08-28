@@ -213,13 +213,15 @@ func _on_mutated(_mutation: Dictionary) -> void:
 
 # Escuchamos cuando el raton entra al area de respuestas
 func _on_response_mouse_entered(item: Control) -> void:
-	if "Disallowed" in item.name: return
+	if "Disallowed" in item.name: 
+		return
 	item.grab_focus()
 
 
 # Seteamos las respuestas elegidas
 func _on_response_gui_input(event: InputEvent, item: Control) -> void:
-	if "Disallowed" in item.name: return
+	if "Disallowed" in item.name: 
+		return
 	# Pasamos a la siguiente linea de diálogo
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
 		_next(dialogue_line.responses[item.get_index()].next_id)
@@ -229,7 +231,8 @@ func _on_response_gui_input(event: InputEvent, item: Control) -> void:
 
 # Seteamos las siguientes lineas de dialogos
 func _on_balloon_gui_input(event: InputEvent) -> void:
-	if not is_waiting_for_input: return
+	if not is_waiting_for_input: 
+		return
 	# Salimos si no hay mas texto
 	if dialogue_line.responses.size() > 0: return
 
