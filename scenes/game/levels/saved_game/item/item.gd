@@ -11,8 +11,6 @@ extends TextureButton
 @export var scene_path : String
 # Declaramos el nodo del padre
 @export var parent : Node2D
-# Declaramos el nodo del padre
-@export var color_rect : ColorRect
 # Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Declaramos el estado del elemento del grid
@@ -60,6 +58,8 @@ func _on_pressed():
 	Global.active_item_menu_id = id
 	Global.item_menu_path = path
 	parent.actions.visible = true
+	parent.save_confirm.visible = false
+	parent.delete_confirm.visible = false
 	if only_load: 
 		if !empty:
 			parent.load_button.visible = true

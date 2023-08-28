@@ -24,6 +24,12 @@ const SAVE_SCREENS_PATH := "user://screens/"
 
 # Declaramos el boton Guardar
 @export var remove_button : Button
+
+# Declaramos el contenedor de confirmación de guardado
+@export var save_confirm : VBoxContainer
+
+# Declaramos el contenedor de confirmación de eliminar
+@export var delete_confirm : VBoxContainer
 # Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Referencia a todas las "cajas", que contienen objetos
