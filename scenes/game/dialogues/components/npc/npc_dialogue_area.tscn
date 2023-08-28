@@ -3,6 +3,6 @@
 [ext_resource type="Script" path="res://scenes/game/dialogues/components/npc/npc_dialogue_area.gd" id="1_knr07"]
 [ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://scenes/game/dialogues/balloon/balloon.tscn" id="2_5vw3w"]
 
-[node name="NPC_Dialogue_Area" type="Node2D"]
+[node name="NpcDialogueArea" type="Node2D"]
 script = ExtResource("1_knr07")
 Balloon = ExtResource("2_5vw3w")

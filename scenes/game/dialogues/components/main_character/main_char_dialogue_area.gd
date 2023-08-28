@@ -48,7 +48,7 @@ func _area_exited(_area):
 # Cuando puntero entra al área de diálogo
 func _area_entered(area):
 	# En el caso que entremos al área de un NPC que tenga diálogos
-	var child = area.find_child("NPC_Dialogue_Area")
+	var child = area.find_child("NpcDialogueArea")
 
 	# Si se encuentra el NPC con diálogo
 	if child:

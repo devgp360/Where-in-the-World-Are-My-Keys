@@ -25,7 +25,7 @@ var _dialog_active = false
 
 # Función de inicialización
 func _ready():
-	_npc_dialogue_area = find_child("NPC_Dialogue_Area") # Buscamos el area de diálogo
+	_npc_dialogue_area = find_child("NpcDialogueArea") # Buscamos el area de diálogo
 	anim.play("idle1")
 
 

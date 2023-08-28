@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/game/character/npc_1/npc_1.gd" id="1_kdu34"]
 [ext_resource type="Texture2D" uid="uid://b0fkypq6l6nb1" path="res://assets/sprites/assets_pixel_adventure/main_characters/virtual_guy.png" id="2_6pf4v"]
-[ext_resource type="PackedScene" uid="uid://b7rj8l1bm547p" path="res://Dialogues/components/npc/NPC_Dialogue_Area.tscn" id="3_ol3b2"]
+[ext_resource type="PackedScene" uid="uid://b7rj8l1bm547p" path="res://scenes/game/dialogues/components/npc/npc_dialogue_area.tscn" id="3_ol3b2"]
 [ext_resource type="Resource" uid="uid://crwpqp4eq040t" path="res://scenes/game/dialogues/dialogues/scene_2/npc_maximon.dialogue" id="4_tqebr"]
-[ext_resource type="AudioStream" uid="uid://b551rlcdgmqid" path="res://assets/sounds/Hola.mp3" id="5_qdegc"]
+[ext_resource type="AudioStream" uid="uid://b551rlcdgmqid" path="res://assets/sounds/hola.mp3" id="5_qdegc"]
 
 [sub_resource type="Animation" id="Animation_lwyg1"]
 length = 0.001
@@ -72,7 +72,7 @@ shape = SubResource("CircleShape2D_lxry6")
 
 [node name="npc1_area" type="Area2D" parent="."]
 
-[node name="NPC_Dialogue_Area" parent="npc1_area" instance=ExtResource("3_ol3b2")]
+[node name="NpcDialogueArea" parent="npc1_area" instance=ExtResource("3_ol3b2")]
 dialogue_resource = ExtResource("4_tqebr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="npc1_area"]
