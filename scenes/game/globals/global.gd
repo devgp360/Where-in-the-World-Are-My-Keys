@@ -6,19 +6,19 @@ extends Node
 # DOCUMENTACIÓN ¿QUÉ SON LAS ESCENAS/VARIABLES GLOBALES?: https://docs.google.com/document/d/1bs4webBtE0duQdl5RqrBRakfwm1_IIzrXN_UOrItuLA
 
 #Nivel del sonido de la musica del juego
-var musicVol = 1
+var music_vol = 1
 
 #Nivel del sonido del personaje principal del juego
-var mainCharacterVol = 1
+var main_character_vol = 1
 
 #Nivel del sonido del npc del juego
-var npcVol = 1
+var npc_vol = 1
 
 #Id del guardado del juego (celda seleccionada)
-var activeItemMenuId = ""
+var active_item_menu_id = ""
 
 #Estado del item guardado del juego (si la celda seleccionada es vacia o llena)
-var itemMenuEmpty = true
+var item_menu_empty = true
 
 #Ruta de la escena seleccionada del guardado del juego
-var itemMenuPath = ""
+var item_menu_path = ""

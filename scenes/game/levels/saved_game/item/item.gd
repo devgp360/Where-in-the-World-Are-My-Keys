@@ -55,8 +55,8 @@ func _on_pressed():
 	selected = true
 	#Ajustamos la transparencia
 	modulate.a8=150
-	Global.activeItemMenuId = id
-	Global.itemMenuPath = path
+	Global.active_item_menu_id = id
+	Global.item_menu_path = path
 	parent.actions.visible = true
 	if only_load: 
 		if !empty:

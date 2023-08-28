@@ -134,7 +134,7 @@ func _on_remove_pressed():
 # Cuando confirmamos la eliminación
 func _on_yes_remove_pressed():
 	#Eliminamos el registro guardado
-	SaveProgress.remove(Global.activeItemMenuId)
+	SaveProgress.remove(Global.active_item_menu_id)
 	#Recargamos el grid de celdas de avances
 	inventoryCanvas.init()
 	#Escondemos confirmación
@@ -154,7 +154,7 @@ func _on_yes_overwrite_pressed():
 	#Obtenemos el dato a guardar
 	var data = get_tree().get_current_scene().get_save_data()
 	#Sobreescribimos el progreso
-	SaveProgress.overwrite(Global.activeItemMenuId, data, img)
+	SaveProgress.overwrite(Global.active_item_menu_id, data, img)
 	#Recargamos el grid de celdas de avances
 	inventoryCanvas.init()
 	#Escondemos confirmación
@@ -174,7 +174,7 @@ func _on_save_pressed():
 	#Escondemos acciones
 	actions.visible = false
 	#Validamos si ya seleccionamos una celda
-	if Global.activeItemMenuId:
+	if Global.active_item_menu_id:
 		#Mostarmos confirmación
 		overwriteConfirmation.visible = true
 	else:
@@ -193,17 +193,17 @@ func _on_save_pressed():
 # Cuando cargamos el avance del juego
 func _on_load_game_pressed():
 		#Validamos si existe la ruta de la escena
-	if (Global.itemMenuPath):
+	if (Global.item_menu_path):
 		#Quitamos la pausa
 		get_tree().paused = false
 		#Cambio de escena
-		SceneTransition.change_scene(Global.itemMenuPath)
+		SceneTransition.change_scene(Global.item_menu_path)
 
 
 # Inicialización de botones de acción
 func set_buttons():
 	#Resetamos la variable global de la celda activa
-	Global.activeItemMenuId = ''
+	Global.active_item_menu_id = ''
 	#Creamos la lista de escenas donde no se debe aparecer el boton guardar
 	var scenes = ["Map"]
 	#Obtenemos el nombre de la escena actual

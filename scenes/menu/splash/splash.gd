@@ -27,11 +27,11 @@ func setSoundsVolume():
 	#Validamos si existen los datos
 	if (data):
 		#Seteamos el nivel de sonido de la música
-		Global.musicVol = data.sound.music
+		Global.music_vol = data.sound.music
 		#Seteamos el nivel de sonido de los sonidos de personaje principal
-		Global.mainCharacterVol = data.sound.mainCharacter
+		Global.main_character_vol = data.sound.mainCharacter
 		#Seteamos el nivel de sonido de los sonidos de NPC
-		Global.npcVol = data.sound.npc
+		Global.npc_vol = data.sound.npc
 		#Creamos el arreglo de tipos de sonidos
 		var bus = ["music","mainCharacter","npc"]
 		#Recorremos cada tipo de sonido

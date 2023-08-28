@@ -36,10 +36,10 @@ func _process(_delta):
 # Función para setearlos niveles de audio
 func set_audio():
 	# Definimos los tipos de audios
-	var bus = ["music","mainCharacter","npc"]
+	var bus = ["music","main_character","npc"]
 	# Recorremos cada tipo de audio
 	for i in bus.size():
 		# Buscamos el index del tipo de audio
 		bus_index = AudioServer.get_bus_index(bus[i])
 		# Seteamos el nivel del sonido
-		AudioServer.set_bus_volume_db(bus_index,linear_to_db(Global[bus[i] + "Vol"]))
+		AudioServer.set_bus_volume_db(bus_index,linear_to_db(Global[bus[i] + "_vol"]))
