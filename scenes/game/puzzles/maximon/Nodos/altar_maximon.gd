@@ -15,7 +15,7 @@ extends Node2D
 # Función de inicialización
 func _ready():
 	visible = false
-	npc.add_dialogue_ended(_on_dialog_ended)
+	npc.on_dialogue_ended(_on_dialog_ended)
 
 
 # Cuando se termine de dialogar, mostrar un "altar" para acceder al puzzle

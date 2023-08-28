@@ -237,5 +237,5 @@ func _on_margin_resized() -> void:
 
 
 #Conectamos la finalización del dialogo
-func _add_dialogue_ended(fn):
+func _on_dialogue_ended(fn):
 	dialogue_ended.connect(fn)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cds1m3xicyc4k"]
+[gd_scene load_steps=17 format=3 uid="uid://cds1m3xicyc4k"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_2/scene_2.gd" id="1_7pqo5"]
 [ext_resource type="PackedScene" uid="uid://d4f7fxjs2wh7n" path="res://scenes/menu/main_menu/main_menu.tscn" id="2_2xv7g"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://di3seule2il8t" path="res://scenes/game/puzzles/maximon/Nodos/puzzle_maximon.tscn" id="11_t67y5"]
 [ext_resource type="PackedScene" uid="uid://cnqdsj1751ca0" path="res://scenes/game/puzzles/maximon/Nodos/altar_maximon.tscn" id="12_0hko8"]
 [ext_resource type="PackedScene" uid="uid://owqicaalyww0" path="res://scenes/game/puzzles/maximon/Nodos/door.tscn" id="13_r1tok"]
-[ext_resource type="PackedScene" uid="uid://bhohlaadrlnsi" path="res://scenes/game/puzzles/Jardin/Nodos/puzzle_stone.tscn" id="14_tko6j"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sxo74"]
 vertices = PackedVector2Array(856, 261, 895, 287, 882, 313, 789, 275, 750, 230, 187, 375, 121, 339, 157, 327, 878, 71, 962, 99, 906, 158, 799, 178, 861, 228, 568, 231, 454, 97, 521, 67, 673, 214, 658, 232, 274, 366, 191, 309, 254, 332, 335, 155, 281, 139, 250, 98, 276, 79, 374, 110, 391, 128, 351, 181, 404, 160, 428, 255, 460, 181, 514, 243, 490, 368, 438, 303, 540, 243, 539, 278, 525, 316, 984, 405, 1060, 480, 961, 516, 925, 416, 901, 325, 1332, 452, 1367, 455, 1367, 479, 1313, 516, 1287, 469, 1156, 509, 1255, 447, 328, 333, 371, 302, 398, 284, 413, 301, 415, 363, 341, 378, 237, 295, 580, 338, 665, 331, 664, 364, 754, 333, 822, 366, 1046, 436, 1103, 400, 1142, 389, 1256, 431)
@@ -123,12 +122,6 @@ npc = NodePath("../../NPC2")
 [node name="Door" parent="PuzzleMaximon" node_paths=PackedStringArray("puzzle") instance=ExtResource("13_r1tok")]
 position = Vector2(330, 82)
 puzzle = NodePath("../Puzzle_maximon")
-
-[node name="Puzzle__Jardin" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="puzzle_stone" parent="Puzzle__Jardin" instance=ExtResource("14_tko6j")]
-position = Vector2(478, 154)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="AreaToScena1" to="." method="_on_area_to_scena_1_body_entered"]
