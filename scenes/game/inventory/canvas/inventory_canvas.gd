@@ -97,7 +97,7 @@ func add_item_by_name(_name: String, params = null):
 		return
 	
 	# Cargamos el recurso
-	var item_to_load = load("res://Inventory/items/" + _name + ".tscn")
+	var item_to_load = load("res://scenes/game/inventory/items/" + _name + ".tscn")
 	
 	# Si no existe el recurso, se termina la función
 	if not item_to_load:
@@ -210,7 +210,7 @@ func select_item_to_use(_name: String, select: bool):
 	if current_item_name_selected == _name:
 		return
 	# Cargamos el nuevo item
-	var item_to_load = load("res://Inventory/items/" + _name + ".tscn")
+	var item_to_load = load("res://scenes/game/inventory/items/" + _name + ".tscn")
 	if not item_to_load: # Si no existe el recurso, se termina la función
 		return
 	var escena = get_tree().get_root().get_node("Main")

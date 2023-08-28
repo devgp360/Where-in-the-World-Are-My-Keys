@@ -11,14 +11,14 @@ extends Node2D
 
 func _on_area_left_area_entered(_area):
 	#Cargamos el audio 1
-	var vstream = load("res://assets/sounds/Scene1.mp3")
+	var vstream = load("res://assets/sounds/scene_1.mp3")
 	#Llamamos la funcion de transiciones entre audios
 	crossfade_to(vstream, 1)
 
 
 func _on_area_right_area_entered(_area):
 	#Cargamos el audio 2
-	var vstream = load("res://assets/sounds/Scene2.mp3")
+	var vstream = load("res://assets/sounds/scene_2.mp3")
 	#Llamamos la funcion de transiciones entre audios
 	crossfade_to(vstream, 2)
 

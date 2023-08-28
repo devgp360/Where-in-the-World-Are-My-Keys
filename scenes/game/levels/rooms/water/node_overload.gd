@@ -39,7 +39,7 @@ func intensive_call_test():
 
 # Función que carga una imagen y la añade al árbol de nodos
 func multi_load():
-	var image = load("res://Scenes/Water/Assets/iglesia_sin_agua_bg.png")
+	var image = load("res://assets/sprites/scenes/water/iglesia_sin_agua_bg.png")
 	var sprite = Sprite2D.new()
 	sprite.texture = image
 	var w = get_tree().get_root().get_node("Water")

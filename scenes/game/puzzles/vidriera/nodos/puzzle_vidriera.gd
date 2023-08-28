@@ -81,7 +81,7 @@ func _add_fragments_from_inventory():
 		# Agregamos los items para el puzzle "vidriera", excepto los lentes
 		if _name.begins_with("puzzle_vidriera/") and not _name.contains("item_lentes"):
 			# Cargamos el recurso
-			var item = load("res://Inventory/items/" + _name + ".tscn")
+			var item = load("res://scenes/game/inventory/items/" + _name + ".tscn")
 			if not item:
 				return # Si no existe el recurso, se termina la función
 			# Se agrega el item si no está agregado todavía

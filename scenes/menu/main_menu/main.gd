@@ -57,7 +57,7 @@ func _on_map_pressed():
 	#Despausar el juego
 	get_tree().paused = false
 	#Cambiar la eacena
-	get_tree().change_scene_to_file("res://Map.tscn")	
+	get_tree().change_scene_to_file("res://scenes/game/levels/rooms/map/map.tscn")
 
 
 # Redirección a la sección de guardar/cargar avances

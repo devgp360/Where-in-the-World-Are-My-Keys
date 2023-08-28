@@ -31,7 +31,7 @@ func toggle_door():
 		return
 		
 	if is_open:
-		SceneTransition.change_scene("res://Scene3.tscn")
+		SceneTransition.change_scene("res://scenes/game/levels/rooms/scene_3/scene_3.tscn")
 	else:
 		is_open = true
 		anim.play("open")

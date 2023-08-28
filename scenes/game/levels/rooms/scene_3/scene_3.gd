@@ -92,7 +92,7 @@ func get_save_data():
 	return {
 		"id": "%02d-%02d-%02d %02d:%02d:%02d" % [time.day, time.month, time.year, time.hour, time.minute, time.second],
 		"name":"Scene3",
-		"path": "res://Scene3.tscn",
+		"path": "res://scenes/game/levels/rooms/scene_3/scene_3.tscn",
 		"inventory": {
 			"items": items,
 		},
@@ -131,4 +131,4 @@ func set_inventory_data(_level_data: Dictionary):
 # Cuando entramos a una area predeterminada
 func _on_area_to_scena_2_area_entered(_area):
 	# Pasamos a la escena 2
-	SceneTransition.change_scene("res://Scene2.tscn")
+	SceneTransition.change_scene("res://scenes/game/levels/rooms/scene_2/scene_2.tscn")

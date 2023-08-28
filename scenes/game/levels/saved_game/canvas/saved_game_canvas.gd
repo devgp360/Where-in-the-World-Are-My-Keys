@@ -40,7 +40,7 @@ func _ready():
 	# Recorremos el total disponible de escenas
 	for n in totalItems:
 		#Cargamos el contenedor de escenas
-		var item = load("res://SavedGame/item_content/item_content.tscn").instantiate()
+		var item = load("res://scenes/game/levels/saved_game/item_content/item_content.tscn").instantiate()
 		#Agregamos escena al grid
 		grid.add_child(item)
 		#Guardamos el item del grid
@@ -90,7 +90,7 @@ func fill_lock_img():
 
 func add_item_by_name(scene: Dictionary, index:int, empty=false):
 	# Cargamos el recurso
-	var item_to_load = load("res://SavedGame/item/Item.tscn")
+	var item_to_load = load("res://scenes/game/levels/saved_game/item/item.tscn")
 	
 	# Si no existe el recurso, se termina la función
 	if not item_to_load:

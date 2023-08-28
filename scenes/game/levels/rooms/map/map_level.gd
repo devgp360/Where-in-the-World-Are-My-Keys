@@ -38,15 +38,15 @@ func on_click():
 		# Validamos si el elemneto del mapa tiene el nombre Antigua
 		if name == "Antigua":
 			# Cargamos la escena de la iglesia
-			SceneTransition.change_scene("res://Scenes/Church/ChurchInterior.tscn")
+			SceneTransition.change_scene("res://scenes/game/levels/rooms/church/church_interior.tscn")
 		# Validamos si el elemneto del mapa tiene el nombre Tikal
 		elif name == "Tikal":
 			# Cargamos la escena de tikal
-			SceneTransition.change_scene("res://Scenes/Tikal/TikalInterior.tscn")
+			SceneTransition.change_scene("res://scenes/game/levels/rooms/tikal/tikal_interior.tscn")
 		# Validamos si el elemneto del mapa tiene el nombre Panajachel
 		elif name == "Panajachel":
 			# Cargamos la escena de la casa maya
-			SceneTransition.change_scene("res://Scene1.tscn")
+			SceneTransition.change_scene("res://scenes/game/levels/rooms/scene_1/scene_1.tscn")
 
 
 # Función que se llama cuando el raton entra a una area predefinida

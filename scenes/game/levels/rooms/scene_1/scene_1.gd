@@ -66,7 +66,7 @@ func _process(_delta):
 #Cuando entramos a una area predeterminada
 func _on_area_2d_area_entered(_area):
 	#Cambio de escena
-	SceneTransition.change_scene("res://Scene2.tscn")
+	SceneTransition.change_scene("res://scenes/game/levels/rooms/scene_2/scene_2.tscn")
 
 
 #Seteamos los datos de la escena
@@ -97,7 +97,7 @@ func get_save_data():
 	return {
 		"id": "%02d-%02d-%02d %02d:%02d:%02d" % [time.day, time.month, time.year, time.hour, time.minute, time.second],
 		"name":"Scene1",
-		"path": "res://Scene1.tscn",
+		"path": "res://scenes/game/levels/rooms/scene_1/scene_1.tscn",
 		"inventory": {
 			"items": items,
 		},
