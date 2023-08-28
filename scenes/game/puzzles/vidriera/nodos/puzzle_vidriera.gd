@@ -7,13 +7,26 @@ extends CanvasLayer
 # DOCUMENTACIÓN: https://docs.google.com/document/d/1wEfx7wOw5FJ0GpRLCWUPQObmkE-fCed8TOZk5ZRGOyU/edit#heading=h.e2j6ax5ma83s
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 
-var left_items_names = [] # Guarda los nombres de los items
-var left_items = [] # Guarda los items (fragmentos)
-var left_items_panes = [] # Guarda el contendor de items
-var current_item_left_selected = "" # El item actual seleccionado
-var total_items = 0 # Total de items recolectados
-var total_items_correct = 0 # Total de items colocados correctamente
-var is_active = false # Indica si el puzzle se pude "jugar"
+# Guarda los nombres de los items
+var left_items_names = []
+
+# Guarda los items (fragmentos)
+var left_items = []
+
+# Guarda el contendor de items
+var left_items_panes = []
+
+# El item actual seleccionado
+var current_item_left_selected = ""
+
+# Total de items recolectados
+var total_items = 0
+
+# Total de items colocados correctamente
+var total_items_correct = 0
+
+# Indica si el puzzle se pude "jugar"
+var is_active = false
 
 # Referencias de nodos del puzzle
 @onready var close = $Panel/Button
@@ -26,7 +39,8 @@ var is_active = false # Indica si el puzzle se pude "jugar"
 
 # Función de inicialización
 func _ready():
-	close.pressed.connect(close_click) # Agregamos evento de clic en el botón de cerrar
+	# Agregamos evento de clic en el botón de cerrar
+	close.pressed.connect(close_click)
 
 
 # Función de cerrar el puzzle.
@@ -65,7 +79,7 @@ func _set_visible(_visible: bool):
 func _add_fragments_from_inventory():
 	for _name in InventoryCanvas.get_item_list_names():
 		# Agregamos los items para el puzzle "vidriera", excepto los lentes
-		if _name.begins_with("puzzle_vidriera/") and !_name.contains("item_lentes"):
+		if _name.begins_with("puzzle_vidriera/") and not _name.contains("item_lentes"):
 			# Cargamos el recurso
 			var item = load("res://Inventory/items/" + _name + ".tscn")
 			if not item:
@@ -94,7 +108,7 @@ func _add_fragments_from_inventory():
 
 # Clic en un item, que está del lado izquierdo (fragmento recolectado)
 func _click(_name: String):
-	if !is_active:
+	if not is_active:
 		return # Si no se tienen los lentes, no se podrán seleccionar objetos
 	
 	var index = left_items_names.find(_name)
@@ -117,7 +131,7 @@ func _click(_name: String):
 
 # Clic en un área donde se mostrarán los items ya "colocados" en su sitio correcto
 func _click_event(_name: String):
-	if !is_active:
+	if not is_active:
 		return # Si no se tienen los lentes, no se podrán mover objetos
 	# Si no tenemos un fragmento seleccionado, mostramos un mensajes y terminamos la función
 	if current_item_left_selected == "":
@@ -133,7 +147,7 @@ func _click_event(_name: String):
 			if deg == 0: # El ángulo correcto debe ser 0
 				label.text = "Correcto, hemos agregado un fragmento!"
 				# Dependiendo a que area se dio clic, buscamos y hacemos visible el fragmento correcto
-				set_correct_fragment(_name)
+				_set_correct_fragment(_name)
 				# Luego quitamos el fragmento, del listado que está al lado izquierdo
 				var p = left_items_panes[index]
 				grid.remove_child(p)
@@ -150,7 +164,7 @@ func _click_event(_name: String):
 
 
 # Función que pone como visible un fragmento "colocado" correctamente
-func set_correct_fragment(_name: String):
+func _set_correct_fragment(_name: String):
 	if _name == "vidrio1":
 		sprites.find_child("Sprite1").visible = true
 	elif _name == "vidrio2":

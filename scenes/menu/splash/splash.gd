@@ -6,11 +6,21 @@ extends Node2D
 # DOCUMENTACIÓN (¿Como hacer Splash?): https://docs.google.com/document/d/11u22RhuGheb0z2ZpwwRgEygSr7kwTPtBme_17SZQwtw
 # DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
 
+
 # Función que se llama cuando la escena esta cargada
 func _ready():
 	#Setamos los niveles de sonidos
 	setSoundsVolume()
-	
+
+
+#Escuchamos el teclado
+func _input(event):
+	#Escuchamos si se preciona algun boton
+	if(event is InputEventKey):
+		#Llamamos el la funcion de cambio de escena
+		go_title_screen()
+
+
 func setSoundsVolume():
 	#Cargamos los datos guardados
 	var data = SaveProgress.load_game()
@@ -31,17 +41,12 @@ func setSoundsVolume():
 			#Seteamos el volumen del sonido
 			AudioServer.set_bus_volume_db(music,linear_to_db(data.sound[bus[i]]))
 
+
 #Redirect a la escena de Mapa
 func go_title_screen():
 	#Pasamos a la escena de Menú principal
 	get_tree().change_scene_to_file("res://scenes/game/levels/rooms/map/map.tscn")
 
-#Escuchamos el teclado
-func _input(event):
-	#Escuchamos si se preciona algun boton
-	if(event is InputEventKey):
-		#Llamamos el la funcion de cambio de escena
-		go_title_screen()
 
 #Cuando termina la animación
 func _on_animation_player_animation_finished(_anim_name):

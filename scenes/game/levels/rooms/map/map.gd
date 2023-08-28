@@ -14,10 +14,12 @@ extends Node2D
 #Declaración del canal de audio activo
 var bus_index: int
 
+
 # Función que se llama cuando la escena esta cargada
 func _ready():
 	#Configuramos el nivel de sonidos
 	set_audio()
+
 
 # Función que siempre se llama
 func _process(_delta):
@@ -30,6 +32,7 @@ func _process(_delta):
 		#Mostramos el nodo del Menú
 		get_tree().current_scene.add_child(pause)
 
+
 #Función para setearlos niveles de audio
 func set_audio():
 	#Definimos los tipos de audios
@@ -40,4 +43,3 @@ func set_audio():
 		bus_index = AudioServer.get_bus_index(bus[i])
 		#Seteamos el nivel del sonido
 		AudioServer.set_bus_volume_db(bus_index,linear_to_db(Global[bus[i] + "Vol"]))
-	

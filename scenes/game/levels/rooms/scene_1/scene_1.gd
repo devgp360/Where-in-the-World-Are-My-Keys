@@ -11,12 +11,14 @@ extends Node2D
 
 #Definición del nodo de menu
 @export var PauseMenu: PackedScene
+
+#Declaramos la variable de datos de la escena
+var level_data = {}
+
 #Definición del nodo main character
 @onready var character = $MainCharacter
 #Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
-#Declaramos la variable de datos de la escena
-var level_data = {}
 
 # Función que se llama cuando la escena esta cargada
 func _ready():
@@ -46,6 +48,7 @@ func _ready():
 				#ocultamos el objeto
 				c.visible = false
 
+
 # Función que siempre se llama
 func _process(_delta):
 	#Levantamos el menú principal
@@ -58,11 +61,13 @@ func _process(_delta):
 		#mostramos el menú
 		get_tree().current_scene.add_child(pause)
 
+
 # DOCUMENTACIÓN (transición de escena): https://docs.google.com/document/d/1FciThS6B4qQEBely2iCMDfkRZIzwSrZLCo2Fu8nE5LQ/edit?usp=drive_link
 #Cuando entramos a una area predeterminada
 func _on_area_2d_area_entered(_area):
 	#Cambio de escena
 	SceneTransition.change_scene("res://Scene2.tscn")
+
 
 #Seteamos los datos de la escena
 func set_level_data(_level_data: Dictionary):
@@ -72,6 +77,7 @@ func set_level_data(_level_data: Dictionary):
 	set_character_data(_level_data.character)
 	#Seteamos datos del inventario
 	set_inventory_data(_level_data)
+
 
 #Obtenemos datos de la escena
 func get_save_data():
@@ -101,6 +107,7 @@ func get_save_data():
 		}
 	}
 
+
 #Seteamos datos del personaje principal
 func set_character_data(characterData: Dictionary):
 	#Ponemos al personaje en su posición guardada
@@ -109,6 +116,7 @@ func set_character_data(characterData: Dictionary):
 	for item in characterData.dressed:
 		#ponemos el objeto al personaje principal
 		character.dress_item(item, true)
+
 
 #Seteamos datos de inventario
 func set_inventory_data(_level_data: Dictionary):

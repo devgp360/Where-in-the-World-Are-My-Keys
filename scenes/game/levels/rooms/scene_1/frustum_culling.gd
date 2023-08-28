@@ -8,11 +8,13 @@ extends Node2D
 @export var screenNotifier: VisibleOnScreenNotifier2D
 # Nodos que queremos ocultar
 @export var nodes: Array[Node2D] = []
+
 # Una referencia del padre de cada nodo (para poder hacer add_child y remove_child)
 var parents: Array[Node2D] = []
 # Para no agregar o eliminar dos veces, manejamos una variable para indicar el estado de los nodos
 # Agregado/No Agregaod: por defecto, los nodos están agregados al árbol de nodos (en la escena)
 var nodes_added = true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,6 +35,7 @@ func _ready():
 	screenNotifier.screen_entered.connect(_screen_entered)
 	screenNotifier.screen_exited.connect(_screen_exited)
 
+
 # Se efecuta cuando se entra al área del notificador
 # Se deben agregar todos los nodos al árbol principal de la escena
 func _screen_entered():
@@ -45,6 +48,7 @@ func _screen_entered():
 		parent.add_child(node)
 	nodes_added = true # Indicamos que agregamos nodos
 
+
 # Se efecuta cuando se sale del área del notificador
 # Se deben eliminar todos los nodos del árbol principal de la escena
 func _screen_exited():
@@ -56,6 +60,7 @@ func _screen_exited():
 		var parent = node.get_parent()
 		parent.remove_child(node)
 	nodes_added = false # Indicamos que eliminamos nodos
+
 
 # Sirve para buscar el padre de un nodo
 func _get_parent(node: Node2D):
