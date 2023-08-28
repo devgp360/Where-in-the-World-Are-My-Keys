@@ -27,14 +27,14 @@ func _process(_delta):
 	var campos = viewport_half; # Variable para guardar la posición de la cámara
 	
 	# Posición de la cámara, calculando la mitad del tamaño de la pantalla
-	# para no mover siempre la cámara, sino que cuando se mueva el personaje hacia la mitad de la pantalla
+	#  para no mover siempre la cámara, sino que cuando se mueva el personaje hacia la mitad de la pantalla
 	campos.x = campos.x + position.x;
 	campos.y = campos.y + position.y;
 
 	# Si la posición del personaje es diferente de la posición de la cámara (en el eje X)
-	if charpos.x < campos.x || charpos.x > campos.x:
+	if charpos.x < campos.x or charpos.x > campos.x:
 		position.x = charpos.x # Se actualiza la posición de la cámara con la posición del personaje
 
 	# Si la posición del personaje es diferente de la posición de la cámara (en el eje Y)
-	if charpos.y < campos.y || charpos.y > campos.y:
+	if charpos.y < campos.y or charpos.y > campos.y:
 		position.y = charpos.y # Se actualiza la posición de la cámara con la posición del personaje
