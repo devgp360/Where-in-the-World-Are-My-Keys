@@ -10,7 +10,7 @@ extends Node2D
 # DOCUMENTACIÓN (creación de escena): https://docs.google.com/document/d/1Tvp7PKcC4kSUtQO9wKEksT_cbA4rBEMZQ-artBsu5N4/edit?usp=drive_link
 
 # Definición del nodo de menu
-@export var PauseMenu: PackedScene
+@export var pause_menu: PackedScene
 
 # Declaramos la variable de datos de la escena
 var _level_data = {}
@@ -55,7 +55,7 @@ func _process(_delta):
 	if Input.is_action_pressed("ui_cancel"):
 		# Pausamos el juego
 		get_tree().paused = true
-		var pause: Node = (PauseMenu).instantiate()
+		var pause: Node = pause_menu.instantiate()
 		# Creamos Screenshot
 		pause.img = get_viewport().get_texture().get_image()
 		# Mostramos el menú
@@ -70,31 +70,31 @@ func _on_area_2d_area_entered(_area):
 
 
 # Seteamos los datos de la escena
-func _set_level_data(_level_data: Dictionary):
+func _set_level_data(level_data: Dictionary):
 	# Limpiamos el inventario
 	InventoryCanvas.remove_all_items()
 	# Seteamos datos del personaje principal
-	_set_character_data(_level_data.character)
+	_set_character_data(level_data.character)
 	# Seteamos datos del inventario
-	_set_inventory_data(_level_data)
+	_set_inventory_data(level_data)
 
 
 # Seteamos datos del personaje principal
-func _set_character_data(characterData: Dictionary):
+func _set_character_data(character_data: Dictionary):
 	# Ponemos al personaje en su posición guardada
-	character.position = characterData.position
+	character.position = character_data.position
 	# Seteamos datos del inventario
-	for item in characterData.dressed:
+	for item in character_data.dressed:
 		# ponemos el objeto al personaje principal
 		character.dress_item(item, true)
 
 
 # Seteamos datos de inventario
-func _set_inventory_data(_level_data: Dictionary):
+func _set_inventory_data(level_data: Dictionary):
 	# obtenemos los objetos coleccionables
 	var children = self.get_node("Collect").get_children()
 	# Recorremos datos guardados
-	for item_saved in _level_data.inventory.items:
+	for item_saved in level_data.inventory.items:
 		# Agregamos objeto al inventario
 		InventoryCanvas.add_item_by_name(item_saved.item)
 		# Recorremos objetos coleccionables
@@ -135,6 +135,6 @@ func get_save_data():
 		},
 		"character":{
 			"position": character.position,
-			"dressed": character.dress_item_list,
+			"dressed": character.get_dress_item_list(),
 		}
 	}

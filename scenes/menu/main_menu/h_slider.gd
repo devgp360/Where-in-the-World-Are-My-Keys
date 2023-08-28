@@ -29,4 +29,4 @@ func _on_value_changed(_value:float) -> void:
 	#guardamos el nivel del sonido
 	SaveProgress.save_sounds(bus_name, _value)
 	#Seteamos la variable global del sonido
-	Global[bus_name + "Vol"] = _value
+	Global[bus_name + "_vol"] = _value

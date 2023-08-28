@@ -28,7 +28,7 @@ size = Vector2(72, 27)
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_7pqo5")
-PauseMenu = ExtResource("2_2xv7g")
+pause_menu = ExtResource("2_2xv7g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1

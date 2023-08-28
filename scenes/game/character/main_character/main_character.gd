@@ -100,7 +100,7 @@ func _ready():
 	
 	# Validamos si el personaje está vistiendo un item
 	if InventoryCanvas.is_wearing("glasses"):
-		_dress_item("glasses", true)
+		dress_item("glasses", true)
 	
 	# Para un manejo más fácil de sombras con "shaders", se separó las animaciones del personaje
 	# en varias imágenes separadas, que se cargarán al cargar el personaje
@@ -263,28 +263,6 @@ func _add_object_to_inventory(_name: String):
 	inventory.emit_signal("add_object", _name)
 
 
-# Función que activa items que el personaje puede vestir (como lentes, sombrero, etc)
-# Se añaden los items a un "listado de items activos", que luego por la función "process_dress_item"
-# se mostrarán en el personaje principal
-func _dress_item(_name: String, active: bool):
-	var child = clothes.find_child(_name)
-	if not child:
-		return # Si no existe el nodo, solo terminamos la función
-
-	# Buscamos si ya existe el item en el listado de items activos
-	var index = _dress_item_list.find(_name) 
-	var exists = index >= 0
-	
-	if active:
-		if not exists:
-			# Agregamos el item a "activo", si todavía no existe, y la variable "active" es verdadera
-			_dress_item_list.append(_name)
-	else:
-		if exists:
-			# Quitamos el item de "activo", si existe como activo y la variable "active" es falsa
-			_dress_item_list.remove_at(index)
-
-
 # Función que valida el listado de items activos para vestir, por cada item, define cuando mostrarlo
 # Esta función se llama directamente desde "_physics_process" que se ejecuta en cada "frame"
 func _process_dress_item():
@@ -383,3 +361,30 @@ func set_character_active(active: bool):
 	if not active:
 		# Si desactivamos el personaje, también desactivamos el "pathfinding"
 		_path_finding_moving = false
+
+
+# Función que activa items que el personaje puede vestir (como lentes, sombrero, etc)
+# Se añaden los items a un "listado de items activos", que luego por la función "process_dress_item"
+# se mostrarán en el personaje principal
+func dress_item(_name: String, active: bool):
+	var child = clothes.find_child(_name)
+	if not child:
+		return # Si no existe el nodo, solo terminamos la función
+
+	# Buscamos si ya existe el item en el listado de items activos
+	var index = _dress_item_list.find(_name) 
+	var exists = index >= 0
+	
+	if active:
+		if not exists:
+			# Agregamos el item a "activo", si todavía no existe, y la variable "active" es verdadera
+			_dress_item_list.append(_name)
+	else:
+		if exists:
+			# Quitamos el item de "activo", si existe como activo y la variable "active" es falsa
+			_dress_item_list.remove_at(index)
+
+
+# Retorna el listado de items que está "vistiendo" el personaje principal
+func get_dress_item_list():
+	return _dress_item_list
