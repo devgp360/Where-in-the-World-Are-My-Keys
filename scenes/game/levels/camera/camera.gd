@@ -32,9 +32,9 @@ func _process(_delta):
 	campos.y = campos.y + position.y;
 
 	# Si la posición del personaje es diferente de la posición de la cámara (en el eje X)
-	if charpos.x < (campos.x) || charpos.x > (campos.x):
+	if charpos.x < campos.x || charpos.x > campos.x:
 		position.x = charpos.x # Se actualiza la posición de la cámara con la posición del personaje
 
 	# Si la posición del personaje es diferente de la posición de la cámara (en el eje Y)
-	if charpos.y < (campos.y) || charpos.y > (campos.y):
+	if charpos.y < campos.y || charpos.y > campos.y:
 		position.y = charpos.y # Se actualiza la posición de la cámara con la posición del personaje
