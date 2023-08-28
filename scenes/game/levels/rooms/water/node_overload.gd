@@ -3,9 +3,10 @@ extends Node2D
 ## 
 ## Precarga la imagen de agua sin efectos, genera múltiples llamadas que generan el efecto de agua
 
-var count = 0;
+@export var active_process = true; # Indica si el proceso está activo
 
-@export var active_process = true;
+var count = 0; # Variable auxiliar para conteo de carga de imágenes
+
 
 # Se ejecuta en cada frame
 func _process(delta):
@@ -15,7 +16,7 @@ func _process(delta):
 	intensive_loop()
 	intensive_call_test()
 	#multi_load()
-	pass
+
 
 # Genera un ciclo que ejecuta 1 millón de multiplicaciones
 func intensive_loop():
@@ -24,13 +25,17 @@ func intensive_loop():
 	for i in range(1000000):
 		result += i * i
 
-# Función que ejecuta otra función (100 veces)
+
+# Función que se ejecutará 100 veces
 func intensive_call():
 	print("call")
-		
+
+
+# Función que ejecuta otra función (100 veces)
 func intensive_call_test():
 	for i in range(100):
 		intensive_call()
+
 
 # Función que carga una imagen y la añade al árbol de nodos
 func multi_load():
