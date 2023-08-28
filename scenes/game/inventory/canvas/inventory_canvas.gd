@@ -45,11 +45,11 @@ func _process(_delta):
 
 # Función para detectar eventos del teclado o ratón
 func _unhandled_input(event):
-	#Definimos escenas donde no debe aparecer el inventario
+	# Definimos escenas donde no debe aparecer el inventario
 	var scenes = ["Splash", "Map", "MainMenu"]
-	#Obtenemos el nombre de la escena actual
+	# Obtenemos el nombre de la escena actual
 	var actual_scene = get_tree().get_current_scene().name
-	#Si estamos en las escenas definidas no mostramos Inventario
+	# Si estamos en las escenas definidas no mostramos Inventario
 	if scenes.find(actual_scene,0) > -1:
 		return
 	if event.is_action_pressed("wheel_up"):
