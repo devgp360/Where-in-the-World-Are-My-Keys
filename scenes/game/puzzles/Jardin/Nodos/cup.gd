@@ -22,6 +22,7 @@ var plant_color_map = {
 	"aloe_vera": 0.5,
 }
 
+
 # Función de inicialización
 func _ready():
 	reset()
@@ -30,12 +31,14 @@ func _ready():
 	btn_inventario.pressed.connect(add_inventory)
 	pos = self.position
 
+
 # Reseteamos el item (colocamos el vaso "vacío" y de nuevo a la posición inicial)
 func reset():
 	remove_all_plants()
 	check_btn_blend()
 	brebaje.visible = false
 	btn_inventario.visible = false
+
 
 # Pone visible la imagen de la planta a agregar. Máximo 3. 
 # Si se pudo agregar se retorna true, de lo contrario false.
@@ -50,9 +53,11 @@ func add_plant(_name: String):
 		return true
 	return false
 
+
 # Valida y retorna true, si la planta ya está visible "agregada"
 func exists_plant(_name: String):
 	return plants.find(_name) >= 0
+
 
 # Oculta todas las plantas del vaso.
 func remove_all_plants():
@@ -61,21 +66,26 @@ func remove_all_plants():
 			sprite.visible = false
 	plants = []
 
+
 # Permite asociar un función, para escuchar cuando se mezclen las plantas
 func add_on_blend(fn):
 	on_blend.connect(fn)
 
+
 # Permite asociar un función, para escuchar cuando se oculte el brebaje
 func add_on_hide_potion(fn):
 	on_hide_potion.connect(fn)
-	
+
+
 # Permite asociar un función, para escuchar cuando se oculte el brebaje
 func add_on_add_inventory(fn):
 	on_add_inventory.connect(fn)
 
+
 # Dispara la señal de mezclar las plantas, y ejectua los eventos asociados
 func blend():
 	on_blend.emit()
+
 
 # Se ejecuta cuando se presiona el botón "limpiar"
 func clear():
@@ -85,6 +95,7 @@ func clear():
 		self.position = pos
 		on_hide_potion.emit()
 
+
 # Añadimos al inventario
 func add_inventory():
 	InventoryCanvas.add_item_by_name("puzzle_jardin/item_brebaje_1", {
@@ -93,12 +104,14 @@ func add_inventory():
 	clear()
 	on_add_inventory.emit()
 
+
 # Muestra el botón de "mezclar" cuando se tiene 3 plantas agregadas
 func check_btn_blend():
 	if plants.size() == 3:
 		btn_mezclar.visible = true
 	else:
 		btn_mezclar.visible = false
+
 
 # Muestra una vevida de un color, dependiendo de las plantas y el orden recolectado
 func show_potion(_pos: Vector2):

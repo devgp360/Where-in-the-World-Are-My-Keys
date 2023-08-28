@@ -92,7 +92,7 @@ var _animations = []
 @onready var clothes:= $Sprite2D/Clothes # Nodo principal que contiene nodos de vestimenta del personaje
 @onready var sound_step:= $AudioStreamPlayer2D # Sonido de pasos
 @onready var dialog_label = $dialog_label # Etiqueta para mostrar textos
-#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+# Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 
 # Función de inicialización
