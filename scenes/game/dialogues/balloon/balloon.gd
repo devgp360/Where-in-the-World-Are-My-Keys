@@ -88,7 +88,7 @@ var dialogue_line: DialogueLine:
 		# Esperamos la respuesta del jugador
 		if dialogue_line.responses.size() > 0:
 			responses_menu.modulate.a = 1
-			configure_menu()
+			_configure_menu()
 		elif dialogue_line.time != null:
 			#Pasamos al siguiente diálogo
 			var time = (
@@ -96,7 +96,7 @@ var dialogue_line: DialogueLine:
 				else dialogue_line.time.to_float()
 			)
 			await get_tree().create_timer(time).timeout
-			next(dialogue_line.next_id)
+			_next(dialogue_line.next_id)
 		else:
 			is_waiting_for_input = true
 			balloon.focus_mode = Control.FOCUS_ALL
@@ -144,15 +144,15 @@ func start(dialogue_resource: DialogueResource,
 
 
 # Go to the next line
-func next(next_id: String) -> void:
+func _next(next_id: String) -> void:
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
 
 
 # Escuchamos los botones y señales de respuestas
-func configure_menu() -> void:
+func _configure_menu() -> void:
 	balloon.focus_mode = Control.FOCUS_NONE
 	
-	var items = get_responses()
+	var items = _get_responses()
 	for i in items.size():
 		var item: Control = items[i]
 		
@@ -182,7 +182,7 @@ func configure_menu() -> void:
 
 
 # Obtenemos la lista de respuestas disponibles
-func get_responses() -> Array:
+func _get_responses() -> Array:
 	var items: Array = []
 	for child in responses_menu.get_children():
 		if "Disallowed" in child.name: continue
@@ -192,7 +192,7 @@ func get_responses() -> Array:
 
 
 # Ajustamos el tamaño del dialogo
-func handle_resize() -> void:
+func _handle_resize() -> void:
 	if not is_instance_valid(margin):
 		call_deferred("handle_resize")
 		return
@@ -222,9 +222,9 @@ func _on_response_gui_input(event: InputEvent, item: Control) -> void:
 	if "Disallowed" in item.name: return
 	# Pasamos a la siguiente linea de diálogo
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
-		next(dialogue_line.responses[item.get_index()].next_id)
-	elif event.is_action_pressed("ui_accept") and item in get_responses():
-		next(dialogue_line.responses[item.get_index()].next_id)
+		_next(dialogue_line.responses[item.get_index()].next_id)
+	elif event.is_action_pressed("ui_accept") and item in _get_responses():
+		_next(dialogue_line.responses[item.get_index()].next_id)
 
 
 # Seteamos las siguientes lineas de dialogos
@@ -238,14 +238,14 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	
 	# Con el click cambiamos las lineas de diálogo
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
-		next(dialogue_line.next_id)
+		_next(dialogue_line.next_id)
 	elif event.is_action_pressed("ui_accept") and get_viewport().gui_get_focus_owner() == balloon:
-		next(dialogue_line.next_id)
+		_next(dialogue_line.next_id)
 
 
 # Si cambia la reslución recalculamos el tamaño del dialogo
 func _on_margin_resized() -> void:
-	handle_resize()
+	_handle_resize()
 
 
 # Conectamos la finalización del dialogo

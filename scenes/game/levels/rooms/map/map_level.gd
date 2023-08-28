@@ -29,11 +29,11 @@ func _input(event):
 		# Validamos si se preciono el boton izquierdo del mouse
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			# Llamamos la funcion del click
-			on_click()
+			_on_click()
 
 
 # Función que escucha
-func on_click():
+func _on_click():
 	# Validamos si se presionó el elemneto del mapa
 	if active:
 		# Validamos si el elemneto del mapa tiene el nombre Antigua

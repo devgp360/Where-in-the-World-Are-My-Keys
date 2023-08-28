@@ -27,11 +27,11 @@ func _ready():
 	external_area2d.area_exited.connect(_area_exited)
 
 	# Inicio del dialogo
-	talk.connect(show_dialogue)
+	talk.connect(_show_dialogue)
 
 
 # Mostramos el diálogo
-func show_dialogue():
+func _show_dialogue():
 	# Validación de que hay que mostrar el dialogo
 	if npc_dialogue_node:
 		# Levantar el diálogo

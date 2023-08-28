@@ -40,7 +40,7 @@ func _ready():
 
 # Función que se ejecuta en cada frame
 func _process(_delta):
-	process_item_selected()
+	_process_item_selected()
 
 
 # Función para detectar eventos del teclado o ratón
@@ -68,7 +68,7 @@ func _unhandled_input(event):
 
 # Función "clic" para cada elemento del inventario
 func _pressed(_name: String):
-	check_press_item_puzzle_jardin(_name) # Validar clic en items de puzzle "Jardín"
+	_check_press_item_puzzle_jardin(_name) # Validar clic en items de puzzle "Jardín"
 	# Cargamos el nodo principal de la escena. Si no existe, se termina la función
 	var escena1 = get_tree().get_root().get_node("Main")
 	if not escena1:
@@ -121,7 +121,7 @@ func add_item_by_name(_name: String, params = null):
 # Eliminar significa, buscar el "nodo" y eliminarlo del grid principal
 # Al eliminar el nodo, todos los demás nodos posteriores, se moverán "hacia atrás"
 # para evitar dejar "espacios vacíos"
-func remove_item_by_name(_name: String):
+func _remove_item_by_name(_name: String):
 	var index = item_object_names.find(_name)
 	if index >= 0:
 		var item_content = item_contents[index] # Nodo que es un "cuadro" contenedor del item recolectado
@@ -153,7 +153,7 @@ func remove_item_by_name(_name: String):
 func remove_all_items():
 	var size = item_object_names.size()
 	for i in size:
-		remove_item_by_name(item_object_names[size - i - 1])
+		_remove_item_by_name(item_object_names[size - i - 1])
 
 
 # Retorna un listado de "nombres" de items que están en inventario
@@ -172,7 +172,7 @@ func is_wearing(_name: String):
 
 
 # Función especial para validar si se da clic en un item del puzzle de "Jardín"
-func check_press_item_puzzle_jardin(_name: String):
+func _check_press_item_puzzle_jardin(_name: String):
 	if not _name.begins_with("puzzle_jardin/"): # Si no es item de "jardín" terminamos la función
 		return
 	# Validamos que sea el iten de "brebaje"
@@ -196,7 +196,7 @@ func check_press_item_puzzle_jardin(_name: String):
 		await animation_player.animation_finished
 		canvas.visible = false
 		# Al usar el "brebaje", lo eliminamos del inventario
-		remove_item_by_name(_name)
+		_remove_item_by_name(_name)
 		# Le "comunicamos" al personaje que use el item "clicado"
 		character.use_item(_name, params)
 
@@ -205,7 +205,7 @@ func check_press_item_puzzle_jardin(_name: String):
 func select_item_to_use(_name: String, select: bool):
 	# Quitar el item seleccionado
 	if not select and current_item_selected:
-		remove_selected_item()
+		_remove_selected_item()
 	# Si ya está seleccionado el item, solo terminamos la función
 	if current_item_name_selected == _name:
 		return
@@ -215,7 +215,7 @@ func select_item_to_use(_name: String, select: bool):
 		return
 	var escena = get_tree().get_root().get_node("Main")
 	if escena:
-		remove_selected_item() # Removemos cualquier item que pueda existir previamente
+		_remove_selected_item() # Removemos cualquier item que pueda existir previamente
 		var item = item_to_load.instantiate()
 		var index = item_object_names.find(_name)
 		var params = null
@@ -234,7 +234,7 @@ func select_item_to_use(_name: String, select: bool):
 
 
 # Se remueve "la selección" de un item de inventario
-func remove_selected_item():
+func _remove_selected_item():
 	if current_item_selected:
 		var escena = get_tree().get_root().get_node("Main")
 		if escena:
@@ -246,7 +246,7 @@ func remove_selected_item():
 
 # Procesamos un item seleccionado
 # Consiste en mostrar el objeto (junto al puntero del ratón) y moverlo en las mismas coordenadas
-func process_item_selected():
+func _process_item_selected():
 	if not current_item_selected:
 		return
 	# Falta implementar la funcionalidad de mover objeto junto al puntero

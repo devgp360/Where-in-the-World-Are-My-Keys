@@ -25,11 +25,11 @@ signal dialogue_ended()
 # Función de inicialización
 func _ready():
 	# Inicialización del diálogo
-	talk.connect(show_dialogue)
+	talk.connect(_show_dialogue)
 
 
 # Mostramos el diálogo
-func show_dialogue():
+func _show_dialogue():
 	# Inicialización del template del diálogo
 	var balloon: Node = (Balloon).instantiate()
 	# Agtregar el código inicaliazado a la escena

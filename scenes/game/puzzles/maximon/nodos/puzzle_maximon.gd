@@ -77,10 +77,10 @@ var area_available = ""
 
 # Función de inicialización
 func _ready():
-	save_objects_position() # Guardamos las posiciones iniciales de los objetos
-	add_area_events() # Agregamos eventos para poder mover los objetos
+	_save_objects_position() # Guardamos las posiciones iniciales de los objetos
+	_add_area_events() # Agregamos eventos para poder mover los objetos
 	Mensaje.text = TextoInstrucciones # Colocamos el texto inicial de instrucciones
-	mess_objects() # Desordenamos los objetos
+	_mess_objects() # Desordenamos los objetos
 
 
 # Función que dectecta eventos del teclado y ratón
@@ -91,11 +91,11 @@ func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("click"):
 		Mensaje.text = TextoInstrucciones # Si se da clic en una área vacía, mostramos las instrucciones
 		if area_active: # Si estamos sobre un objeto (y le dimos clic), procedemos a moverlo
-			move_object()
+			_move_object()
 
 
 # Añade los eventos de entrar/salir de las áreas jugables
-func add_area_events():
+func _add_area_events():
 	for sprite in [ SpriteVelaRoja, SpriteVelaCeleste, SpriteVelaAzul, SpriteCigarro, SpriteSombrero ]:
 		# Recorremos cada objeto y buscamos su área de colisión
 		var area = sprite.find_child("Area2D")
@@ -115,11 +115,11 @@ func _mouse_exited():
 	area_active = ""
 
 
-func move_object():
+func _move_object():
 	# Nombre del objeto a mover (Ej: Sombrero)
 	var object_name = area_active.replace("Area", "")
 	# Nombre del área donde se encuentra el objeto a mover (Ej: AreaAuxiliar)
-	var object_area_name = get_content_area_object(object_name)
+	var object_area_name = _get_content_area_object(object_name)
 	# Areas a donde podría ser movido el objeto que se quiere mover
 	var areas = area_moving_map[object_area_name]
 	# Validamos si el objeto se puede mover, según el area que esté disponible
@@ -142,7 +142,7 @@ func move_object():
 		var m = TextoObjetoMovido
 		
 		# Cuando resolvemos el puzzle, ponemos mensaje final y desactivamos el puzzle
-		if is_game_ended():
+		if _is_game_ended():
 			Mensaje.text = TextoJuegoFinalizado
 			puzzle_active = false
 			self.emit_signal("ended_game")
@@ -150,7 +150,7 @@ func move_object():
 		else:
 			if is_correct:
 				# En caso se mueva una pieza de forma correcta, se muestra un mensaje positivo
-				var correct_count = get_correct_count()
+				var correct_count = _get_correct_count()
 				if correct_count == 1 || correct_count == 2:
 					m = m + " " + TextoObjetoMovidoCorrecto1
 				elif correct_count == 3:
@@ -167,7 +167,7 @@ func move_object():
 
 
 # Función que guarda las posiciones iniciales de cada objeto. Estas posiciones son las correctas
-func save_objects_position():
+func _save_objects_position():
 	real_objects_position["VelaRoja"] = SpriteVelaRoja.position
 	real_objects_position["VelaCeleste"] = SpriteVelaCeleste.position
 	real_objects_position["VelaAzul"] = SpriteVelaAzul.position
@@ -176,7 +176,7 @@ func save_objects_position():
 
 
 # Esta función desordena los objetos del puzzle y los pone en posiciones incorrectas
-func mess_objects():
+func _mess_objects():
 	for area_name in position_objects_map:
 		var object_name = position_objects_map[area_name]
 		if object_name:
@@ -190,7 +190,7 @@ func mess_objects():
 
 # Busca en qué area se encuentra un objeto. Por ejemplo el objeto "Sombrero" se puede encontrar
 # en el área llamada "AreaAuxiliar"
-func get_content_area_object(_name: String):
+func _get_content_area_object(_name: String):
 	for area_name in position_objects_map:
 		if position_objects_map[area_name] == _name:
 			return area_name
@@ -198,13 +198,13 @@ func get_content_area_object(_name: String):
 
 
 # Valida si el puzzle ya está resuelto
-func is_game_ended():
-	var all_correct = get_correct_count()
+func _is_game_ended():
+	var all_correct = _get_correct_count()
 	return all_correct == 5
 
 
 # Retorna el número de elementos puestos de forma correcta
-func get_correct_count():
+func _get_correct_count():
 	var all_correct = 0
 	for area_name in position_objects_map:
 		var current_object = position_objects_map[area_name]
