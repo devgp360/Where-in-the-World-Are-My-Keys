@@ -22,7 +22,7 @@ var _is_character_entered = false # Indica si el personaje entró en contacto co
 # Función de inicialización
 func _ready():
 	button.tooltip_text = item_title # Se inicializa el nombre del objeto
-	if !is_inventory_item:
+	if not is_inventory_item:
 		# Conectamos los eventos para "tomar" un objeto (en caso sea un objeto de escena)
 		# DOCUMENTACIÓN (señales): https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo/edit?usp=drive_link
 		button.pressed.connect(_click_in_escene)
