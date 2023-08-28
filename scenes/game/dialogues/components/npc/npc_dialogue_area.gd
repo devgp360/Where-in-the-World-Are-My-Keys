@@ -38,7 +38,7 @@ func _show_dialogue():
 	balloon.start(dialogue_resource, dialogue_start)
 
 	# Escuchamos cuando el diálogo termine
-	balloon._add_dialogue_ended(_npc_dialogue_ended)
+	balloon.on_dialogue_ended(_npc_dialogue_ended)
 
 
 # DOCUMENTACIÓN (señales): https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo/edit?usp=drive_link
