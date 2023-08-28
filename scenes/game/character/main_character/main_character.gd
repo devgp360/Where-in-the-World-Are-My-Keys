@@ -7,7 +7,6 @@ extends CharacterBody2D
 # DOCUMENTACIÓN SOBRE MOVIMIENTOS DE UN PERSONAJE: https://docs.google.com/document/d/1V__ENMBZUavTCnd7BxHF1oI3gDAOhPtwU5DRxlDGb4g
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 # DOCUMENTACIÓN TOOLTIPS PARA DIÁLOGOS CON NPCS: https://docs.google.com/document/d/15bKBdC0nMawhdyuVRRfcZbFD7D59Lb8HhKiGBY70FL0
-
 # DOCUMENTACIÓN (creación de personaje): https://docs.google.com/document/d/1mwEdhKQrObfhGChXO0R31xknLabwwrc8yRvXdaWJBwE/edit?usp=drive_link
 
 signal end_conversation() # Señal para escuchar cuando el diálogo termina
