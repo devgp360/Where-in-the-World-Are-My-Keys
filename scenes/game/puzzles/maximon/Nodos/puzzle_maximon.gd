@@ -218,7 +218,7 @@ func get_correct_count():
 # Muestra/oculta el puzzle
 func _set_visible(_visible: bool):
 	canvas.visible = _visible
-	character.set_character_active(!_visible)
+	character.set_character_active(not _visible)
 
 
 # Acción de ocultar el puzzle, al presionar el botón de cerrar
