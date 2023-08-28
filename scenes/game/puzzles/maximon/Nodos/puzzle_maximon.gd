@@ -101,17 +101,17 @@ func add_area_events():
 		var area = sprite.find_child("Area2D")
 		var _name = "Area" + sprite.name
 		# Luego añadimos los eventos de entrar/salir para el cursor
-		area.mouse_entered.connect(mouse_entered.bind(_name))
-		area.mouse_exited.connect(mouse_exited)
+		area.mouse_entered.connect(_mouse_entered.bind(_name))
+		area.mouse_exited.connect(_mouse_exited)
 
 
 # Función que asigna un área activa (para saber a que objeto dimos clic)
-func mouse_entered(_name: String):
+func _mouse_entered(_name: String):
 	area_active = _name
 
 
 # Función que desasigna un área activa
-func mouse_exited():
+func _mouse_exited():
 	area_active = ""
 
 

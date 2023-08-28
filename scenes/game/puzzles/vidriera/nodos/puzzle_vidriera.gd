@@ -41,11 +41,11 @@ var is_active = false
 # Función de inicialización
 func _ready():
 	# Agregamos evento de clic en el botón de cerrar
-	close.pressed.connect(close_click)
+	close.pressed.connect(_close_click)
 
 
 # Función de cerrar el puzzle.
-func close_click():
+func _close_click():
 	set_visible(false)
 
 
