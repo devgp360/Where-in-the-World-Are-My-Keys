@@ -3,8 +3,8 @@ extends Node2D
 ## 
 ## Renderización de celdas y objetos de inventario, funcionalidades de agregar nuevos objetos y remover los objetos de inventario ## Revisión de objetos puestos en personaje principal
 
-# DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 
+# DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 
 # Referencia a todas las "cajas", que contienen objetos
 var item_contents = []
@@ -22,7 +22,7 @@ var current_item_name_selected = ""
 @onready var canvas = $CanvasLayer # Canvas principal
 @onready var animation_player = $CanvasLayer/AnimationPlayer # Player
 @onready var grid = $CanvasLayer/TextureRect/GridContainer # Grid al cual se añaden elementos
-#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+# Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 
 # Función de inicialización
@@ -45,11 +45,11 @@ func _process(_delta):
 
 # Función para detectar eventos del teclado o ratón
 func _unhandled_input(event):
-	#Definimos escenas donde no debe aparecer el inventario
+	# Definimos escenas donde no debe aparecer el inventario
 	var scenes = ["Splash", "Map", "MainMenu"]
-	#Obtenemos el nombre de la escena actual
+	# Obtenemos el nombre de la escena actual
 	var actual_scene = get_tree().get_current_scene().name
-	#Si estamos en las escenas definidas no mostramos Inventario
+	# Si estamos en las escenas definidas no mostramos Inventario
 	if scenes.find(actual_scene,0) > -1:
 		return
 	if event.is_action_pressed("wheel_up"):

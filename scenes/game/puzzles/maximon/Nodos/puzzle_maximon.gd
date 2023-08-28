@@ -4,6 +4,7 @@ extends Node2D
 ## Define los elementos del rompecabezas (colores, posiciones, etc), controla los movimientos de objetos, valida las posibilidades de mover los objetos, muestra pistas 
 ## Cuenta elementos puestos en forma correcta, cierra el rompecabezas
 
+
 # DOCUMENTACIÓN (maximón): https://docs.google.com/document/d/1szQIv2aEz_EdoMq34ml8DG-lRju3irkkjRO4QXsDRWc/edit#heading=h.e2j6ax5ma83s
 # DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 
@@ -217,7 +218,7 @@ func get_correct_count():
 # Muestra/oculta el puzzle
 func _set_visible(_visible: bool):
 	canvas.visible = _visible
-	character.set_character_active(!_visible)
+	character.set_character_active(not _visible)
 
 
 # Acción de ocultar el puzzle, al presionar el botón de cerrar
