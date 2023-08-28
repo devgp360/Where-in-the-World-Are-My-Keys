@@ -35,11 +35,11 @@ light_mask = 2
 z_index = -1
 texture = ExtResource("1_y3l5a")
 
-[node name="Luces" type="Node2D" parent="."]
+[node name="Lights" type="Node2D" parent="."]
 
-[node name="Sala" type="Node2D" parent="Luces"]
+[node name="Hall" type="Node2D" parent="Lights"]
 
-[node name="Luz1" type="PointLight2D" parent="Luces/Sala"]
+[node name="Light1" type="PointLight2D" parent="Lights/Hall"]
 position = Vector2(156, -625)
 scale = Vector2(2.85313, 2.96094)
 color = Color(0.466667, 0.443137, 1, 1)
@@ -52,52 +52,52 @@ texture_scale = 0.4
 [node name="ObjetosYPersonaje" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Sillon1" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Armchair1" type="Sprite2D" parent="ObjetosYPersonaje"]
 y_sort_enabled = true
 position = Vector2(257.5, 90)
 texture = ExtResource("2_htesh")
 offset = Vector2(0, 30)
 
-[node name="Sillon2" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Armchair2" type="Sprite2D" parent="ObjetosYPersonaje"]
 y_sort_enabled = true
 position = Vector2(326.5, 146)
 texture = ExtResource("3_ndhbe")
 offset = Vector2(0, 30)
 
-[node name="Pasto1" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Grass1" type="Sprite2D" parent="ObjetosYPersonaje"]
 y_sort_enabled = true
 position = Vector2(377.5, 223.2)
 texture = ExtResource("4_by3qp")
 offset = Vector2(0, 40)
 
-[node name="PastoYPiedra" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="GrassAndStone" type="Sprite2D" parent="ObjetosYPersonaje"]
 y_sort_enabled = true
 position = Vector2(457.7, 181.8)
 texture = ExtResource("5_05d3o")
 offset = Vector2(0, -20)
 
-[node name="Columnas2" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Column2" type="Sprite2D" parent="ObjetosYPersonaje"]
 z_index = 1
 position = Vector2(147.5, 331.5)
 texture = ExtResource("7_seh3k")
 
-[node name="Columnas" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Columns" type="Sprite2D" parent="ObjetosYPersonaje"]
 z_index = 1
 position = Vector2(-885.5, -183)
 texture = ExtResource("8_pc2hj")
 
-[node name="Elementos" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Elements" type="Sprite2D" parent="ObjetosYPersonaje"]
 z_index = 1
 position = Vector2(586.5, 296.5)
 texture = ExtResource("9_lyeit")
 
-[node name="Columna3" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Column3" type="Sprite2D" parent="ObjetosYPersonaje"]
 y_sort_enabled = true
 position = Vector2(-140.5, 127)
 texture = ExtResource("9_kex6f")
 offset = Vector2(0, -20)
 
-[node name="ColumnaYArbustos" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="ColumnAndGrass" type="Sprite2D" parent="ObjetosYPersonaje"]
 y_sort_enabled = true
 position = Vector2(-29.5, 154.5)
 texture = ExtResource("10_v6fxh")
@@ -107,7 +107,7 @@ offset = Vector2(0, -35)
 material = SubResource("ShaderMaterial_ksial")
 position = Vector2(175, 162)
 scale = Vector2(0.7, 0.7)
-light_node = NodePath("../../Luces/Sala/Luz1")
+light_node = NodePath("../../Lights/Hall/Light1")
 active_fake_z_axis = true
 max_scale = 3.0
 max_y = 1000.0
