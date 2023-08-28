@@ -296,7 +296,7 @@ autowrap_mode = 2
 [node name="end_pf_moving_timer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="MainChar_Dialogue_Area" parent="." node_paths=PackedStringArray("external_area2d") instance=ExtResource("3_rp52k")]
+[node name="MainCharDialogueArea" parent="." node_paths=PackedStringArray("external_area2d") instance=ExtResource("3_rp52k")]
 external_area2d = NodePath("../mainchar_area")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

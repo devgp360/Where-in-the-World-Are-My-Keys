@@ -3,9 +3,10 @@ extends Camera2D
 ##
 ## Se realizan los calculos de posiciones para definir si hay que mover la camara hacia el personaje principal
 
+
 # DOCUMENTACIÓN SOBRE CREACIÓN DE CÁMARAS Y CONFIGURACIÓN DE SU MOVIMIENTO: https://docs.google.com/document/d/1d4RoDe9aK4ortBhJ1grTUOdpXnICxBa7fl_vty2OF-w
 
-# DOCUMANTACIÓN (cámaras): https://docs.google.com/document/d/1d4RoDe9aK4ortBhJ1grTUOdpXnICxBa7fl_vty2OF-w/edit?usp=drive_link
+# DOCUMENTACIÓN (cámaras): https://docs.google.com/document/d/1d4RoDe9aK4ortBhJ1grTUOdpXnICxBa7fl_vty2OF-w/edit?usp=drive_link
 
 # Variable para tener referencia del personaje principal
 @export var character: CharacterBody2D
