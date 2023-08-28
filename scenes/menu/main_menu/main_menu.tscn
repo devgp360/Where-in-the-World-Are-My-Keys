@@ -153,11 +153,11 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="InventoryCanvas" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer" node_paths=PackedStringArray("actions", "saveButton", "loadButton", "removeButton") instance=ExtResource("4_y8t38")]
+[node name="InventoryCanvas" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer" node_paths=PackedStringArray("actions", "save_button", "load_button", "remove_button") instance=ExtResource("4_y8t38")]
 actions = NodePath("../../MarginContainer/Actions")
-saveButton = NodePath("../../MarginContainer/Actions/SaveGame")
-loadButton = NodePath("../../MarginContainer/Actions/LoadGame")
-removeButton = NodePath("../../MarginContainer/Actions/RemoveGame")
+save_button = NodePath("../../MarginContainer/Actions/SaveGame")
+load_button = NodePath("../../MarginContainer/Actions/LoadGame")
+remove_button = NodePath("../../MarginContainer/Actions/RemoveGame")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
