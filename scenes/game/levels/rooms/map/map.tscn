@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://d4f7fxjs2wh7n" path="res://scenes/menu/main_menu/main_menu.tscn" id="2_duttm"]
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/map/map.gd" id="2_eoloc"]
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/map/map_level.gd" id="2_nvyu5"]
-[ext_resource type="AudioStream" uid="uid://n7xjmb7ofy5j" path="res://assets/sounds/MainMenu.mp3" id="3_muhmh"]
+[ext_resource type="AudioStream" uid="uid://n7xjmb7ofy5j" path="res://assets/sounds/main_menu.mp3" id="3_muhmh"]
 [ext_resource type="Texture2D" uid="uid://c6weclkyxwnla" path="res://assets/sprites/map/main_map.jpg" id="3_y3gy7"]
 [ext_resource type="Shader" path="res://scenes/game/levels/animations/map/element_active.gdshader" id="4_lkde2"]
 [ext_resource type="Texture2D" uid="uid://ba1abpivjjs74" path="res://assets/sprites/map/panajachel.png" id="5_0qd31"]

@@ -81,11 +81,11 @@ func init():
 	# Cargamos datos guardados
 	var data = SaveProgress.load_game()
 	# Validamos si hay datos guardados
-	if data && data.point.size():
+	if data and data.point.size():
 		# Recorremos el total disponible de escenas
 		for n in total_items:
 			# Si la escena guardada existe ponemos el screen de la escena
-			if data.point.size() > n && data.point[n]:
+			if data.point.size() > n and data.point[n]:
 				# Ponemos el screen de la escena
 				_add_item_by_name(data.point[n],n)
 			else:

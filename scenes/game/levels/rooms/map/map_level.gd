@@ -63,12 +63,12 @@ func _mouse_exited():
 	active = ""
 
 
-#Seteamos estados de puntos de entradas a escenas
+# Seteamos estados de puntos de entradas a escenas
 func _set_level_status():
 	# Cargamos el progreso del juego
 	var data = SaveProgress.load_game()
 	# Validamos si hay escenas activas guardadas
-	if (data && data.size() && data.activeScene && data.activeScene.size()):
+	if data and data.size() and data.activeScene and data.activeScene.size():
 		# Recorremos cada escena activa
 		for i in data.activeScene.size():
 			# Validamos si la escena activa es la nuestra

@@ -10,6 +10,7 @@ extends Node2D
 
 # Definición de la señal del diálogo
 signal talk()
+
 # Definición de la señal del diálogo terminado
 signal dialogue_ended()
 

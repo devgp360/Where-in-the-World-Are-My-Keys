@@ -29,7 +29,7 @@ func _process(_delta):
 		# Pausamos el juego
 		get_tree().paused = true
 		# Cargamos el nodo de Menú
-		var pause: Node = (PauseMenu).instantiate()
+		var pause: Node = PauseMenu.instantiate()
 		# Mostramos el nodo del Menú
 		get_tree().current_scene.add_child(pause)
 
