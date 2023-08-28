@@ -36,6 +36,7 @@ func show_dialogue():
 	get_tree().current_scene.add_child(balloon)
 	# Abrir diálogo
 	balloon.start(dialogue_resource, dialogue_start)
+
 	# Escuchamos cuando el diálogo termine
 	balloon._add_dialogue_ended(_npc_dialogue_ended)
 
@@ -47,5 +48,5 @@ func _npc_dialogue_ended():
 
 
 # Se añade evento para escuchar cuando el diálogo finalice
-func add_dialogue_ended(fn):
+func on_dialogue_ended(fn):
 	dialogue_ended.connect(fn)

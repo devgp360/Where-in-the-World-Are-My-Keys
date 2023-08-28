@@ -144,7 +144,6 @@ func _overwrite_saved(id:String, dataToSave:Dictionary, data: FileAccess, img: I
 		save_game(dataToSave, img)
 
 
-
 # Guardamos el avance del juego
 func _save_data(data: Dictionary) -> void:
 	# Inicializamos el archivo para guardar datos
