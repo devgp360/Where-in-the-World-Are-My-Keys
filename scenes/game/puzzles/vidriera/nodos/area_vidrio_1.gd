@@ -25,7 +25,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			on_click() # Detectar clic
+			_on_click() # Detectar clic
 
 
 # Activar fragmento
@@ -39,6 +39,6 @@ func _mouse_exited():
 
 
 # Al dar clic en un área de un fragmento de vidrio
-func on_click():
+func _on_click():
 	if active:
 		canvas._click_event(name)

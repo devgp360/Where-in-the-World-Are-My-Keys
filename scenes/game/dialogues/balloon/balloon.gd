@@ -244,10 +244,11 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 
 
 # Si cambia la reslución recalculamos el tamaño del dialogo
-func on_margin_resized() -> void:
+func _on_margin_resized() -> void:
 	_handle_resize()
 
 
 # Conectamos la finalización del dialogo
+#func _add_dialogue_ended(fn):
 func on_dialogue_ended(fn):
 	dialogue_ended.connect(fn)
