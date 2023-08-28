@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cnqdsj1751ca0"]
 
-[ext_resource type="Script" path="res://scenes/game/puzzles/maximon/Nodos/altar_maximon.gd" id="1_7xw4y"]
+[ext_resource type="Script" path="res://scenes/game/puzzles/maximon/nodos/altar_maximon.gd" id="1_7xw4y"]
 [ext_resource type="Texture2D" uid="uid://b4oah06wllhxo" path="res://assets/sprites/puzzles/maximon/altar.png" id="1_612nn"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p5lgs"]

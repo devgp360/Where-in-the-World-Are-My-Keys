@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://di3seule2il8t"]
 
-[ext_resource type="Script" path="res://scenes/game/puzzles/maximon/Nodos/puzzle_maximon.gd" id="1_l1i46"]
+[ext_resource type="Script" path="res://scenes/game/puzzles/maximon/nodos/puzzle_maximon.gd" id="1_l1i46"]
 [ext_resource type="Texture2D" uid="uid://bh0fn2ff8gq12" path="res://assets/sprites/puzzles/maximon/maximon.png" id="1_p5k4f"]
 [ext_resource type="Texture2D" uid="uid://c0q5venovutsx" path="res://assets/sprites/puzzles/maximon/vela_roja.png" id="2_hkktg"]
 [ext_resource type="Texture2D" uid="uid://icl40te2ynex" path="res://assets/sprites/puzzles/maximon/vela_celeste.png" id="3_b08bh"]
