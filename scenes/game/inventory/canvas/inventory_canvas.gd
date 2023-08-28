@@ -40,7 +40,7 @@ func _ready():
 
 # Función que se ejecuta en cada frame
 func _process(_delta):
-	_process_item_selected()
+	process_item_selected()
 
 
 # Función para detectar eventos del teclado o ratón
@@ -68,7 +68,7 @@ func _unhandled_input(event):
 
 # Función "clic" para cada elemento del inventario
 func _pressed(_name: String):
-	_check_press_item_puzzle_jardin(_name) # Validar clic en items de puzzle "Jardín"
+	check_press_item_puzzle_jardin(_name) # Validar clic en items de puzzle "Jardín"
 	# Cargamos el nodo principal de la escena. Si no existe, se termina la función
 	var escena1 = get_tree().get_root().get_node("Main")
 	if not escena1:
@@ -196,7 +196,7 @@ func check_press_item_puzzle_jardin(_name: String):
 		await animation_player.animation_finished
 		canvas.visible = false
 		# Al usar el "brebaje", lo eliminamos del inventario
-		_remove_item_by_name(_name)
+		remove_item_by_name(_name)
 		# Le "comunicamos" al personaje que use el item "clicado"
 		character.use_item(_name, params)
 
@@ -205,7 +205,7 @@ func check_press_item_puzzle_jardin(_name: String):
 func select_item_to_use(_name: String, select: bool):
 	# Quitar el item seleccionado
 	if not select and current_item_selected:
-		_remove_selected_item()
+		remove_selected_item()
 	# Si ya está seleccionado el item, solo terminamos la función
 	if current_item_name_selected == _name:
 		return
@@ -215,7 +215,7 @@ func select_item_to_use(_name: String, select: bool):
 		return
 	var escena = get_tree().get_root().get_node("Main")
 	if escena:
-		_remove_selected_item() # Removemos cualquier item que pueda existir previamente
+		remove_selected_item() # Removemos cualquier item que pueda existir previamente
 		var item = item_to_load.instantiate()
 		var index = item_object_names.find(_name)
 		var params = null
@@ -234,7 +234,7 @@ func select_item_to_use(_name: String, select: bool):
 
 
 # Se remueve "la selección" de un item de inventario
-func _remove_selected_item():
+func remove_selected_item():
 	if current_item_selected:
 		var escena = get_tree().get_root().get_node("Main")
 		if escena:
@@ -246,7 +246,7 @@ func _remove_selected_item():
 
 # Procesamos un item seleccionado
 # Consiste en mostrar el objeto (junto al puntero del ratón) y moverlo en las mismas coordenadas
-func _process_item_selected():
+func process_item_selected():
 	if not current_item_selected:
 		return
 	# Falta implementar la funcionalidad de mover objeto junto al puntero
@@ -254,5 +254,5 @@ func _process_item_selected():
 
 
 # Retorna el nombre del objeto actualmente seleccionado
-func _get_current_item_name_selected():
+func get_current_item_name_selected():
 	return current_item_name_selected
