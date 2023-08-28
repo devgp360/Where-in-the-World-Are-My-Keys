@@ -26,8 +26,13 @@ var item_contents = []
 var all_items = []
 # Referencia de total de escenas disponibles
 var totalItems = 6
-#Configuracion del item por defecto
-var lock = {"name":"lock","path":"", "id":""}
+# Configuracion del item por defecto
+var lock = {
+	"name": "lock",
+	"path": "",
+	"id":"",
+}
+
 
 func _ready():
 	#Limpiamos grid
@@ -42,6 +47,15 @@ func _ready():
 		item_contents.append(item)
 	#Inicializamos la revision de datos guardados
 	init()
+
+
+func _on_pressed(scenePath:String):
+	#Validamos si existe la ruta de la escena
+	if (scenePath):
+		#Cambio de escena
+		get_tree().paused = false
+		SceneTransition.change_scene(scenePath)
+
 
 func init():
 	for item in all_items:
@@ -65,12 +79,14 @@ func init():
 	else:
 		#Ponemos los screens de las escenas no guardadas
 		fill_lock_img()
-		
+
+
 func fill_lock_img():
 	# Recorremos el total disponible de escenas
 	for n in totalItems:
 		#Ponemos los screens de las escenas no guardadas
 		add_item_by_name(lock,n,true)
+
 
 func add_item_by_name(scene: Dictionary, index:int, empty=false):
 	# Cargamos el recurso
@@ -105,20 +121,15 @@ func add_item_by_name(scene: Dictionary, index:int, empty=false):
 	#Agregamos el grid a la escena
 	item_content.add_child(item)
 
-func _on_pressed(scenePath:String):
-	#Validamos si existe la ruta de la escena
-	if (scenePath):
-		#Cambio de escena
-		get_tree().paused = false
-		SceneTransition.change_scene(scenePath)
-		
+
 func clear():
 	#Recorremos todos los items del grid
 	for item in all_items:
 		if item != null:
 			#Reseteamos el estado
 			item.reset()
-			
+
+
 func load_image(path: String):
 	#Validamos si el archivo existe
 	if not FileAccess.file_exists(path):
