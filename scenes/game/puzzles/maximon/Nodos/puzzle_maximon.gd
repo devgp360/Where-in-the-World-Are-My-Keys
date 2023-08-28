@@ -36,6 +36,7 @@ var area_moving_map = {
 	"AreaVelaCeleste": ["AreaVelaRoja", "AreaVelaAzul", "AreaCigarro"],
 	"AreaVelaAzul": ["AreaVelaCeleste", "AreaCigarro"],
 }
+
 # Posición de los objetos (un objeto está siempre en un area)
 # Este objeto lo usamos para colocar los objetos al iniciar el puzzle (en este caso en lugares incorrectos)
 var position_objects_map = {
@@ -46,6 +47,7 @@ var position_objects_map = {
 	"AreaCigarro": "VelaCeleste",
 	"AreaAuxiliar": "Sombrero",
 }
+
 # Guarda las posiciones iniciales de cada objeto
 var real_objects_position = {
 	"Sombrero": Vector2(0, 0),
@@ -82,7 +84,7 @@ func _ready():
 
 # Función que dectecta eventos del teclado y ratón
 func _unhandled_input(event: InputEvent):
-	if !puzzle_active:
+	if not puzzle_active:
 		return # Si el juego no está activo, terminamo la función
 	# Cuando damos clic, validamos que estamos en un área jugable, y que no sea un área vacía
 	if event.is_action_pressed("click"):

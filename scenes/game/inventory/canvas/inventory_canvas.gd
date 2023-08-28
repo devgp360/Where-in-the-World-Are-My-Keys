@@ -90,7 +90,7 @@ func _pressed(_name: String):
 # Función que añade un item al inventario
 # Añadir significa, cargar un elemento (escena) y agregarlo al grid
 # El nombre del item, tiene que existir como una escena
-func _add_item_by_name(_name: String, params = null):
+func add_item_by_name(_name: String, params = null):
 	# Si el item ya existe (ya está agregado), se termina la función
 	var index = item_object_names.find(_name)
 	if index >= 0:
@@ -121,7 +121,7 @@ func _add_item_by_name(_name: String, params = null):
 # Eliminar significa, buscar el "nodo" y eliminarlo del grid principal
 # Al eliminar el nodo, todos los demás nodos posteriores, se moverán "hacia atrás"
 # para evitar dejar "espacios vacíos"
-func _remove_item_by_name(_name: String):
+func remove_item_by_name(_name: String):
 	var index = item_object_names.find(_name)
 	if index >= 0:
 		var item_content = item_contents[index] # Nodo que es un "cuadro" contenedor del item recolectado
@@ -153,26 +153,26 @@ func _remove_item_by_name(_name: String):
 func remove_all_items():
 	var size = item_object_names.size()
 	for i in size:
-		_remove_item_by_name(item_object_names[size - i - 1])
+		remove_item_by_name(item_object_names[size - i - 1])
 
 
 # Retorna un listado de "nombres" de items que están en inventario
-func _get_item_list_names():
+func get_item_list_names():
 	return item_object_names
 
 
 # Retorna un listado de "nombres" de items que el personaje debe "vestir"
-func _get_dressed_item_list():
+func get_dressed_item_list():
 	return dressed_item_list
 
 
 # Devuelve "true", si un item está siendo "vestido" por el personaje principal
-func _is_wearing(_name: String):
+func is_wearing(_name: String):
 	return dressed_item_list.find(_name) >= 0
 
 
 # Función especial para validar si se da clic en un item del puzzle de "Jardín"
-func _check_press_item_puzzle_jardin(_name: String):
+func check_press_item_puzzle_jardin(_name: String):
 	if not _name.begins_with("puzzle_jardin/"): # Si no es item de "jardín" terminamos la función
 		return
 	# Validamos que sea el iten de "brebaje"
@@ -202,7 +202,7 @@ func _check_press_item_puzzle_jardin(_name: String):
 
 
 # Función que servirá para seleccionar un item a usar (sobre otro item)
-func _select_item_to_use(_name: String, select: bool):
+func select_item_to_use(_name: String, select: bool):
 	# Quitar el item seleccionado
 	if not select and current_item_selected:
 		_remove_selected_item()
