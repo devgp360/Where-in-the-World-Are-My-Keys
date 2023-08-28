@@ -48,7 +48,7 @@ func _add_scene(dataToSave:Dictionary, data: FileAccess):
 # Agregamos datos de sonidos
 func _add_sounds(_name: String, vol: float, data: FileAccess):
 	# Inicializamos objeto vacío
-	var _data = init_object()
+	var _data = _init_object()
 	# Validamos si data no viene vacia
 	if (data):
 		_data = data.get_var(true)
@@ -65,7 +65,7 @@ func _add_sounds(_name: String, vol: float, data: FileAccess):
 # Agregamos datos de la escena activa
 func _add_active_scene(scene:String, data: FileAccess):
 	# Inicializamos objeto vacío
-	var _data = init_object()
+	var _data = _init_object()
 	# Validamos si data no viene vacia
 	if (data):
 		# Leemos datos guardados
