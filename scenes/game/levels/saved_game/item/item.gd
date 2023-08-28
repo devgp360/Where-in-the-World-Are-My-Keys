@@ -35,7 +35,6 @@ func _ready():
 
 func _on_mouse_entered():
 	# Validamos si no esta sseleccionado el elemento
-	print("entro item")
 	if not selected:
 		# Ajustamos la transparencia
 		modulate.a8=200
@@ -61,7 +60,7 @@ func _on_pressed():
 	parent.save_confirm.visible = false
 	parent.delete_confirm.visible = false
 	if only_load: 
-		if !empty:
+		if not empty:
 			parent.load_button.visible = true
 		else:
 			parent.load_button.visible = false
