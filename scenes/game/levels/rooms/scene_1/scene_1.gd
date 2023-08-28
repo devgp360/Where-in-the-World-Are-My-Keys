@@ -70,13 +70,13 @@ func _on_area_2d_area_entered(_area):
 
 
 # Seteamos los datos de la escena
-func _set_level_data(_level_data: Dictionary):
+func _set_level_data(level_data: Dictionary):
 	# Limpiamos el inventario
 	InventoryCanvas.remove_all_items()
 	# Seteamos datos del personaje principal
-	_set_character_data(_level_data.character)
+	_set_character_data(level_data.character)
 	# Seteamos datos del inventario
-	_set_inventory_data(_level_data)
+	_set_inventory_data(level_data)
 
 
 # Seteamos datos del personaje principal
@@ -90,11 +90,11 @@ func _set_character_data(characterData: Dictionary):
 
 
 # Seteamos datos de inventario
-func _set_inventory_data(_level_data: Dictionary):
+func _set_inventory_data(level_data: Dictionary):
 	# obtenemos los objetos coleccionables
 	var children = self.get_node("Collect").get_children()
 	# Recorremos datos guardados
-	for item_saved in _level_data.inventory.items:
+	for item_saved in level_data.inventory.items:
 		# Agregamos objeto al inventario
 		InventoryCanvas.add_item_by_name(item_saved.item)
 		# Recorremos objetos coleccionables
@@ -135,6 +135,6 @@ func get_save_data():
 		},
 		"character":{
 			"position": character.position,
-			"dressed": character.dress_item_list,
+			"dressed": character.get_dress_item_list(),
 		}
 	}
