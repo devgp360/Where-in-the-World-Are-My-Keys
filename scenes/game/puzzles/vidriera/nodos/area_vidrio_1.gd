@@ -3,10 +3,11 @@ extends Area2D
 ##
 ## Controla los eventos de clicks, setea el nombre activo del elemento de vidrio
 
+
 # DOCUMENTACIÓN: https://docs.google.com/document/d/1wEfx7wOw5FJ0GpRLCWUPQObmkE-fCed8TOZk5ZRGOyU/edit#heading=h.e2j6ax5ma83s
 
 @export var canvas: CanvasLayer
-#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+# Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Indica si el ítem está activo o no
 var active = "" 

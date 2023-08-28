@@ -4,6 +4,7 @@ extends CanvasLayer
 ## Muestra y quita la ventana de rompecabezas, controla pistas del puzle, visualiza los fragmentos de vidrio disponibles, gira los objetos de vidrio alrededor de su eje 
 ## Pone fragmentos de vidrio en su posición correcta
 
+
 # DOCUMENTACIÓN: https://docs.google.com/document/d/1wEfx7wOw5FJ0GpRLCWUPQObmkE-fCed8TOZk5ZRGOyU/edit#heading=h.e2j6ax5ma83s
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 
@@ -34,7 +35,7 @@ var is_active = false
 @onready var grid = $Panel/GridContainer
 @onready var label = $Panel/Label
 @onready var sprites = $Panel/Node2D
-#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+# Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 
 # Función de inicialización

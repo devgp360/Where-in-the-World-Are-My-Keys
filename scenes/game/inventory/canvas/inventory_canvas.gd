@@ -3,8 +3,8 @@ extends Node2D
 ## 
 ## Renderización de celdas y objetos de inventario, funcionalidades de agregar nuevos objetos y remover los objetos de inventario ## Revisión de objetos puestos en personaje principal
 
-# DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 
+# DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 
 # Referencia a todas las "cajas", que contienen objetos
 var item_contents = []
@@ -22,7 +22,7 @@ var current_item_name_selected = ""
 @onready var canvas = $CanvasLayer # Canvas principal
 @onready var animation_player = $CanvasLayer/AnimationPlayer # Player
 @onready var grid = $CanvasLayer/TextureRect/GridContainer # Grid al cual se añaden elementos
-#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+# Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 
 # Función de inicialización
