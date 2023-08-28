@@ -4,37 +4,42 @@ extends CanvasLayer
 ## Se realizan las preparaciones de textos para dialogos, se controla la orden en que aparecen los textos
 ## La logica de recibir las respuestas del jugador, calculos de tamaños de dialogo cuando se cambia el tamaño de la ventana de juego 
 
+
 # DOCUMENTACIÓN TOOLTIPS PARA DIÁLOGOS CON NPCS: https://docs.google.com/document/d/15bKBdC0nMawhdyuVRRfcZbFD7D59Lb8HhKiGBY70FL0
 # DOCUMENTACIÓN ¿QUÉ SON LAS SEÑALES EN GDSCRIPT?: https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo
 
 # Señal de finalizacion de diálogo
 signal dialogue_ended()
 
-#Exportamos plantilla de respuestas
+# Exportamos plantilla de respuestas
 @export var response_template: Node
-#Variable para setear el sufijo de archivos
+
+# Variable para setear el sufijo de archivos
 @export var file_suffix: String = ""
 
 # Recurso del diálogo
 var resource: DialogueResource
 # Estados del juego temporal
+
 var temporary_game_states: Array = []
 # Variable que valida si estamos esperando la respuesta del jugador
+
 var is_waiting_for_input: bool = false
+
 # Hilo del dialogo
 var dialogue_line: DialogueLine:
-	#Creamos la linea del dialogo
+	# Creamos la linea del dialogo
 	set(next_dialogue_line):
-		#Si no existen textos
+		# Si no existen textos
 		if not next_dialogue_line:
 			# Terminamos el diálogo
 			queue_free()
-			#emitimos la señal de finalización de dialogo
+			# Emitimos la señal de finalización de dialogo
 			self.emit_signal("dialogue_ended")
-			#retornamos
+			# Retornamos
 			return
 		
-		#No esperamos la respuesta del jugador
+		# No esperamos la respuesta del jugador
 		is_waiting_for_input = false
 		
 		# Eliminamos respuestas enteriores
@@ -42,16 +47,19 @@ var dialogue_line: DialogueLine:
 			responses_menu.remove_child(child)
 			child.queue_free()
 		
-		#Asignamos el ptimer diálogo
+		# Asignamos el ptimer diálogo
 		dialogue_line = next_dialogue_line
-		#Mostramos el diálogo
+		# Mostramos el diálogo
 		character_label.visible = not dialogue_line.character.is_empty()
-		#Mostramos el titulo
+		# Mostramos el titulo
 		character_label.text = tr(dialogue_line.character, "dialogue")
-		#Mostramos el avatar
-		character_portrait.texture = load("res://assets/sprites/dialogues/%s%s.png" % [dialogue_line.character.to_lower(), file_suffix])
+		# Mostramos el avatar
+		character_portrait.texture = load(
+			"res://assets/sprites/dialogues/%s%s.png" % [dialogue_line.character.to_lower(), 
+			file_suffix]
+		)
 		
-		#Ajustamos las propiedades del diálogo
+		# Ajustamos las propiedades del diálogo
 		dialogue_label.modulate.a = 0
 		dialogue_label.custom_minimum_size.x = dialogue_label.get_parent().size.x - 1
 		dialogue_label.dialogue_line = dialogue_line
@@ -60,7 +68,7 @@ var dialogue_line: DialogueLine:
 		responses_menu.modulate.a = 0
 		if dialogue_line.responses.size() > 0:
 			for response in dialogue_line.responses:
-				#Duplicamos la plantilla para poder usar los estilos
+				# Duplicamos la plantilla para poder usar los estilos
 				var item: RichTextLabel = response_template.duplicate(0)
 				item.name = "Response%d" % responses_menu.get_child_count()
 				if not response.is_allowed:
@@ -83,7 +91,10 @@ var dialogue_line: DialogueLine:
 			configure_menu()
 		elif dialogue_line.time != null:
 			#Pasamos al siguiente diálogo
-			var time = dialogue_line.dialogue.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
+			var time = (
+				dialogue_line.dialogue.length() * 0.02 if dialogue_line.time == "auto" 
+				else dialogue_line.time.to_float()
+			)
 			await get_tree().create_timer(time).timeout
 			next(dialogue_line.next_id)
 		else:
@@ -91,43 +102,44 @@ var dialogue_line: DialogueLine:
 			balloon.focus_mode = Control.FOCUS_ALL
 			balloon.grab_focus()
 	get:
-		#Retornamos la linea del diálogo
+		# Retornamos la linea del diálogo
 		return dialogue_line
 
-#Definici[on del dialogo
+# Definición del dialogo
 @onready var balloon: ColorRect = $Balloon
-#Definición del nodo de margin
+# Definición del nodo de margin
 @onready var margin: MarginContainer = $Balloon/Margin
-#Definición del nodo del avatar
+# Definición del nodo del avatar
 @onready var character_portrait: Sprite2D = $Balloon/Margin/HBox/Portrate/Sprite2D
-#Definición del nodo del nombre del personaje
+# Definición del nodo del nombre del personaje
 @onready var character_label: RichTextLabel = $Balloon/Margin/HBox/VBox/CharacterLabel
-#Definición del nodo del diálogo
+# Definición del nodo del diálogo
 @onready var dialogue_label := $Balloon/Margin/HBox/VBox/DialogueLabel
-#Definición del nodo de respuestas
+# Definición del nodo de respuestas
 @onready var responses_menu: VBoxContainer = $Balloon/Margin/HBox/VBox/Responses
-#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+# Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 
 # Función que se llama cuando la escena esta cargada
 func _ready() -> void:
-	#Escondemos el giálogo
+	# Escondemos el giálogo
 	response_template.hide()
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
 
 func _unhandled_input(_event: InputEvent) -> void:
-	#Seteamos que el diálogo reciba las respuestas del jugador
+	# Seteamos que el diálogo reciba las respuestas del jugador
 	get_viewport().set_input_as_handled()
 
 
 # Iniciamos el diálogo
-func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
+func start(dialogue_resource: DialogueResource, 
+	title: String, extra_game_states: Array = []) -> void:
 	temporary_game_states = extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
-	#Seteamos los textos del diálogo
+	# Seteamos los textos del diálogo
 	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
 
 
@@ -188,7 +200,9 @@ func handle_resize() -> void:
 	balloon.custom_minimum_size.y = margin.size.y
 	balloon.size.y = 0
 	var viewport_size = balloon.get_viewport_rect().size
-	balloon.global_position = Vector2((viewport_size.x - balloon.size.x) * 0.5, viewport_size.y - balloon.size.y)
+	balloon.global_position = Vector2(
+		(viewport_size.x - balloon.size.x) * 0.5, 
+		viewport_size.y - balloon.size.y)
 
 
 # Escondemos el diálogo
@@ -200,14 +214,13 @@ func _on_mutated(_mutation: Dictionary) -> void:
 # Escuchamos cuando el raton entra al area de respuestas
 func _on_response_mouse_entered(item: Control) -> void:
 	if "Disallowed" in item.name: return
-	
 	item.grab_focus()
 
 
 # Seteamos las respuestas elegidas
 func _on_response_gui_input(event: InputEvent, item: Control) -> void:
 	if "Disallowed" in item.name: return
-	#Pasamos a la siguiente linea de diálogo
+	# Pasamos a la siguiente linea de diálogo
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
 		next(dialogue_line.responses[item.get_index()].next_id)
 	elif event.is_action_pressed("ui_accept") and item in get_responses():
@@ -217,14 +230,13 @@ func _on_response_gui_input(event: InputEvent, item: Control) -> void:
 # Seteamos las siguientes lineas de dialogos
 func _on_balloon_gui_input(event: InputEvent) -> void:
 	if not is_waiting_for_input: return
-	#Salimos si no hay mas texto
+	# Salimos si no hay mas texto
 	if dialogue_line.responses.size() > 0: return
 
-	# When there are no response options the balloon itself is the clickable thing
-	#Cuando no hay respuestas damos la opción de hacer clicks en el diálogo
+	# Cuando no hay respuestas damos la opción de hacer clicks en el diálogo
 	get_viewport().set_input_as_handled()
 	
-	#Con el click cambiamos las lineas de diálogo
+	# Con el click cambiamos las lineas de diálogo
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == 1:
 		next(dialogue_line.next_id)
 	elif event.is_action_pressed("ui_accept") and get_viewport().gui_get_focus_owner() == balloon:
@@ -236,6 +248,6 @@ func _on_margin_resized() -> void:
 	handle_resize()
 
 
-#Conectamos la finalización del dialogo
+# Conectamos la finalización del dialogo
 func _add_dialogue_ended(fn):
 	dialogue_ended.connect(fn)

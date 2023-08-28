@@ -301,7 +301,6 @@ external_area2d = NodePath("../mainchar_area")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_8k3nx")
-bus = &"mainCharacter"
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false

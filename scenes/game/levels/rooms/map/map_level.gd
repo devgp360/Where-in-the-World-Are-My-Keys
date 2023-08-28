@@ -3,6 +3,7 @@ extends TextureRect
 ## 
 ## Escucha eventos de ratón, valida que elemento fue presionado, hace redirect a otra escena, activa diferente estatuses de elementos del mapa 
 
+
 # DOCUMENTACIÓN CREAR UN MAPA GENERAL: https://docs.google.com/document/d/1q-aOyPNZ2Ldn6hH9H43Ym6u_fmWvujVgbkHfayPDN-E
 
 var active = "" # Estado del elemento clicqueado
@@ -11,19 +12,19 @@ var blocked = true # Estado del elemento del mapa (activado /descativado)
 
 # Función que se llama cuando la escena esta cargada
 func _ready():
-	# habilitamos procesado de input 
+	# Habilitamos procesado de input 
 	set_process_input(true)
-	# habilitamos y deshabilitamos elementos en el mapa
-	set_level_status()
-	# conectamos el evento _mouse_entered
+	# Habilitamos y deshabilitamos elementos en el mapa
+	_set_level_status()
+	# Conectamos el evento _mouse_entered
 	self.mouse_entered.connect(_mouse_entered)
-	# conectamos el evento _mouse_exited
+	# Conectamos el evento _mouse_exited
 	self.mouse_exited.connect(_mouse_exited)
 
 
 # Función que escucha el teclado y raton
 func _input(event):
-	# escuchamos el evento del boton de raton
+	# Escuchamos el evento del boton de raton
 	if event is InputEventMouseButton:
 		# Validamos si se preciono el boton izquierdo del mouse
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -31,7 +32,7 @@ func _input(event):
 			on_click()
 
 
-# Funcion que escucha
+# Función que escucha
 func on_click():
 	# Validamos si se presionó el elemneto del mapa
 	if active:
@@ -52,7 +53,7 @@ func on_click():
 # Función que se llama cuando el raton entra a una area predefinida
 func _mouse_entered():
 	# Seteamos el estado como cliqueado si el elemento no esta bloqueado
-	if !blocked:
+	if not blocked:
 		active = name
 
 
@@ -63,26 +64,28 @@ func _mouse_exited():
 
 
 #Seteamos estados de puntos de entradas a escenas
-func set_level_status():
-	#Cargamos el progreso del juego
+func _set_level_status():
+	# Cargamos el progreso del juego
 	var data = SaveProgress.load_game()
-	#Validamos si hay escenas activas guardadas
+	# Validamos si hay escenas activas guardadas
 	if (data && data.size() && data.activeScene && data.activeScene.size()):
-		#Recorremos cada escena activa
+		# Recorremos cada escena activa
 		for i in data.activeScene.size():
-			#Validamos si la escena activa es la nuestra
+			# Validamos si la escena activa es la nuestra
 			if data.activeScene[i] == name:
-				#Desbloqueamos la escena
+				# Desbloqueamos la escena
 				blocked = false
-				#Aplicamos el shader del estilo habilitado
-				self.material.shader = load("res://scenes/game/levels/animations/map/element_active.gdshader")
-				#Obtenemos el nodo Luz
+				# Aplicamos el shader del estilo habilitado
+				self.material.shader = load(
+					"res://scenes/game/levels/animations/map/element_active.gdshader"
+				)
+				# Obtenemos el nodo Luz
 				var light = get_tree().get_current_scene().get_node(name + 'Light2D')
-				#Habilitamos luz
+				# Habilitamos luz
 				light.visible = true
 	# Validamos si la escena es la principal
 	elif  name == 'Panajachel':
-		#Desbloqueamos la escena
+		# Desbloqueamos la escena
 		blocked = false
-		#Aplicamos el shader del estilo habilitado
+		# Aplicamos el shader del estilo habilitado
 		self.material.shader = load("res://scenes/game/levels/animations/map/element_active.gdshader")

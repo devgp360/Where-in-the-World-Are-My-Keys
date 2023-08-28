@@ -3,6 +3,7 @@ extends Node2D
 ##
 ## Escucha eventos de screenNotifier, muestra o quita nodos de la escena
 
+
 # DOCUMENTACIÓN (culling): https://docs.google.com/document/d/1oX77HHdm_DiiigEn7OBe9BDAFh071atPlhszFDj2_bI/edit
 
 @export var screenNotifier: VisibleOnScreenNotifier2D
@@ -19,7 +20,7 @@ var nodes_added = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Si no tenemos un notificador, terminamos la función
-	if !screenNotifier:
+	if not screenNotifier:
 		return
 		
 	# Si no tenemos nodos a procesar, terminamos la función
@@ -53,7 +54,7 @@ func _screen_entered():
 # Se deben eliminar todos los nodos del árbol principal de la escena
 func _screen_exited():
 	# Si los nodos ya están eliminados, solo terminamos la función
-	if !nodes_added:
+	if not nodes_added:
 		return
 	# Eliminamos (del árbol de nodos) los objetos que no queremos que se procesen
 	for node in nodes:
