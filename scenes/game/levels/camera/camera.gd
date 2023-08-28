@@ -9,12 +9,14 @@ extends Camera2D
 
 # Variable para tener referencia del personaje principal
 @export var character: CharacterBody2D
-#Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+# Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
+
 
 # Función de inicialización
 func _ready():
 	# Agregar la posición de la cámara, al centro de la pantalla
 	position = global_transform.origin
+
 
 # Llamado a cada 'frame'. 'delta' es el tiempo transcurrido desde el 'frame' anterior.
 func _process(_delta):
