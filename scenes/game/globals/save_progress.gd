@@ -20,7 +20,7 @@ func _init_object():
 		"point": [],
 		"sound":{
 			"music": 1,
-			"mainCharacter": 1,
+			"main_character": 1,
 			"npc": 1
 		},
 		'activeScene': ["Panajachel"],

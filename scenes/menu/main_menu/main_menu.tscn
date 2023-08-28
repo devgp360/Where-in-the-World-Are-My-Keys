@@ -382,13 +382,13 @@ text = "Sonido de Personaje principal
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="mainCharacter" type="HSlider" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerMainChar"]
+[node name="MainCharacter" type="HSlider" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerMainChar"]
 layout_mode = 2
 size_flags_vertical = 8
 max_value = 1.0
 step = 0.01
 script = ExtResource("5_b1vbx")
-bus_name = "mainCharacter"
+bus_name = "main_character"
 
 [node name="MarginContainerNPC" type="MarginContainer" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
