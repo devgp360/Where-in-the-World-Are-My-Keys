@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://owqicaalyww0"]
 
-[ext_resource type="Script" path="res://scenes/game/puzzles/maximon/Nodos/door.gd" id="1_hhh50"]
+[ext_resource type="Script" path="res://scenes/game/puzzles/maximon/nodos/door.gd" id="1_hhh50"]
 [ext_resource type="Texture2D" uid="uid://6jpkowealbos" path="res://assets/sprites/puzzles/maximon/door_sprite.png" id="2_paolj"]
 
 [sub_resource type="Animation" id="Animation_1sdmy"]
