@@ -174,7 +174,7 @@ func _validate_dir():
 	# Tratamos de acceder a la carpeta
 	var dir = DirAccess.open("user://")
 	# Validamos si existe la carpeta
-	if !dir.dir_exists(SAVE_SCREENS_FOLDER):
+	if not dir.dir_exists(SAVE_SCREENS_FOLDER):
 		# Creamos la carpeta si no existe
 		dir.make_dir(SAVE_SCREENS_FOLDER)
 
