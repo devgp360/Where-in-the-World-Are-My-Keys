@@ -12,7 +12,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#Llamamos la función que desordena las imagenes
+	# Llamamos la función que desordena las imagenes
 	_do_distribution()
 
 
