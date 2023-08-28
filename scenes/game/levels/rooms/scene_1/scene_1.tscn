@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://upllmqlhdam1"]
+[gd_scene load_steps=20 format=3 uid="uid://upllmqlhdam1"]
 
 [ext_resource type="Texture2D" uid="uid://bag6tqwmlaakq" path="res://assets/sprites/scenes/scene_1/bg1.jpg" id="1_dbimm"]
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/scene_1.gd" id="1_wyjy5"]
@@ -15,8 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://b763ty05xjuo2" path="res://scenes/game/inventory/items/puzzle_vidriera/item_lentes.tscn" id="12_sqpca"]
 [ext_resource type="PackedScene" uid="uid://ck5lebkhby0h2" path="res://scenes/game/puzzles/vidriera/nodos/puzzle_vidriera.tscn" id="14_elguw"]
 [ext_resource type="PackedScene" uid="uid://x3mpmfaijdid" path="res://scenes/game/puzzles/vidriera/nodos/puzzle_vidriera_enter.tscn" id="15_ebymt"]
-[ext_resource type="PackedScene" uid="uid://cn7ty6d8n37s8" path="res://scenes/game/puzzles/Jardin/Nodos/puzzle_garden.tscn" id="16_epc8q"]
-[ext_resource type="PackedScene" uid="uid://chke83x5iabr2" path="res://scenes/game/puzzles/Jardin/Nodos/puzzle_garden_enter.tscn" id="17_w1ooa"]
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/frustum_culling.gd" id="18_rrer2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sxo74"]
@@ -125,16 +123,6 @@ puzzle = NodePath("../PuzzleVidriera")
 position = Vector2(-348.526, -176.008)
 rotation = 0.293215
 shape = SubResource("RectangleShape2D_nsd2w")
-
-[node name="Puzzle__Jardin" type="Node2D" parent="."]
-
-[node name="Puzzle_garden" parent="Puzzle__Jardin" instance=ExtResource("16_epc8q")]
-
-[node name="puzzle_garden_enter" parent="Puzzle__Jardin" node_paths=PackedStringArray("puzzle") instance=ExtResource("17_w1ooa")]
-puzzle = NodePath("../Puzzle_garden")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Puzzle__Jardin/puzzle_garden_enter"]
-polygon = PackedVector2Array(-657, -116, -584, -62, -473, -126, -496, -212, -598, -250, -654, -192)
 
 [node name="FrustumCulling" type="Node2D" parent="." node_paths=PackedStringArray("screenNotifier", "nodes")]
 script = ExtResource("18_rrer2")

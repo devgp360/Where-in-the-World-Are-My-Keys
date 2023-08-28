@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://chke83x5iabr2"]
-
-[ext_resource type="Script" path="res://scenes/game/puzzles/Jardin/Nodos/puzzle_garden_enter.gd" id="1_4pwkk"]
-
-[node name="puzzle_garden_enter" type="Area2D"]
-script = ExtResource("1_4pwkk")
