@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dmp8uid04vf1m" path="res://assets/sprites/scenes/water/iglesia_sin_agua_bg.png" id="4_2l1hg"]
 [ext_resource type="Texture2D" uid="uid://dxewhkd3p8n0r" path="res://assets/sprites/scenes/water/columna1.png" id="4_fkx2x"]
 [ext_resource type="Texture2D" uid="uid://chdyn5yq0xm1l" path="res://assets/sprites/scenes/water/columna2.png" id="5_6dkwd"]
-[ext_resource type="Script" path="res://scenes/game/levels/rooms/water/node_sobrecarga.gd" id="10_t4sml"]
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/water/node_overload.gd" id="10_t4sml"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pamgp"]
 shader = ExtResource("2_e227t")
@@ -30,6 +30,7 @@ shader_parameter/noise1 = ExtResource("3_hebcn")
 shader_parameter/noise2 = ExtResource("3_hebcn")
 
 [node name="Water" type="Node2D"]
+position = Vector2(580, 250)
 
 [node name="AguaRecortada" type="Sprite2D" parent="."]
 position = Vector2(11, 206)
