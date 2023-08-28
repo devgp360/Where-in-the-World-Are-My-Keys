@@ -77,7 +77,6 @@ const SHADER_OFFSET_X_FACTOR_TOP = 150.0 # Posición de sombra en X (en TOP)
 var _character_active = true
 # Vector de destino, para path-finding
 var _destination = Vector2(0, 0);
-var _dialog_active = false; # Variable que indica si el diálogo está activo
 var _main_direction = DIRECTION_IDLE # Variable que guarda la dirección hacia donde se mueve el personaje
 var _main_animation = ANIM_IDLE # Variable que guarda la animación que se está mostrando del personaje
 var _path_finding_moving = false;
