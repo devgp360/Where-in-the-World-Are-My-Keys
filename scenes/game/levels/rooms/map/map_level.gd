@@ -8,6 +8,9 @@ extends TextureRect
 
 var _active = "" # Estado del elemento clicqueado
 var _blocked = true # Estado del elemento del mapa (activado /descativado)
+var _element_active_shader = load(
+			"res://scenes/game/levels/animations/map/element_active.gdshader"
+		)
 
 
 # Función que se llama cuando la escena esta cargada
@@ -76,9 +79,7 @@ func _set_level_status():
 				# Desbloqueamos la escena
 				_blocked = false
 				# Aplicamos el shader del estilo habilitado
-				self.material.shader = load(
-					"res://scenes/game/levels/animations/map/element_active.gdshader"
-				)
+				self.material.shader = _element_active_shader
 				# Obtenemos el nodo Luz
 				var light = get_tree().get_current_scene().get_node(name + 'Light2D')
 				# Habilitamos luz
@@ -88,4 +89,4 @@ func _set_level_status():
 		# Desbloqueamos la escena
 		_blocked = false
 		# Aplicamos el shader del estilo habilitado
-		self.material.shader = load("res://scenes/game/levels/animations/map/element_active.gdshader")
+		self.material.shader = _element_active_shader

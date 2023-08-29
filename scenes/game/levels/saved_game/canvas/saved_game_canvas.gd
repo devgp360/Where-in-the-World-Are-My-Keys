@@ -41,6 +41,16 @@ var all_items = []
 # Referencia de total de escenas disponibles
 var total_items = 6
 
+#Cargamos la escena del item vacío
+var _item_content_scene = preload(
+		"res://scenes/game/levels/saved_game/item_content/item_content.tscn"
+)
+
+# Cargamos la escena del item
+var _item_to_load = preload(
+		"res://scenes/game/levels/saved_game/item/item.tscn"
+)
+
 # Configuracion del item por defecto
 var lock = {
 	"name": "lock",
@@ -55,7 +65,7 @@ func _ready():
 	# Recorremos el total disponible de escenas
 	for n in total_items:
 		# Cargamos el contenedor de escenas
-		var item = load("res://scenes/game/levels/saved_game/item_content/item_content.tscn").instantiate()
+		var item = _item_content_scene.instantiate()
 		# Agregamos escena al grid
 		grid.add_child(item)
 		# Guardamos el item del grid
@@ -103,17 +113,14 @@ func _fill_lock_img():
 		_add_item_by_name(lock,n,true)
 
 
-func _add_item_by_name(scene: Dictionary, index:int, empty=false):
-	# Cargamos el recurso
-	var item_to_load = load("res://scenes/game/levels/saved_game/item/item.tscn")
-	
+func _add_item_by_name(scene: Dictionary, index:int, empty=false):	
 	# Si no existe el recurso, se termina la función
-	if not item_to_load:
+	if not _item_to_load:
 		return
 	# Seleccionamos el gred actual
 	var item_content = item_contents[index]
 	# Inicializamos el gred actual
-	var item = item_to_load.instantiate()
+	var item = _item_to_load.instantiate()
 	# Generamos el nombre de la imagen
 	var _name = (scene.id + ".jpg").replace(" ", "_").replace(":", "_")
 	# Obtenemos la textura de la imagen
