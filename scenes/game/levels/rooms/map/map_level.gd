@@ -38,11 +38,9 @@ func _ready():
 # Función que escucha el teclado y raton
 func _input(event):
 	# Escuchamos el evento del boton de raton
-	if event is InputEventMouseButton:
-		# Validamos si se preciono el boton izquierdo del mouse
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			# Llamamos la funcion del click
-			_load_escene()
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# Llamamos la funcion del click
+		_load_escene()
 
 
 # Función que se llama cuando el raton entra a una area predefinida
