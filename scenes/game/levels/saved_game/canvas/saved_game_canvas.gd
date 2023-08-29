@@ -70,7 +70,7 @@ func _ready():
 		grid.add_child(item)
 		# Guardamos el item del grid
 		item_contents.append(item)
-	#  Inicializamos la revision de datos guardados
+	# Inicializamos la revision de datos guardados
 	init()
 
 

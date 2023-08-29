@@ -9,6 +9,8 @@ extends Node2D
 # DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
 # DOCUMENTACIÓN (creación de escena): https://docs.google.com/document/d/1Tvp7PKcC4kSUtQO9wKEksT_cbA4rBEMZQ-artBsu5N4/edit?usp=drive_link
 
+const BASE_PATH_SCENE = "res://scenes/game/levels/rooms/"
+
 # Definición del nodo de menu
 @export var pause_menu: PackedScene
 
@@ -99,10 +101,15 @@ func _set_inventory_data(level_data: Dictionary):
 
 
 # DOCUMENTACIÓN (transición de escena): https://docs.google.com/document/d/1FciThS6B4qQEBely2iCMDfkRZIzwSrZLCo2Fu8nE5LQ/edit?usp=drive_link
-# Cuando entramos a una area predeterminada
+# Cuando entramos a una área predeterminada
 func _on_area_to_scena_2_area_entered(_area):
 	# Pasamos a la escena 2
-	SceneTransition.change_scene("res://scenes/game/levels/rooms/scene_2/scene_2.tscn")
+	SceneTransition.change_scene(BASE_PATH_SCENE + "scene_2/scene_2.tscn")
+
+
+# Cuando entramos a un área para pasar a la escena de la iglesia
+func _on_area_to_interior_church_area_entered(area):
+	SceneTransition.change_scene(BASE_PATH_SCENE + "church/church_interior.tscn")
 
 
 # Obtenemos datos de la escena

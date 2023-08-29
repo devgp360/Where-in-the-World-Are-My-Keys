@@ -29,7 +29,7 @@ var _only_load = false
 func _ready():
 	var scenes = ["Map"]
 	var actual_scene = get_tree().get_current_scene().name
-	if scenes.find(actual_scene,0) > -1:
+	if scenes.find(actual_scene, 0) > -1:
 		_only_load = true
 
 
