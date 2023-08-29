@@ -3,6 +3,7 @@ extends Node2D
 ##
 ## Hace efecto de cambio de sonido suave, apaga sonidos, escucha colisiones con áreas
 
+
 # Definición del nodo Sonidos
 @onready var sound_1 = $Sounds/Track1
 @onready var sound_2 = $Sounds/Track2

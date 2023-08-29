@@ -144,5 +144,5 @@ func get_save_data():
 		"character":{
 			"position": character.position,
 			"dressed": character.get_dress_item_list(),
-		}
+		},
 	}

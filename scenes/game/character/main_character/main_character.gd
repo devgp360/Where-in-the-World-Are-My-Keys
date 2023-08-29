@@ -116,15 +116,6 @@ func _ready():
 		load(SPRITE_PATH + "down_left.png"),
 		load(SPRITE_PATH + "down_right.png"),
 	]
-	
-	# Test vidriera
-	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_lentes")
-	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio1")
-	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio2")
-	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio3")
-	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio4")
-	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio5")
-	
 
 
 # Captura eventos del teclado o ratón

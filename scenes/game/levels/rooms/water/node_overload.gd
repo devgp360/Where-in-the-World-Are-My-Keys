@@ -3,6 +3,7 @@ extends Node2D
 ## 
 ## Precarga la imagen de agua sin efectos, genera múltiples llamadas que generan el efecto de agua
 
+
 @export var active_process = true; # Indica si el proceso está activo
 
 var count = 0; # Variable auxiliar para conteo de carga de imágenes
