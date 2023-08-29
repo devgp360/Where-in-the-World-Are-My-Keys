@@ -76,14 +76,15 @@ func _pressed(_name: String):
 		
 	# Funcionalidad para "quitarse/ponerse" los lentes al dar clic en el item desde el inventario
 	if _name == 'puzzle_vidriera/item_lentes':
+		var glasses_name = "Glasses";
 		var character = escena1.find_child("MainCharacter")
-		var index = _dressed_item_list.find("glasses")
+		var index = _dressed_item_list.find(glasses_name)
 		if index >= 0:
-			character.dress_item("glasses", false)
+			character.dress_item(glasses_name, false)
 			_dressed_item_list.remove_at(index)
 		else:
-			character.dress_item("glasses", true)
-			_dressed_item_list.append("glasses")
+			character.dress_item(glasses_name, true)
+			_dressed_item_list.append(glasses_name)
 
 
 # DOCUMENTACIÓN (gestión de memoria): https://docs.google.com/document/d/1diS6YOpBhLUTI9tk7YTZcH5Ha64bXg9u-PVhBXfOEz4/edit#heading=h.e2j6ax5ma83s

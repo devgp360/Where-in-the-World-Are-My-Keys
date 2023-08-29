@@ -99,8 +99,8 @@ func _ready():
 	picked_object.connect(_add_object_to_inventory)
 	
 	# Validamos si el personaje está vistiendo un item
-	if InventoryCanvas.is_wearing("glasses"):
-		dress_item("glasses", true)
+	if InventoryCanvas.is_wearing("Glasses"):
+		dress_item("Glasses", true)
 	
 	# Para un manejo más fácil de sombras con "shaders", se separó las animaciones del personaje
 	# en varias imágenes separadas, que se cargarán al cargar el personaje
@@ -260,7 +260,6 @@ func _calc_scale():
 # DOCUMENTACIÓN (recolectar objetos): https://docs.google.com/document/d/1d78cYa4cTpxfz22lGvctv6T83TSj5DMwq3VMWiGAbI8/edit?usp=drive_link
 # Añada objetos al inventario del usuario
 func _add_object_to_inventory(_name: String):
-	print("pick")
 	inventory.emit_signal("add_object", _name)
 
 
@@ -268,10 +267,11 @@ func _add_object_to_inventory(_name: String):
 # Esta función se llama directamente desde "_physics_process" que se ejecuta en cada "frame"
 func _process_dress_item():
 	# Validamos que tenemos que "vestir" los lentes del puzzle "vidriera".
-	var glasses = clothes.find_child("glasses")
+	var glasses = clothes.find_child("Glasses")
+	#print("node glasses: ", _dress_item_list)
 	if not glasses:
 		return
-	if _dress_item_list.find("glasses") >= 0: # Si los lentes están "activos"
+	if _dress_item_list.find("Glasses") >= 0: # Si los lentes están "activos"
 		var is_front = _main_animation == ANIM_IDLE || _main_animation == ANIM_FRONT
 		glasses.visible = is_front # Si el personaje está de frente, se mostrarán los lentes
 	else:
@@ -368,6 +368,7 @@ func set_character_active(active: bool):
 # Se añaden los items a un "listado de items activos", que luego por la función "process_dress_item"
 # se mostrarán en el personaje principal
 func dress_item(_name: String, active: bool):
+	print("dress_item: ", _name, " : ", active)
 	var child = clothes.find_child(_name)
 	if not child:
 		return # Si no existe el nodo, solo terminamos la función
