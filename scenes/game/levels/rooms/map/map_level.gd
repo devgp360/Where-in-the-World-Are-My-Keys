@@ -12,7 +12,7 @@ var _active = "" # Estado del elemento clicqueado
 var _blocked = true # Estado del elemento del mapa (activado /descativado)
 
 # Cargamos Shader del elemento activo
-var _element_active_shader = load(
+var _element_active_shader = preload(
 		"res://scenes/game/levels/animations/map/element_active.gdshader"
 )
 
