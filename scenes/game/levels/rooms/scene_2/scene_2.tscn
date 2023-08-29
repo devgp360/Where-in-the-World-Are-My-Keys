@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cds1m3xicyc4k"]
+[gd_scene load_steps=16 format=3 uid="uid://cds1m3xicyc4k"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_2/scene_2.gd" id="1_7pqo5"]
 [ext_resource type="PackedScene" uid="uid://d4f7fxjs2wh7n" path="res://scenes/menu/main_menu/main_menu.tscn" id="2_2xv7g"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://v1vc4mhxkmf2" path="res://scenes/game/inventory/items/puzzle_vidriera/item_vidrio1.tscn" id="4_52vxl"]
 [ext_resource type="PackedScene" uid="uid://y1eekky3cxs7" path="res://scenes/game/inventory/items/puzzle_vidriera/item_vidrio5.tscn" id="5_psd23"]
 [ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character/main_character.tscn" id="6_ckjf0"]
-[ext_resource type="PackedScene" uid="uid://cvbrehpsiggb1" path="res://scenes/game/levels/objects/fire.tscn" id="7_ahibs"]
 [ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://scenes/game/levels/camera/camera.tscn" id="8_5w0aw"]
 [ext_resource type="AudioStream" uid="uid://cx0jnns63mbi6" path="res://assets/sounds/scene_2.mp3" id="9_wa636"]
 [ext_resource type="PackedScene" uid="uid://br2xxid8seypw" path="res://scenes/game/character/npc_2/npc_2.tscn" id="10_s8tol"]
@@ -61,16 +60,6 @@ scale = Vector2(0.9, 0.9)
 y_sort_enabled = true
 position = Vector2(-811, -239)
 navigation_polygon = SubResource("NavigationPolygon_sxo74")
-
-[node name="Node2D" type="Node2D" parent="."]
-visible = false
-y_sort_enabled = true
-position = Vector2(-693, -321)
-
-[node name="Fire" parent="Node2D" instance=ExtResource("7_ahibs")]
-visible = false
-position = Vector2(537, 407)
-scale = Vector2(1.65, 1.65)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-693, -323)

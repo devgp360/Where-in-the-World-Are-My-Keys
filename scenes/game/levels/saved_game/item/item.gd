@@ -16,11 +16,11 @@ extends TextureButton
 # Declaramos el estado del elemento del grid
 var _selected = false
 # Declaramos el estado de la celda
-var _empty = false
+var empty = false
 # Id de la escena
-var _id = ''
+var id = ''
 # Ruta de la escena
-var _path = ''
+var path = ''
 # Se permiten todas acciones
 var _only_load = false
 
@@ -54,17 +54,17 @@ func _on_pressed():
 	_selected = true
 	# Ajustamos la transparencia
 	modulate.a8=150
-	Global.active_item_menu_id = _id
-	Global.item_menu_path = _path
+	Global.active_item_menu_id = id
+	Global.item_menu_path = path
 	parent.actions.visible = true
 	parent.save_confirm.visible = false
 	parent.delete_confirm.visible = false
 	if _only_load: 
-		if not _empty:
+		if not empty:
 			parent.load_button.visible = true
 		else:
 			parent.load_button.visible = false
-	elif _empty:
+	elif empty:
 		parent.save_button.visible = true
 		parent.remove_button.visible = false
 		parent.load_button.visible = false
