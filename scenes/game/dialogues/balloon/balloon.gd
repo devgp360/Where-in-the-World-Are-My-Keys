@@ -11,33 +11,25 @@ extends CanvasLayer
 # Señal de finalizacion de diálogo
 signal dialogue_ended()
 
+const PATH_SPRITES = "res://assets/sprites/dialogues/"
+
 # Exportamos plantilla de respuestas
 @export var response_template: Node
-
-# Variable para setear el sufijo de archivos
-@export var file_suffix: String = ""
 
 # Recurso del diálogo
 var _resource: DialogueResource
 # Estados del juego temporal
-
 var _temporary_game_states: Array = []
 # Variable que valida si estamos esperando la respuesta del jugador
-
 var _is_waiting_for_input: bool = false
-
 # Hilo del dialogo
 var dialogue_line: DialogueLine:
 	# Creamos la linea del dialogo
 	set(next_dialogue_line):
 		# Si no existen textos
 		if not next_dialogue_line:
-			# Terminamos el diálogo
-			queue_free()
-			# Emitimos la señal de finalización de dialogo
-			self.emit_signal("dialogue_ended")
-			# Retornamos
-			return
+			# Finalizamos y retornamos
+			return _end_dialogue()
 		
 		# No esperamos la respuesta del jugador
 		_is_waiting_for_input = false
@@ -54,10 +46,7 @@ var dialogue_line: DialogueLine:
 		# Mostramos el titulo
 		character_label.text = tr(dialogue_line.character, "dialogue")
 		# Mostramos el avatar
-		character_portrait.texture = load(
-			"res://assets/sprites/dialogues/%s%s.png" % [dialogue_line.character.to_lower(), 
-			file_suffix]
-		)
+		character_portrait.texture = _get_texture_for_dialogue(dialogue_line.character)
 		
 		# Ajustamos las propiedades del diálogo
 		dialogue_label.modulate.a = 0
@@ -90,7 +79,7 @@ var dialogue_line: DialogueLine:
 			responses_menu.modulate.a = 1
 			_configure_menu()
 		elif dialogue_line.time != null:
-			#Pasamos al siguiente diálogo
+			# Pasamos al siguiente diálogo
 			var time = (
 				dialogue_line.dialogue.length() * 0.02 if dialogue_line.time == "auto" 
 				else dialogue_line.time.to_float()
@@ -102,8 +91,7 @@ var dialogue_line: DialogueLine:
 			balloon.focus_mode = Control.FOCUS_ALL
 			balloon.grab_focus()
 	get:
-		# Retornamos la linea del diálogo
-		return dialogue_line
+		return dialogue_line # Retornamos la linea del diálogo
 
 # Definición del dialogo
 @onready var balloon: ColorRect = $Balloon
@@ -251,6 +239,23 @@ func _on_margin_resized() -> void:
 	_handle_resize()
 
 
-# Conectamos la finalización del dialogo
+# Se carga la imagen del personaje que esté dialogando
+func _get_texture_for_dialogue(character: String):
+	var filename = "%s.png" % [character.to_lower()]
+	# Reemplazamos espacios por guiones (los nombres de archivos no llevan espacios)
+	filename = filename.replace(" ", "_")
+	# Retornamos el avatar
+	return load(PATH_SPRITES + filename)
+
+
+# Se ejecuta cuando el diálogo finaliza
+func _end_dialogue():
+	# Terminamos el diálogo
+	queue_free()
+	# Emitimos la señal de finalización de dialogo
+	self.emit_signal("dialogue_ended")
+
+
+# Conectamos la finalización del diálogo (para escuchar cuando termina el diálogo)
 func on_dialogue_ended(fn):
 	dialogue_ended.connect(fn)
