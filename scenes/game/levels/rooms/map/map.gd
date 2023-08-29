@@ -37,7 +37,7 @@ func _process(_delta):
 # Función para setearlos niveles de audio
 func _set_audio():
 	# Definimos los tipos de audios
-	var bus = ["music","main_character","npc"]
+	var bus = ["music", "main_character", "npc"]
 	# Recorremos cada tipo de audio
 	for i in bus.size():
 		# Buscamos el index del tipo de audio

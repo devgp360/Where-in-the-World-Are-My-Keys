@@ -10,9 +10,6 @@ extends Node2D
 # Ruta de Screens guardados
 const SAVE_SCREENS_PATH := "user://screens/"
 
-# Enlazamos grid container
-@onready var grid = $GridContainer
-
 # Declaramos el boton Guardar
 @export var actions : VBoxContainer
 
@@ -47,6 +44,9 @@ var lock = {
 	"path": "",
 	"id":"",
 }
+
+# Enlazamos grid container
+@onready var grid = $GridContainer
 
 
 func _ready():

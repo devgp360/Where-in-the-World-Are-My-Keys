@@ -42,14 +42,14 @@ func _crossfade_to(audio_stream: AudioStream, sound_num: int):
 	# The `playing` property of the stream players tells us which track is active. 
 	# If it's track two, we fade to track one, and vice-versa.
 	# Validamos si el segundo sonido esta sonando
-	if sound_num == 1 && not sound_1.playing:
+	if sound_num == 1 and not sound_1.playing:
 		# Creamos el stream para el reproductor 1
 		sound_1.stream = audio_stream
 		# Reproducimos el sonido 1
 		sound_1.play()
 		# Iniciamos la animacion de Fade
 		anim_player.play("FadeToTrack1")
-	elif sound_num == 2 && not sound_2.playing:
+	elif sound_num == 2 and not sound_2.playing:
 		# Creamos el stream para el reproductor 2
 		sound_2.stream = audio_stream
 		# Reproducimos el sonido 2
