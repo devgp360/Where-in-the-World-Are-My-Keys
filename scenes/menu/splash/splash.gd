@@ -3,11 +3,13 @@ extends Node2D
 ## 
 ## Setea los niveles de sonido guardados, cambia la escena actual por mapa global del juego, hace animación de logos, dueños del juego 
 
+
 # DOCUMENTACIÓN (¿Como hacer Splash?): https://docs.google.com/document/d/11u22RhuGheb0z2ZpwwRgEygSr7kwTPtBme_17SZQwtw
 # DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
 
 # Ruta a la escena a cargar cuando finalice el "splash"
 @export var path_map_scene = "res://scenes/game/levels/rooms/map/map.tscn"
+
 
 # Función que se llama cuando la escena esta cargada
 func _ready():

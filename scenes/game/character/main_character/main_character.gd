@@ -120,6 +120,8 @@ func _ready():
 
 # Captura eventos del teclado o ratón
 func _unhandled_input(event):
+	if not _character_active:
+		return # Si el personaje no está activo, no se podrá interactuar con él
 	# Si hacemos un clic en alguna parte de la escena
 	if event.is_action_pressed("click"):
 		#Ancendemos el sonido de pasos
@@ -361,6 +363,7 @@ func set_character_active(active: bool):
 	if not active:
 		# Si desactivamos el personaje, también desactivamos el "pathfinding"
 		_path_finding_moving = false
+		sound_step.stop() # Detenemos sonidos
 
 
 # Función que activa items que el personaje puede vestir (como lentes, sombrero, etc)

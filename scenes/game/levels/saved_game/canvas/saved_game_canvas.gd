@@ -113,7 +113,7 @@ func _fill_lock_img():
 		_add_item_by_name(lock,n,true)
 
 
-func _add_item_by_name(scene: Dictionary, index:int, empty=false):	
+func _add_item_by_name(scene: Dictionary, index:int, empty=false):
 	# Si no existe el recurso, se termina la función
 	if not _item_to_load:
 		return
