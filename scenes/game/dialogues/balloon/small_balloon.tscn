@@ -26,7 +26,7 @@ content_margin_right = 2.0
 content_margin_bottom = 2.0
 draw_center = false
 
-[node name="smallBalloon" type="CanvasLayer" node_paths=PackedStringArray("response_template")]
+[node name="SmallBalloon" type="CanvasLayer" node_paths=PackedStringArray("response_template")]
 layer = 100
 script = ExtResource("1_4u26j")
 response_template = NodePath("Balloon/Margin/VBox/ResponseTemplate")
