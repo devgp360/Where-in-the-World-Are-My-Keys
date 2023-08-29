@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://t2ifk87c7x4c"
-path="res://.godot/imported/doña rosa.png-bcaf8b51099e02e3ea81639cbc46642e.ctex"
+path="res://.godot/imported/doña_rosa.png-feb00f003430e9cfb0e5cfe420c5d270.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/dialogues/doña rosa.png"
-dest_files=["res://.godot/imported/doña rosa.png-bcaf8b51099e02e3ea81639cbc46642e.ctex"]
+source_file="res://assets/sprites/dialogues/doña_rosa.png"
+dest_files=["res://.godot/imported/doña_rosa.png-feb00f003430e9cfb0e5cfe420c5d270.ctex"]
 
 [params]
 
