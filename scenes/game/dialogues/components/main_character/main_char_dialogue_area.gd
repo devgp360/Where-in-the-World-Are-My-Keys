@@ -15,7 +15,7 @@ signal talk()
 # Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Definición del nodo del NPC
-var npc_dialogue_node: Node2D
+var _npc_dialogue_node: Node2D
 
 
 # Called when the node enters the scene tree for the first time.
@@ -33,16 +33,16 @@ func _ready():
 # Mostramos el diálogo
 func _show_dialogue():
 	# Validación de que hay que mostrar el dialogo
-	if npc_dialogue_node:
+	if _npc_dialogue_node:
 		# Levantar el diálogo
-		npc_dialogue_node.emit_signal("talk")
+		_npc_dialogue_node.emit_signal("talk")
 
 
 # DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 # Cuando puntero sale del área de diálogo
 func _area_exited(_area):
 	# Resetar el dialogo
-	npc_dialogue_node = null
+	_npc_dialogue_node = null
 
 
 # Cuando puntero entra al área de diálogo
@@ -53,6 +53,6 @@ func _area_entered(area):
 	# Si se encuentra el NPC con diálogo
 	if child:
 		# Asignamos el diálogo encontrado al nodo del NPC
-		npc_dialogue_node = child
+		_npc_dialogue_node = child
 		# Emitimos la señal para mostrar el diálogo
-		npc_dialogue_node.emit_signal("talk")
+		_npc_dialogue_node.emit_signal("talk")

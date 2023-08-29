@@ -18,13 +18,13 @@ signal dialogue_ended()
 @export var file_suffix: String = ""
 
 # Recurso del diálogo
-var resource: DialogueResource
+var _resource: DialogueResource
 # Estados del juego temporal
 
-var temporary_game_states: Array = []
+var _temporary_game_states: Array = []
 # Variable que valida si estamos esperando la respuesta del jugador
 
-var is_waiting_for_input: bool = false
+var _is_waiting_for_input: bool = false
 
 # Hilo del dialogo
 var dialogue_line: DialogueLine:
@@ -40,7 +40,7 @@ var dialogue_line: DialogueLine:
 			return
 		
 		# No esperamos la respuesta del jugador
-		is_waiting_for_input = false
+		_is_waiting_for_input = false
 		
 		# Eliminamos respuestas enteriores
 		for child in responses_menu.get_children():
@@ -98,7 +98,7 @@ var dialogue_line: DialogueLine:
 			await get_tree().create_timer(time).timeout
 			_next(dialogue_line.next_id)
 		else:
-			is_waiting_for_input = true
+			_is_waiting_for_input = true
 			balloon.focus_mode = Control.FOCUS_ALL
 			balloon.grab_focus()
 	get:
@@ -136,16 +136,16 @@ func _unhandled_input(_event: InputEvent) -> void:
 # Iniciamos el diálogo
 func start(dialogue_resource: DialogueResource, 
 	title: String, extra_game_states: Array = []) -> void:
-	temporary_game_states = extra_game_states
-	is_waiting_for_input = false
-	resource = dialogue_resource
+	_temporary_game_states = extra_game_states
+	_is_waiting_for_input = false
+	_resource = dialogue_resource
 	# Seteamos los textos del diálogo
-	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
+	self.dialogue_line = await _resource.get_next_dialogue_line(title, _temporary_game_states)
 
 
 # Go to the next line
 func _next(next_id: String) -> void:
-	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
+	self.dialogue_line = await _resource.get_next_dialogue_line(next_id, _temporary_game_states)
 
 
 # Escuchamos los botones y señales de respuestas
@@ -207,7 +207,7 @@ func _handle_resize() -> void:
 
 # Escondemos el diálogo
 func _on_mutated(_mutation: Dictionary) -> void:
-	is_waiting_for_input = false
+	_is_waiting_for_input = false
 	balloon.hide()
 
 
@@ -231,7 +231,7 @@ func _on_response_gui_input(event: InputEvent, item: Control) -> void:
 
 # Seteamos las siguientes lineas de dialogos
 func _on_balloon_gui_input(event: InputEvent) -> void:
-	if not is_waiting_for_input: 
+	if not _is_waiting_for_input: 
 		return
 	# Salimos si no hay mas texto
 	if dialogue_line.responses.size() > 0: return

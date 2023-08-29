@@ -12,7 +12,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_rbpum"]
 font_size = 20
 
-[node name="Puzzle_maximon" type="Node2D"]
+[node name="PuzzleMaximon" type="Node2D"]
 script = ExtResource("1_l1i46")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
