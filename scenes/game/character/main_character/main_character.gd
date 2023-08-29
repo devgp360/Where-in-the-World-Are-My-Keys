@@ -116,6 +116,15 @@ func _ready():
 		load(SPRITE_PATH + "down_left.png"),
 		load(SPRITE_PATH + "down_right.png"),
 	]
+	
+	# Test vidriera
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_lentes")
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio1")
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio2")
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio3")
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio4")
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio5")
+	
 
 
 # Captura eventos del teclado o ratón
@@ -268,7 +277,6 @@ func _add_object_to_inventory(_name: String):
 func _process_dress_item():
 	# Validamos que tenemos que "vestir" los lentes del puzzle "vidriera".
 	var glasses = clothes.find_child("Glasses")
-	#print("node glasses: ", _dress_item_list)
 	if not glasses:
 		return
 	if _dress_item_list.find("Glasses") >= 0: # Si los lentes están "activos"
@@ -368,7 +376,6 @@ func set_character_active(active: bool):
 # Se añaden los items a un "listado de items activos", que luego por la función "process_dress_item"
 # se mostrarán en el personaje principal
 func dress_item(_name: String, active: bool):
-	print("dress_item: ", _name, " : ", active)
 	var child = clothes.find_child(_name)
 	if not child:
 		return # Si no existe el nodo, solo terminamos la función
