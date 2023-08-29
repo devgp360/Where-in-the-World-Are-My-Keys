@@ -3,6 +3,7 @@ extends Node
 ##
 ## Se definen las variables globales que van a ser accesibles en todo el juego
 
+
 # DOCUMENTACIÓN ¿QUÉ SON LAS ESCENAS/VARIABLES GLOBALES?: https://docs.google.com/document/d/1bs4webBtE0duQdl5RqrBRakfwm1_IIzrXN_UOrItuLA
 
 #Nivel del sonido de la musica del juego

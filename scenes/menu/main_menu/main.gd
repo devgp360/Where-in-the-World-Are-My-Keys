@@ -10,7 +10,7 @@ extends Node2D
 # DOCUMENTACIÓN SISTEMA AVANZADO DE GUARDADO DE PROGRESO EN EL JUEGO: https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs
 
 #Variable para guardar el screenshot
-var _img: Image
+var img: Image
 
 # Definición del nodo Canvas
 @onready var canvas_layer = $CanvasLayer
@@ -167,7 +167,7 @@ func _on_yes_overwrite_pressed():
 	# Obtenemos el dato a guardar
 	var _data = get_tree().get_current_scene().get_save_data()
 	# Sobreescribimos el progreso
-	SaveProgress.overwrite(Global.active_item_menu_id, _data, _img)
+	SaveProgress.overwrite(Global.active_item_menu_id, _data, img)
 	# Recargamos el grid de celdas de avances
 	inventory_canvas.init()
 	# Escondemos confirmación
@@ -194,7 +194,7 @@ func _on_save_pressed():
 		# Obtenemos datos a guardar
 		var _data = get_tree().get_current_scene().get_save_data()
 		# Guardamos el progreso
-		SaveProgress.save_game(_data, _img)
+		SaveProgress.save_game(_data, img)
 		# Recargamos el grid de celdas de avances
 		inventory_canvas.init()
 		# Mostarmos acciones

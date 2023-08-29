@@ -5,21 +5,23 @@ extends TextureRect
 
 # DOCUMENTACIÓN CREAR UN MAPA GENERAL: https://docs.google.com/document/d/1q-aOyPNZ2Ldn6hH9H43Ym6u_fmWvujVgbkHfayPDN-E
 
-# Rutas a shaders de elemento activo
-const BASE_PATH_ANIM = "res://scenes/game/levels/animations/map/";
-const PATH_SHADER_ACTIVE = BASE_PATH_ANIM + "element_active.gdshader";
 # Rutas de las escenas para carga
 const BASE_PATH_SCENE = "res://scenes/game/levels/rooms/";
 
 var _active = "" # Estado del elemento clicqueado
 var _blocked = true # Estado del elemento del mapa (activado /descativado)
+
+# Cargamos Shader del elemento activo
+var _element_active_shader = load(
+		"res://scenes/game/levels/animations/map/element_active.gdshader"
+)
+
 # Rutas de las escenas del mapa principal
 var _scene_paths = {
 	"Antigua": BASE_PATH_SCENE + "church/church_interior.tscn",
 	"Tikal": BASE_PATH_SCENE + "tikal/tikal_interior.tscn",
 	"Panajachel": BASE_PATH_SCENE + "scene_1/scene_1.tscn",
 }
-
 
 # Función que se llama cuando la escena esta cargada
 func _ready():
@@ -77,7 +79,7 @@ func _set_level_status():
 				# Desbloqueamos la escena
 				_blocked = false
 				# Aplicamos el shader del estilo habilitado
-				self.material.shader = load(PATH_SHADER_ACTIVE)
+				self.material.shader = _element_active_shader
 				# Obtenemos el nodo Luz
 				var light = get_tree().get_current_scene().get_node(name + 'Light2D')
 				# Habilitamos luz
@@ -87,4 +89,4 @@ func _set_level_status():
 		# Desbloqueamos la escena
 		_blocked = false
 		# Aplicamos el shader del estilo habilitado
-		self.material.shader = load(PATH_SHADER_ACTIVE)
+		self.material.shader = _element_active_shader
