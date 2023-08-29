@@ -24,13 +24,13 @@ shader_parameter/flipY = false
 shader_parameter/opacity = 0.9
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c2d6i"]
-vertices = PackedVector2Array(312, 133, 320, 109, 410, 104, 450, 104, 464, 130, 439, 139, 393, 142, 349, 140, -37, 156, -58, 161, -75, 161, -116, 156, -73, 142, -8, 139, 419, 164, 405, 156, 297, 29, 304, 90, 265, 36, -98, 175, -117, 174, 679, 145, 657, 75, 743, 122, -106, 186, -118, 199, -130, 183, 931, 26, 1056, 90, 893, 190, 857, 159, 821, 175, 665, 166, 345, 417, 563, 227, 45, 207, 54, 187, 216, 168, 248, 165, 260, 180, 253, 213, 53, 290, 398, 176, 425, 196, 258, 57, 268, 94, 232, 68, 198, 130, 148, 78, 191, 57, 161, 112, -994, 50, -1074, -133, -1025, -150, -897, -46, -753, -50, -754, -118, -710, -17, -591, -50, -661, 2, -574, 57, -545, 24, -509, 68, -511, 130, -437, 113, -374, 235, -320, 162, -265, 319, -94, 246, 13, 317, -8, 362, -105, 330, -124, 227, 379, 195, 262, 265, 305, 227, 269, 233, -180, 78, -173, 155, -172, 171, 193, 151, 124, 141, 296, 160, 54, 93, 44, 158, 24, 139, 8, 133, -130, 150, -154, 146, -214, 371, -153, 183, -44, 251, 247, 296, 280, 416, 262, 346, 308, 352, 469, 275)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7), PackedInt32Array(8, 9, 10, 11, 12, 13), PackedInt32Array(5, 14, 15, 6), PackedInt32Array(16, 2, 1, 17, 18), PackedInt32Array(11, 10, 19, 20), PackedInt32Array(21, 22, 23), PackedInt32Array(20, 19, 24, 25, 26), PackedInt32Array(27, 28, 29, 30), PackedInt32Array(23, 27, 30, 31), PackedInt32Array(32, 23, 31, 33, 34), PackedInt32Array(35, 36, 37, 38, 39, 40, 41), PackedInt32Array(42, 15, 14, 43), PackedInt32Array(44, 18, 17, 45), PackedInt32Array(46, 44, 45, 47), PackedInt32Array(48, 49, 46, 47, 50), PackedInt32Array(51, 52, 53, 54), PackedInt32Array(55, 51, 54, 56), PackedInt32Array(57, 55, 56, 58, 59), PackedInt32Array(60, 59, 58, 61), PackedInt32Array(60, 61, 62, 63), PackedInt32Array(63, 62, 64, 65), PackedInt32Array(65, 64, 66, 67), PackedInt32Array(68, 69, 70, 71, 72), PackedInt32Array(73, 42, 43), PackedInt32Array(73, 43, 74, 75), PackedInt32Array(76, 75, 74, 41), PackedInt32Array(67, 66, 77, 78, 79), PackedInt32Array(50, 47, 80, 81), PackedInt32Array(0, 7, 82, 38), PackedInt32Array(38, 82, 39), PackedInt32Array(80, 37, 36, 81), PackedInt32Array(83, 81, 36, 84), PackedInt32Array(83, 84, 85), PackedInt32Array(83, 85, 86), PackedInt32Array(12, 83, 86, 13), PackedInt32Array(77, 12, 11, 87), PackedInt32Array(77, 87, 88), PackedInt32Array(77, 88, 78), PackedInt32Array(71, 89, 67, 79, 90, 72), PackedInt32Array(90, 26, 25, 72), PackedInt32Array(69, 68, 91), PackedInt32Array(69, 91, 35, 41), PackedInt32Array(41, 40, 76), PackedInt32Array(41, 74, 92), PackedInt32Array(93, 41, 92, 94), PackedInt32Array(93, 94, 95, 33), PackedInt32Array(33, 95, 96), PackedInt32Array(32, 21, 23), PackedInt32Array(33, 96, 34)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(54, 93, 124, 141, 161, 112, 148, 78, 191, 57, 232, 68, 258, 57, 265, 36, 297, 29, 410, 104, 450, 104, 464, 130, 439, 139, 419, 164, 425, 196, 262, 265, 247, 296, 262, 346, 308, 352, 469, 275, 563, 227, 665, 166, 679, 145, 657, 75, 743, 122, 931, 26, 1056, 90, 893, 190, 857, 159, 821, 175, 345, 417, 280, 416, 53, 290, 13, 317, -8, 362, -105, 330, -214, 371, -265, 319, -374, 235, -511, 130, -574, 57, -661, 2, -710, -17, -753, -50, -994, 50, -1074, -133, -1025, -150, -897, -46, -754, -118, -591, -50, -545, 24, -509, 68, -437, 113, -320, 162, -180, 78, -73, 142), PackedVector2Array(198, 130, 268, 94, 304, 90, 320, 109, 312, 133, 248, 165, 216, 168, 193, 151), PackedVector2Array(260, 180, 296, 160, 349, 140, 393, 142, 405, 156, 398, 176, 379, 195, 305, 227, 269, 233, 253, 213), PackedVector2Array(-98, 175, -106, 186, -118, 199, -124, 227, -94, 246, -44, 251, 45, 207, 54, 187, 44, 158, 24, 139, 8, 133, -8, 139, -37, 156, -58, 161, -75, 161), PackedVector2Array(-173, 155, -154, 146, -130, 150, -116, 156, -117, 174, -130, 183, -153, 183, -172, 171)])
+vertices = PackedVector2Array(-73, 142, -75, 153, -101, 164, -116, 156, -129, 136, 439, 139, 419, 164, 408, 155, 393, 142, 410, 104, 450, 104, 323, 104, 310, 85, 297, 29, 357, 134, 936, 35, 1056, 90, 893, 190, 857, 159, 404, 178, 417, 194, 748, 128, 821, 175, 667, 170, 345, 417, 563, 227, -117, 174, -113, 183, 683, 151, 676, 109, 248, 165, 260, 180, 253, 213, 46, 207, 54, 187, 216, 168, -130, 183, -124, 199, 464, 130, 320, 120, 265, 36, 292, 87, 258, 57, 268, 94, 232, 68, 148, 78, 191, 57, 198, 130, 161, 112, -994, 50, -1074, -133, -1025, -150, -897, -46, -753, -50, -754, -118, -710, -17, -591, -50, -661, 2, -574, 57, -545, 24, -509, 68, -511, 130, -437, 113, -374, 235, -320, 162, -265, 319, 379, 195, 304, 240, 305, 227, 278, 236, 283, 241, 260, 250, 313, 134, 296, 160, 191, 155, 44, 158, 124, 141, 13, 317, -8, 362, -105, 330, -94, 253, -65, 257, 54, 93, 24, 139, -180, 78, -173, 155, -172, 171, 8, 133, -10, 136, -36, 144, -53, 150, 249, 267, 247, 296, -41, 251, -152, 136, -163, 140, -153, 183, -124, 227, -214, 371, 262, 346, 53, 290, 280, 416, 308, 352, 469, 275)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9, 10), PackedInt32Array(11, 12, 13, 9, 8, 14), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(19, 7, 6, 20), PackedInt32Array(21, 15, 18, 22), PackedInt32Array(23, 21, 22, 24, 25), PackedInt32Array(26, 3, 2, 27), PackedInt32Array(28, 29, 21), PackedInt32Array(30, 31, 32, 33, 34, 35), PackedInt32Array(36, 26, 27, 37), PackedInt32Array(10, 38, 5), PackedInt32Array(39, 11, 14), PackedInt32Array(40, 13, 12, 41, 42), PackedInt32Array(42, 41, 43, 44), PackedInt32Array(45, 46, 44, 43, 47, 48), PackedInt32Array(49, 50, 51, 52), PackedInt32Array(53, 49, 52, 54), PackedInt32Array(55, 53, 54, 56, 57), PackedInt32Array(58, 57, 56, 59), PackedInt32Array(58, 59, 60, 61), PackedInt32Array(61, 60, 62, 63), PackedInt32Array(63, 62, 64, 65), PackedInt32Array(66, 19, 20), PackedInt32Array(66, 20, 67, 68), PackedInt32Array(69, 68, 67, 70), PackedInt32Array(32, 69, 70, 71, 33), PackedInt32Array(72, 39, 14), PackedInt32Array(72, 14, 73, 30), PackedInt32Array(30, 73, 31), PackedInt32Array(74, 35, 34, 75, 76), PackedInt32Array(77, 78, 79, 80, 81), PackedInt32Array(48, 47, 74, 76), PackedInt32Array(82, 76, 75, 83), PackedInt32Array(65, 64, 84, 85, 86), PackedInt32Array(82, 83, 87), PackedInt32Array(0, 82, 87, 88), PackedInt32Array(0, 88, 89), PackedInt32Array(0, 89, 90, 1), PackedInt32Array(33, 71, 91), PackedInt32Array(33, 91, 92, 93), PackedInt32Array(84, 0, 4), PackedInt32Array(84, 4, 94), PackedInt32Array(84, 94, 95), PackedInt32Array(96, 36, 37, 97), PackedInt32Array(79, 98, 65, 86, 96, 97), PackedInt32Array(93, 92, 99, 100), PackedInt32Array(84, 95, 85), PackedInt32Array(79, 97, 80), PackedInt32Array(77, 81, 93, 100), PackedInt32Array(101, 100, 99), PackedInt32Array(101, 99, 102, 24), PackedInt32Array(24, 102, 103), PackedInt32Array(23, 28, 21), PackedInt32Array(24, 103, 25)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(54, 93, 124, 141, 161, 112, 148, 78, 191, 57, 232, 68, 258, 57, 265, 36, 297, 29, 410, 104, 450, 104, 464, 130, 439, 139, 419, 164, 417, 194, 304, 240, 283, 241, 260, 250, 249, 267, 247, 296, 262, 346, 308, 352, 469, 275, 563, 227, 667, 170, 683, 151, 676, 109, 748, 128, 936, 35, 1056, 90, 893, 190, 857, 159, 821, 175, 345, 417, 280, 416, 53, 290, 13, 317, -8, 362, -105, 330, -214, 371, -265, 319, -374, 235, -511, 130, -574, 57, -661, 2, -710, -17, -753, -50, -994, 50, -1074, -133, -1025, -150, -897, -46, -754, -118, -591, -50, -545, 24, -509, 68, -437, 113, -320, 162, -180, 78, -73, 142), PackedVector2Array(198, 130, 268, 94, 292, 87, 310, 85, 323, 104, 320, 120, 313, 134, 248, 165, 216, 168, 191, 155), PackedVector2Array(260, 180, 296, 160, 357, 134, 393, 142, 408, 155, 404, 178, 379, 195, 305, 227, 278, 236, 253, 213), PackedVector2Array(-101, 164, -113, 183, -124, 199, -124, 227, -94, 253, -65, 257, -41, 251, 46, 207, 54, 187, 44, 158, 24, 139, 8, 133, -10, 136, -36, 144, -53, 150, -75, 153), PackedVector2Array(-173, 155, -163, 140, -152, 136, -129, 136, -116, 156, -117, 174, -130, 183, -153, 183, -172, 171)])
 
 [node name="Main" type="Node2D"]
 
-[node name="Fondo" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="."]
 light_mask = 2
 z_index = -1
 texture = ExtResource("1_y3l5a")
@@ -49,63 +49,63 @@ shadow_enabled = true
 texture = ExtResource("2_6pl5b")
 texture_scale = 0.4
 
-[node name="ObjetosYPersonaje" type="Node2D" parent="."]
+[node name="ObjectsAndCharacter" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Armchair1" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Armchair1" type="Sprite2D" parent="ObjectsAndCharacter"]
 y_sort_enabled = true
-position = Vector2(257.5, 90)
+position = Vector2(257.5, 130)
 texture = ExtResource("2_htesh")
-offset = Vector2(0, 30)
+offset = Vector2(0, -10)
 
-[node name="Armchair2" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Armchair2" type="Sprite2D" parent="ObjectsAndCharacter"]
 y_sort_enabled = true
-position = Vector2(326.5, 146)
+position = Vector2(326.5, 185)
 texture = ExtResource("3_ndhbe")
-offset = Vector2(0, 30)
+offset = Vector2(0, -10)
 
-[node name="Grass1" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Grass1" type="Sprite2D" parent="ObjectsAndCharacter"]
 y_sort_enabled = true
-position = Vector2(377.5, 223.2)
+position = Vector2(377.5, 252.2)
 texture = ExtResource("4_by3qp")
-offset = Vector2(0, 40)
+offset = Vector2(0, 10)
 
-[node name="GrassAndStone" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="GrassAndStone" type="Sprite2D" parent="ObjectsAndCharacter"]
 y_sort_enabled = true
 position = Vector2(457.7, 181.8)
 texture = ExtResource("5_05d3o")
 offset = Vector2(0, -20)
 
-[node name="Column2" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Column2" type="Sprite2D" parent="ObjectsAndCharacter"]
 z_index = 1
 position = Vector2(147.5, 331.5)
 texture = ExtResource("7_seh3k")
 
-[node name="Columns" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Columns" type="Sprite2D" parent="ObjectsAndCharacter"]
 z_index = 1
 position = Vector2(-885.5, -183)
 texture = ExtResource("8_pc2hj")
 
-[node name="Elements" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Elements" type="Sprite2D" parent="ObjectsAndCharacter"]
 z_index = 1
 position = Vector2(586.5, 296.5)
 texture = ExtResource("9_lyeit")
 
-[node name="Column3" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="Column3" type="Sprite2D" parent="ObjectsAndCharacter"]
 y_sort_enabled = true
-position = Vector2(-140.5, 127)
+position = Vector2(-140.5, 157)
 texture = ExtResource("9_kex6f")
-offset = Vector2(0, -20)
+offset = Vector2(0, -50)
 
-[node name="ColumnAndGrass" type="Sprite2D" parent="ObjetosYPersonaje"]
+[node name="ColumnAndGrass" type="Sprite2D" parent="ObjectsAndCharacter"]
 y_sort_enabled = true
-position = Vector2(-29.5, 154.5)
+position = Vector2(-29.5, 174.5)
 texture = ExtResource("10_v6fxh")
-offset = Vector2(0, -35)
+offset = Vector2(0, -55)
 
-[node name="MainCharacter" parent="ObjetosYPersonaje" node_paths=PackedStringArray("light_node") instance=ExtResource("2_apxtj")]
+[node name="MainCharacter" parent="ObjectsAndCharacter" node_paths=PackedStringArray("light_node") instance=ExtResource("2_apxtj")]
 material = SubResource("ShaderMaterial_ksial")
-position = Vector2(175, 162)
+position = Vector2(-217, 191)
 scale = Vector2(0.7, 0.7)
 light_node = NodePath("../../Lights/Hall/Light1")
 active_fake_z_axis = true
@@ -113,6 +113,7 @@ max_scale = 3.0
 max_y = 1000.0
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_c2d6i")
 
 [node name="Camera" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_njxj8")]
@@ -122,4 +123,4 @@ limit_top = -450
 limit_right = 1070
 limit_bottom = 450
 editor_draw_limits = true
-character = NodePath("../ObjetosYPersonaje/MainCharacter")
+character = NodePath("../ObjectsAndCharacter/MainCharacter")
