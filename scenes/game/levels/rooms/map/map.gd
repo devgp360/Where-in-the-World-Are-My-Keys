@@ -13,7 +13,7 @@ extends Node2D
 # Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Declaración del canal de audio activo
-var bus_index: int
+var _bus_index: int
 
 
 # Función que se llama cuando la escena esta cargada
@@ -41,6 +41,6 @@ func _set_audio():
 	# Recorremos cada tipo de audio
 	for i in bus.size():
 		# Buscamos el index del tipo de audio
-		bus_index = AudioServer.get_bus_index(bus[i])
+		_bus_index = AudioServer.get_bus_index(bus[i])
 		# Seteamos el nivel del sonido
-		AudioServer.set_bus_volume_db(bus_index,linear_to_db(Global[bus[i] + "_vol"]))
+		AudioServer.set_bus_volume_db(_bus_index,linear_to_db(Global[bus[i] + "_vol"]))

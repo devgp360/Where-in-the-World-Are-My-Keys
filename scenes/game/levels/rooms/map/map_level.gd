@@ -6,8 +6,8 @@ extends TextureRect
 
 # DOCUMENTACIÓN CREAR UN MAPA GENERAL: https://docs.google.com/document/d/1q-aOyPNZ2Ldn6hH9H43Ym6u_fmWvujVgbkHfayPDN-E
 
-var active = "" # Estado del elemento clicqueado
-var blocked = true # Estado del elemento del mapa (activado /descativado)
+var _active = "" # Estado del elemento clicqueado
+var _blocked = true # Estado del elemento del mapa (activado /descativado)
 
 
 # Función que se llama cuando la escena esta cargada
@@ -35,7 +35,7 @@ func _input(event):
 # Función que escucha
 func _on_click():
 	# Validamos si se presionó el elemneto del mapa
-	if active:
+	if _active:
 		# Validamos si el elemneto del mapa tiene el nombre Antigua
 		if name == "Antigua":
 			# Cargamos la escena de la iglesia
@@ -53,14 +53,14 @@ func _on_click():
 # Función que se llama cuando el raton entra a una area predefinida
 func _mouse_entered():
 	# Seteamos el estado como cliqueado si el elemento no esta bloqueado
-	if not blocked:
-		active = name
+	if not _blocked:
+		_active = name
 
 
 # Función que se llama cuando el raton sale de una area predefinida
 func _mouse_exited():
 	# Quitamos el estado cliqueado
-	active = ""
+	_active = ""
 
 
 # Seteamos estados de puntos de entradas a escenas
@@ -74,7 +74,7 @@ func _set_level_status():
 			# Validamos si la escena activa es la nuestra
 			if data.activeScene[i] == name:
 				# Desbloqueamos la escena
-				blocked = false
+				_blocked = false
 				# Aplicamos el shader del estilo habilitado
 				self.material.shader = load(
 					"res://scenes/game/levels/animations/map/element_active.gdshader"
@@ -86,6 +86,6 @@ func _set_level_status():
 	# Validamos si la escena es la principal
 	elif  name == 'Panajachel':
 		# Desbloqueamos la escena
-		blocked = false
+		_blocked = false
 		# Aplicamos el shader del estilo habilitado
 		self.material.shader = load("res://scenes/game/levels/animations/map/element_active.gdshader")
