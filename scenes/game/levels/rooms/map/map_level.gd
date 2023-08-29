@@ -3,15 +3,25 @@ extends TextureRect
 ## 
 ## Escucha eventos de ratón, valida que elemento fue presionado, hace redirect a otra escena, activa diferente estatuses de elementos del mapa 
 
-
 # DOCUMENTACIÓN CREAR UN MAPA GENERAL: https://docs.google.com/document/d/1q-aOyPNZ2Ldn6hH9H43Ym6u_fmWvujVgbkHfayPDN-E
+
+# Rutas de las escenas para carga
+const BASE_PATH_SCENE = "res://scenes/game/levels/rooms/";
 
 var _active = "" # Estado del elemento clicqueado
 var _blocked = true # Estado del elemento del mapa (activado /descativado)
-var _element_active_shader = load(
-			"res://scenes/game/levels/animations/map/element_active.gdshader"
-		)
 
+# Cargamos Shader del elemento activo
+var _element_active_shader = load(
+		"res://scenes/game/levels/animations/map/element_active.gdshader"
+)
+
+# Rutas de las escenas del mapa principal
+var _scene_paths = {
+	"Antigua": BASE_PATH_SCENE + "church/church_interior.tscn",
+	"Tikal": BASE_PATH_SCENE + "tikal/tikal_interior.tscn",
+	"Panajachel": BASE_PATH_SCENE + "scene_1/scene_1.tscn",
+}
 
 # Función que se llama cuando la escena esta cargada
 func _ready():
@@ -32,25 +42,7 @@ func _input(event):
 		# Validamos si se preciono el boton izquierdo del mouse
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			# Llamamos la funcion del click
-			_on_click()
-
-
-# Función que escucha
-func _on_click():
-	# Validamos si se presionó el elemneto del mapa
-	if _active:
-		# Validamos si el elemneto del mapa tiene el nombre Antigua
-		if name == "Antigua":
-			# Cargamos la escena de la iglesia
-			SceneTransition.change_scene("res://scenes/game/levels/rooms/church/church_interior.tscn")
-		# Validamos si el elemneto del mapa tiene el nombre Tikal
-		elif name == "Tikal":
-			# Cargamos la escena de tikal
-			SceneTransition.change_scene("res://scenes/game/levels/rooms/tikal/tikal_interior.tscn")
-		# Validamos si el elemneto del mapa tiene el nombre Panajachel
-		elif name == "Panajachel":
-			# Cargamos la escena de la casa maya
-			SceneTransition.change_scene("res://scenes/game/levels/rooms/scene_1/scene_1.tscn")
+			_load_escene()
 
 
 # Función que se llama cuando el raton entra a una area predefinida
@@ -64,6 +56,14 @@ func _mouse_entered():
 func _mouse_exited():
 	# Quitamos el estado cliqueado
 	_active = ""
+
+
+# Función que cargará una escena, dependiendo del elemento al que se dió clic en el mapa
+func _load_escene():
+	# Validamos si se presionó el elemento del mapa y si la ruta a la escena existe
+	if _active and _scene_paths.has(name):
+		var path = _scene_paths[name] # Cargamos la ruta de la escena
+		SceneTransition.change_scene(path) # Cargamos la escena
 
 
 # Seteamos estados de puntos de entradas a escenas

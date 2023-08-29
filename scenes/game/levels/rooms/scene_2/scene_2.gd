@@ -86,6 +86,8 @@ func set_level_data(level_data: Dictionary):
 	_set_character_data(level_data.character)
 	# Seteamos datos del inventario
 	_set_inventory_data(level_data)
+	# Seteamos datos de "puzzles"
+	_set_riddles_data(level_data)
 
 
 # Seteamos datos del personaje principal
@@ -110,7 +112,10 @@ func _set_inventory_data(level_data: Dictionary):
 			if item.item_path_name == item_saved.item:
 				# Escondemos el objeto
 				item.visible = false
-				
+
+
+# Cargamos datos de "puzzles"
+func _set_riddles_data(level_data: Dictionary):
 	# Recorremos Puzzles
 	if (level_data.has('riddles')):
 		# Recorremos los objetos de puzzles

@@ -99,8 +99,8 @@ func _ready():
 	picked_object.connect(_add_object_to_inventory)
 	
 	# Validamos si el personaje está vistiendo un item
-	if InventoryCanvas.is_wearing("glasses"):
-		dress_item("glasses", true)
+	if InventoryCanvas.is_wearing("Glasses"):
+		dress_item("Glasses", true)
 	
 	# Para un manejo más fácil de sombras con "shaders", se separó las animaciones del personaje
 	# en varias imágenes separadas, que se cargarán al cargar el personaje
@@ -116,6 +116,15 @@ func _ready():
 		load(SPRITE_PATH + "down_left.png"),
 		load(SPRITE_PATH + "down_right.png"),
 	]
+	
+	# Test vidriera
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_lentes")
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio1")
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio2")
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio3")
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio4")
+	InventoryCanvas.add_item_by_name("puzzle_vidriera/item_vidrio5")
+	
 
 
 # Captura eventos del teclado o ratón
@@ -267,10 +276,10 @@ func _add_object_to_inventory(_name: String):
 # Esta función se llama directamente desde "_physics_process" que se ejecuta en cada "frame"
 func _process_dress_item():
 	# Validamos que tenemos que "vestir" los lentes del puzzle "vidriera".
-	var glasses = clothes.find_child("glasses")
+	var glasses = clothes.find_child("Glasses")
 	if not glasses:
 		return
-	if _dress_item_list.find("glasses") >= 0: # Si los lentes están "activos"
+	if _dress_item_list.find("Glasses") >= 0: # Si los lentes están "activos"
 		var is_front = _main_animation == ANIM_IDLE || _main_animation == ANIM_FRONT
 		glasses.visible = is_front # Si el personaje está de frente, se mostrarán los lentes
 	else:

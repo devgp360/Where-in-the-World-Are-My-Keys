@@ -30,12 +30,12 @@ func _input_event(_v, e: InputEvent, _i):
 
 # Al entrar al objeto que muestra un el puzzle
 func _area_entered(area: Area2D):
-	if area.name == 'mainchar_area':
+	if area.name == 'MaincharArea':
 		_is_character_entered = true
 
 
 # DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 # Al salir al objeto que muestra un el puzzle
 func _area_exited(area: Area2D):
-	if area.name == 'mainchar_area':
+	if area.name == 'MaincharArea':
 		_is_character_entered = false

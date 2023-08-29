@@ -8,38 +8,42 @@ extends CanvasLayer
 # DOCUMENTACIÓN: https://docs.google.com/document/d/1wEfx7wOw5FJ0GpRLCWUPQObmkE-fCed8TOZk5ZRGOyU/edit#heading=h.e2j6ax5ma83s
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 
+# Variables de textos para mostrar durante el puzzle
+@export var TEXT_SELECT_FRAGMENT = "Se deben seleccionar los fragmentos y girarlos para colocarlos en el lugar correcto"
+@export var TEXT_FRAGMENTS_INCOMPLETE = "Todavía faltan algunos fragmentos para resolver el puzle... debería encontrarlos primero"
+@export var TEXT_NO_GLASSES = "La imagen no se ve bien. Tal vez falta algo..."
+@export var TEXT_NO_SELECTED = "No hay ningún fragmento seleccionado"
+@export var TEXT_FRAGMENT_ADDED = "Correcto, hemos agregado un fragmento!"
+@export var TEXT_SUCCESS = "Lo hemos conseguido. El mensajes oculto es ¿¡mensaje oculto!?."
+@export var TEXT_INCORRECT = "No es el lugar correcto o la rotación no es correcta"
+
 # Guarda los nombres de los items
 var _left_items_names = []
-
 # Guarda los items (fragmentos)
 var _left_items = []
-
 # Guarda el contendor de items
 var _left_items_panes = []
-
 # El item actual seleccionado
 var _current_item_left_selected = ""
-
 # Total de items recolectados
 var _total_items = 0
-
 # Total de items colocados correctamente
 var _total_items_correct = 0
-
 # Indica si el puzzle se pude "jugar"
 var _is_active = false
 
 # Referencias de nodos del puzzle
-@onready var close = $Panel/Button
-@onready var sprite = $Panel/Sprite2D
-@onready var grid = $Panel/GridContainer
-@onready var label = $Panel/Label
-@onready var sprites = $Panel/Node2D
+@onready var close = $Container/CloseButton
+@onready var sprite = $Container/MainSprite
+@onready var grid = $Container/RecolectedFragmentsGrid
+@onready var label = $Container/FeedbackText
+@onready var sprites = $Container/CorrectFragmentGroup
 # Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 
 # Función de inicialización
 func _ready():
+	set_visible(false) # Cuando cargamos el puzzle, por defecto no se muestra
 	# Agregamos evento de clic en el botón de cerrar
 	close.pressed.connect(_close_click)
 
@@ -54,13 +58,13 @@ func _set_visible(_visible: bool):
 	# Agregamos items al puzzle, según los que tengamos recolectados
 	_add_fragments_from_inventory()
 	# Texto a mostrar por defecto
-	var _text = "Se deben seleccionar los fragmentos y girarlos para colocarlos en el lugar correcto"
+	var _text = TEXT_SELECT_FRAGMENT
 	# Validamos si todavía no hemos conseguido las 5 piezas, no podremos jugar el puzzle
 	if _total_items < 5:
-		_text = "Todavía faltan algunos fragmentos para resolver el puzle... debería encontrarlos primero"
+		_text = TEXT_FRAGMENTS_INCOMPLETE
 		_is_active = false
 	# Validamos si tenemos los lentes puestos
-	if InventoryCanvas.is_wearing("glasses"):
+	if InventoryCanvas.is_wearing("Glasses"):
 		# Agregamos todos los colores a la imagen
 		sprite.modulate = Color(1, 1, 1)
 		if _total_items >= 5: # Activamos el puzzle, si ya tenemos todas las piezas
@@ -69,7 +73,7 @@ func _set_visible(_visible: bool):
 		# Agregamos un filtro de escala de grises
 		sprite.modulate = Color(0.1, 0.1, 0.1)
 		# Todavía tenemos que conseguir los lentes
-		_text = "La imagen no se ve bien. Tal vez falta algo..."
+		_text = TEXT_NO_GLASSES
 		_is_active = false
 	
 	label.text = _text # Agregamos el mensaje
@@ -136,17 +140,17 @@ func _click_event(_name: String):
 		return # Si no se tienen los lentes, no se podrán mover objetos
 	# Si no tenemos un fragmento seleccionado, mostramos un mensajes y terminamos la función
 	if _current_item_left_selected == "":
-		label.text = "No hay ningún fragmento seleccionado"
+		label.text = TEXT_NO_SELECTED
 		return
 	else:
 		# Buscamos que item tenemos selecionado
 		var _index = _left_items_names.find(_current_item_left_selected)
-		if _index >= 0 and _current_item_left_selected.contains(_name):
+		if _index >= 0:
 			# Validamos que esté en el ángulo correcto
 			var _item = _left_items[_index]
 			var _deg = _item.get_rotation_degrees()
 			if _deg == 0: # El ángulo correcto debe ser 0
-				label.text = "Correcto, hemos agregado un fragmento!"
+				label.text = TEXT_FRAGMENT_ADDED
 				# Dependiendo a que area se dio clic, buscamos y hacemos visible el fragmento correcto
 				_set_correct_fragment(_name)
 				# Luego quitamos el fragmento, del listado que está al lado izquierdo
@@ -158,21 +162,21 @@ func _click_event(_name: String):
 				_total_items_correct = _total_items_correct + 1
 				
 				if _total_items_correct == 5:
-					label.text = "Lo hemos conseguido. El mensajes oculto es ¿¡mensaje oculto!?."
+					label.text = TEXT_SUCCESS
 
 				return
-		label.text = "No es el lugar correcto o la rotación no es correcta"
+		label.text = TEXT_INCORRECT
 
 
 # Función que pone como visible un fragmento "colocado" correctamente
 func _set_correct_fragment(_name: String):
-	if _name == "vidrio1":
-		sprites.find_child("Sprite1").visible = true
-	elif _name == "vidrio2":
-		sprites.find_child("Sprite2").visible = true
-	elif _name == "vidrio3":
-		sprites.find_child("Sprite3").visible = true
-	elif _name == "vidrio4":
-		sprites.find_child("Sprite4").visible = true
-	elif _name == "vidrio5":
-		sprites.find_child("Sprite5").visible = true
+	if _name == "AreaFragment1":
+		sprites.find_child("Fragment1").visible = true
+	elif _name == "AreaFragment2":
+		sprites.find_child("Fragment2").visible = true
+	elif _name == "AreaFragment3":
+		sprites.find_child("Fragment3").visible = true
+	elif _name == "AreaFragment4":
+		sprites.find_child("Fragment4").visible = true
+	elif _name == "AreaFragment5":
+		sprites.find_child("Fragment5").visible = true
