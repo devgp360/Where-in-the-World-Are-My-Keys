@@ -14,7 +14,7 @@ extends TextureButton
 # Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Declaramos el estado del elemento del grid
-var selected = false
+var _selected = false
 # Declaramos el estado de la celda
 var empty = false
 # Id de la escena
@@ -22,7 +22,7 @@ var id = ''
 # Ruta de la escena
 var path = ''
 # Se permiten todas acciones
-var only_load = false
+var _only_load = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,19 +30,19 @@ func _ready():
 	var scenes = ["Map"]
 	var actual_scene = get_tree().get_current_scene().name
 	if scenes.find(actual_scene,0) > -1:
-		only_load = true
+		_only_load = true
 
 
 func _on_mouse_entered():
 	# Validamos si no esta sseleccionado el elemento
-	if not selected:
+	if not _selected:
 		# Ajustamos la transparencia
 		modulate.a8=200
 
 
 func _on_mouse_exited():
 	# Validamos si no esta sseleccionado el elemento
-	if not selected:
+	if not _selected:
 		# Ajustamos la transparencia
 		modulate.a8=255
 
@@ -51,7 +51,7 @@ func _on_pressed():
 	# Llamamos la funcion que resetea los estados
 	parent.clear()
 	# Seteamos el estado como seleccionado
-	selected = true
+	_selected = true
 	# Ajustamos la transparencia
 	modulate.a8=150
 	Global.active_item_menu_id = id
@@ -59,7 +59,7 @@ func _on_pressed():
 	parent.actions.visible = true
 	parent.save_confirm.visible = false
 	parent.delete_confirm.visible = false
-	if only_load: 
+	if _only_load: 
 		if not empty:
 			parent.load_button.visible = true
 		else:
@@ -76,6 +76,6 @@ func _on_pressed():
 
 func reset():
 	# Seteamos el estado como no seleccionado
-	selected = false
+	_selected = false
 	# Ajustamos la transparencia
 	modulate.a8=255

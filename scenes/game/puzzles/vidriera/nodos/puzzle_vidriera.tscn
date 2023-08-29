@@ -35,42 +35,42 @@ texture = ExtResource("1_r30b0")
 
 [node name="Node2D" type="Node2D" parent="Panel/Sprite2D"]
 
-[node name="vidrio1" type="Area2D" parent="Panel/Sprite2D/Node2D" node_paths=PackedStringArray("canvas")]
+[node name="Vidrio1" type="Area2D" parent="Panel/Sprite2D/Node2D" node_paths=PackedStringArray("canvas")]
 script = ExtResource("3_dlveq")
 canvas = NodePath("../../../..")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Panel/Sprite2D/Node2D/vidrio1"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Panel/Sprite2D/Node2D/Vidrio1"]
 polygon = PackedVector2Array(-120, -196, -105, -166, -95, -136, -84, -111, -75, -113, -79, -142, -101, -191)
 
-[node name="vidrio2" type="Area2D" parent="Panel/Sprite2D/Node2D" node_paths=PackedStringArray("canvas")]
+[node name="Vidrio2" type="Area2D" parent="Panel/Sprite2D/Node2D" node_paths=PackedStringArray("canvas")]
 script = ExtResource("3_dlveq")
 canvas = NodePath("../../../..")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Panel/Sprite2D/Node2D/vidrio2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Panel/Sprite2D/Node2D/Vidrio2"]
 position = Vector2(65, -29)
 polygon = PackedVector2Array(-104, -169, -104, -160, -103, -131, -100, -126, -88, -125, -82, -167, -85, -181)
 
-[node name="vidrio3" type="Area2D" parent="Panel/Sprite2D/Node2D" node_paths=PackedStringArray("canvas")]
+[node name="Vidrio3" type="Area2D" parent="Panel/Sprite2D/Node2D" node_paths=PackedStringArray("canvas")]
 script = ExtResource("3_dlveq")
 canvas = NodePath("../../../..")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Panel/Sprite2D/Node2D/vidrio3"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Panel/Sprite2D/Node2D/Vidrio3"]
 position = Vector2(50, 24)
 polygon = PackedVector2Array(-112, -203, -107, -177, -101, -161, -93, -162, -85, -154, -86, -175, -88, -181)
 
-[node name="vidrio4" type="Area2D" parent="Panel/Sprite2D/Node2D" node_paths=PackedStringArray("canvas")]
+[node name="Vidrio4" type="Area2D" parent="Panel/Sprite2D/Node2D" node_paths=PackedStringArray("canvas")]
 script = ExtResource("3_dlveq")
 canvas = NodePath("../../../..")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Panel/Sprite2D/Node2D/vidrio4"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Panel/Sprite2D/Node2D/Vidrio4"]
 position = Vector2(112, -10)
 polygon = PackedVector2Array(-95, -204, -120, -144, -128, -121, -115, -119, -102, -143, -83, -185, -86, -205)
 
-[node name="vidrio5" type="Area2D" parent="Panel/Sprite2D/Node2D" node_paths=PackedStringArray("canvas")]
+[node name="Vidrio5" type="Area2D" parent="Panel/Sprite2D/Node2D" node_paths=PackedStringArray("canvas")]
 script = ExtResource("3_dlveq")
 canvas = NodePath("../../../..")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Panel/Sprite2D/Node2D/vidrio5"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Panel/Sprite2D/Node2D/Vidrio5"]
 polygon = PackedVector2Array(47, -99, 117, -139, 125, -139, 133, -120, 51, -83)
 
 [node name="Button" type="Button" parent="Panel"]

@@ -10,7 +10,7 @@ extends Area2D
 # Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 # Indica si el ítem está activo o no
-var active = "" 
+var _active = "" 
 
 
 # Función de inicialización
@@ -30,15 +30,15 @@ func _input(event):
 
 # Activar fragmento
 func _mouse_entered():
-	active = name
+	_active = name
 
 
 # Desactivar fragmento
 func _mouse_exited():
-	active = ""
+	_active = ""
 
 
 # Al dar clic en un área de un fragmento de vidrio
 func _on_click():
-	if active:
+	if _active:
 		canvas._click_event(name)

@@ -10,7 +10,7 @@ extends Node2D
 # DOCUMENTACIÓN SISTEMA AVANZADO DE GUARDADO DE PROGRESO EN EL JUEGO: https://docs.google.com/document/d/1XBbo4V4ioPuR-yhDVmgYflzPj1b3mM7mUP7ZjaXqUUs
 
 #Variable para guardar el screenshot
-var img: Image
+var _img: Image
 
 # Definición del nodo Canvas
 @onready var canvas_layer = $CanvasLayer
@@ -56,9 +56,9 @@ var img: Image
 # Función que se llama cuando la escena esta cargada
 func _ready():
 	# Asignamos el estado del juego
-	var paused = get_tree().paused
+	var _paused = get_tree().paused
 	# Validamos si esta en pausa
-	if not paused:
+	if not _paused:
 		# Si el juego no esta en pausa escondemos el boton continuar
 		_continue.visible = false
 
@@ -165,9 +165,9 @@ func _on_no_remove_pressed():
 # Cuando se confirma la acción de sobreescribir el avance
 func _on_yes_overwrite_pressed():
 	# Obtenemos el dato a guardar
-	var data = get_tree().get_current_scene().get_save_data()
+	var _data = get_tree().get_current_scene().get_save_data()
 	# Sobreescribimos el progreso
-	SaveProgress.overwrite(Global.active_item_menu_id, data, img)
+	SaveProgress.overwrite(Global.active_item_menu_id, _data, _img)
 	# Recargamos el grid de celdas de avances
 	inventory_canvas.init()
 	# Escondemos confirmación
@@ -192,9 +192,9 @@ func _on_save_pressed():
 		overwrite_confirmation.visible = true
 	else:
 		# Obtenemos datos a guardar
-		var data = get_tree().get_current_scene().get_save_data()
+		var _data = get_tree().get_current_scene().get_save_data()
 		# Guardamos el progreso
-		SaveProgress.save_game(data, img)
+		SaveProgress.save_game(_data, _img)
 		# Recargamos el grid de celdas de avances
 		inventory_canvas.init()
 		# Mostarmos acciones
@@ -218,10 +218,10 @@ func _set_buttons():
 	# Resetamos la variable global de la celda activa
 	Global.active_item_menu_id = ''
 	# Creamos la lista de escenas donde no se debe aparecer el boton guardar
-	var scenes = ["Map"]
+	var _scenes = ["Map"]
 	# Obtenemos el nombre de la escena actual
 	var actual_scene = get_tree().get_current_scene().name
 	# Validamos si la escena se encuentra en la lista de escepciones
-	if scenes.find(actual_scene,0) > -1:
+	if _scenes.find(actual_scene,0) > -1:
 		# Escondemos el boton
 		save_button.visible = false

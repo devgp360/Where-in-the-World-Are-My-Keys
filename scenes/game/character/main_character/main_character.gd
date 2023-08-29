@@ -90,7 +90,7 @@ var _animations = []
 @onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var clothes:= $Sprite2D/Clothes # Nodo principal que contiene nodos de vestimenta del personaje
 @onready var sound_step:= $AudioStreamPlayer2D # Sonido de pasos
-@onready var dialog_label = $dialog_label # Etiqueta para mostrar textos
+@onready var dialog_label = $DialogLabel # Etiqueta para mostrar textos
 # Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 
 
@@ -260,6 +260,7 @@ func _calc_scale():
 # DOCUMENTACIÓN (recolectar objetos): https://docs.google.com/document/d/1d78cYa4cTpxfz22lGvctv6T83TSj5DMwq3VMWiGAbI8/edit?usp=drive_link
 # Añada objetos al inventario del usuario
 func _add_object_to_inventory(_name: String):
+	print("pick")
 	inventory.emit_signal("add_object", _name)
 
 

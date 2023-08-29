@@ -25,11 +25,11 @@ signal ended_game()
 @export var TextoJuegoFinalizado = "Perfecto, has colocado los objetos en orden correcto. Sigue la puerta y encontrarás respuestas." # 5 elementos correctos
 
 # Si el juego está activo, se podrán mover objetos
-var puzzle_active = true
+var _puzzle_active = true
 
 # Las áreas están relacionadas hacia otras áreas, donde se podrá mover un objeto
 # Relación de áreas entre sí, para saber hacia qué areas se puede mover un objeto
-var area_moving_map = {
+var _area_moving_map = {
 	"AreaAuxiliar": ["AreaVelaRoja", "AreaSombrero", "AreaCigarro"],
 	"AreaSombrero": ["AreaAuxiliar", "AreaCigarro"],
 	"AreaCigarro": ["AreaSombrero", "AreaAuxiliar", "AreaVelaCeleste", "AreaVelaAzul"],
@@ -40,7 +40,7 @@ var area_moving_map = {
 
 # Posición de los objetos (un objeto está siempre en un area)
 # Este objeto lo usamos para colocar los objetos al iniciar el puzzle (en este caso en lugares incorrectos)
-var position_objects_map = {
+var _position_objects_map = {
 	"AreaSombrero": "Cigarro",
 	"AreaVelaRoja": "VelaAzul",
 	"AreaVelaCeleste": "",
@@ -50,7 +50,7 @@ var position_objects_map = {
 }
 
 # Guarda las posiciones iniciales de cada objeto
-var real_objects_position = {
+var _real_objects_position = {
 	"Sombrero": Vector2(0, 0),
 	"VelaRoja": Vector2(0, 0),
 	"VelaCeleste": Vector2(0, 0),
@@ -60,9 +60,9 @@ var real_objects_position = {
 }
 
 # Area activa: es la que tiene el puntero del mouse sobre ella
-var area_active = ""
+var _area_active = ""
 # Area que está disponible para mover un objeto hacia dicha área. Se inicializa en base a: position_objects_map
-var area_available = ""
+var _area_available = ""
 
 # Variables de las imágenes que se tienen que mover y ajustar
 @onready var canvas = $CanvasLayer # Canvas principal
@@ -85,12 +85,12 @@ func _ready():
 
 # Función que dectecta eventos del teclado y ratón
 func _unhandled_input(event: InputEvent):
-	if not puzzle_active:
+	if not _puzzle_active:
 		return # Si el juego no está activo, terminamo la función
 	# Cuando damos clic, validamos que estamos en un área jugable, y que no sea un área vacía
 	if event.is_action_pressed("click"):
 		Mensaje.text = TextoInstrucciones # Si se da clic en una área vacía, mostramos las instrucciones
-		if area_active: # Si estamos sobre un objeto (y le dimos clic), procedemos a moverlo
+		if _area_active: # Si estamos sobre un objeto (y le dimos clic), procedemos a moverlo
 			_move_object()
 
 
@@ -107,55 +107,55 @@ func _add_area_events():
 
 # Función que asigna un área activa (para saber a que objeto dimos clic)
 func _mouse_entered(_name: String):
-	area_active = _name
+	_area_active = _name
 
 
 # Función que desasigna un área activa
 func _mouse_exited():
-	area_active = ""
+	_area_active = ""
 
 
 func _move_object():
 	# Nombre del objeto a mover (Ej: Sombrero)
-	var object_name = area_active.replace("Area", "")
+	var _object_name = _area_active.replace("Area", "")
 	# Nombre del área donde se encuentra el objeto a mover (Ej: AreaAuxiliar)
-	var object_area_name = _get_content_area_object(object_name)
+	var _object_area_name = _get_content_area_object(_object_name)
 	# Areas a donde podría ser movido el objeto que se quiere mover
-	var areas = area_moving_map[object_area_name]
+	var _areas = _area_moving_map[_object_area_name]
 	# Validamos si el objeto se puede mover, según el area que esté disponible
-	if areas.find(area_available) >= 0:
+	if _areas.find(_area_available) >= 0:
 		# Posición a la cual se moverá el objeto
-		var destination_position = real_objects_position[area_available.replace("Area", "")]
+		var _destination_position = _real_objects_position[_area_available.replace("Area", "")]
 		# Sprite que se le cambiará su posición
-		var object_to_move: Sprite2D = Objetos.find_child(object_name)
+		var _object_to_move: Sprite2D = Objetos.find_child(_object_name)
 		# Actualizamos la posición del objeto a mover
-		object_to_move.position = destination_position
+		_object_to_move.position = _destination_position
 		# El área donde estaba el objeto la dejamos vacía
-		position_objects_map[object_area_name] = ""
+		_position_objects_map[_object_area_name] = ""
 		# Actualizamos el objeto que acabamos de mover, a su nueva área contenedora
-		position_objects_map[area_available] = object_name
+		_position_objects_map[_area_available] = _object_name
 		# Validamos si el objeto se movió correctamente
-		var is_correct = area_available == "Area" + object_name
+		var _is_correct = _area_available == "Area" + _object_name
 		# Reasignamos la nueva area disponible
-		area_available = object_area_name
+		_area_available = _object_area_name
 		# Mensaje general a mostrar cuando se movió un objeto
 		var m = TextoObjetoMovido
 		
 		# Cuando resolvemos el puzzle, ponemos mensaje final y desactivamos el puzzle
 		if _is_game_ended():
 			Mensaje.text = TextoJuegoFinalizado
-			puzzle_active = false
+			_puzzle_active = false
 			self.emit_signal("ended_game")
 			return
 		else:
-			if is_correct:
+			if _is_correct:
 				# En caso se mueva una pieza de forma correcta, se muestra un mensaje positivo
-				var correct_count = _get_correct_count()
-				if correct_count == 1 || correct_count == 2:
+				var _correct_count = _get_correct_count()
+				if _correct_count == 1 || _correct_count == 2:
 					m = m + " " + TextoObjetoMovidoCorrecto1
-				elif correct_count == 3:
+				elif _correct_count == 3:
 					m = m + " " + TextoObjetoMovidoCorrecto2
-				elif correct_count == 4:
+				elif _correct_count == 4:
 					m = m + " " + TextoObjetoMovidoCorrecto3
 				Mensaje.text = m
 			else:
@@ -168,51 +168,51 @@ func _move_object():
 
 # Función que guarda las posiciones iniciales de cada objeto. Estas posiciones son las correctas
 func _save_objects_position():
-	real_objects_position["VelaRoja"] = SpriteVelaRoja.position
-	real_objects_position["VelaCeleste"] = SpriteVelaCeleste.position
-	real_objects_position["VelaAzul"] = SpriteVelaAzul.position
-	real_objects_position["Cigarro"] = SpriteCigarro.position
-	real_objects_position["Sombrero"] = SpriteSombrero.position
+	_real_objects_position["VelaRoja"] = SpriteVelaRoja.position
+	_real_objects_position["VelaCeleste"] = SpriteVelaCeleste.position
+	_real_objects_position["VelaAzul"] = SpriteVelaAzul.position
+	_real_objects_position["Cigarro"] = SpriteCigarro.position
+	_real_objects_position["Sombrero"] = SpriteSombrero.position
 
 
 # Esta función desordena los objetos del puzzle y los pone en posiciones incorrectas
 func _mess_objects():
-	for area_name in position_objects_map:
-		var object_name = position_objects_map[area_name]
-		if object_name:
+	for _area_name in _position_objects_map:
+		var _object_name = _position_objects_map[_area_name]
+		if _object_name:
 			# Si hay un nombre de objeto, buscamos el sprite y le colocamos su nueva posición
-			var sprite: Sprite2D = Objetos.find_child(object_name)
-			sprite.position = real_objects_position[area_name.replace("Area", "")]
+			var _sprite: Sprite2D = Objetos.find_child(_object_name)
+			_sprite.position = _real_objects_position[_area_name.replace("Area", "")]
 		else:
 			# Cuando no hay nombre de objeto, quiere decir que esa área, será la que está disponible
-			area_available = area_name
+			_area_available = _area_name
 
 
 # Busca en qué area se encuentra un objeto. Por ejemplo el objeto "Sombrero" se puede encontrar
 # en el área llamada "AreaAuxiliar"
 func _get_content_area_object(_name: String):
-	for area_name in position_objects_map:
-		if position_objects_map[area_name] == _name:
-			return area_name
+	for _area_name in _position_objects_map:
+		if _position_objects_map[_area_name] == _name:
+			return _area_name
 	return ""
 
 
 # Valida si el puzzle ya está resuelto
 func _is_game_ended():
-	var all_correct = _get_correct_count()
-	return all_correct == 5
+	var _all_correct = _get_correct_count()
+	return _all_correct == 5
 
 
 # Retorna el número de elementos puestos de forma correcta
 func _get_correct_count():
-	var all_correct = 0
-	for area_name in position_objects_map:
-		var current_object = position_objects_map[area_name]
-		var correct_object = area_name.replace("Area", "")
-		if area_name != "AreaAuxiliar":
-			if current_object == correct_object:
-				all_correct = all_correct + 1
-	return all_correct
+	var _all_correct = 0
+	for _area_name in _position_objects_map:
+		var _current_object = _position_objects_map[_area_name]
+		var _correct_object = _area_name.replace("Area", "")
+		if _area_name != "AreaAuxiliar":
+			if _current_object == _correct_object:
+				_all_correct = _all_correct + 1
+	return _all_correct
 
 
 # Muestra/oculta el puzzle

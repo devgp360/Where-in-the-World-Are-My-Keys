@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/sounds.gd" id="1_57487"]
 [ext_resource type="Texture2D" uid="uid://dyvqsoeiyipjw" path="res://assets/sprites/scenes/tikal/mayan_temple_interior_upscaled.png" id="1_i8wbn"]
-[ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character.tscn" id="2_ydvm2"]
-[ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://Camera/Camera.tscn" id="3_afvcr"]
+[ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character/main_character.tscn" id="2_ydvm2"]
+[ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://scenes/game/levels/camera/camera.tscn" id="3_afvcr"]
 [ext_resource type="Texture2D" uid="uid://2k8xgtlbkeqo" path="res://assets/sprites/scenes/tikal/wall.png" id="4_rfiu0"]
 [ext_resource type="Texture2D" uid="uid://cxsixgx0ekrdr" path="res://assets/sprites/scenes/tikal/stone.png" id="5_syikp"]
 [ext_resource type="Texture2D" uid="uid://c5axhk7hpf60u" path="res://assets/sprites/scenes/tikal/harrow.png" id="6_u74of"]
@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://i2gsxlah1hd4" path="res://assets/sprites/scenes/tikal/back2.png" id="8_fq6ch"]
 [ext_resource type="Texture2D" uid="uid://2klthllqfn3e" path="res://assets/sprites/scenes/tikal/back.png" id="8_u5rn4"]
 [ext_resource type="Texture2D" uid="uid://dsia3r6jcrovm" path="res://assets/sprites/scenes/tikal/light.png" id="10_bj7sa"]
-[ext_resource type="AudioStream" uid="uid://dpavsjbuqixw5" path="res://assets/sounds/Scene1.mp3" id="11_0kkbj"]
-[ext_resource type="AudioStream" uid="uid://cx0jnns63mbi6" path="res://assets/sounds/Scene2.mp3" id="12_ochyu"]
+[ext_resource type="AudioStream" uid="uid://dpavsjbuqixw5" path="res://assets/sounds/scene_1.mp3" id="11_0kkbj"]
+[ext_resource type="AudioStream" uid="uid://cx0jnns63mbi6" path="res://assets/sounds/scene_2.mp3" id="12_ochyu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2eybf"]
 vertices = PackedVector2Array(576.475, 1825.79, 584.83, 1532.36, 626.603, 1597.56, 685.086, 1695.37, 726.86, 2282.23, 785.343, 2706.08, 751.924, 2771.28, 576.475, 2314.84, 543.056, 2151.82, 651.667, 2086.61, -618.249, 3260.33, -837.56, 3423.35, -979.59, 2151.82, -841.737, 1825.79, -1094.47, 1890.99, -893.954, 1695.37, 1122.66, 2579.74, 1136.24, 2465.62, 1276.18, 2282.23, 1242.76, 2543.06, 1100.73, 2836.49, 1034.94, 2754.98, 685.086, 1336.74, 818.762, 1238.93, 835.471, 1369.34, 693.441, 1434.55, 1126.84, 2282.23, 1244.85, 2151.82, 902.309, 1336.74, 935.728, 1532.36, 1019.27, 1956.2, 1061.05, 1890.99, 1111.18, 1825.79, 1211.43, 1956.2, 1089.24, 2204.8, 1034.94, 2155.89, 835.471, 2673.47, 776.988, 2217.03, 896.042, 2339.29, 900.22, 2514.53, -1061.05, 1369.34, -935.728, 1336.74, -908.575, 1564.96, 679.258, 1571.88, 726.86, 1760.58, 1203.08, 3358.14, 1211.43, 3912.4, 451.154, 3879.8, 426.09, 3847.19, 409.381, 3651.57, 409.381, 3358.14, 843.826, 3325.54, 533.657, 2824.26, 540.967, 2640.87, 618.249, 2640.87, 458.465, 2954.67, 693.441, 1564.96, -1161.3, 2021.41, -1420.3, 1988.8, -1453.72, 1075.91, -1152.95, 1271.53, -1162.35, 1173.72, -1287.67, 1010.7, -928.417, 1238.93, -1062.09, 945.495, -719.549, 1010.7, 522.169, 2530.83, 342.543, 1499.75, 142.03, 1695.37, 477.263, 2486, 100.257, 1890.99, 776.988, 1890.99, 932.594, 2208.87, 1269.92, 1988.8, 927.373, 2640.87, 902.309, 2836.49, 971.235, 2763.13, 142.03, 1467.15, -342.543, 1369.34, -527.391, 978.099, -243.331, 847.686, 182.759, 912.892, 284.06, 1271.53, -593.184, 1499.75, -735.215, 1564.96, -869.934, 1532.35, 125.321, 2282.23, 395.804, 2543.06, 148.296, 2608.27, 75.1924, 2380.04, 358.208, 2673.47, 240.198, 2771.28, 374.917, 2934.3, 315.39, 3032.11, 340.454, 3129.92, 384.317, 3260.33, 1178.01, 3195.13, 969.146, 3129.92, 1102.82, 3032.11, 985.856, 3064.71)
