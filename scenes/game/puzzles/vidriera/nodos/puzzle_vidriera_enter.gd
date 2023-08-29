@@ -19,12 +19,11 @@ func _ready():
 	# DOCUMENTACIÓN (señales): https://docs.google.com/document/d/1bbroyXp11L4_FpHpqA-RckvFLRv3UOE-hmQdwtx27eo/edit?usp=drive_link
 	self.area_entered.connect(_area_entered)
 	self.area_exited.connect(_area_exited)
-	self.input_event.connect(_input_event)
 
 
 # Mostra el puzzle al dar clic en el objeto que muestra el puzzle (en este caso una ventana)
-func _input_event(_v, e: InputEvent, _i):
-	if e.is_action_pressed("click") and _is_character_entered:
+func _unhandled_input(event):
+	if event.is_action_pressed("click") and _is_character_entered:
 		puzzle._set_visible(true)
 
 

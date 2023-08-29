@@ -15,18 +15,18 @@ func _ready():
 	_set_sounds_volume()
 
 
-# Cuando termina la animación
-func _on_animation_player_animation_finished(_anim_name):
-	# Llamamos el la funcion de cambio de escena
-	_go_title_screen()
-
-
 # Escuchamos el teclado
 func _input(event):
 	#Escuchamos si se preciona algun boton
 	if event is InputEventKey:
 		# Llamamos el la funcion de cambio de escena
 		_go_title_screen()
+
+
+# Cuando termina la animación
+func _on_animation_player_animation_finished(_anim_name):
+	# Llamamos el la funcion de cambio de escena
+	_go_title_screen()
 
 
 # Función que inicializa el volumen de los sonidos (según datos guardados)
