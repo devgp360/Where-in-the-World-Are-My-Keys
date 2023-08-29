@@ -3,6 +3,7 @@ extends Node2D
 ## 
 ## Muestra la puerta cuando el rompecabezas de Maximón está resuelto, abre y cierra la puerta, escucha eventos de colisión de la puerta con el ratón, muestra etiquetas en la puerta
 
+
 # DOCUMENTACIÓN (maximón): https://docs.google.com/document/d/1szQIv2aEz_EdoMq34ml8DG-lRju3irkkjRO4QXsDRWc/edit#heading=h.e2j6ax5ma83s
 
 # Señal para poder abrir/cerrar la puerta
@@ -13,6 +14,7 @@ signal toggle_opened_closed()
 
 # Indica si la puerta está abierta o cerrada
 var _is_open = false
+
 # Valida si se puede abrir o cerrar la puerta
 # Solo se activa, cuando el personaje está cerca de la puerta
 var _is_active = false

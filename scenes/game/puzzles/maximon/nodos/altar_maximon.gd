@@ -3,6 +3,7 @@ extends Node2D
 ##
 ## Escucha finalización del diálogo y muestra el altar de Maximón
 
+
 # DOCUMENTACIÓN (maximón): https://docs.google.com/document/d/1szQIv2aEz_EdoMq34ml8DG-lRju3irkkjRO4QXsDRWc/edit#heading=h.e2j6ax5ma83s
 
 @export var puzzle: Node2D

@@ -260,7 +260,6 @@ func _calc_scale():
 # DOCUMENTACIÓN (recolectar objetos): https://docs.google.com/document/d/1d78cYa4cTpxfz22lGvctv6T83TSj5DMwq3VMWiGAbI8/edit?usp=drive_link
 # Añada objetos al inventario del usuario
 func _add_object_to_inventory(_name: String):
-	print("pick")
 	inventory.emit_signal("add_object", _name)
 
 

@@ -65,7 +65,7 @@ var _area_active = ""
 var _area_available = ""
 
 # Variables de las imágenes que se tienen que mover y ajustar
-@onready var canvas = $CanvasLayer # Canvas principal
+@onready var Canvas = $CanvasLayer # Canvas principal
 @onready var SpriteVelaRoja = $CanvasLayer/Background/Objects/VelaRoja
 @onready var SpriteVelaCeleste = $CanvasLayer/Background/Objects/VelaCeleste
 @onready var SpriteVelaAzul = $CanvasLayer/Background/Objects/VelaAzul
@@ -138,33 +138,35 @@ func _move_object():
 		var _is_correct = _area_available == "Area" + _object_name
 		# Reasignamos la nueva area disponible
 		_area_available = _object_area_name
-		# Mensaje general a mostrar cuando se movió un objeto
-		var m = TextoObjetoMovido
-		
-		# Cuando resolvemos el puzzle, ponemos mensaje final y desactivamos el puzzle
-		if _is_game_ended():
-			Mensaje.text = TextoJuegoFinalizado
-			_puzzle_active = false
-			self.emit_signal("ended_game")
-			return
-		else:
-			if _is_correct:
-				# En caso se mueva una pieza de forma correcta, se muestra un mensaje positivo
-				var _correct_count = _get_correct_count()
-				if _correct_count == 1 || _correct_count == 2:
-					m = m + " " + TextoObjetoMovidoCorrecto1
-				elif _correct_count == 3:
-					m = m + " " + TextoObjetoMovidoCorrecto2
-				elif _correct_count == 4:
-					m = m + " " + TextoObjetoMovidoCorrecto3
-				Mensaje.text = m
-			else:
-				m = m + " " + TextoObjetoMovidoIncorrecto
-				Mensaje.text = m
+		_set_message(_is_correct)
 	else:
 		# Si no se pudo mover el objeto, mostramos el mensaje correspondiente
 		Mensaje.text = TextoObjetoNoMovido
 
+# Seteamos mensaje a mostrar
+func _set_message(_is_correct: bool):
+	# Mensaje general a mostrar cuando se movió un objeto
+	var m = TextoObjetoMovido
+	# Cuando resolvemos el puzzle, ponemos mensaje final y desactivamos el puzzle
+	if _is_game_ended():
+		Mensaje.text = TextoJuegoFinalizado
+		_puzzle_active = false
+		self.emit_signal("ended_game")
+		return
+	else:
+		if _is_correct:
+			# En caso se mueva una pieza de forma correcta, se muestra un mensaje positivo
+			var _correct_count = _get_correct_count()
+			if _correct_count == 1 || _correct_count == 2:
+				m = m + " " + TextoObjetoMovidoCorrecto1
+			elif _correct_count == 3:
+				m = m + " " + TextoObjetoMovidoCorrecto2
+			elif _correct_count == 4:
+				m = m + " " + TextoObjetoMovidoCorrecto3
+			Mensaje.text = m
+		else:
+			m = m + " " + TextoObjetoMovidoIncorrecto
+			Mensaje.text = m
 
 # Función que guarda las posiciones iniciales de cada objeto. Estas posiciones son las correctas
 func _save_objects_position():
@@ -217,7 +219,7 @@ func _get_correct_count():
 
 # Muestra/oculta el puzzle
 func _set_visible(_visible: bool):
-	canvas.visible = _visible
+	Canvas.visible = _visible
 	character.set_character_active(not _visible)
 
 
