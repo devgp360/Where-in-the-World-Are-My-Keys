@@ -9,25 +9,25 @@ extends CanvasLayer
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 
 # Guarda los nombres de los items
-var left_items_names = []
+var _left_items_names = []
 
 # Guarda los items (fragmentos)
-var left_items = []
+var _left_items = []
 
 # Guarda el contendor de items
-var left_items_panes = []
+var _left_items_panes = []
 
 # El item actual seleccionado
-var current_item_left_selected = ""
+var _current_item_left_selected = ""
 
 # Total de items recolectados
-var total_items = 0
+var _total_items = 0
 
 # Total de items colocados correctamente
-var total_items_correct = 0
+var _total_items_correct = 0
 
 # Indica si el puzzle se pude "jugar"
-var is_active = false
+var _is_active = false
 
 # Referencias de nodos del puzzle
 @onready var close = $Panel/Button
@@ -54,25 +54,25 @@ func _set_visible(_visible: bool):
 	# Agregamos items al puzzle, según los que tengamos recolectados
 	_add_fragments_from_inventory()
 	# Texto a mostrar por defecto
-	var text = "Se deben seleccionar los fragmentos y girarlos para colocarlos en el lugar correcto"
+	var _text = "Se deben seleccionar los fragmentos y girarlos para colocarlos en el lugar correcto"
 	# Validamos si todavía no hemos conseguido las 5 piezas, no podremos jugar el puzzle
-	if total_items < 5:
-		text = "Todavía faltan algunos fragmentos para resolver el puzle... debería encontrarlos primero"
-		is_active = false
+	if _total_items < 5:
+		_text = "Todavía faltan algunos fragmentos para resolver el puzle... debería encontrarlos primero"
+		_is_active = false
 	# Validamos si tenemos los lentes puestos
 	if InventoryCanvas.is_wearing("glasses"):
 		# Agregamos todos los colores a la imagen
 		sprite.modulate = Color(1, 1, 1)
-		if total_items >= 5: # Activamos el puzzle, si ya tenemos todas las piezas
-			is_active = true
+		if _total_items >= 5: # Activamos el puzzle, si ya tenemos todas las piezas
+			_is_active = true
 	else:
 		# Agregamos un filtro de escala de grises
 		sprite.modulate = Color(0.1, 0.1, 0.1)
 		# Todavía tenemos que conseguir los lentes
-		text = "La imagen no se ve bien. Tal vez falta algo..."
-		is_active = false
+		_text = "La imagen no se ve bien. Tal vez falta algo..."
+		_is_active = false
 	
-	label.text = text # Agregamos el mensaje
+	label.text = _text # Agregamos el mensaje
 	self.visible = _visible # Mostramos/Ocultamos el puzzle
 
 
@@ -82,24 +82,24 @@ func _add_fragments_from_inventory():
 		# Agregamos los items para el puzzle "vidriera", excepto los lentes
 		if _name.begins_with("puzzle_vidriera/") and not _name.contains("item_lentes"):
 			# Cargamos el recurso
-			var item = load("res://scenes/game/inventory/items/" + _name + ".tscn")
-			if not item:
+			var _item = load("res://scenes/game/inventory/items/" + _name + ".tscn")
+			if not _item:
 				return # Si no existe el recurso, se termina la función
 			# Se agrega el item si no está agregado todavía
-			if left_items_names.find(_name) == -1:
-				var i = item.instantiate()
+			if _left_items_names.find(_name) == -1:
+				var i = _item.instantiate()
 				var p = ColorRect.new()
 				p.color = Color(0, 0, 0, 0)
 				p.set_custom_minimum_size(Vector2(80, 80))
 				p.add_child(i)
 				grid.add_child(p)
 				# Guardamos las referencias de los nodos
-				left_items_names.append(_name)
-				left_items.append(i)
-				left_items_panes.append(p)
+				_left_items_names.append(_name)
+				_left_items.append(i)
+				_left_items_panes.append(p)
 				# Conectamos el evento clic a los fragmentos
 				i.pressed.connect(_click.bind(_name))
-				total_items = total_items + 1 # Sumamos en 1 los elementos recolectados
+				_total_items = _total_items + 1 # Sumamos en 1 los elementos recolectados
 				
 				# Agregamos un punto de referencia al centro, para rotar el item desde el centro
 				# El item mide 80x80, por lo tanto el centro es 40 en los ejes "x" y "y"
@@ -109,55 +109,55 @@ func _add_fragments_from_inventory():
 
 # Clic en un item, que está del lado izquierdo (fragmento recolectado)
 func _click(_name: String):
-	if not is_active:
+	if not _is_active:
 		return # Si no se tienen los lentes, no se podrán seleccionar objetos
 	
-	var index = left_items_names.find(_name)
-	if index >= 0:
+	var _index = _left_items_names.find(_name)
+	if _index >= 0:
 		# En el primer clic, colocamos como activo el item
-		if current_item_left_selected != _name:
-			current_item_left_selected = _name
-			for cr in left_items_panes:
+		if _current_item_left_selected != _name:
+			_current_item_left_selected = _name
+			for cr in _left_items_panes:
 				cr.color = Color(0, 0, 0, 0) # Quitamos el color de "selección" de otros items
-			var p = left_items_panes[index]
+			var p = _left_items_panes[_index]
 			p.color = Color(0.5, 0.5, 0.5)
 			return
 		# Para el segundo clic, empezamos a rotar la imagen (en 45 grados)
-		var item: TextureButton = left_items[index]
-		var deg = item.get_rotation_degrees() + 45 # Agregamos 45 grados de rotación
-		if deg >= 360:
-			deg = 0 # Si ya llegamos a los 360 grados, volvemos a iniciar en 0
-		item.set_rotation_degrees(deg)
+		var _item: TextureButton = _left_items[_index]
+		var _deg = _item.get_rotation_degrees() + 45 # Agregamos 45 grados de rotación
+		if _deg >= 360:
+			_deg = 0 # Si ya llegamos a los 360 grados, volvemos a iniciar en 0
+		_item.set_rotation_degrees(_deg)
 
 
 # Clic en un área donde se mostrarán los items ya "colocados" en su sitio correcto
 func _click_event(_name: String):
-	if not is_active:
+	if not _is_active:
 		return # Si no se tienen los lentes, no se podrán mover objetos
 	# Si no tenemos un fragmento seleccionado, mostramos un mensajes y terminamos la función
-	if current_item_left_selected == "":
+	if _current_item_left_selected == "":
 		label.text = "No hay ningún fragmento seleccionado"
 		return
 	else:
 		# Buscamos que item tenemos selecionado
-		var index = left_items_names.find(current_item_left_selected)
-		if index >= 0 and current_item_left_selected.contains(_name):
+		var _index = _left_items_names.find(_current_item_left_selected)
+		if _index >= 0 and _current_item_left_selected.contains(_name):
 			# Validamos que esté en el ángulo correcto
-			var item = left_items[index]
-			var deg = item.get_rotation_degrees()
-			if deg == 0: # El ángulo correcto debe ser 0
+			var _item = _left_items[_index]
+			var _deg = _item.get_rotation_degrees()
+			if _deg == 0: # El ángulo correcto debe ser 0
 				label.text = "Correcto, hemos agregado un fragmento!"
 				# Dependiendo a que area se dio clic, buscamos y hacemos visible el fragmento correcto
 				_set_correct_fragment(_name)
 				# Luego quitamos el fragmento, del listado que está al lado izquierdo
-				var p = left_items_panes[index]
-				grid.remove_child(p)
-				left_items_panes.remove_at(index)
-				left_items_names.remove_at(index)
-				left_items.remove_at(index)
-				total_items_correct = total_items_correct + 1
+				var _p = _left_items_panes[_index]
+				grid.remove_child(_p)
+				_left_items_panes.remove_at(_index)
+				_left_items_names.remove_at(_index)
+				_left_items.remove_at(_index)
+				_total_items_correct = _total_items_correct + 1
 				
-				if total_items_correct == 5:
+				if _total_items_correct == 5:
 					label.text = "Lo hemos conseguido. El mensajes oculto es ¿¡mensaje oculto!?."
 
 				return
