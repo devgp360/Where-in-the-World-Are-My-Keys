@@ -17,8 +17,8 @@ var _dialog_active = false
 
 # Variables para control de animación, áreas, sprites y sonidos
 @onready var anim := $NPCAnimationPlayer
-@onready var area2d := $npc1_area
-@onready var sprite := $npc1_sprite
+@onready var area2d := $NpcArea
+@onready var sprite := $NpcSprite
 @onready var sound := $AudioStreamPlayer2D
 # Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
 

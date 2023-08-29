@@ -6,6 +6,9 @@ extends Node
 # DOCUMENTACIÓN SOBRE COLISIONADORES Y "COLLISIONSHAPES": https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw
 # DOCUMENTACIÓN (catálogo de objetos): https://docs.google.com/document/d/1aFTTLLd4Yb8T_ntjjGlv4LHEGgnz8exqdcbFO9XK3MA/edit?usp=drive_link
 
+#Declaramos la constante del area de personaje principal
+const MAIN_CHAR_AREA = "MaincharArea"
+
 @export var area: Area2D # Area de colisión del item
 @export var button: TextureButton # Nodo tipo botón que representa el item
 # Puedes leer más sobre nodos en éste documento: https://docs.google.com/document/d/1AiO1cmB31FSQ28me-Rb15EQni8Pyomc1Vgdm1ljL3hc
@@ -40,7 +43,7 @@ func _click_in_escene():
 # DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
 # Se ejecuta cuando el personaje principal se acerca al item
 func _area_entered(_area: Area2D):
-	if (_area.name == 'mainchar_area'):
+	if (_area.name == MAIN_CHAR_AREA):
 		# Validamos que sea el personaje principal, el que entró en contacto con el item
 		_is_character_entered = true # Guardamos que estamos en el área del item
 		_set_tooltip() # Modificamos el tooltip del botón
@@ -48,7 +51,7 @@ func _area_entered(_area: Area2D):
 
 # Se ejecuta cuando el personaje principal se aleja del item
 func _area_exited(_area: Area2D):
-	if (_area.name == 'mainchar_area'):
+	if (_area.name == MAIN_CHAR_AREA):
 		# Validamos que sea el personaje principal, el que salió del área de contacto con el item
 		_is_character_entered = false # Guardamos que ya no estamos en el área del item
 		_set_tooltip() # Modificamos el tooltip del botón
