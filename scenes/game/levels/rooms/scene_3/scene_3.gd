@@ -48,7 +48,7 @@ func _ready():
 # Función que siempre se llama
 func _process(_delta):
 	# Levantamos el menú principal
-	if(Input.is_action_pressed("ui_cancel")):
+	if Input.is_action_pressed("ui_cancel"):
 		# Pausamos el juego
 		get_tree().paused = true
 		# Obtenemos el nodo de menú principal
