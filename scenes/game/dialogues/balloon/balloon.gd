@@ -123,7 +123,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 # Iniciamos el diálogo
 func start(dialogue_resource: DialogueResource, 
-	title: String, extra_game_states: Array = []) -> void:
+		title: String, extra_game_states: Array = []) -> void:
 	_temporary_game_states = extra_game_states
 	_is_waiting_for_input = false
 	_resource = dialogue_resource

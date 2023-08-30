@@ -124,7 +124,7 @@ func _unhandled_input(event):
 		return # Si el personaje no está activo, no se podrá interactuar con él
 	# Si hacemos un clic en alguna parte de la escena
 	if event.is_action_pressed("click"):
-		#Ancendemos el sonido de pasos
+		# Encendemos el sonido de pasos
 		sound_step.play()
 		# Obtenemos la posición donde se dio clic
 		_destination = get_global_mouse_position()
