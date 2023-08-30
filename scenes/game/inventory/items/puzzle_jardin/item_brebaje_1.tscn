@@ -1,9 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://jfux4q3oxcfb"]
+[gd_scene load_steps=2 format=3 uid="uid://jfux4q3oxcfb"]
 
 [ext_resource type="Script" path="res://scenes/game/inventory/items/puzzle_jardin/item_brebaje.gd" id="1_n21u5"]
-[ext_resource type="Texture2D" uid="uid://ka5n1mgyhw0w" path="res://scenes/game/puzzles/Jardin/Assets/cup_back.png" id="2_f2wb6"]
-[ext_resource type="Texture2D" uid="uid://dju4j3btpekko" path="res://scenes/game/puzzles/Jardin/Assets/potion.png" id="3_oqtyj"]
-[ext_resource type="Texture2D" uid="uid://cls7j0l3ci567" path="res://scenes/game/puzzles/Jardin/Assets/copa_front.png" id="4_ijhi4"]
 
 [node name="item_brebaje_1" type="Button"]
 script = ExtResource("1_n21u5")
@@ -11,15 +8,12 @@ script = ExtResource("1_n21u5")
 [node name="back" type="Sprite2D" parent="."]
 position = Vector2(66, 63)
 scale = Vector2(0.13, 0.13)
-texture = ExtResource("2_f2wb6")
 offset = Vector2(0, -250)
 
 [node name="brebaje" type="Sprite2D" parent="back"]
-texture = ExtResource("3_oqtyj")
 offset = Vector2(0, 109)
 
 [node name="front" type="Sprite2D" parent="back"]
-texture = ExtResource("4_ijhi4")
 
 [node name="Buttons" type="Node2D" parent="."]
 z_index = 10

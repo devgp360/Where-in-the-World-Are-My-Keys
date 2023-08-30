@@ -149,7 +149,7 @@ scale = Vector2(0.925, 0.92)
 texture = ExtResource("8_fq6ch")
 
 [node name="MainCharacter" parent="Objects" node_paths=PackedStringArray("light_node") instance=ExtResource("2_ydvm2")]
-position = Vector2(159, 170)
+position = Vector2(235, 335)
 light_node = NodePath("../../Lights/Light")
 shadow_min_value = 0.3
 shadow_max_value = 0.7

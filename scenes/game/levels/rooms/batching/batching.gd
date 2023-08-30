@@ -6,7 +6,7 @@ extends Node2D
 @export var distribute_on_ready = false
 
 # Declaramos nodos
-@onready var _mesh_instance = $icon
+@onready var _mesh_instance = $Icon
 @onready var _multi_mesh_instance = $MultiMeshInstance2D
 
 

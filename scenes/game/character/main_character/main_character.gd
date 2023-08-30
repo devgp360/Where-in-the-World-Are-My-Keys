@@ -212,7 +212,7 @@ func _path_finding():
 	
 	# Sentencias que setean la variable "main_direction" con la dirección
 	# hacia donde se mueve el personaje, según el ángulo de dirección
-	if (move_direction <= 15 and move_direction >= -15):
+	if move_direction <= 15 and move_direction >= -15:
 		_main_direction = DIRECTION_LEFT;
 	elif move_direction <= 60 and move_direction >= 15:
 		_main_direction = DIRECTION_UP_LEFT;
@@ -234,8 +234,8 @@ func _path_finding():
 	if nav_agent.is_navigation_finished():
 		_path_finding_moving = false
 		_main_direction = DIRECTION_IDLE
-	#Si termó caminar el personaje apagamos el sonido de pasos
-	if (_main_direction == DIRECTION_IDLE):
+	# Si termó caminar el personaje apagamos el sonido de pasos
+	if _main_direction == DIRECTION_IDLE:
 		sound_step.stop()
 
 
