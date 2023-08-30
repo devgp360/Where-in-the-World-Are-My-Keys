@@ -30,7 +30,7 @@ func _init_object():
 
 
 # Agregamos datos de escenas
-func _add_scene(dataToSave:Dictionary, data: FileAccess):
+func _add_scene(data_to_save: Dictionary, data: FileAccess):
 	# Inicializamos objeto vacío
 	var _data = _init_object()
 	# Validamos si data no viene vacia
@@ -38,10 +38,10 @@ func _add_scene(dataToSave:Dictionary, data: FileAccess):
 		# Leemos datos guardados
 		_data = data.get_var(true)
 		# Agregamos la escena
-		_data.point.append(dataToSave)
+		_data.point.append(data_to_save)
 	else:
 		# Agregamos la escena
-		_data.point.append(dataToSave)
+		_data.point.append(data_to_save)
 	# Retornamos datos a guardar
 	return _data
 
@@ -64,7 +64,7 @@ func _add_sounds(_name: String, vol: float, data: FileAccess):
 
 
 # Agregamos datos de la escena activa
-func _add_active_scene(scene:String, data: FileAccess):
+func _add_active_scene(scene: String, data: FileAccess):
 	# Inicializamos objeto vacío
 	var _data = _init_object()
 	# Validamos si data no viene vacia
@@ -96,7 +96,7 @@ func _add_active_scene(scene:String, data: FileAccess):
 
 
 # Eliminamos la escena guardada
-func _remove_saved(id:String, data: FileAccess):
+func _remove_saved(id: String, data: FileAccess):
 	# Validamos si data no viene vacia
 	if (data):
 		# Leemos datos guardados
@@ -121,7 +121,7 @@ func _remove_saved(id:String, data: FileAccess):
 
 
 # Sobreescribimos escenas guardadas
-func _overwrite_saved(id:String, dataToSave:Dictionary, data: FileAccess, img: Image):
+func _overwrite_saved(id: String, data_to_save: Dictionary, data: FileAccess, img: Image):
 	# Validamos si data no viene vacia
 	if (data):
 		# Leemos datos guardados
@@ -134,7 +134,7 @@ func _overwrite_saved(id:String, dataToSave:Dictionary, data: FileAccess, img: I
 				# Validamos si la escena es la que debemos eliminar
 				if(_data.point[i].id == id):
 					# Eliminamos la escena
-					new_data[i] = dataToSave
+					new_data[i] = data_to_save
 			_data.point = new_data
 			return _data
 		else:
@@ -142,7 +142,7 @@ func _overwrite_saved(id:String, dataToSave:Dictionary, data: FileAccess, img: I
 			return _data
 	else:
 		# Retornamos 
-		save_game(dataToSave, img)
+		save_game(data_to_save, img)
 
 
 # Guardamos el avance del juego
@@ -156,13 +156,13 @@ func _save_data(data: Dictionary) -> void:
 
 
 # Buscamos los datos de la escena
-func _find_scene_data(sceneId: String, data: Dictionary):
+func _find_scene_data(scene_id: String, data: Dictionary):
 	# Validamos si datos existen
 	if (data):
 		# Parseamos datos
 		var data_to_return = {}
 		for d in data.point:
-			if (d.id == sceneId):
+			if (d.id == scene_id):
 				data_to_return = d
 		# Retornamos datos guardados
 		return data_to_return
@@ -191,7 +191,7 @@ func _save_screen(id: String, img: Image):
 
 
 # Eliminamos el screenshot
-func _remove_screenshort(id:String):
+func _remove_screenshort(id: String):
 	# Creamos la ruta de la imagen
 	var path = SAVE_SCREENS_FOLDER + (id + ".jpg").replace(" ", "_").replace(":", "_")
 	# Accedemos a la carpeta de datos de usuario
@@ -224,7 +224,7 @@ func load_game():
 
 
 # Obtenemos el avance de luz
-func get_saved_data(sceneId: String):
+func get_saved_data(scene_id: String):
 	# Validamos si el archivo existe
 	if not FileAccess.file_exists(SAVE_GAME_PATH):
 		return # No existe el archivo salimos
@@ -237,7 +237,7 @@ func get_saved_data(sceneId: String):
 		# Cerramos el archivo
 		file.close()
 		# Retornamos datos guardados
-		return _find_scene_data(sceneId, data)
+		return _find_scene_data(scene_id, data)
 	#  Cerramos el acrivo
 	file.close()
 	# Retornamos
@@ -277,26 +277,26 @@ func remove(id: String) -> void:
 
 
 # Sobreescribimos el avance
-func overwrite(id: String, dataToSave: Dictionary, img: Image) -> void:
+func overwrite(id: String, data_to_save: Dictionary, img: Image) -> void:
 	# Eliminamos el archivo de screenshot
 	_remove_screenshort(id)
 	# Guardamos el screen nuevo
-	_save_screen(dataToSave.id, img)	
+	_save_screen(data_to_save.id, img)	
 	# Leemos el archivo donde se guardan los datos
 	var data = FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
 	# Eliminamos el guardado eligido
-	data = _overwrite_saved(id, dataToSave, data, img)
+	data = _overwrite_saved(id, data_to_save, data, img)
 	# Guardamos
 	_save_data(data)
 
 
 # Guardamos el avance
-func save_game(dataToSave: Dictionary, img: Image) -> void:
+func save_game(data_to_save: Dictionary, img: Image) -> void:
 	# Preparamos datos a guardar
-	_save_screen(dataToSave.id, img)
+	_save_screen(data_to_save.id, img)
 	# Leemos el archivo donde se guardan los datos
 	var data = FileAccess.open(SAVE_GAME_PATH, FileAccess.READ)
 	# Agregamos datos de la escena al objeto de datos
-	data = _add_scene(dataToSave,data)
+	data = _add_scene(data_to_save,data)
 	# Guardamos
 	_save_data(data)
