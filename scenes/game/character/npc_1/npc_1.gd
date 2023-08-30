@@ -30,7 +30,7 @@ func _ready():
 
 
 # DOCUMENTACIÓN (áreas de colisión): https://docs.google.com/document/d/1FFAJSrAdE5xyY_iqUteeajHKY3tAIX5Q4TokM2KA3fw/edit?usp=drive_link
-# Función cuando un área entra en contacto con el NPC
+# Función cuando un área entra en contacto con el NPC. _area: es el área que hace contacto
 func _on_npc_1_area_area_exited(_area):
 	# Seteamos variable del dialogo a false al abandonar el area
 	_dialog_active = false

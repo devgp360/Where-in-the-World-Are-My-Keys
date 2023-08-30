@@ -6,7 +6,7 @@ extends Node2D
 
 # DOCUMENTACIÓN (culling): https://docs.google.com/document/d/1oX77HHdm_DiiigEn7OBe9BDAFh071atPlhszFDj2_bI/edit
 
-@export var screenNotifier: VisibleOnScreenNotifier2D
+@export var screen_notifier: VisibleOnScreenNotifier2D
 # Nodos que queremos ocultar
 @export var nodes: Array[Node2D] = []
 
@@ -20,7 +20,7 @@ var nodes_added = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Si no tenemos un notificador, terminamos la función
-	if not screenNotifier:
+	if not screen_notifier:
 		return
 		
 	# Si no tenemos nodos a procesar, terminamos la función
@@ -33,8 +33,8 @@ func _ready():
 		parents.append(parent)
 
 	# Asociamos eventos, para "escuchar" cuando la camara entra o sale del área del notificador
-	screenNotifier.screen_entered.connect(_screen_entered)
-	screenNotifier.screen_exited.connect(_screen_exited)
+	screen_notifier.screen_entered.connect(_screen_entered)
+	screen_notifier.screen_exited.connect(_screen_exited)
 
 
 # Se efecuta cuando se entra al área del notificador
