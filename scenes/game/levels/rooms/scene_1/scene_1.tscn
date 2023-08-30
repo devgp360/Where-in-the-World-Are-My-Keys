@@ -124,9 +124,9 @@ position = Vector2(-348.526, -176.008)
 rotation = 0.293215
 shape = SubResource("RectangleShape2D_nsd2w")
 
-[node name="FrustumCulling" type="Node2D" parent="." node_paths=PackedStringArray("screenNotifier", "nodes")]
+[node name="FrustumCulling" type="Node2D" parent="." node_paths=PackedStringArray("screen_notifier", "nodes")]
 script = ExtResource("18_rrer2")
-screenNotifier = NodePath("VisibleOnScreenNotifier2D")
+screen_notifier = NodePath("VisibleOnScreenNotifier2D")
 nodes = [NodePath("../NPC1")]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="FrustumCulling"]
