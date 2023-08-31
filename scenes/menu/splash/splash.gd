@@ -19,9 +19,9 @@ func _ready():
 
 # Escuchamos el teclado
 func _input(event):
-	#Escuchamos si se preciona algun boton
+	# Escuchamos si se preciona algun boton
 	if event is InputEventKey:
-		# Llamamos el la funcion de cambio de escena
+		# Llamamos el la función de cambio de escena
 		_go_title_screen()
 
 
