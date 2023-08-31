@@ -39,7 +39,7 @@ func _ready():
 	if collect:
 		# Obtenemos los nombres de objetos
 		var item_list = InventoryCanvas.get_item_list_names()
-		# recorremos cada objeto
+		# Recorremos cada objeto
 		for c in collect.get_children():
 			# Obtenemos el nombre del objeto
 			var _name = c.get_path_name()
