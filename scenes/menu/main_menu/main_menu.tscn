@@ -362,7 +362,7 @@ text = "Música
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="music" type="HSlider" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerMusic"]
+[node name="Music" type="HSlider" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerMusic"]
 layout_mode = 2
 size_flags_vertical = 8
 max_value = 1.0
@@ -404,7 +404,7 @@ text = "Sonido de NPC
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="npc" type="HSlider" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerNPC"]
+[node name="Npc" type="HSlider" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerNPC"]
 layout_mode = 2
 size_flags_vertical = 8
 max_value = 1.0
