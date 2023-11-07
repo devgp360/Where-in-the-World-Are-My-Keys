@@ -21,7 +21,7 @@ var _scene_paths = {
 	"Antigua": BASE_PATH_SCENE + "scene_3/scene_3.tscn",
 	"Tikal": BASE_PATH_SCENE + "scene_2/scene_2.tscn",
 	"Panajachel": BASE_PATH_SCENE + "scene_1/scene_1.tscn",
-	"Tikal2": BASE_PATH_SCENE + "tikal/tikal_interior.tscn",
+	"TikalRoom": BASE_PATH_SCENE + "tikal/tikal_interior.tscn",
 	"Iglesia": BASE_PATH_SCENE + "church/church_interior.tscn",
 }
 
