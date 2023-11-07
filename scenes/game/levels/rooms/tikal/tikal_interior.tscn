@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://27hkpqds5jet"]
+[gd_scene load_steps=20 format=3 uid="uid://27hkpqds5jet"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/sounds.gd" id="1_57487"]
 [ext_resource type="Texture2D" uid="uid://dyvqsoeiyipjw" path="res://assets/sprites/scenes/tikal/mayan_temple_interior_upscaled.png" id="1_i8wbn"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://2klthllqfn3e" path="res://assets/sprites/scenes/tikal/back.png" id="8_u5rn4"]
 [ext_resource type="Texture2D" uid="uid://dsia3r6jcrovm" path="res://assets/sprites/scenes/tikal/light.png" id="10_bj7sa"]
 [ext_resource type="AudioStream" uid="uid://dpavsjbuqixw5" path="res://assets/sounds/scene_1.mp3" id="11_0kkbj"]
+[ext_resource type="PackedScene" uid="uid://bxpj28tlqwo5v" path="res://scenes/game/levels/objects/batching/particles.tscn" id="11_grgy6"]
 [ext_resource type="AudioStream" uid="uid://cx0jnns63mbi6" path="res://assets/sounds/scene_2.mp3" id="12_ochyu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2eybf"]
@@ -91,13 +92,20 @@ script = ExtResource("1_57487")
 light_mask = 2
 texture = ExtResource("1_i8wbn")
 
+[node name="MainCharacter" parent="." node_paths=PackedStringArray("light_node") instance=ExtResource("2_ydvm2")]
+position = Vector2(185, 231)
+light_node = NodePath("../Lights/Light")
+shadow_min_value = 0.3
+shadow_max_value = 0.7
+active_fake_z_axis = true
+
 [node name="Camera" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_afvcr")]
 limit_left = -1700
 limit_top = -560
 limit_right = 1700
 limit_bottom = 560
 editor_draw_limits = true
-character = NodePath("../Objects/MainCharacter")
+character = NodePath("../MainCharacter")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 position = Vector2(-73, -349)
@@ -148,12 +156,8 @@ position = Vector2(-362, -143)
 scale = Vector2(0.925, 0.92)
 texture = ExtResource("8_fq6ch")
 
-[node name="MainCharacter" parent="Objects" node_paths=PackedStringArray("light_node") instance=ExtResource("2_ydvm2")]
-position = Vector2(235, 335)
-light_node = NodePath("../../Lights/Light")
-shadow_min_value = 0.3
-shadow_max_value = 0.7
-active_fake_z_axis = true
+[node name="Batching" parent="Objects" instance=ExtResource("11_grgy6")]
+position = Vector2(-1130, 107)
 
 [node name="Lights" type="Node2D" parent="."]
 
