@@ -40,7 +40,6 @@ func _on_animation_player_endless_animation_finished(anim_name):
 func _on_animation_player_gp_360_animation_finished(_anim_name):
 	# Llamamos el la funcion de cambio de escena
 	_go_title_screen()
-	
 
 
 # Función que inicializa el volumen de los sonidos (según datos guardados)
