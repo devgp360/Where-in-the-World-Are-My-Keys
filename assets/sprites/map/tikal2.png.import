@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3kv66lcjurih"
-path="res://.godot/imported/light_black.png-cfa85ae958ac107397b05026216f9a50.ctex"
+uid="uid://dmdtj42e31vls"
+path="res://.godot/imported/tikal2.png-10d479f8dbcbeda0d357d3ee7c32c6f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/scenes/tikal/light_black.png"
-dest_files=["res://.godot/imported/light_black.png-cfa85ae958ac107397b05026216f9a50.ctex"]
+source_file="res://assets/sprites/map/tikal2.png"
+dest_files=["res://.godot/imported/tikal2.png-10d479f8dbcbeda0d357d3ee7c32c6f8.ctex"]
 
 [params]
 

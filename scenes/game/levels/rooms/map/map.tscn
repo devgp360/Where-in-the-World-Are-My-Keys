@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://1qu48pkeu2tr"]
+[gd_scene load_steps=19 format=3 uid="uid://1qu48pkeu2tr"]
 
 [ext_resource type="PackedScene" uid="uid://d4f7fxjs2wh7n" path="res://scenes/menu/main_menu/main_menu.tscn" id="2_duttm"]
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/map/map.gd" id="2_eoloc"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://po3prjmgo1ay" path="res://assets/sprites/map/antigua.png" id="6_c17vg"]
 [ext_resource type="Shader" path="res://scenes/game/levels/animations/map/element.gdshader" id="7_u1ydw"]
 [ext_resource type="Texture2D" uid="uid://n33fcmgby2ai" path="res://assets/sprites/map/tikal.png" id="8_l1med"]
+[ext_resource type="Texture2D" uid="uid://dmdtj42e31vls" path="res://assets/sprites/map/tikal2.png" id="10_rkgmj"]
+[ext_resource type="Texture2D" uid="uid://byuctrqlpw32g" path="res://assets/sprites/map/iglesia.png" id="11_15o0w"]
+[ext_resource type="Texture2D" uid="uid://bw5aoviivc60s" path="res://assets/sprites/map/light.png" id="12_nmxx5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bn4u7"]
 shader = ExtResource("4_lkde2")
@@ -22,33 +25,11 @@ shader = ExtResource("7_u1ydw")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ebteo"]
 shader = ExtResource("7_u1ydw")
 
-[sub_resource type="Gradient" id="Gradient_peooi"]
-offsets = PackedFloat32Array(0, 0.8)
-colors = PackedColorArray(0.07859, 0.07859, 0.07859, 1, 0.954545, 0.954545, 0.954545, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmlcy"]
+shader = ExtResource("7_u1ydw")
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_htdhu"]
-gradient = SubResource("Gradient_peooi")
-fill_from = Vector2(0.457265, 0.487179)
-fill_to = Vector2(0.0982906, 0.807692)
-metadata/_snap_count = 17
-
-[sub_resource type="Gradient" id="Gradient_0116u"]
-offsets = PackedFloat32Array(0.0844444, 0.395556, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.164444, 0.164444, 0.164444, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1ewah"]
-gradient = SubResource("Gradient_0116u")
-fill_from = Vector2(0.470085, 0.452991)
-fill_to = Vector2(0.594017, 0.320513)
-
-[sub_resource type="Gradient" id="Gradient_3doxo"]
-offsets = PackedFloat32Array(0.253333, 0.542222, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_w6jqh"]
-gradient = SubResource("Gradient_3doxo")
-fill_from = Vector2(0.303419, 0.452991)
-fill_to = Vector2(0.209402, 0.324786)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qopyf"]
+shader = ExtResource("7_u1ydw")
 
 [node name="Map" type="Node2D"]
 script = ExtResource("2_eoloc")
@@ -108,23 +89,61 @@ scale = Vector2(0.85, 0.85)
 texture = ExtResource("8_l1med")
 script = ExtResource("2_nvyu5")
 
-[node name="PanajachelLight2D" type="PointLight2D" parent="."]
-position = Vector2(597.3, 383.8)
-scale = Vector2(19.2719, 14.3812)
-texture = SubResource("GradientTexture2D_htdhu")
+[node name="TikalRoom" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_jmlcy")
+layout_mode = 0
+offset_left = 223.0
+offset_top = 155.0
+offset_right = 446.0
+offset_bottom = 327.0
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("10_rkgmj")
+script = ExtResource("2_nvyu5")
 
-[node name="AntiguaLight2D" type="PointLight2D" parent="."]
-visible = false
-position = Vector2(553.375, 388.687)
-scale = Vector2(18.793, 13.8535)
-texture = SubResource("GradientTexture2D_1ewah")
-height = 9.0
+[node name="Iglesia" type="TextureRect" parent="Control"]
+material = SubResource("ShaderMaterial_qopyf")
+layout_mode = 0
+offset_left = 674.0
+offset_top = 181.0
+offset_right = 1069.0
+offset_bottom = 393.0
+scale = Vector2(0.855, 0.855)
+texture = ExtResource("11_15o0w")
+script = ExtResource("2_nvyu5")
+
+[node name="PanajachelLight2D" type="PointLight2D" parent="."]
+position = Vector2(136, 498)
+scale = Vector2(2, 1.2)
+energy = 1.5
+texture = ExtResource("12_nmxx5")
 
 [node name="TikalLight2D" type="PointLight2D" parent="."]
 visible = false
-position = Vector2(573.65, 389.6)
-scale = Vector2(18.5516, 15.0125)
-texture = SubResource("GradientTexture2D_w6jqh")
+position = Vector2(227, 89)
+scale = Vector2(2, 1)
+energy = 1.5
+texture = ExtResource("12_nmxx5")
+
+[node name="AntiguaLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(761, 127)
+scale = Vector2(2, 1.2)
+energy = 1.5
+texture = ExtResource("12_nmxx5")
+
+[node name="TikalRoomLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(331, 260)
+scale = Vector2(1.8, 1.2)
+energy = 1.5
+texture = ExtResource("12_nmxx5")
+
+[node name="IglesiaLight2D2" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(846, 322)
+scale = Vector2(2, 1)
+energy = 1.5
+texture = ExtResource("12_nmxx5")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_muhmh")
