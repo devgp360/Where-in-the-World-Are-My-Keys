@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cds1m3xicyc4k"]
+[gd_scene load_steps=13 format=3 uid="uid://cds1m3xicyc4k"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_2/scene_2.gd" id="1_7pqo5"]
 [ext_resource type="PackedScene" uid="uid://d4f7fxjs2wh7n" path="res://scenes/menu/main_menu/main_menu.tscn" id="2_2xv7g"]
@@ -9,9 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://scenes/game/levels/camera/camera.tscn" id="8_5w0aw"]
 [ext_resource type="AudioStream" uid="uid://cx0jnns63mbi6" path="res://assets/sounds/scene_2.mp3" id="9_wa636"]
 [ext_resource type="PackedScene" uid="uid://br2xxid8seypw" path="res://scenes/game/character/npc_2/npc_2.tscn" id="10_s8tol"]
-[ext_resource type="PackedScene" uid="uid://di3seule2il8t" path="res://scenes/game/puzzles/maximon/nodos/puzzle_maximon.tscn" id="11_t67y5"]
-[ext_resource type="PackedScene" uid="uid://cnqdsj1751ca0" path="res://scenes/game/puzzles/maximon/nodos/altar_maximon.tscn" id="12_0hko8"]
-[ext_resource type="PackedScene" uid="uid://owqicaalyww0" path="res://scenes/game/puzzles/maximon/nodos/door.tscn" id="13_r1tok"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sxo74"]
 vertices = PackedVector2Array(843, 349, 789, 275, 802, 259, 875, 295, 882, 313, 187, 375, 121, 339, 160, 329, 1056, 467, 977, 499, 981, 469, 1046, 436, 806, 184, 890, 76, 942, 90, 887, 156, 819, 236, 757, 241, 527, 146, 473, 88, 504, 76, 624, 212, 590, 219, 667, 220, 658, 232, 539, 278, 568, 231, 515, 256, 540, 243, 526, 298, 348, 144, 288, 130, 260, 107, 281, 92, 361, 121, 380, 131, 1287, 469, 1332, 452, 1334, 470, 1335, 484, 1301, 503, 256, 357, 197, 317, 231, 313, 254, 332, 328, 333, 342, 364, 368, 172, 397, 169, 430, 244, 463, 279, 453, 195, 1161, 498, 1255, 447, 413, 349, 371, 302, 394, 313, 413, 301, 438, 303, 472, 352, 597, 323, 665, 331, 664, 346, 746, 323, 930, 409, 901, 325, 984, 405, 965, 439, 1103, 400, 1142, 389, 1256, 431)
@@ -93,24 +90,6 @@ shape = SubResource("RectangleShape2D_7m4k7")
 position = Vector2(107, -179)
 scale = Vector2(0.8, 0.8)
 mainchar = NodePath("../MainCharacter")
-
-[node name="PuzzleMaximon" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="Puzzle_maximon" parent="PuzzleMaximon" node_paths=PackedStringArray("character") instance=ExtResource("11_t67y5")]
-character = NodePath("../../MainCharacter")
-
-[node name="AltarMaximon" parent="PuzzleMaximon" node_paths=PackedStringArray("puzzle", "npc") instance=ExtResource("12_0hko8")]
-visible = false
-y_sort_enabled = true
-position = Vector2(-148, -7)
-scale = Vector2(0.5, 0.5)
-puzzle = NodePath("../Puzzle_maximon")
-npc = NodePath("../../NPC2")
-
-[node name="Door" parent="PuzzleMaximon" node_paths=PackedStringArray("puzzle") instance=ExtResource("13_r1tok")]
-position = Vector2(330, 82)
-puzzle = NodePath("../Puzzle_maximon")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="AreaToScena1" to="." method="_on_area_to_scena_1_body_entered"]

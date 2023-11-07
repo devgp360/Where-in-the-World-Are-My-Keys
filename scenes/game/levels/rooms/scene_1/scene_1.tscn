@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://upllmqlhdam1"]
+[gd_scene load_steps=18 format=3 uid="uid://upllmqlhdam1"]
 
 [ext_resource type="Texture2D" uid="uid://bag6tqwmlaakq" path="res://assets/sprites/scenes/scene_1/bg1.jpg" id="1_dbimm"]
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/scene_1.gd" id="1_wyjy5"]
@@ -14,7 +14,6 @@
 [ext_resource type="AudioStream" uid="uid://dpavsjbuqixw5" path="res://assets/sounds/scene_1.mp3" id="12_do1m1"]
 [ext_resource type="PackedScene" uid="uid://b763ty05xjuo2" path="res://scenes/game/inventory/items/puzzle_vidriera/item_lentes.tscn" id="12_sqpca"]
 [ext_resource type="PackedScene" uid="uid://ck5lebkhby0h2" path="res://scenes/game/puzzles/vidriera/nodos/puzzle_vidriera.tscn" id="14_elguw"]
-[ext_resource type="PackedScene" uid="uid://x3mpmfaijdid" path="res://scenes/game/puzzles/vidriera/nodos/puzzle_vidriera_enter.tscn" id="15_ebymt"]
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/frustum_culling.gd" id="18_rrer2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sxo74"]
@@ -24,9 +23,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(397, 10, 432, 38, 491, 
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2j5c"]
 size = Vector2(299, 27.5359)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsd2w"]
-size = Vector2(112, 90.6758)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -115,14 +111,6 @@ bus = &"music"
 
 [node name="PuzzleVidriera" parent="." instance=ExtResource("14_elguw")]
 visible = false
-
-[node name="PuzzleVidrieraEnter" parent="." node_paths=PackedStringArray("puzzle") instance=ExtResource("15_ebymt")]
-puzzle = NodePath("../PuzzleVidriera")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PuzzleVidrieraEnter"]
-position = Vector2(-348.526, -176.008)
-rotation = 0.293215
-shape = SubResource("RectangleShape2D_nsd2w")
 
 [node name="FrustumCulling" type="Node2D" parent="." node_paths=PackedStringArray("screen_notifier", "nodes")]
 script = ExtResource("18_rrer2")
