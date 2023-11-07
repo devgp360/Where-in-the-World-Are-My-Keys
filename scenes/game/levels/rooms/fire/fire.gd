@@ -11,4 +11,4 @@ func _on_area_to_tikal_body_entered(body):
 
 func _on_area_to_source_body_entered(body):
 	# Redireccionamos a la escena Fuente
-	SceneTransition.change_scene("res://scenes/game/levels/rooms/water/water.tscn")
+	SceneTransition.change_scene("res://scenes/game/levels/rooms/source/source.tscn")
