@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character/main_character.tscn" id="3_eq2kb"]
 [ext_resource type="PackedScene" uid="uid://dlkplrd4kxyta" path="res://scenes/game/levels/objects/box.tscn" id="4_q4ybu"]
 [ext_resource type="PackedScene" uid="uid://cal6akhq022cl" path="res://scenes/game/levels/objects/box2.tscn" id="5_2lpy3"]
-[ext_resource type="PackedScene" uid="uid://5kiq27uiosqd" path="res://scenes/game/inventory/items/puzzle_vidriera/item_vidrio2.tscn" id="8_dkqdf"]
+[ext_resource type="PackedScene" uid="uid://5kiq27uiosqd" path="res://scenes/game/inventory/items/collect/item_vidrio2.tscn" id="8_dkqdf"]
 [ext_resource type="AudioStream" uid="uid://cixh3b6d60g7i" path="res://assets/sounds/scene_3.mp3" id="9_evm43"]
-[ext_resource type="PackedScene" uid="uid://ckhskaq0snxb0" path="res://scenes/game/inventory/items/puzzle_vidriera/item_vidrio4.tscn" id="9_oh2il"]
+[ext_resource type="PackedScene" uid="uid://ckhskaq0snxb0" path="res://scenes/game/inventory/items/collect/item_vidrio4.tscn" id="9_oh2il"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sxo74"]
 vertices = PackedVector2Array(827, 276, 799, 309, 748, 285, 788, 274, 964, 165, 1027, 187, 959, 253, 928, 214, 878, 257, 876, 239, 970, 410, 984, 379, 1103, 310, 1178, 307, 1176, 358, 1171, 393, 1156, 432, 1009, 483, 947, 474, 715, 448, 785, 347, 762, 458, 721, 577, 710, 348, 721, 310, 549, 276, 683, 293, 671, 247, 686, 249, 543, 249, 392, 446, 371, 455, 283, 408, 294, 382, 328, 333, 373, 317, 403, 339, 579, 200, 1366, 338, 1394, 311, 1433, 340, 1424, 358, 1370, 368, 1373, 422, 1419, 441, 1414, 474, 844, 236, 751, 251, 747, 260, 739, 247, 727, 223, 430, 322, 438, 303, 1274, 528, 1325, 465, 1266, 496, 1162, 525, 288, 358, 963, 514, 947, 573, 881, 580, 899, 519, 592, 535, 637, 569, 493, 516, 388, 310, 413, 301, 460, 181, 428, 255, 404, 133, 437, 149, 351, 181, 353, 157)

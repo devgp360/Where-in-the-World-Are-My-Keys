@@ -234,7 +234,7 @@ func _path_finding():
 	if nav_agent.is_navigation_finished():
 		_path_finding_moving = false
 		_main_direction = DIRECTION_IDLE
-	# Si termó caminar el personaje apagamos el sonido de pasos
+	# Si terminó de caminar el personaje apagamos el sonido de pasos
 	if _main_direction == DIRECTION_IDLE:
 		sound_step.stop()
 

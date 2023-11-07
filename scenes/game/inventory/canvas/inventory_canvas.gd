@@ -75,7 +75,7 @@ func _pressed(_name: String):
 		return
 		
 	# Funcionalidad para "quitarse/ponerse" los lentes al dar clic en el item desde el inventario
-	if _name == 'puzzle_vidriera/item_lentes':
+	if _name == 'collect/item_lentes':
 		var glasses_name = "Glasses";
 		var character = escena1.find_child("MainCharacter")
 		var index = _dressed_item_list.find(glasses_name)

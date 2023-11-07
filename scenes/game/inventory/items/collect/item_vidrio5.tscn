@@ -21,7 +21,7 @@ area = NodePath("Area2D")
 button = NodePath(".")
 is_inventory_item = false
 item_title = "Fragmento 5"
-item_path_name = "puzzle_vidriera/item_vidrio5"
+item_path_name = "collect/item_vidrio5"
 
 [node name="Area2D" type="Area2D" parent="."]
 
