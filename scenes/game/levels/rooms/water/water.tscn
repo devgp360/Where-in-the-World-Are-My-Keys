@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://1m8tmnqyc0ge"]
+[gd_scene load_steps=17 format=3 uid="uid://1m8tmnqyc0ge"]
 
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/water/source.gd" id="1_r525s"]
 [ext_resource type="Texture2D" uid="uid://cc1xo53s2nkh1" path="res://assets/sprites/scenes/water/agua2.png" id="1_w638m"]
 [ext_resource type="Shader" path="res://scenes/game/levels/animations/water/agua_circulos.gdshader" id="2_e227t"]
 [ext_resource type="Shader" path="res://scenes/game/levels/animations/water/water_move.gdshader" id="2_j2kt0"]
@@ -7,7 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dmp8uid04vf1m" path="res://assets/sprites/scenes/water/iglesia_sin_agua_bg.png" id="4_2l1hg"]
 [ext_resource type="Texture2D" uid="uid://dxewhkd3p8n0r" path="res://assets/sprites/scenes/water/columna1.png" id="4_fkx2x"]
 [ext_resource type="Texture2D" uid="uid://chdyn5yq0xm1l" path="res://assets/sprites/scenes/water/columna2.png" id="5_6dkwd"]
+[ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character/main_character.tscn" id="10_lged5"]
+[ext_resource type="Texture2D" uid="uid://blr2uispwa8v7" path="res://assets/sprites/scenes/water/iglesia_columna.png" id="10_ph0bw"]
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/water/node_overload.gd" id="10_t4sml"]
+[ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://scenes/game/levels/camera/camera.tscn" id="11_lph3w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pamgp"]
 shader = ExtResource("2_e227t")
@@ -29,8 +33,17 @@ shader_parameter/tone_color = Color(0.552941, 0.560784, 0.54902, 1)
 shader_parameter/noise1 = ExtResource("3_hebcn")
 shader_parameter/noise2 = ExtResource("3_hebcn")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_b85lm"]
+vertices = PackedVector2Array(348, -70, 476, -31, 537, -6, 552, 78, 537, 157, 352, 216, 191, 177, 164, 42, 259, -45)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(259, -45, 164, 42, 191, 177, 352, 216, 537, 157, 552, 78, 537, -6, 476, -31, 348, -70)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jggmx"]
+size = Vector2(43, 110)
+
 [node name="Water" type="Node2D"]
 position = Vector2(580, 250)
+script = ExtResource("1_r525s")
 
 [node name="CutWater" type="Sprite2D" parent="."]
 position = Vector2(11, 206)
@@ -59,5 +72,33 @@ texture = ExtResource("4_fkx2x")
 position = Vector2(50, 208)
 texture = ExtResource("5_6dkwd")
 
+[node name="MainCharacter" parent="." instance=ExtResource("10_lged5")]
+position = Vector2(264, 146)
+
+[node name="Columna3" type="Sprite2D" parent="."]
+position = Vector2(383, 45)
+texture = ExtResource("10_ph0bw")
+
 [node name="NodeOverload" type="Node2D" parent="."]
+visible = false
 script = ExtResource("10_t4sml")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(0, -3)
+navigation_polygon = SubResource("NavigationPolygon_b85lm")
+
+[node name="AreaToFire" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaToFire"]
+position = Vector2(428.5, 32)
+shape = SubResource("RectangleShape2D_jggmx")
+
+[node name="Camera" parent="." node_paths=PackedStringArray("character") instance=ExtResource("11_lph3w")]
+visible = false
+limit_left = 0
+limit_top = 0
+limit_right = 1150
+limit_bottom = 700
+editor_draw_limits = true
+character = NodePath("../MainCharacter")

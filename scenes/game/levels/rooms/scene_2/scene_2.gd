@@ -66,16 +66,15 @@ func _process(_delta):
 		get_tree().current_scene.add_child(pause)
 
 
-# Cuando entramos a una area predeterminada
-func _on_area_2d_area_entered(_area):
-	# Redireccionamos a la escena 3
-	SceneTransition.change_scene("res://scenes/game/levels/rooms/scene_3/scene_3.tscn")
-
-
 # DOCUMENTACIÓN (transición de escena): https://docs.google.com/document/d/1FciThS6B4qQEBely2iCMDfkRZIzwSrZLCo2Fu8nE5LQ/edit?usp=drive_link
 func _on_area_to_scena_1_body_entered(_body):
 	# Redireccionamos a la escena 1
 	SceneTransition.change_scene("res://scenes/game/levels/rooms/scene_1/scene_1.tscn")
+
+
+func _on_area_to_scene_3_body_entered(_body):
+	# Redireccionamos a la escena 3
+	SceneTransition.change_scene("res://scenes/game/levels/rooms/scene_3/scene_3.tscn")
 
 
 # Seteamos los datos de la escena
@@ -180,3 +179,4 @@ func get_save_data():
 			"dressed": character.get_dress_item_list(),
 		},
 	}
+

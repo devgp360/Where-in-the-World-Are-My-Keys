@@ -63,9 +63,9 @@ position = Vector2(887, 244)
 rotation = 0.314159
 shape = SubResource("RectangleShape2D_c2j5c")
 
-[node name="AreaToScena2" type="Area2D" parent="."]
+[node name="AreaToScene2" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaToScena2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaToScene2"]
 position = Vector2(-455, -119)
 rotation = -0.502655
 shape = SubResource("RectangleShape2D_rf26f")
@@ -101,4 +101,4 @@ autoplay = true
 bus = &"music"
 
 [connection signal="area_entered" from="AreaToInteriorChurch" to="." method="_on_area_to_interior_church_area_entered"]
-[connection signal="area_entered" from="AreaToScena2" to="." method="_on_area_to_scena_2_area_entered"]
+[connection signal="area_entered" from="AreaToScene2" to="." method="_on_area_to_scena_2_area_entered"]

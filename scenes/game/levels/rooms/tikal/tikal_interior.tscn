@@ -1,6 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://27hkpqds5jet"]
+[gd_scene load_steps=22 format=3 uid="uid://27hkpqds5jet"]
 
-[ext_resource type="Script" path="res://scenes/game/levels/rooms/sounds.gd" id="1_57487"]
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/tikal/tikal_interior.gd" id="1_fat6x"]
 [ext_resource type="Texture2D" uid="uid://dyvqsoeiyipjw" path="res://assets/sprites/scenes/tikal/mayan_temple_interior_upscaled.png" id="1_i8wbn"]
 [ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character/main_character.tscn" id="2_ydvm2"]
 [ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://scenes/game/levels/camera/camera.tscn" id="3_afvcr"]
@@ -85,8 +85,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r37i2"]
 size = Vector2(500.463, 171.25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf4l7"]
+size = Vector2(134, 182)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcpf1"]
+size = Vector2(102.637, 42.3027)
+
 [node name="Main" type="Node2D"]
-script = ExtResource("1_57487")
+script = ExtResource("1_fat6x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 2
@@ -198,6 +204,21 @@ position = Vector2(-313, 59)
 rotation = -0.349066
 shape = SubResource("RectangleShape2D_r37i2")
 
+[node name="AreaToChurch" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaToChurch"]
+position = Vector2(-948, -59)
+shape = SubResource("RectangleShape2D_uf4l7")
+
+[node name="AreaToFire" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaToFire"]
+position = Vector2(1046.8, 112.082)
+rotation = 0.357792
+shape = SubResource("RectangleShape2D_mcpf1")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="AreaLeft" to="." method="_on_area_left_area_entered"]
 [connection signal="area_entered" from="AreaRight" to="." method="_on_area_right_area_entered"]
+[connection signal="body_entered" from="AreaToChurch" to="." method="_on_area_to_church_body_entered"]
+[connection signal="body_entered" from="AreaToFire" to="." method="_on_area_to_fire_body_entered"]

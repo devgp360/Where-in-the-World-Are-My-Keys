@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://y5ewa2bdex6r"]
+[gd_scene load_steps=20 format=3 uid="uid://y5ewa2bdex6r"]
 
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/church/church_interior.gd" id="1_3iqlj"]
 [ext_resource type="Texture2D" uid="uid://8jyneusvwyfb" path="res://assets/sprites/scenes/church/bg.png" id="1_y3l5a"]
 [ext_resource type="Texture2D" uid="uid://bb1dsvigpcmbg" path="res://assets/sprites/misc/punto_de_luz.png" id="2_6pl5b"]
 [ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character/main_character.tscn" id="2_apxtj"]
@@ -28,7 +29,14 @@ vertices = PackedVector2Array(-73, 142, -75, 153, -101, 164, -116, 156, -129, 13
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9, 10), PackedInt32Array(11, 12, 13, 9, 8, 14), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(19, 7, 6, 20), PackedInt32Array(21, 15, 18, 22), PackedInt32Array(23, 21, 22, 24, 25), PackedInt32Array(26, 3, 2, 27), PackedInt32Array(28, 29, 21), PackedInt32Array(30, 31, 32, 33, 34, 35), PackedInt32Array(36, 26, 27, 37), PackedInt32Array(10, 38, 5), PackedInt32Array(39, 11, 14), PackedInt32Array(40, 13, 12, 41, 42), PackedInt32Array(42, 41, 43, 44), PackedInt32Array(45, 46, 44, 43, 47, 48), PackedInt32Array(49, 50, 51, 52), PackedInt32Array(53, 49, 52, 54), PackedInt32Array(55, 53, 54, 56, 57), PackedInt32Array(58, 57, 56, 59), PackedInt32Array(58, 59, 60, 61), PackedInt32Array(61, 60, 62, 63), PackedInt32Array(63, 62, 64, 65), PackedInt32Array(66, 19, 20), PackedInt32Array(66, 20, 67, 68), PackedInt32Array(69, 68, 67, 70), PackedInt32Array(32, 69, 70, 71, 33), PackedInt32Array(72, 39, 14), PackedInt32Array(72, 14, 73, 30), PackedInt32Array(30, 73, 31), PackedInt32Array(74, 35, 34, 75, 76), PackedInt32Array(77, 78, 79, 80, 81), PackedInt32Array(48, 47, 74, 76), PackedInt32Array(82, 76, 75, 83), PackedInt32Array(65, 64, 84, 85, 86), PackedInt32Array(82, 83, 87), PackedInt32Array(0, 82, 87, 88), PackedInt32Array(0, 88, 89), PackedInt32Array(0, 89, 90, 1), PackedInt32Array(33, 71, 91), PackedInt32Array(33, 91, 92, 93), PackedInt32Array(84, 0, 4), PackedInt32Array(84, 4, 94), PackedInt32Array(84, 94, 95), PackedInt32Array(96, 36, 37, 97), PackedInt32Array(79, 98, 65, 86, 96, 97), PackedInt32Array(93, 92, 99, 100), PackedInt32Array(84, 95, 85), PackedInt32Array(79, 97, 80), PackedInt32Array(77, 81, 93, 100), PackedInt32Array(101, 100, 99), PackedInt32Array(101, 99, 102, 24), PackedInt32Array(24, 102, 103), PackedInt32Array(23, 28, 21), PackedInt32Array(24, 103, 25)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(54, 93, 124, 141, 161, 112, 148, 78, 191, 57, 232, 68, 258, 57, 265, 36, 297, 29, 410, 104, 450, 104, 464, 130, 439, 139, 419, 164, 417, 194, 304, 240, 283, 241, 260, 250, 249, 267, 247, 296, 262, 346, 308, 352, 469, 275, 563, 227, 667, 170, 683, 151, 676, 109, 748, 128, 936, 35, 1056, 90, 893, 190, 857, 159, 821, 175, 345, 417, 280, 416, 53, 290, 13, 317, -8, 362, -105, 330, -214, 371, -265, 319, -374, 235, -511, 130, -574, 57, -661, 2, -710, -17, -753, -50, -994, 50, -1074, -133, -1025, -150, -897, -46, -754, -118, -591, -50, -545, 24, -509, 68, -437, 113, -320, 162, -180, 78, -73, 142), PackedVector2Array(198, 130, 268, 94, 292, 87, 310, 85, 323, 104, 320, 120, 313, 134, 248, 165, 216, 168, 191, 155), PackedVector2Array(260, 180, 296, 160, 357, 134, 393, 142, 408, 155, 404, 178, 379, 195, 305, 227, 278, 236, 253, 213), PackedVector2Array(-101, 164, -113, 183, -124, 199, -124, 227, -94, 253, -65, 257, -41, 251, 46, 207, 54, 187, 44, 158, 24, 139, 8, 133, -10, 136, -36, 144, -53, 150, -75, 153), PackedVector2Array(-173, 155, -163, 140, -152, 136, -129, 136, -116, 156, -117, 174, -130, 183, -153, 183, -172, 171)])
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ps5s"]
+size = Vector2(72, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqeba"]
+size = Vector2(124, 28.2111)
+
 [node name="Main" type="Node2D"]
+script = ExtResource("1_3iqlj")
 
 [node name="Background" type="Sprite2D" parent="."]
 light_mask = 2
@@ -83,7 +91,7 @@ texture = ExtResource("7_seh3k")
 
 [node name="Columns" type="Sprite2D" parent="ObjectsAndCharacter"]
 z_index = 1
-position = Vector2(-885.5, -183)
+position = Vector2(-886.5, -183)
 texture = ExtResource("8_pc2hj")
 
 [node name="Elements" type="Sprite2D" parent="ObjectsAndCharacter"]
@@ -124,3 +132,19 @@ limit_right = 1070
 limit_bottom = 450
 editor_draw_limits = true
 character = NodePath("../ObjectsAndCharacter/MainCharacter")
+
+[node name="AreaToScene3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaToScene3"]
+position = Vector2(-1041, -142)
+shape = SubResource("RectangleShape2D_7ps5s")
+
+[node name="AreaToSceneTikal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaToSceneTikal"]
+position = Vector2(989.297, 48.7359)
+rotation = 0.427606
+shape = SubResource("RectangleShape2D_mqeba")
+
+[connection signal="body_entered" from="AreaToScene3" to="." method="_on_area_to_scene_3_body_entered"]
+[connection signal="body_entered" from="AreaToSceneTikal" to="." method="_on_area_to_scene_tikal_body_entered"]

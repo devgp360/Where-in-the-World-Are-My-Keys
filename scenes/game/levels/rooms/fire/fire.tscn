@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://uml5cughx4v7"]
+[gd_scene load_steps=16 format=3 uid="uid://uml5cughx4v7"]
 
+[ext_resource type="Script" path="res://scenes/game/levels/rooms/fire/fire.gd" id="1_m1f4g"]
 [ext_resource type="Texture2D" uid="uid://dotjr8wdaqrti" path="res://assets/sprites/scenes/fire/cocina.png" id="1_tk8xb"]
+[ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character/main_character.tscn" id="3_wj3po"]
 [ext_resource type="Texture2D" uid="uid://c4tt3hsybb32k" path="res://assets/sprites/scenes/fire/Flame.png" id="3_y3ryq"]
+[ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://scenes/game/levels/camera/camera.tscn" id="4_52rv8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bk3ox"]
 blend_mode = 1
@@ -57,7 +60,19 @@ orbit_velocity_max = 0.0
 color = Color(0.909804, 0.909804, 0.909804, 1)
 color_ramp = SubResource("GradientTexture1D_4cnlf")
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_64g2n"]
+vertices = PackedVector2Array(470, 800, 4, 810, 14, 728, 134.109, 675.235, 205, 635, 466, 599, 712, 658, 981, 802, 909, 616, 1428, 741, 1432, 800, 1265, 666, 1076, 548)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5, 6, 7), PackedInt32Array(7, 6, 8), PackedInt32Array(9, 10, 7, 11), PackedInt32Array(12, 11, 7, 8)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(205, 635, 466, 599, 712, 658, 909, 616, 1076, 548, 1265, 666, 1428, 741, 1432, 800, 981, 802, 470, 800, 4, 810, 14, 728, 134.109, 675.235)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8op5f"]
+size = Vector2(99, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nr0rt"]
+size = Vector2(66, 111)
+
 [node name="Fire" type="Node2D"]
+script = ExtResource("1_m1f4g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(695, 390)
@@ -109,3 +124,41 @@ position = Vector2(546, 199)
 process_material = SubResource("ParticleProcessMaterial_384ip")
 texture = ExtResource("3_y3ryq")
 lifetime = 0.5
+
+[node name="MainCharacter" parent="." node_paths=PackedStringArray("light_node") instance=ExtResource("3_wj3po")]
+position = Vector2(669, 686)
+light_node = NodePath("../LightPoint")
+speed = 420
+active_fake_z_axis = true
+max_scale = 3.5
+min_y = 0.0
+max_y = 1000.0
+
+[node name="Camera" parent="." node_paths=PackedStringArray("character") instance=ExtResource("4_52rv8")]
+limit_left = -20
+limit_top = 20
+limit_right = 1400
+limit_bottom = 750
+editor_draw_limits = true
+character = NodePath("../MainCharacter")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_64g2n")
+
+[node name="LightPoint" type="Node2D" parent="."]
+position = Vector2(500, 300)
+
+[node name="AreaToSource" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaToSource"]
+position = Vector2(1378.5, 706)
+shape = SubResource("RectangleShape2D_8op5f")
+
+[node name="AreaToTikal" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaToTikal"]
+position = Vector2(23, 754.5)
+shape = SubResource("RectangleShape2D_nr0rt")
+
+[connection signal="body_entered" from="AreaToSource" to="." method="_on_area_to_source_body_entered"]
+[connection signal="body_entered" from="AreaToTikal" to="." method="_on_area_to_tikal_body_entered"]
