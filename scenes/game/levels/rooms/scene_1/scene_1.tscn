@@ -9,10 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dmta172vvldus" path="res://scenes/game/levels/objects/bottom.tscn" id="6_kgw1f"]
 [ext_resource type="PackedScene" uid="uid://d2as70dpmvym7" path="res://scenes/game/levels/objects/top.tscn" id="7_js1el"]
 [ext_resource type="PackedScene" uid="uid://cj1s30j354pt0" path="res://scenes/game/character/npc_1/npc_1.tscn" id="8_wj8yp"]
-[ext_resource type="PackedScene" uid="uid://dobibts8hysig" path="res://scenes/game/inventory/items/puzzle_vidriera/item_vidrio3.tscn" id="11_bond4"]
+[ext_resource type="PackedScene" uid="uid://dobibts8hysig" path="res://scenes/game/inventory/items/collect/item_vidrio3.tscn" id="11_bond4"]
 [ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://scenes/game/levels/camera/camera.tscn" id="11_ifjqy"]
 [ext_resource type="AudioStream" uid="uid://dpavsjbuqixw5" path="res://assets/sounds/scene_1.mp3" id="12_do1m1"]
-[ext_resource type="PackedScene" uid="uid://b763ty05xjuo2" path="res://scenes/game/inventory/items/puzzle_vidriera/item_lentes.tscn" id="12_sqpca"]
+[ext_resource type="PackedScene" uid="uid://b763ty05xjuo2" path="res://scenes/game/inventory/items/collect/item_lentes.tscn" id="12_sqpca"]
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_1/frustum_culling.gd" id="18_rrer2"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sxo74"]
