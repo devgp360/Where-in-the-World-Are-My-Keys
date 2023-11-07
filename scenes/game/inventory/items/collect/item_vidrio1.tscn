@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://v1vc4mhxkmf2"]
 
-[ext_resource type="Texture2D" uid="uid://ch0deodv1y7fi" path="res://assets/sprites/puzzles/vidriera/vidrio1.png" id="1_argji"]
+[ext_resource type="Texture2D" uid="uid://ch0deodv1y7fi" path="res://assets/sprites/items/collectables/vidrio1.png" id="1_argji"]
 [ext_resource type="Script" path="res://scenes/game/inventory/items/inventory_item_button.gd" id="2_ou6li"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7ra2y"]

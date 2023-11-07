@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dobibts8hysig"]
 
-[ext_resource type="Texture2D" uid="uid://c4tvd5mn3y6mw" path="res://assets/sprites/puzzles/vidriera/vidrio3.png" id="1_5wbwa"]
+[ext_resource type="Texture2D" uid="uid://c4tvd5mn3y6mw" path="res://assets/sprites/items/collectables/vidrio3.png" id="1_5wbwa"]
 [ext_resource type="Script" path="res://scenes/game/inventory/items/inventory_item_button.gd" id="2_c7w5l"]
 [ext_resource type="AudioStream" uid="uid://fi088lorhbty" path="res://assets/sounds/sound1.mp3" id="3_f5qaf"]
 

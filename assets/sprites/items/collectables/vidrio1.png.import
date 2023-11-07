@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmir6hf22tdue"
-path="res://.godot/imported/vidrio4.png-8c3baa1dbbea3e09aff122f0a09a4134.ctex"
+uid="uid://ch0deodv1y7fi"
+path="res://.godot/imported/vidrio1.png-9f7d8660ab620a737665d72de59cca50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/puzzles/vidriera/vidrio4.png"
-dest_files=["res://.godot/imported/vidrio4.png-8c3baa1dbbea3e09aff122f0a09a4134.ctex"]
+source_file="res://assets/sprites/items/collectables/vidrio1.png"
+dest_files=["res://.godot/imported/vidrio1.png-9f7d8660ab620a737665d72de59cca50.ctex"]
 
 [params]
 

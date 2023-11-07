@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://icl40te2ynex"
-path="res://.godot/imported/vela_celeste.png-82b68b6c4930146d9fa424778f097c7e.ctex"
+uid="uid://cp67a2mydyec0"
+path="res://.godot/imported/lentes.png-0551ee7d4f6eb3d0790dd8c54eee430d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/puzzles/maximon/vela_celeste.png"
-dest_files=["res://.godot/imported/vela_celeste.png-82b68b6c4930146d9fa424778f097c7e.ctex"]
+source_file="res://assets/sprites/items/collectables/lentes.png"
+dest_files=["res://.godot/imported/lentes.png-0551ee7d4f6eb3d0790dd8c54eee430d.ctex"]
 
 [params]
 

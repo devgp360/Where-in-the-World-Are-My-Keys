@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6jpkowealbos"
-path="res://.godot/imported/door_sprite.png-183d8ef55a45c11a7ebda002362f5a40.ctex"
+uid="uid://e0ukvfu8dr5t"
+path="res://.godot/imported/vidrio2.png-e0e0efdb24b517999e61f578205da07e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/puzzles/maximon/door_sprite.png"
-dest_files=["res://.godot/imported/door_sprite.png-183d8ef55a45c11a7ebda002362f5a40.ctex"]
+source_file="res://assets/sprites/items/collectables/vidrio2.png"
+dest_files=["res://.godot/imported/vidrio2.png-e0e0efdb24b517999e61f578205da07e.ctex"]
 
 [params]
 
