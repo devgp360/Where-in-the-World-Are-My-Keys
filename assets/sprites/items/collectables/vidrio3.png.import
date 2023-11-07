@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0q5venovutsx"
-path="res://.godot/imported/vela_roja.png-de8e6cb0c403387bfca3ef7abdc42ead.ctex"
+uid="uid://c4tvd5mn3y6mw"
+path="res://.godot/imported/vidrio3.png-1109915d1f18a1bd4b48321d6a40abfe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/puzzles/maximon/vela_roja.png"
-dest_files=["res://.godot/imported/vela_roja.png-de8e6cb0c403387bfca3ef7abdc42ead.ctex"]
+source_file="res://assets/sprites/items/collectables/vidrio3.png"
+dest_files=["res://.godot/imported/vidrio3.png-1109915d1f18a1bd4b48321d6a40abfe.ctex"]
 
 [params]
 

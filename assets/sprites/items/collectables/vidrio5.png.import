@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh0fn2ff8gq12"
-path="res://.godot/imported/maximon.png-c62678f43b09a7601d8db06daf54d913.ctex"
+uid="uid://cu7ekiyv2xcc6"
+path="res://.godot/imported/vidrio5.png-743586c01f9f5872aa51b7642aeeb780.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/puzzles/maximon/maximon.png"
-dest_files=["res://.godot/imported/maximon.png-c62678f43b09a7601d8db06daf54d913.ctex"]
+source_file="res://assets/sprites/items/collectables/vidrio5.png"
+dest_files=["res://.godot/imported/vidrio5.png-743586c01f9f5872aa51b7642aeeb780.ctex"]
 
 [params]
 

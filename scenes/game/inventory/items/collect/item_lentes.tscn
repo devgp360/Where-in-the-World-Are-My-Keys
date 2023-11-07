@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b763ty05xjuo2"]
 
-[ext_resource type="Texture2D" uid="uid://cp67a2mydyec0" path="res://assets/sprites/puzzles/vidriera/lentes.png" id="1_4jeyr"]
+[ext_resource type="Texture2D" uid="uid://cp67a2mydyec0" path="res://assets/sprites/items/collectables/lentes.png" id="1_4jeyr"]
 [ext_resource type="Script" path="res://scenes/game/inventory/items/inventory_item_button.gd" id="2_louwp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vragc"]
