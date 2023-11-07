@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://djectoi1kxudv"]
 
-[ext_resource type="Texture2D" uid="uid://cngeqoa5iqxd0" path="res://assets/sprites/misc/leaves.png" id="1_le0is"]
+[ext_resource type="Texture2D" uid="uid://cngeqoa5iqxd0" path="res://assets/sprites/scenes/scene_1/leaves.png" id="1_le0is"]
 
 [node name="Table" type="StaticBody2D"]
 y_sort_enabled = true

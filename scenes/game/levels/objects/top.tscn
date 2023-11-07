@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://d2as70dpmvym7"]
 
-[ext_resource type="Texture2D" uid="uid://eanm7glelry5" path="res://assets/sprites/misc/top.png" id="1_tumu5"]
+[ext_resource type="Texture2D" uid="uid://eanm7glelry5" path="res://assets/sprites/scenes/scene_1/top.png" id="1_tumu5"]
 
 [node name="Top" type="StaticBody2D"]
 y_sort_enabled = true
