@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmta172vvldus"]
 
-[ext_resource type="Texture2D" uid="uid://dklh880dnfp2l" path="res://assets/sprites/misc/bottom.png" id="1_oaumu"]
+[ext_resource type="Texture2D" uid="uid://dklh880dnfp2l" path="res://assets/sprites/scenes/scene_1/bottom.png" id="1_oaumu"]
 
 [node name="Bottom" type="StaticBody2D"]
 y_sort_enabled = true

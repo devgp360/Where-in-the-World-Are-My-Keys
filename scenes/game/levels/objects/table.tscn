@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://yq2t8fnnvfnk"]
 
-[ext_resource type="Texture2D" uid="uid://cthgudrnv5lvl" path="res://assets/sprites/misc/table.png" id="1_muy5k"]
+[ext_resource type="Texture2D" uid="uid://cthgudrnv5lvl" path="res://assets/sprites/scenes/scene_1/table.png" id="1_2rxdh"]
 
 [node name="Table" type="StaticBody2D"]
 y_sort_enabled = true
@@ -8,7 +8,7 @@ y_sort_enabled = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -35)
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_muy5k")
+texture = ExtResource("1_2rxdh")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 y_sort_enabled = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dunm8ggukxqut"
-path="res://.godot/imported/artefacto_magico.png-5d26addea0365b15988187cd19ca3d34.ctex"
+uid="uid://cngeqoa5iqxd0"
+path="res://.godot/imported/leaves.png-9b24df5071c5ddff2ea133bd89e7df5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/inventory/artefacto_magico.png"
-dest_files=["res://.godot/imported/artefacto_magico.png-5d26addea0365b15988187cd19ca3d34.ctex"]
+source_file="res://assets/sprites/scenes/scene_1/leaves.png"
+dest_files=["res://.godot/imported/leaves.png-9b24df5071c5ddff2ea133bd89e7df5b.ctex"]
 
 [params]
 

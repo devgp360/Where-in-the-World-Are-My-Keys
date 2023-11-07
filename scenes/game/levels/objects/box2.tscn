@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cal6akhq022cl"]
 
-[ext_resource type="Texture2D" uid="uid://w8insko36kpg" path="res://assets/sprites/misc/s3_box.png" id="1_1y484"]
+[ext_resource type="Texture2D" uid="uid://w8insko36kpg" path="res://assets/sprites/scenes/scene_3/s3_box.png" id="1_1y484"]
 
 [node name="Box2" type="StaticBody2D"]
 y_sort_enabled = true
