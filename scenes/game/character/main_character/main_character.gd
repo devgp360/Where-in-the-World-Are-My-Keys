@@ -268,7 +268,7 @@ func _add_object_to_inventory(_name: String):
 # Función que valida el listado de items activos para vestir, por cada item, define cuando mostrarlo
 # Esta función se llama directamente desde "_physics_process" que se ejecuta en cada "frame"
 func _process_dress_item():
-	# Validamos que tenemos que "vestir" los lentes del puzzle "vidriera".
+	# Validamos que tenemos que "vestir" los lentes.
 	var glasses = clothes.find_child("Glasses")
 	if not glasses:
 		return
@@ -277,30 +277,6 @@ func _process_dress_item():
 		glasses.visible = is_front # Si el personaje está de frente, se mostrarán los lentes
 	else:
 		glasses.visible = false
-
-
-# Función para usar un "item" para el puzzle de "Jardín"
-# En este puzzle se usan bebidas, que el personaje, al "consumirlas", mostrará un texto imformativo
-func _use_item(_name, params):
-	var text = "Ohh, ya me siento " # Texto base
-	# Mapa de textos finales (en base a los valores del color de la bebida)
-	var mapping = {
-		"0.1:0.3:0.7": "fuerte.",
-		"0.1:0.7:0.3": "cansado.",
-		"0.7:0.1:0.3": "rápido.",
-		"0.7:0.3:0.1": "lento.",
-		"0.5:0.2:0.1": "lleno. Aunque... parece aceite.",
-	}
-	if params:
-		# Dependiendo del "color" de una bebida, sacamos un texto a mostrar del "mapping"
-		var m = params.modulate
-		var key_format = "%1.1f:%1.1f:%1.1f"
-		var key = key_format % [m.r, m.g, m.b]
-		if mapping.has(key):
-			text = text + mapping[key]
-		else:
-			text = text + "mejor." # Si el color no está mapeado, usamos texto por defecto
-	dialog_label.text = text
 
 
 # DOCUMENTACIÓN (sombras): https://docs.google.com/document/d/1IAQRxm-IrOKRFd6XK9IlnbYYaLb_Bt0VDyqVeKR42j0/edit?usp=drive_link
