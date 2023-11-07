@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu731ykilhmy4"
-path="res://.godot/imported/jungla6.jpg-f7da02da864b9ff055618bd383ecb8ee.ctex"
+uid="uid://byuctrqlpw32g"
+path="res://.godot/imported/iglesia.png-8dcb74490f8c206b65e28a875d7195c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/scenes/tikal/jungla6.jpg"
-dest_files=["res://.godot/imported/jungla6.jpg-f7da02da864b9ff055618bd383ecb8ee.ctex"]
+source_file="res://assets/sprites/map/iglesia.png"
+dest_files=["res://.godot/imported/iglesia.png-8dcb74490f8c206b65e28a875d7195c6.ctex"]
 
 [params]
 

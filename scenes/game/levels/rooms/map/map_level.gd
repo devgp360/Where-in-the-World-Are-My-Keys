@@ -18,9 +18,11 @@ var _element_active_shader = preload(
 
 # Rutas de las escenas del mapa principal
 var _scene_paths = {
-	"Antigua": BASE_PATH_SCENE + "church/church_interior.tscn",
-	"Tikal": BASE_PATH_SCENE + "tikal/tikal_interior.tscn",
+	"Antigua": BASE_PATH_SCENE + "scene_3/scene_3.tscn",
+	"Tikal": BASE_PATH_SCENE + "scene_2/scene_2.tscn",
 	"Panajachel": BASE_PATH_SCENE + "scene_1/scene_1.tscn",
+	"Tikal2": BASE_PATH_SCENE + "tikal/tikal_interior.tscn",
+	"Iglesia": BASE_PATH_SCENE + "church/church_interior.tscn",
 }
 
 # Función que se llama cuando la escena esta cargada

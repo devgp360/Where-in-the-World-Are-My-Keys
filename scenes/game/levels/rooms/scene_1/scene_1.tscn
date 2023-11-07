@@ -23,7 +23,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(397, 10, 432, 38, 491, 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2j5c"]
 size = Vector2(299, 27.5359)
 
-[node name="Main" type="Node2D"]
+[node name="Main2" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_wyjy5")
 pause_menu = ExtResource("2_be106")

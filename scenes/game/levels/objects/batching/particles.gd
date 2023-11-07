@@ -31,5 +31,3 @@ func _do_distribution():
 		var t = Transform2D(0.0, v)
 		# Seteamos la transformación
 		multi_mesh.set_instance_transform_2d(i, t)
-		# Seteamos el color
-		multi_mesh.set_instance_color(i, Color.from_hsv(randf(), randf(), max(randf(), .4), 1.0))
