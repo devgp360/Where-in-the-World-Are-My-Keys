@@ -7,6 +7,10 @@ extends Node2D
 # DOCUMENTACIÓN (¿Como hacer Splash?): https://docs.google.com/document/d/11u22RhuGheb0z2ZpwwRgEygSr7kwTPtBme_17SZQwtw
 # DOCUMENTACIÓN MANEJO DE AUDIOS: https://docs.google.com/document/d/1-RtHioFa9rFuJvsTv92m3UQGEuosRqYBV5CTjWOPg_E
 
+# Animation players
+@onready var AnimationPlayerGP360: AnimationPlayer = $AnimationPlayerGP360
+@onready var AnimationPlayerEndless: AnimationPlayer = $AnimationPlayerEndless
+
 # Ruta a la escena a cargar cuando finalice el "splash"
 @export var path_map_scene = "res://scenes/game/levels/rooms/map/map.tscn"
 
@@ -15,6 +19,8 @@ extends Node2D
 func _ready():
 	# Setamos los niveles de sonidos
 	_set_sounds_volume()
+	# Mostramos el logo de Endless
+	AnimationPlayerEndless.play("do_splash")
 
 
 # Escuchamos el teclado
@@ -24,11 +30,17 @@ func _input(event):
 		# Llamamos el la función de cambio de escena
 		_go_title_screen()
 
-
-# Cuando termina la animación
-func _on_animation_player_animation_finished(_anim_name):
+# Cuando termina la animación de logo Endless
+func _on_animation_player_endless_animation_finished(anim_name):
+	# Mostramos el logo de GP360
+	AnimationPlayerGP360.play("do_splash")
+	
+	
+# Cuando termina la animación de logo GP360
+func _on_animation_player_gp_360_animation_finished(_anim_name):
 	# Llamamos el la funcion de cambio de escena
 	_go_title_screen()
+	
 
 
 # Función que inicializa el volumen de los sonidos (según datos guardados)
