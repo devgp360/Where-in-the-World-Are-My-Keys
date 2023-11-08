@@ -109,6 +109,8 @@ func _on_area_to_scena_2_area_entered(_area):
 
 # Cuando entramos a un área para pasar a la escena de la iglesia
 func _on_area_to_interior_church_area_entered(area):
+	# Desbloqueamos la siguiente escena
+	SaveProgress.save_active_scene("Iglesia")
 	SceneTransition.change_scene(BASE_PATH_SCENE + "church/church_interior.tscn")
 
 

@@ -138,7 +138,7 @@ scale = Vector2(1.8, 1.2)
 energy = 1.5
 texture = ExtResource("12_nmxx5")
 
-[node name="IglesiaLight2D2" type="PointLight2D" parent="."]
+[node name="IglesiaLight2D" type="PointLight2D" parent="."]
 visible = false
 position = Vector2(846, 322)
 scale = Vector2(2, 1)
