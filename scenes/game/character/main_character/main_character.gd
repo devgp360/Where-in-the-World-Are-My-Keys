@@ -42,10 +42,10 @@ const SPRITE_PATH = "res://assets/sprites/character/main/"
 # BOTTON: Personaje "debajo" del punto de luz
 # TOP: Personaje "arriba" del punto de luz
 const SHADER_OFFSET_Y_BOTTOM = 2.0 # Posición de sombra en Y (en BOTTOM)
-const SHADER_OFFSET_Y_TOP = -80.0 # Posición de sombra en Y (en TOP)
+const SHADER_OFFSET_Y_TOP = 45.0 # Posición de sombra en Y (en TOP)
 const SHADER_DEFORM_Y = 1.0 # La sombra es la mitad del tamaño de personaje (en el punto 0 en X)
 const SHADER_OFFEXT_X_FACTOR_BOTTOM = 250.0 # Posición de sombra en X (en BOTTOM)
-const SHADER_OFFSET_X_FACTOR_TOP = 150.0 # Posición de sombra en X (en TOP)
+const SHADER_OFFSET_X_FACTOR_TOP = 120.0 # Posición de sombra en X (en TOP)
 
 # Referencias de personajes/objetos en la escena
 @export var npc1: CharacterBody2D
