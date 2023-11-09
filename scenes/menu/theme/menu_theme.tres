@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://chf0rsmn01x7m"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://chf0rsmn01x7m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egqmj"]
 bg_color = Color(0, 0.372549, 0, 1)
@@ -23,8 +23,17 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05qrn"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_te2lp"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_wj8xm"]
+color = Color(1, 1, 1, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxev7"]
-bg_color = Color(0.137255, 0.694118, 0.592157, 0.611765)
+bg_color = Color(0.6, 0.6, 0, 0)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
@@ -277,9 +286,9 @@ HSlider/icons/grabber = null
 HSlider/icons/grabber_disabled = null
 HSlider/icons/grabber_highlight = null
 HSlider/icons/tick = null
-HSlider/styles/grabber_area = null
-HSlider/styles/grabber_area_highlight = null
-HSlider/styles/slider = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_05qrn")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_te2lp")
+HSlider/styles/slider = SubResource("StyleBoxLine_wj8xm")
 HSplitContainer/constants/autohide = 0
 HSplitContainer/constants/minimum_grab_thickness = 0
 HSplitContainer/constants/separation = 0

@@ -12,6 +12,9 @@ extends Node2D
 #Variable para guardar el screenshot
 var img: Image
 
+# Variable global, para controlar animación del fondo
+var is_backwards = false # Cuando se hace la animación "de regreso" se activa a "true"
+
 # Definición del nodo Canvas
 @onready var canvas_layer = $CanvasLayer
 
@@ -32,6 +35,9 @@ var img: Image
 
 # Definición del Audioplayer
 @onready var sound = $AudioStreamPlayer2D
+
+# Definición del node de animación
+@onready var animation = $CanvasLayer/AnimationPlayer
 
 # Definición del boton Guardar
 @onready var save_button = $CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Actions/SaveGame
@@ -61,7 +67,8 @@ func _ready():
 	if not _paused:
 		# Si el juego no esta en pausa escondemos el boton continuar
 		_continue.visible = false
-
+	# Iniciamos la animación del fondo
+	animation.play("move_background")
 
 # Redirección al mapa principal	
 func _on_map_pressed():
@@ -225,3 +232,12 @@ func _set_buttons():
 	if _scenes.find(actual_scene,0) > -1:
 		# Escondemos el boton
 		save_button.visible = false
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if is_backwards:
+		animation.play("move_background")
+		is_backwards = false
+	else:
+		animation.play_backwards("move_background")
+		is_backwards = true

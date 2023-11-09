@@ -1,11 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4f7fxjs2wh7n"]
+[gd_scene load_steps=10 format=3 uid="uid://d4f7fxjs2wh7n"]
 
 [ext_resource type="Script" path="res://scenes/menu/main_menu/main.gd" id="1_rqj16"]
-[ext_resource type="Texture2D" uid="uid://dmrl3o21palns" path="res://assets/sprites/misc/bg_menu.jpg" id="2_vir48"]
+[ext_resource type="Texture2D" uid="uid://c6weclkyxwnla" path="res://assets/sprites/map/main_map.jpg" id="2_028q3"]
 [ext_resource type="Theme" uid="uid://chf0rsmn01x7m" path="res://scenes/menu/theme/menu_theme.tres" id="3_80vr3"]
 [ext_resource type="PackedScene" uid="uid://b3pt36v6bwxau" path="res://scenes/game/levels/saved_game/canvas/saved_game_canvas.tscn" id="4_y8t38"]
 [ext_resource type="Script" path="res://scenes/menu/main_menu/h_slider.gd" id="5_b1vbx"]
 [ext_resource type="AudioStream" uid="uid://n7xjmb7ofy5j" path="res://assets/sounds/main_menu.mp3" id="6_ga4pb"]
+
+[sub_resource type="Animation" id="Animation_qay8n"]
+resource_name = "move_background"
+length = 16.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-108, -119), Vector2(-743, -750)]
+}
+
+[sub_resource type="Animation" id="Animation_4vyxh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-80.5, -154)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_316aj"]
+_data = {
+"RESET": SubResource("Animation_4vyxh"),
+"move_background": SubResource("Animation_qay8n")
+}
 
 [node name="Main2" type="Node2D"]
 process_mode = 3
@@ -19,13 +56,14 @@ layer = 128
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -48.0
-offset_right = 19.0
-offset_bottom = 56.0
+offset_left = -80.5
+offset_top = -154.0
+offset_right = 111.5
+offset_bottom = 222.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_vir48")
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_028q3")
 stretch_mode = 6
 
 [node name="Main" type="Control" parent="CanvasLayer"]
@@ -118,7 +156,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Load/CenterContainer"]
-custom_minimum_size = Vector2(700, 400)
+custom_minimum_size = Vector2(900, 500)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer"]
@@ -133,26 +171,24 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="Label" type="Label" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 36
-text = "Cargar / Guardar avance
-"
+text = "Cargar / Guardar avance"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 8
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 300)
+custom_minimum_size = Vector2(630, 300)
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="InventoryCanvas" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer" node_paths=PackedStringArray("actions", "save_button", "load_button", "remove_button", "save_confirm", "delete_confirm") instance=ExtResource("4_y8t38")]
+position = Vector2(146, 0)
 actions = NodePath("../../MarginContainer/Actions")
 save_button = NodePath("../../MarginContainer/Actions/SaveGame")
 load_button = NodePath("../../MarginContainer/Actions/LoadGame")
@@ -161,17 +197,18 @@ save_confirm = NodePath("../../MarginContainer/OverwriteConfirmation")
 delete_confirm = NodePath("../../MarginContainer/RemoveConfirmation")
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_constants/margin_top = 12
 
 [node name="Actions" type="VBoxContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_constants/separation = 10
 
 [node name="LoadGame" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/Actions"]
-visible = false
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 text = "Cargar"
@@ -200,12 +237,14 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RemoveConfirmation"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 10
 
 [node name="YesRemove" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RemoveConfirmation/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-text = "Si"
+text = "Sí"
 
 [node name="NoRemove" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RemoveConfirmation/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
@@ -224,23 +263,32 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation"]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 10
 
 [node name="YesOverwrite" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-text = "Si"
+text = "Sí"
 
 [node name="NoOverwrite" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "No"
 
-[node name="Back" type="Button" parent="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="CanvasLayer/Load"]
 custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -232.0
+offset_top = 90.0
+offset_right = -142.0
+offset_bottom = 140.0
+grow_horizontal = 0
 size_flags_vertical = 3
-text = "Atras"
+text = "← Atrás"
 
 [node name="About" type="Control" parent="CanvasLayer"]
 visible = false
@@ -293,19 +341,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 16
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat lacus sit amet viverra interdum. Sed a neque augue. Vivamus diam orci, suscipit vitae elit non, hendrerit dapibus enim. Donec id sem congue, efficitur magna quis, condimentum odio. In accumsan in lacus nec fermentum. Phasellus vel massa vel elit feugiat ultricies quis nec arcu. In consequat mattis magna sed eleifend. In nulla nisi, laoreet et aliquet non, iaculis ac ex. Etiam scelerisque luctus tortor sed mattis. Vivamus commodo mauris vitae mi laoreet, non fringilla sem elementum. Praesent venenatis, elit at posuere scelerisque, justo risus congue tortor, eget congue tortor elit ac enim. Mauris aliquam nunc orci, quis consequat purus iaculis id. Etiam varius eros vel bibendum semper. Fusce semper leo id dui tempor consectetur.
+text = "¡Bienvenido a nuestro juego demostrativo creado con pasión en Godot! Este pequeño mundo virtual es como un laboratorio donde exploramos las maravillas de la creación de videojuegos. En este juego, podrás sumergirte en lecciones interactivas sobre animaciones, movimientos, y todos los trucos mágicos que hacen que los juegos sean tan emocionantes.
 
-Quisque mollis bibendum gravida. Suspendisse vehicula ipsum ante, vel ultrices dui lacinia volutpat. Morbi nisi lectus, bibendum a diam quis, faucibus egestas lectus. Nunc eu enim ac lectus eleifend tristique. Aenean vitae turpis a diam aliquet egestas. Etiam lobortis pulvinar urna quis accumsan. Sed commodo erat non massa blandit posuere. Nulla facilisi. Sed lacinia vestibulum risus quis rhoncus. Etiam et dui eget metus gravida rhoncus et quis lacus.
-
-Ut sit amet vulputate diam, ut fermentum magna. Nam tristique, tellus non pharetra lobortis, ipsum velit lobortis sapien, in placerat erat mi ac diam. Nullam quis vehicula diam. Suspendisse potenti. Integer ullamcorper arcu id sollicitudin bibendum. Phasellus in erat ipsum. Morbi neque orci, commodo sit amet neque a, molestie ultricies elit."
+Descubre la magia detrás de cada personaje que creamos y aprende cómo cobran vida con las animaciones. Experimenta con los controles y descubre cómo se combinan los elementos para formar un juego completo. Este es más que un juego; es un espacio para aprender y experimentar. Así que adelante, diviértete explorando y desentrañando los secretos detrás de tus juegos favoritos."
 autowrap_mode = 2
 justification_flags = 171
 
-[node name="Back" type="Button" parent="CanvasLayer/About/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Back" type="Button" parent="CanvasLayer/About"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+offset_left = 815.0
+offset_top = 138.0
+offset_right = 905.0
+offset_bottom = 188.0
 size_flags_vertical = 3
-text = "Atras"
+text = "← Atrás"
 
 [node name="Sounds" type="Control" parent="CanvasLayer"]
 visible = false
@@ -344,8 +394,7 @@ theme_override_constants/separation = 8
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 36
-text = "Sonidos
-"
+text = "Volumen de sonidos"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -416,11 +465,20 @@ bus_name = "npc"
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Back" type="Button" parent="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerButton"]
+[node name="Back" type="Button" parent="CanvasLayer/Sounds"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+offset_left = 829.0
+offset_top = 79.0
+offset_right = 919.0
+offset_bottom = 129.0
 size_flags_vertical = 8
-text = "Atras"
+text = "← Atrás"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_316aj")
+}
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ga4pb")
@@ -440,6 +498,7 @@ bus = &"music"
 [connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RemoveConfirmation/HBoxContainer/NoRemove" to="." method="_on_no_remove_pressed"]
 [connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation/HBoxContainer/YesOverwrite" to="." method="_on_yes_overwrite_pressed"]
 [connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/OverwriteConfirmation/HBoxContainer/NoOverwrite" to="." method="_on_no_overwrite_pressed"]
-[connection signal="pressed" from="CanvasLayer/Load/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="CanvasLayer/About/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="CanvasLayer/Sounds/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainerButton/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/Load/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/About/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/Sounds/Back" to="." method="_on_back_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
