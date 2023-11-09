@@ -149,14 +149,6 @@ func get_save_data():
 		})
 	# Preparamos los datos de puzzles
 	var riddles_data = [altar, door]
-	# Recorremos los objetos de puzzles
-	for riddle in riddles_data:
-		# Validamos si puzzle  esta activo
-		if riddle.visible:
-			# Agregamos objetos de puzzles a guardar
-			riddles.append({
-				"item": riddle.name,
-			})
 			
 	# Retornamos datos
 	return {
