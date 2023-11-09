@@ -31,7 +31,7 @@ var is_backwards = false # Cuando se hace la animación "de regreso" se activa a
 @onready var sounds = $CanvasLayer/Sounds
 
 # Definición del nodo Boton Continuar
-@onready var _continue = $CanvasLayer/Main/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Continue
+@onready var _continue = $CanvasLayer/Main/Continue
 
 # Definición del Audioplayer
 @onready var sound = $AudioStreamPlayer2D
