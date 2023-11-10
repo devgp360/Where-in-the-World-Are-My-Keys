@@ -6,6 +6,16 @@ extends Node2D
 # Definición del nodo de menu
 @export var pause_menu: PackedScene
 
+# Definición del nodo main character
+@onready var character = $ObjectsAndCharacter/MainCharacter
+
+
+# Función que se llama cuando la escena esta cargada
+func _ready():
+	# Seteamos datos iniciales
+	SaveProgress.set_level_data(character)
+	MenuGlobal.set_process(false)
+
 
 # Función que siempre se llama
 func _process(_delta):
@@ -30,3 +40,9 @@ func _on_area_to_scene_tikal_body_entered(body):
 func _on_area_to_scene_3_body_entered(body):
 	# Redireccionamos a la escena Tikal
 	SceneTransition.change_scene("res://scenes/game/levels/rooms/scene_3/scene_3.tscn")
+
+
+# Obtenemos datos de la escena (para guardado de avance)
+func get_save_data():
+	return SaveProgress.generate_save_data(character, "Church", 
+		"res://scenes/game/levels/rooms/church/church_interior.tscn")
