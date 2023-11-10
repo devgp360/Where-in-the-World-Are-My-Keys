@@ -71,7 +71,7 @@ frame = 1
 [node name="Clothes" type="Node2D" parent="Sprite2D"]
 
 [node name="Glasses" parent="Sprite2D/Clothes" instance=ExtResource("4_m16xi")]
-z_index = 10
+z_as_relative = false
 position = Vector2(0, -32)
 scale = Vector2(0.0533333, 0.0533333)
 
