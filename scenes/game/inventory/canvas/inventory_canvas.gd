@@ -68,7 +68,6 @@ func _unhandled_input(event):
 
 # Función "clic" para cada elemento del inventario
 func _pressed(_name: String):
-	_check_press_item_puzzle_jardin(_name) # Validar clic en items de puzzle "Jardín"
 	# Cargamos el nodo principal de la escena. Si no existe, se termina la función
 	var escena1 = get_tree().get_root().get_node("Main")
 	if not escena1:
@@ -170,36 +169,6 @@ func get_dressed_item_list():
 # Devuelve "true", si un item está siendo "vestido" por el personaje principal
 func is_wearing(_name: String):
 	return _dressed_item_list.find(_name) >= 0
-
-
-# Función especial para validar si se da clic en un item del puzzle de "Jardín"
-func _check_press_item_puzzle_jardin(_name: String):
-	if not _name.begins_with("puzzle_jardin/"): # Si no es item de "jardín" terminamos la función
-		return
-	# Validamos que sea el iten de "brebaje"
-	if _name.ends_with("/item_brebaje_1"):
-		# Cargamos nodo principal (o se retorna de no existir)
-		var escena1 = get_tree().get_root().get_node("Main")
-		if not escena1:
-			return
-		# Se busca el personaje principal (o se retorna de no existir)
-		var character = escena1.find_child("MainCharacter")
-		if not character:
-			return
-		var params = null
-		var index = _item_object_names.find(_name)
-		var item = _item_objects[index]
-		# Buscamos parámetros del item (si existen)
-		if item.has_method("get_params"):
-			params = item.get_params()
-		# Cerramos el inventario (el canvas)
-		animation_player.play_backwards("down")
-		await animation_player.animation_finished
-		canvas.visible = false
-		# Al usar el "brebaje", lo eliminamos del inventario
-		_remove_item_by_name(_name)
-		# Le "comunicamos" al personaje que use el item "clicado"
-		character.use_item(_name, params)
 
 
 # Función que servirá para seleccionar un item a usar (sobre otro item)
