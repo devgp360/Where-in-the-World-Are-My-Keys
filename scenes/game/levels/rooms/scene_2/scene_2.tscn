@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cds1m3xicyc4k"]
+[gd_scene load_steps=12 format=3 uid="uid://cds1m3xicyc4k"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/scene_2/scene_2.gd" id="1_7pqo5"]
 [ext_resource type="PackedScene" uid="uid://d4f7fxjs2wh7n" path="res://scenes/menu/main_menu/main_menu.tscn" id="2_2xv7g"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character/main_character.tscn" id="6_ckjf0"]
 [ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://scenes/game/levels/camera/camera.tscn" id="8_5w0aw"]
 [ext_resource type="AudioStream" uid="uid://cx0jnns63mbi6" path="res://assets/sounds/scene_2.mp3" id="9_wa636"]
-[ext_resource type="PackedScene" uid="uid://br2xxid8seypw" path="res://scenes/game/character/npc_2/npc_2.tscn" id="10_s8tol"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sxo74"]
 vertices = PackedVector2Array(843, 349, 789, 275, 802, 259, 875, 295, 882, 313, 187, 375, 121, 339, 160, 329, 1056, 467, 977, 499, 981, 469, 1046, 436, 806, 184, 890, 76, 942, 90, 887, 156, 819, 236, 757, 241, 527, 146, 473, 88, 504, 76, 624, 212, 590, 219, 667, 220, 658, 232, 539, 278, 568, 231, 515, 256, 540, 243, 526, 298, 348, 144, 288, 130, 260, 107, 281, 92, 361, 121, 380, 131, 1287, 469, 1332, 452, 1334, 470, 1335, 484, 1301, 503, 256, 357, 197, 317, 231, 313, 254, 332, 328, 333, 342, 364, 368, 172, 397, 169, 430, 244, 463, 279, 453, 195, 1161, 498, 1255, 447, 413, 349, 371, 302, 394, 313, 413, 301, 438, 303, 472, 352, 597, 323, 665, 331, 664, 346, 746, 323, 930, 409, 901, 325, 984, 405, 965, 439, 1103, 400, 1142, 389, 1256, 431)
@@ -84,11 +83,6 @@ shape = SubResource("RectangleShape2D_482w6")
 position = Vector2(-655, 121)
 rotation = 0.502655
 shape = SubResource("RectangleShape2D_7m4k7")
-
-[node name="NPC2" parent="." node_paths=PackedStringArray("mainchar") instance=ExtResource("10_s8tol")]
-position = Vector2(107, -179)
-scale = Vector2(0.8, 0.8)
-mainchar = NodePath("../MainCharacter")
 
 [connection signal="body_entered" from="AreaToScene3" to="." method="_on_area_to_scene_3_body_entered"]
 [connection signal="body_entered" from="AreaToScene1" to="." method="_on_area_to_scena_1_body_entered"]
