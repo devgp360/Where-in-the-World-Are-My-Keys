@@ -306,6 +306,7 @@ func save_game(data_to_save: Dictionary, img: Image) -> void:
 func set_level_data(character: CharacterBody2D):
 	# Cargamos datos guardados del juego
 	var level_data = get_saved_data(Global.active_item_menu_id)
+	Global.active_item_menu_id = ""
 	# Validamos si existe data
 	if not level_data:
 		return 

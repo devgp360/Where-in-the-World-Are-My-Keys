@@ -10,6 +10,7 @@ extends Node2D
 func _ready():
 	# Seteamos datos iniciales
 	SaveProgress.set_level_data(character)
+	# Habilitamos el menu
 	MenuGlobal.set_process(true)
 
 

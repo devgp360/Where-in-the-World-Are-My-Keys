@@ -10,11 +10,17 @@ extends Node2D
 @onready var sound_1 = $Sounds/Track1
 @onready var sound_2 = $Sounds/Track2
 @onready var anim_player := $AnimationPlayer
+# Definición del nodo main character
+@onready var character = $Objects/MainCharacter
 
 # Función que se llama cuando la escena esta cargada
 func _ready():
 	# Desbloqueamos la siguiente escena
 	SaveProgress.save_active_scene("Iglesia")
+	# Seteamos datos iniciales
+	SaveProgress.set_level_data(character)
+	# Habilitamos el menu
+	MenuGlobal.set_process(true)
 
 
 # Función que siempre se llama
@@ -89,3 +95,8 @@ func _crossfade_to(audio_stream: AudioStream, sound_num: int):
 		# Iniciamos la animacion de Fade
 		anim_player.play("FadeToTrack2")
 
+
+# Obtenemos datos de la escena
+func get_save_data():
+	return SaveProgress.generate_save_data(character, "Tikal", 
+		"res://scenes/game/levels/rooms/tikal/tikal_interior.tscn")
