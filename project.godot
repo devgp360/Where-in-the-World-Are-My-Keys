@@ -26,6 +26,7 @@ InventoryCanvas="*res://scenes/game/inventory/canvas/inventory_canvas.tscn"
 SceneTransition="*res://scenes/menu/scene_transition/scene_transition.tscn"
 SaveProgress="*res://scenes/game/globals/save_progress.gd"
 Global="*res://scenes/game/globals/global.gd"
+MenuGlobal="*res://scenes/menu/main_menu/menu_global.gd"
 
 [display]
 

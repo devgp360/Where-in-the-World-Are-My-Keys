@@ -22,6 +22,7 @@ var _level_data = {}
 
 # Función que se llama cuando la escena esta cargada
 func _ready():
+	MenuGlobal.set_process(false)
 	# Cargamos datos guardados del juego
 	_level_data = SaveProgress.get_saved_data(Global.active_item_menu_id)
 	# Validamos si existe data

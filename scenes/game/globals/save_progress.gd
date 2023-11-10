@@ -300,3 +300,85 @@ func save_game(data_to_save: Dictionary, img: Image) -> void:
 	data = _add_scene(data_to_save,data)
 	# Guardamos
 	_save_data(data)
+
+
+# Seteamos los datos de la escena
+func set_level_data(character: CharacterBody2D):
+	# Cargamos datos guardados del juego
+	var level_data = get_saved_data(Global.active_item_menu_id)
+	# Validamos si existe data
+	if not level_data:
+		return 
+	# Limpiamos el inventario
+	InventoryCanvas.remove_all_items()
+	# Seteamos datos del personaje principal
+	_set_character_data(character, level_data.character)
+	# Seteamos datos del inventario
+	_set_inventory_data(level_data)
+
+
+# Seteamos datos del personaje principal
+func _set_character_data(character: CharacterBody2D, character_data: Dictionary):
+	# Ponemos al personaje en su posición guardada
+	character.position = character_data.position
+	# Seteamos datos del inventario
+	for item in character_data.dressed:
+		# ponemos el objeto al personaje principal
+		character.dress_item(item, true)
+
+
+# Seteamos datos de inventario
+func _set_inventory_data(level_data: Dictionary):
+	# Obtenemos los objetos coleccionables
+	var collect = self.get_node("Collect")
+	if not collect:
+		return
+	# Obtenemos los objetos coleccionables
+	var children = collect.get_children()
+	# Recorremos datos guardados
+	for item_saved in level_data.inventory.items:
+		# Agregamos objeto al inventario
+		InventoryCanvas.add_item_by_name(item_saved.item)
+		# Recorremos objetos coleccionables
+		for item in children:
+			if item.item_path_name == item_saved.item:
+				# Escondemos el objeto
+				item.visible = false
+
+
+# Obtenemos datos de la escena
+func generate_save_data(character: CharacterBody2D, scene_name: String, scene_path: String):
+	# Obtenemos la fecha y hora actuales
+	var time = Time.get_datetime_dict_from_system()
+	# Declaramos la variable de objetos colleccionables
+	var items = []
+	# Obtenemos elementos del inventario disponible
+	var item_list = InventoryCanvas.get_item_list_names()
+	# Recorremos objetos colleccionables
+	for item in item_list:
+		# Agregamos el objeto a datos a guardar
+		items.append({
+			"item": item,
+		})
+	
+	# Retornamos datos
+	return {
+		"id": "%02d-%02d-%02d %02d:%02d:%02d" % [
+			time.day,
+			time.month,
+			time.year,
+			time.hour,
+			time.minute,
+			time.second,
+		],
+		"name": scene_name,
+		"path": scene_path,
+		"inventory": {
+			"items": items,
+		},
+		"character":{
+			"position": character.position,
+			"dressed": character.get_dress_item_list(),
+		},
+	}
+
