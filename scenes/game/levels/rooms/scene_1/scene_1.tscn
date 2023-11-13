@@ -33,6 +33,9 @@ z_index = -1
 scale = Vector2(1.26953, 1.26953)
 texture = ExtResource("1_dbimm")
 
+[node name="LightPoint" type="Node2D" parent="."]
+position = Vector2(349, -427)
+
 [node name="Collect" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -76,8 +79,9 @@ scale = Vector2(1.7, 1.65)
 position = Vector2(1109, 427)
 scale = Vector2(1.7, 1.65)
 
-[node name="MainCharacter" parent="." instance=ExtResource("2_5iij1")]
+[node name="MainCharacter" parent="." node_paths=PackedStringArray("light_node") instance=ExtResource("2_5iij1")]
 position = Vector2(-368, 4)
+light_node = NodePath("../LightPoint")
 active_fake_z_axis = true
 
 [node name="Area2D" type="Area2D" parent="."]
