@@ -30,6 +30,9 @@ z_index = -1
 scale = Vector2(1.26953, 1.26953)
 texture = ExtResource("3_vvl1g")
 
+[node name="LightPoint" type="Node2D" parent="."]
+position = Vector2(-436, -321)
+
 [node name="Collect" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -48,9 +51,10 @@ offset_right = -254.0
 offset_bottom = -92.0
 scale = Vector2(0.5, 0.5)
 
-[node name="MainCharacter" parent="." instance=ExtResource("6_ckjf0")]
+[node name="MainCharacter" parent="." node_paths=PackedStringArray("light_node") instance=ExtResource("6_ckjf0")]
 position = Vector2(-459, 78)
 scale = Vector2(0.9, 0.9)
+light_node = NodePath("../LightPoint")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 y_sort_enabled = true

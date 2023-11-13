@@ -32,6 +32,9 @@ z_index = -1
 scale = Vector2(1.26953, 1.26953)
 texture = ExtResource("2_5l6b3")
 
+[node name="LightPoint" type="Node2D" parent="."]
+position = Vector2(-400, -284)
+
 [node name="Camera" parent="." node_paths=PackedStringArray("character") instance=ExtResource("3_1i62r")]
 limit_left = -670
 limit_top = -380
@@ -72,9 +75,10 @@ position = Vector2(-455, -119)
 rotation = -0.502655
 shape = SubResource("RectangleShape2D_rf26f")
 
-[node name="MainCharacter" parent="." instance=ExtResource("3_eq2kb")]
+[node name="MainCharacter" parent="." node_paths=PackedStringArray("light_node") instance=ExtResource("3_eq2kb")]
 position = Vector2(-228, 6)
 scale = Vector2(0.8, 0.8)
+light_node = NodePath("../LightPoint")
 active_fake_z_axis = true
 
 [node name="Collect" type="Node2D" parent="."]
