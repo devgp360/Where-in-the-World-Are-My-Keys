@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cn7qpo5sr46si"]
+[gd_scene load_steps=17 format=3 uid="uid://cn7qpo5sr46si"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/source/source.gd" id="1_ct4qg"]
 [ext_resource type="Texture2D" uid="uid://cc1xo53s2nkh1" path="res://assets/sprites/scenes/water/agua2.png" id="2_mx14g"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character/main_character.tscn" id="9_0pnc3"]
 [ext_resource type="Texture2D" uid="uid://blr2uispwa8v7" path="res://assets/sprites/scenes/water/iglesia_columna.png" id="10_5acax"]
 [ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://scenes/game/levels/camera/camera.tscn" id="11_sefex"]
+[ext_resource type="Texture2D" uid="uid://bb1dsvigpcmbg" path="res://assets/sprites/misc/punto_de_luz.png" id="12_qulvs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tkqyx"]
 shader = ExtResource("3_vsj7i")
@@ -70,8 +71,9 @@ texture = ExtResource("7_pilq6")
 position = Vector2(50, 208)
 texture = ExtResource("8_1dnvq")
 
-[node name="MainCharacter" parent="." instance=ExtResource("9_0pnc3")]
+[node name="MainCharacter" parent="." node_paths=PackedStringArray("light_node") instance=ExtResource("9_0pnc3")]
 position = Vector2(289, 72)
+light_node = NodePath("../Light/PointLight2D")
 
 [node name="Columna3" type="Sprite2D" parent="."]
 position = Vector2(383, 45)
@@ -93,5 +95,14 @@ character = NodePath("../MainCharacter")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_hw8h4")
+
+[node name="Light" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Light"]
+position = Vector2(-492, -392)
+color = Color(0.466667, 0.443137, 1, 1)
+energy = 10.0
+texture = ExtResource("12_qulvs")
+texture_scale = 0.4
 
 [connection signal="body_entered" from="AreaToFire" to="." method="_on_area_to_fire_body_entered"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://uml5cughx4v7"]
+[gd_scene load_steps=17 format=3 uid="uid://uml5cughx4v7"]
 
 [ext_resource type="Script" path="res://scenes/game/levels/rooms/fire/fire.gd" id="1_m1f4g"]
 [ext_resource type="Texture2D" uid="uid://dotjr8wdaqrti" path="res://assets/sprites/scenes/fire/cocina.png" id="1_tk8xb"]
 [ext_resource type="PackedScene" uid="uid://cw4xeegs5b2fq" path="res://scenes/game/character/main_character/main_character.tscn" id="3_wj3po"]
 [ext_resource type="Texture2D" uid="uid://c4tt3hsybb32k" path="res://assets/sprites/scenes/fire/Flame.png" id="3_y3ryq"]
 [ext_resource type="PackedScene" uid="uid://bkjboqn4xwl7m" path="res://scenes/game/levels/camera/camera.tscn" id="4_52rv8"]
+[ext_resource type="Texture2D" uid="uid://bb1dsvigpcmbg" path="res://assets/sprites/misc/punto_de_luz.png" id="6_f6jts"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bk3ox"]
 blend_mode = 1
@@ -127,7 +128,7 @@ lifetime = 0.5
 
 [node name="MainCharacter" parent="." node_paths=PackedStringArray("light_node") instance=ExtResource("3_wj3po")]
 position = Vector2(669, 686)
-light_node = NodePath("../LightPoint")
+light_node = NodePath("../Light/Light")
 speed = 420
 active_fake_z_axis = true
 max_scale = 3.5
@@ -159,6 +160,15 @@ shape = SubResource("RectangleShape2D_8op5f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaToTikal"]
 position = Vector2(23, 754.5)
 shape = SubResource("RectangleShape2D_nr0rt")
+
+[node name="Light" type="Node2D" parent="."]
+
+[node name="Light" type="PointLight2D" parent="Light"]
+position = Vector2(402, -124)
+color = Color(0.466667, 0.443137, 1, 1)
+energy = 5.0
+texture = ExtResource("6_f6jts")
+texture_scale = 0.4
 
 [connection signal="body_entered" from="AreaToSource" to="." method="_on_area_to_source_body_entered"]
 [connection signal="body_entered" from="AreaToTikal" to="." method="_on_area_to_tikal_body_entered"]
